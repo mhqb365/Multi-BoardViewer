@@ -95,6 +95,24 @@ namespace MultiBoardViewer
             public string TempDirectory { get; set; }
             public string AppType { get; set; } // "BoardViewer" or "SumatraPDF"
             public IntPtr WindowHandle { get; set; } // Store window handle for resize
+            public string FilePath { get; set; } // Store the file path being viewed
+        }
+
+        // Check if file is already open and switch to that tab
+        private bool TrySwitchToExistingTab(string filePath)
+        {
+            foreach (var kvp in _tabProcesses)
+            {
+                if (kvp.Value.FilePath != null && 
+                    kvp.Value.FilePath.Equals(filePath, StringComparison.OrdinalIgnoreCase))
+                {
+                    // File is already open, switch to that tab
+                    tabControl.SelectedItem = kvp.Key;
+                    ShowStatus($"Switched to existing tab: {Path.GetFileName(filePath)}", true);
+                    return true;
+                }
+            }
+            return false;
         }
 
         public MainWindow()
@@ -121,6 +139,9 @@ namespace MultiBoardViewer
             // Create the "+" add tab button
             CreateAddTabButton();
             
+            // Subscribe to receive files from other instances
+            App.FilesReceived += OnFilesReceivedFromAnotherInstance;
+            
             // Check if files were passed via command line (Open with)
             if (App.StartupFiles != null && App.StartupFiles.Length > 0)
             {
@@ -131,6 +152,40 @@ namespace MultiBoardViewer
             {
                 // Create initial empty tab on startup
                 CreateEmptyTab();
+            }
+        }
+
+        private void OnFilesReceivedFromAnotherInstance(string[] files)
+        {
+            // Bring window to front
+            if (this.WindowState == WindowState.Minimized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            this.Activate();
+            this.Topmost = true;
+            this.Topmost = false;
+            this.Focus();
+
+            // Open files
+            foreach (string file in files)
+            {
+                // Skip activation command
+                if (file == "__ACTIVATE__")
+                    continue;
+                    
+                // Skip if file doesn't exist
+                if (!System.IO.File.Exists(file))
+                    continue;
+                
+                if (file.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+                {
+                    OpenPdfInNewTab(file);
+                }
+                else
+                {
+                    OpenBoardViewerWithFile(file);
+                }
             }
         }
 
@@ -575,7 +630,8 @@ namespace MultiBoardViewer
                     Panel = panel,
                     TempDirectory = null,
                     AppType = "SumatraPDF",
-                    WindowHandle = IntPtr.Zero
+                    WindowHandle = IntPtr.Zero,
+                    FilePath = pdfPath
                 };
                 _tabProcesses[tab] = processInfo;
 
@@ -633,7 +689,8 @@ namespace MultiBoardViewer
                     Panel = panel,
                     TempDirectory = null,
                     AppType = "BoardViewer",
-                    WindowHandle = IntPtr.Zero
+                    WindowHandle = IntPtr.Zero,
+                    FilePath = filePath
                 };
 
                 // Embed the process window into our panel
@@ -648,6 +705,10 @@ namespace MultiBoardViewer
 
         private void OpenBoardViewerWithFile(string filePath)
         {
+            // Check if file is already open
+            if (TrySwitchToExistingTab(filePath))
+                return;
+
             if (string.IsNullOrEmpty(_boardViewerPath) || !File.Exists(_boardViewerPath))
             {
                 MessageBox.Show("BoardViewer.exe not found!\n\nPlease place BoardViewer.exe in the same folder as this application.", 
@@ -702,7 +763,8 @@ namespace MultiBoardViewer
                     Host = host,
                     Panel = panel,
                     TempDirectory = null,
-                    AppType = "BoardViewer"
+                    AppType = "BoardViewer",
+                    FilePath = filePath
                 };
 
                 // Embed the process window into the panel
@@ -719,6 +781,10 @@ namespace MultiBoardViewer
 
         private void OpenPdfInNewTab(string pdfPath)
         {
+            // Check if file is already open
+            if (TrySwitchToExistingTab(pdfPath))
+                return;
+
             if (string.IsNullOrEmpty(_sumatraPdfPath) || !File.Exists(_sumatraPdfPath))
             {
                 MessageBox.Show("SumatraPDF.exe not found!\n\nPlease place SumatraPDF.exe in the same folder as this application.", 
@@ -778,7 +844,8 @@ namespace MultiBoardViewer
                     Panel = panel,
                     TempDirectory = null,
                     AppType = "SumatraPDF",
-                    WindowHandle = IntPtr.Zero
+                    WindowHandle = IntPtr.Zero,
+                    FilePath = pdfPath
                 };
                 _tabProcesses[newTab] = processInfo;
 
