@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -86,6 +87,9 @@ namespace MultiBoardViewer
         private string _sumatraPdfPath = "";
         private DispatcherTimer _resizeTimer;
         private bool _dropHandled = false; // Flag to prevent double drop handling
+        private List<string> _recentFiles = new List<string>(); // Recent files history
+        private const int MaxRecentFiles = 10;
+        private const string RecentFilesFileName = "recent_files.txt";
 
         private class ProcessInfo
         {
@@ -115,9 +119,65 @@ namespace MultiBoardViewer
             return false;
         }
 
+        // Load recent files from file
+        private void LoadRecentFiles()
+        {
+            try
+            {
+                string appDir = AppDomain.CurrentDomain.BaseDirectory;
+                string recentFilePath = Path.Combine(appDir, RecentFilesFileName);
+                
+                if (File.Exists(recentFilePath))
+                {
+                    _recentFiles = File.ReadAllLines(recentFilePath)
+                        .Where(f => !string.IsNullOrWhiteSpace(f) && File.Exists(f))
+                        .Take(MaxRecentFiles)
+                        .ToList();
+                }
+            }
+            catch { }
+        }
+
+        // Save recent files to file
+        private void SaveRecentFiles()
+        {
+            try
+            {
+                string appDir = AppDomain.CurrentDomain.BaseDirectory;
+                string recentFilePath = Path.Combine(appDir, RecentFilesFileName);
+                File.WriteAllLines(recentFilePath, _recentFiles);
+            }
+            catch { }
+        }
+
+        // Add file to recent history
+        private void AddToRecentFiles(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
+                return;
+
+            // Remove if already exists (to move it to top)
+            _recentFiles.RemoveAll(f => f.Equals(filePath, StringComparison.OrdinalIgnoreCase));
+            
+            // Add to top
+            _recentFiles.Insert(0, filePath);
+            
+            // Keep only MaxRecentFiles
+            if (_recentFiles.Count > MaxRecentFiles)
+            {
+                _recentFiles = _recentFiles.Take(MaxRecentFiles).ToList();
+            }
+            
+            // Save to file
+            SaveRecentFiles();
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+            
+            // Load recent files history
+            LoadRecentFiles();
             
             // Initialize timer for handling window resizing
             _resizeTimer = new DispatcherTimer();
@@ -261,7 +321,7 @@ namespace MultiBoardViewer
             addTabStyle.Setters.Add(new Setter(Control.TemplateProperty, template));
             _addTabButton.Style = addTabStyle;
             
-            _addTabButton.ToolTip = "New Tab";
+            _addTabButton.ToolTip = "New tab";
             
             // Handle click on "+" tab directly
             _addTabButton.PreviewMouseLeftButtonDown += AddTabButton_Click;
@@ -342,21 +402,308 @@ namespace MultiBoardViewer
 
         private void CreateEmptyTab()
         {
-            // Create new empty tab with drop zone
+            // Create new empty tab with 2-column layout
             TabItem newTab = new TabItem
             {
-                Header = "New Tab"
+                Header = "New tab"
             };
 
-            // Create a border as drop zone
+            // Main container - Grid with 2 columns
+            Grid mainGrid = new Grid
+            {
+                Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(250, 250, 250))
+            };
+            mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+            // ========== LEFT COLUMN - Recent Files & About ==========
+            Border leftBorder = new Border
+            {
+                BorderBrush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(220, 220, 220)),
+                BorderThickness = new Thickness(0, 0, 1, 0),
+                Padding = new Thickness(20)
+            };
+            Grid.SetColumn(leftBorder, 0);
+
+            // Left column grid with 2 rows
+            Grid leftGrid = new Grid();
+            leftGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto }); // Recent files
+            leftGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }); // About section
+
+            // ----- Recent Files Section -----
+            StackPanel recentPanel = new StackPanel
+            {
+                VerticalAlignment = VerticalAlignment.Top
+            };
+            Grid.SetRow(recentPanel, 0);
+
+            TextBlock recentTitle = new TextBlock
+            {
+                Text = "📋 Recent files",
+                FontSize = 16,
+                FontWeight = FontWeights.SemiBold,
+                Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(50, 50, 50)),
+                Margin = new Thickness(0, 0, 0, 10)
+            };
+            recentPanel.Children.Add(recentTitle);
+
+            // Recent files list (compact)
+            StackPanel recentFilesList = new StackPanel();
+            
+            if (_recentFiles.Count == 0)
+            {
+                TextBlock noRecent = new TextBlock
+                {
+                    Text = "No recent files",
+                    FontSize = 12,
+                    Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(150, 150, 150)),
+                    FontStyle = FontStyles.Italic
+                };
+                recentFilesList.Children.Add(noRecent);
+            }
+            else
+            {
+                foreach (string filePath in _recentFiles)
+                {
+                    string fileName = Path.GetFileName(filePath);
+                    
+                    // Create compact button for each recent file
+                    Button fileButton = new Button
+                    {
+                        HorizontalAlignment = HorizontalAlignment.Stretch,
+                        HorizontalContentAlignment = HorizontalAlignment.Left,
+                        Background = System.Windows.Media.Brushes.Transparent,
+                        BorderThickness = new Thickness(0),
+                        Padding = new Thickness(8, 5, 8, 5),
+                        Margin = new Thickness(0, 1, 0, 1),
+                        Cursor = Cursors.Hand,
+                        Tag = filePath,
+                        ToolTip = filePath // Show full path on hover
+                    };
+
+                    // File icon and name (single line, compact)
+                    StackPanel fileNamePanel = new StackPanel { Orientation = Orientation.Horizontal };
+                    string fileIcon = filePath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase) ? "📕" : "📘";
+                    TextBlock iconBlock = new TextBlock
+                    {
+                        Text = fileIcon,
+                        FontSize = 12,
+                        Margin = new Thickness(0, 0, 6, 0),
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
+                    TextBlock nameBlock = new TextBlock
+                    {
+                        Text = fileName,
+                        FontSize = 12,
+                        Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(30, 30, 30)),
+                        TextTrimming = TextTrimming.CharacterEllipsis
+                    };
+                    fileNamePanel.Children.Add(iconBlock);
+                    fileNamePanel.Children.Add(nameBlock);
+                    fileButton.Content = fileNamePanel;
+
+                    // Hover effect
+                    fileButton.MouseEnter += (s, ev) =>
+                    {
+                        fileButton.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(230, 240, 250));
+                    };
+                    fileButton.MouseLeave += (s, ev) =>
+                    {
+                        fileButton.Background = System.Windows.Media.Brushes.Transparent;
+                    };
+
+                    // Click to open file
+                    string capturedPath = filePath; // Capture for closure
+                    fileButton.Click += (s, ev) =>
+                    {
+                        if (File.Exists(capturedPath))
+                        {
+                            if (capturedPath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                OpenPdfInTab(newTab, capturedPath);
+                            }
+                            else
+                            {
+                                OpenBoardViewerInTab(newTab, capturedPath);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"File not found:\n{capturedPath}", "File Not Found", 
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                            // Remove from recent files
+                            _recentFiles.Remove(capturedPath);
+                            SaveRecentFiles();
+                        }
+                    };
+
+                    recentFilesList.Children.Add(fileButton);
+                }
+            }
+
+            recentPanel.Children.Add(recentFilesList);
+            leftGrid.Children.Add(recentPanel);
+
+            // ----- About Section -----
+            StackPanel aboutSection = new StackPanel
+            {
+                VerticalAlignment = VerticalAlignment.Bottom,
+                Margin = new Thickness(0, 20, 0, 0)
+            };
+            Grid.SetRow(aboutSection, 1);
+
+            // About content (hidden by default)
+            Border aboutContent = new Border
+            {
+                Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(245, 245, 245)),
+                BorderBrush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(200, 200, 200)),
+                BorderThickness = new Thickness(1),
+                CornerRadius = new CornerRadius(5),
+                Padding = new Thickness(15),
+                Margin = new Thickness(0, 10, 0, 0),
+                Visibility = Visibility.Collapsed
+            };
+
+            StackPanel aboutContentPanel = new StackPanel();
+            
+            TextBlock appName = new TextBlock
+            {
+                Text = "Multi BoardViewer",
+                FontSize = 16,
+                FontWeight = FontWeights.Bold,
+                Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 100, 180)),
+                Margin = new Thickness(0, 0, 0, 8)
+            };
+            
+            TextBlock appVersion = new TextBlock
+            {
+                Text = "Version 1.0.0",
+                FontSize = 12,
+                Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(100, 100, 100)),
+                Margin = new Thickness(0, 0, 0, 10)
+            };
+            
+            TextBlock appDesc = new TextBlock
+            {
+                Text = "A multi-tab viewer for BoardViewer files and PDF documents",
+                FontSize = 12,
+                Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(60, 60, 60)),
+                TextWrapping = TextWrapping.Wrap,
+                Margin = new Thickness(0, 0, 0, 10)
+            };
+
+            TextBlock authorLabel = new TextBlock
+            {
+                FontSize = 11,
+                Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(100, 100, 100)),
+                Margin = new Thickness(0, 0, 0, 3)
+            };
+            authorLabel.Inlines.Add("Created by ");
+            
+            System.Windows.Documents.Hyperlink authorLink = new System.Windows.Documents.Hyperlink
+            {
+                NavigateUri = new Uri("https://mhqb365.com"),
+                TextDecorations = null
+            };
+            authorLink.Inlines.Add("mhqb365.com");
+            authorLink.RequestNavigate += (s, ev) =>
+            {
+                Process.Start(new ProcessStartInfo(ev.Uri.AbsoluteUri) { UseShellExecute = true });
+                ev.Handled = true;
+            };
+            // Hover effect - orange color
+            authorLink.MouseEnter += (s, ev) =>
+            {
+                authorLink.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0xFF, 0xB3, 0x47));
+            };
+            authorLink.MouseLeave += (s, ev) =>
+            {
+                authorLink.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 102, 204));
+            };
+            authorLabel.Inlines.Add(authorLink);
+
+            TextBlock githubLink = new TextBlock
+            {
+                FontSize = 11,
+                Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(100, 100, 100)),
+                Margin = new Thickness(0, 0, 0, 0)
+            };
+            githubLink.Inlines.Add("Open source ");
+            
+            System.Windows.Documents.Hyperlink link = new System.Windows.Documents.Hyperlink
+            {
+                NavigateUri = new Uri("https://github.com/mhqb365/Multi-BoardViewer"),
+                TextDecorations = null
+            };
+            link.Inlines.Add("github.com/mhqb365/Multi-BoardViewer");
+            link.RequestNavigate += (s, ev) =>
+            {
+                Process.Start(new ProcessStartInfo(ev.Uri.AbsoluteUri) { UseShellExecute = true });
+                ev.Handled = true;
+            };
+            // Hover effect - orange color
+            link.MouseEnter += (s, ev) =>
+            {
+                link.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0xFF, 0xB3, 0x47));
+            };
+            link.MouseLeave += (s, ev) =>
+            {
+                link.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 102, 204));
+            };
+            githubLink.Inlines.Add(link);
+
+            aboutContentPanel.Children.Add(appName);
+            aboutContentPanel.Children.Add(appVersion);
+            aboutContentPanel.Children.Add(appDesc);
+            aboutContentPanel.Children.Add(authorLabel);
+            aboutContentPanel.Children.Add(githubLink);
+            aboutContent.Child = aboutContentPanel;
+
+            // About button
+            Button aboutButton = new Button
+            {
+                Content = "ℹ️ About",
+                FontSize = 12,
+                Padding = new Thickness(15, 8, 15, 8),
+                Cursor = Cursors.Hand,
+                Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(240, 240, 240)),
+                BorderBrush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(180, 180, 180)),
+                BorderThickness = new Thickness(1),
+                HorizontalAlignment = HorizontalAlignment.Left
+            };
+
+            // Toggle about content
+            aboutButton.Click += (s, ev) =>
+            {
+                if (aboutContent.Visibility == Visibility.Collapsed)
+                {
+                    aboutContent.Visibility = Visibility.Visible;
+                    aboutButton.Content = "ℹ️ About ▼";
+                }
+                else
+                {
+                    aboutContent.Visibility = Visibility.Collapsed;
+                    aboutButton.Content = "ℹ️ About";
+                }
+            };
+
+            aboutSection.Children.Add(aboutButton);
+            aboutSection.Children.Add(aboutContent);
+            leftGrid.Children.Add(aboutSection);
+
+            leftBorder.Child = leftGrid;
+            mainGrid.Children.Add(leftBorder);
+
+            // ========== RIGHT COLUMN - Drop Zone & Open File ==========
             Border dropZone = new Border
             {
                 Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(250, 250, 250)),
-                AllowDrop = true
+                AllowDrop = true,
+                Padding = new Thickness(20)
             };
+            Grid.SetColumn(dropZone, 1);
 
-            // Create content for drop zone
-            StackPanel content = new StackPanel
+            StackPanel rightContent = new StackPanel
             {
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center
@@ -375,24 +722,25 @@ namespace MultiBoardViewer
                 FontSize = 18,
                 Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(100, 100, 100)),
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Margin = new Thickness(0, 10, 0, 5)
+                Margin = new Thickness(0, 10, 0, 0)
             };
 
-            TextBlock hint = new TextBlock
+            TextBlock orText = new TextBlock
             {
-                Text = "PDF & BoardViewer files supported",
+                Text = "or",
                 FontSize = 12,
                 Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(150, 150, 150)),
-                HorizontalAlignment = HorizontalAlignment.Center
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(0, 10, 0, 10)
             };
 
-            // Create "Open File" button
+            // Create "Open file" button
             Button openFileButton = new Button
             {
-                Content = "➕ Open File",
+                Content = "➕ Open file",
                 FontSize = 14,
                 Padding = new Thickness(20, 10, 20, 10),
-                Margin = new Thickness(0, 20, 0, 0),
+                Margin = new Thickness(0, 0, 0, 0),
                 Cursor = Cursors.Hand,
                 Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 120, 212)),
                 Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White),
@@ -444,11 +792,11 @@ namespace MultiBoardViewer
                 }
             };
 
-            content.Children.Add(icon);
-            content.Children.Add(text);
-            content.Children.Add(hint);
-            content.Children.Add(openFileButton);
-            dropZone.Child = content;
+            rightContent.Children.Add(icon);
+            rightContent.Children.Add(text);
+            rightContent.Children.Add(orText);
+            rightContent.Children.Add(openFileButton);
+            dropZone.Child = rightContent;
 
             // Handle drop on this tab
             dropZone.DragOver += (s, ev) =>
@@ -509,7 +857,8 @@ namespace MultiBoardViewer
                 ev.Handled = true;
             };
 
-            newTab.Content = dropZone;
+            mainGrid.Children.Add(dropZone);
+            newTab.Content = mainGrid;
 
             // Insert tab before the "+" button (which should be the last tab)
             int insertIndex = tabControl.Items.Count;
@@ -528,7 +877,8 @@ namespace MultiBoardViewer
         {
             if (tabControl.SelectedItem is TabItem selectedTab)
             {
-                return selectedTab.Content is Border;
+                // Check for new Grid layout or old Border layout
+                return selectedTab.Content is Grid || selectedTab.Content is Border;
             }
             return false;
         }
@@ -635,6 +985,9 @@ namespace MultiBoardViewer
                 };
                 _tabProcesses[tab] = processInfo;
 
+                // Add to recent files
+                AddToRecentFiles(pdfPath);
+
                 // Setup resize handler for plugin mode
                 SetupPluginResizeHandler(process, panel, processInfo);
             }
@@ -692,6 +1045,9 @@ namespace MultiBoardViewer
                     WindowHandle = IntPtr.Zero,
                     FilePath = filePath
                 };
+
+                // Add to recent files
+                AddToRecentFiles(filePath);
 
                 // Embed the process window into our panel
                 EmbedProcess(process, panel);
@@ -766,6 +1122,9 @@ namespace MultiBoardViewer
                     AppType = "BoardViewer",
                     FilePath = filePath
                 };
+
+                // Add to recent files
+                AddToRecentFiles(filePath);
 
                 // Embed the process window into the panel
                 EmbedProcess(process, panel);
@@ -848,6 +1207,9 @@ namespace MultiBoardViewer
                     FilePath = pdfPath
                 };
                 _tabProcesses[newTab] = processInfo;
+
+                // Add to recent files
+                AddToRecentFiles(pdfPath);
 
                 // Setup resize handler for plugin mode
                 SetupPluginResizeHandler(process, panel, processInfo);
