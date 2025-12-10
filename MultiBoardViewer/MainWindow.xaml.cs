@@ -1218,11 +1218,43 @@ namespace MultiBoardViewer
             if (tabItem != null && tabItem != _addTabButton)
             {
                 _isCreatingTab = true; // Prevent creating new tab during close
+                
+                // Find index of closing tab
+                int closingIndex = tabControl.Items.IndexOf(tabItem);
+                int addButtonIndex = tabControl.Items.IndexOf(_addTabButton);
+                
+                // Determine which tab to select after closing
+                TabItem nextTab = null;
+                
+                // Count real tabs (excluding "+" button)
+                int realTabCount = tabControl.Items.Count - 1; // minus the "+" button
+                
+                if (realTabCount > 1)
+                {
+                    // There are other tabs to switch to
+                    if (closingIndex < addButtonIndex - 1)
+                    {
+                        // Select the next tab (to the right)
+                        nextTab = tabControl.Items[closingIndex + 1] as TabItem;
+                    }
+                    else if (closingIndex > 0)
+                    {
+                        // Select the previous tab (to the left)
+                        nextTab = tabControl.Items[closingIndex - 1] as TabItem;
+                    }
+                }
+                
+                // Close the tab
                 CloseTabItem(tabItem);
                 
-                // If only "+" tab remains, create a new empty tab
-                if (tabControl.Items.Count == 1 && tabControl.Items[0] == _addTabButton)
+                // Select next tab or create new empty tab if no tabs left
+                if (nextTab != null && nextTab != _addTabButton)
                 {
+                    tabControl.SelectedItem = nextTab;
+                }
+                else if (tabControl.Items.Count == 1 && tabControl.Items[0] == _addTabButton)
+                {
+                    // Only "+" tab remains, create a new empty tab
                     CreateEmptyTab();
                 }
                 
