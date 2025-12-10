@@ -75,6 +75,7 @@ namespace MultiBoardViewer
         private const int WS_EX_CLIENTEDGE = 0x00000200;
         private const int WS_EX_STATICEDGE = 0x00020000;
         private const int SW_SHOW = 5;
+        private const int SW_HIDE = 0;
         private const int SW_MAXIMIZE = 3;
 
         // Dictionary to track processes and their containers
@@ -594,7 +595,6 @@ namespace MultiBoardViewer
                 process.Exited += (s, ev) => Process_Exited(newTab);
 
                 process.Start();
-                process.WaitForInputIdle(5000);
 
                 _tabCounter++;
 
@@ -1117,83 +1117,94 @@ namespace MultiBoardViewer
             return foundHandle;
         }
 
-        private void EmbedProcess(Process process, System.Windows.Forms.Panel panel)
+        private async void EmbedProcess(Process process, System.Windows.Forms.Panel panel)
         {
             try
             {
-                IntPtr processHandle = process.MainWindowHandle;
+                IntPtr processHandle = IntPtr.Zero;
+                int processId = process.Id;
 
-                if (processHandle == IntPtr.Zero)
+                // Wait for the main window handle to be available (up to 5 seconds)
+                for (int i = 0; i < 50 && processHandle == IntPtr.Zero; i++)
                 {
-                    // Try to wait a bit more for the window to be created
-                    for (int i = 0; i < 10 && processHandle == IntPtr.Zero; i++)
+                    await System.Threading.Tasks.Task.Delay(100);
+                    
+                    if (process.HasExited)
+                        return;
+                    
+                    process.Refresh();
+                    processHandle = process.MainWindowHandle;
+                    
+                    // If MainWindowHandle is still zero, try to find window by process ID
+                    if (processHandle == IntPtr.Zero)
                     {
-                        System.Threading.Thread.Sleep(100);
-                        process.Refresh();
-                        processHandle = process.MainWindowHandle;
+                        processHandle = FindWindowByProcessId(processId);
                     }
                 }
 
-                if (processHandle != IntPtr.Zero)
+                if (processHandle == IntPtr.Zero)
                 {
-                    // Set the process window as a child of the panel
-                    SetParent(processHandle, panel.Handle);
-
-                    // Remove window border and caption
-                    int style = GetWindowLong(processHandle, GWL_STYLE);
-                    style &= ~(WS_CAPTION | WS_BORDER);
-                    style |= WS_CHILD;
-                    SetWindowLong(processHandle, GWL_STYLE, style);
-
-                    // Resize the window to fit the panel
-                    MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
-
-                    // Set focus to the embedded window
-                    SetFocus(processHandle);
-                    SetForegroundWindow(processHandle);
-
-                    // Handle panel resize
-                    panel.Resize += (s, e) =>
-                    {
-                        if (!process.HasExited && processHandle != IntPtr.Zero)
-                        {
-                            MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
-                        }
-                    };
-
-                    // Handle panel click to set focus to embedded window
-                    panel.Click += (s, e) =>
-                    {
-                        if (!process.HasExited && processHandle != IntPtr.Zero)
-                        {
-                            SetFocus(processHandle);
-                            SetForegroundWindow(processHandle);
-                        }
-                    };
-
-                    // Handle panel got focus
-                    panel.GotFocus += (s, e) =>
-                    {
-                        if (!process.HasExited && processHandle != IntPtr.Zero)
-                        {
-                            SetFocus(processHandle);
-                        }
-                    };
-
-                    // Handle mouse enter to give focus
-                    panel.MouseEnter += (s, e) =>
-                    {
-                        if (!process.HasExited && processHandle != IntPtr.Zero)
-                        {
-                            SetFocus(processHandle);
-                        }
-                    };
+                    Debug.WriteLine("Could not get BoardViewer window handle");
+                    return;
                 }
+
+                // FIRST: Move window off-screen to prevent flashing
+                MoveWindow(processHandle, -10000, -10000, 1, 1, false);
+
+                // Remove ALL window decorations
+                int style = GetWindowLong(processHandle, GWL_STYLE);
+                style &= ~(WS_CAPTION | WS_BORDER | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU);
+                style |= WS_CHILD;
+                SetWindowLong(processHandle, GWL_STYLE, style);
+
+                // Remove extended style borders
+                int exStyle = GetWindowLong(processHandle, GWL_EXSTYLE);
+                exStyle &= ~(WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE | WS_EX_CLIENTEDGE | WS_EX_STATICEDGE);
+                SetWindowLong(processHandle, GWL_EXSTYLE, exStyle);
+
+                // Set parent after removing decorations
+                SetParent(processHandle, panel.Handle);
+
+                // Resize the window to fit the panel
+                MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
+
+                // Show the window now that it's embedded
+                ShowWindow(processHandle, SW_SHOW);
+
+                // Set focus to the embedded window
+                SetFocus(processHandle);
+
+                // Handle panel resize
+                panel.Resize += (s, e) =>
+                {
+                    if (!process.HasExited && processHandle != IntPtr.Zero)
+                    {
+                        MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
+                    }
+                };
+
+                // Handle panel click to set focus to embedded window
+                panel.Click += (s, e) =>
+                {
+                    if (!process.HasExited && processHandle != IntPtr.Zero)
+                    {
+                        SetFocus(processHandle);
+                        SetForegroundWindow(processHandle);
+                    }
+                };
+
+                // Handle mouse enter to give focus
+                panel.MouseEnter += (s, e) =>
+                {
+                    if (!process.HasExited && processHandle != IntPtr.Zero)
+                    {
+                        SetFocus(processHandle);
+                    }
+                };
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error embedding process: {ex.Message}", 
-                    "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Debug.WriteLine($"Error embedding BoardViewer: {ex.Message}");
             }
         }
 
