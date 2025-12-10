@@ -121,8 +121,46 @@ namespace MultiBoardViewer
             // Create the "+" add tab button
             CreateAddTabButton();
             
-            // Create initial empty tab on startup
-            CreateEmptyTab();
+            // Check if files were passed via command line (Open with)
+            if (App.StartupFiles != null && App.StartupFiles.Length > 0)
+            {
+                // Open files from command line
+                OpenStartupFiles();
+            }
+            else
+            {
+                // Create initial empty tab on startup
+                CreateEmptyTab();
+            }
+        }
+
+        private void OpenStartupFiles()
+        {
+            string[] files = App.StartupFiles;
+            
+            for (int i = 0; i < files.Length; i++)
+            {
+                string file = files[i];
+                
+                // Skip if file doesn't exist
+                if (!System.IO.File.Exists(file))
+                    continue;
+                
+                if (file.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+                {
+                    OpenPdfInNewTab(file);
+                }
+                else
+                {
+                    OpenBoardViewerWithFile(file);
+                }
+            }
+            
+            // If no valid files were opened, create empty tab
+            if (tabControl.Items.Count == 1 && tabControl.Items[0] == _addTabButton)
+            {
+                CreateEmptyTab();
+            }
         }
 
         private TabItem _addTabButton;
