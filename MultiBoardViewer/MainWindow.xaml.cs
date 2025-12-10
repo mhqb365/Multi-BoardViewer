@@ -293,9 +293,68 @@ namespace MultiBoardViewer
                 HorizontalAlignment = HorizontalAlignment.Center
             };
 
+            // Create "Open File" button
+            Button openFileButton = new Button
+            {
+                Content = "➕ Open File",
+                FontSize = 14,
+                Padding = new Thickness(20, 10, 20, 10),
+                Margin = new Thickness(0, 20, 0, 0),
+                Cursor = Cursors.Hand,
+                Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 120, 212)),
+                Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White),
+                BorderThickness = new Thickness(0),
+                HorizontalAlignment = HorizontalAlignment.Center
+            };
+
+            // Button click handler to open file dialog
+            openFileButton.Click += (s, ev) =>
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog
+                {
+                    Title = "Open File",
+                    Filter = "All Supported Files|*.pdf;*.fz;*.brd;*.bom;*.cad|PDF Files|*.pdf|BoardViewer Files|*.fz;*.brd;*.bom;*.cad|All Files|*.*",
+                    Multiselect = true
+                };
+
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    string[] files = openFileDialog.FileNames;
+                    
+                    if (files.Length > 0)
+                    {
+                        // Open first file in this tab
+                        string firstFile = files[0];
+                        if (firstFile.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+                        {
+                            OpenPdfInTab(newTab, firstFile);
+                        }
+                        else
+                        {
+                            OpenBoardViewerInTab(newTab, firstFile);
+                        }
+                        
+                        // Open remaining files in new tabs
+                        for (int i = 1; i < files.Length; i++)
+                        {
+                            string file = files[i];
+                            if (file.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                OpenPdfInNewTab(file);
+                            }
+                            else
+                            {
+                                OpenBoardViewerWithFile(file);
+                            }
+                        }
+                    }
+                }
+            };
+
             content.Children.Add(icon);
             content.Children.Add(text);
             content.Children.Add(hint);
+            content.Children.Add(openFileButton);
             dropZone.Child = content;
 
             // Handle drop on this tab
