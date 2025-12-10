@@ -1,93 +1,124 @@
 # Multi BoardViewer
 
-Ứng dụng Windows giúp quản lý nhiều instance của BoardViewer.exe trong một cửa sổ với hệ thống tab
+Ứng dụng Windows giúp xem nhiều **Sơ đồ mạch (Board View)** và **Sơ đồ nguyên lý (Schematic)** trong một ứng dụng
 
-## Yêu cầu hệ thống
+![Multi BoardViewer](https://img.shields.io/badge/.NET-8.0-blue) ![Platform](https://img.shields.io/badge/Platform-Windows-brightgreen) ![License](https://img.shields.io/badge/License-MIT-yellow)
+
+![Multi BoardViewer](./Photos/1.png)
+![Multi BoardViewer](./Photos/2.png)
+
+## 🙏 Lời cảm ơn
+
+Xin chân thành cảm ơn:
+- **[BoardViewer.net](https://www.boardviewer.net/)** - phần mềm xem schematic/board chuyên nghiệp
+- **[Krzysztof Kowalczyk](https://github.com/kjk)** - tác giả của [SumatraPDF](https://www.sumatrapdfreader.org/), trình đọc PDF mã nguồn mở tuyệt vời
+
+Dự án này sử dụng sản phẩm của họ để tạo nên trải nghiệm xem file đa năng trong một ứng dụng duy nhất
+
+## ✨ Tính năng
+
+- 🔧 **BoardViewer Integration**: Xem các file schematic/board (.brd, .bdv, .fz, .cad, v.v.)
+- 📄 **PDF Viewer**: Xem file PDF với SumatraPDF tích hợp
+- 📑 **Multi-tab**: Mở nhiều file cùng lúc trong các tab riêng biệt
+
+## 📋 Yêu cầu hệ thống
 
 - Windows 10/11
-- .NET 8.0 Runtime
-- BoardViewer.exe
+- [.NET 8.0 Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-## Cài đặt và chạy
+## 🚀 Cài đặt và chạy
 
-### Bước 1: Build ứng dụng
+### Cách 1: Tải bản Release
+
+1. Tải file từ [Releases](https://github.com/mhqb365/Multi-BoardViewer/releases)
+2. Giải nén và chạy `MultiBoardViewer.exe`
+
+### Cách 2: Build từ source
 
 ```powershell
 # Clone repository
 git clone https://github.com/mhqb365/Multi-BoardViewer.git
 cd Multi-BoardViewer
 
-# Build bằng script
+# Build
 .\Build.bat
 
-# Hoặc build bằng dotnet CLI
-dotnet build MultiBoardViewer.sln -c Release
-```
-
-### Bước 2: Enable Multi-Instance trong BoardViewer
-
-**QUAN TRỌNG**: Trước khi sử dụng, bật tính năng multi-instance trong BoardViewer:
-
-1. Mở **BoardViewer.exe**
-2. Vào **Options** → **Options**
-3. **Bỏ tick chọn**: "Use Only One instance of Program"
-4. Click **OK** và đóng BoardViewer
-
-### Bước 3: Chạy ứng dụng
-
-```powershell
-# Chạy bằng script
+# Chạy
 .\Run.bat
-
-# Hoặc chạy trực tiếp
-.\MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe
 ```
- 
-## Hướng dẫn sử dụng
 
-1. **Chọn BoardViewer.exe**: Click "Browse..." và chọn file `BoardViewer.exe`
-2. **Tạo tab mới**: Click "➕ New Tab" - mỗi tab là 1 instance riêng
-3. **Sử dụng BoardViewer**: Click vào vùng BoardViewer để active focus trước khi dùng phím tắt
-4. **Đóng tab**: Click "✕" trên tab
+## 📖 Hướng dẫn sử dụng
 
-## Xử lý sự cố
+### Mở file
 
-### Phím tắt không hoạt động
-👉 **Click vào vùng BoardViewer** trong tab để set focus
+- **Drag & Drop**: Kéo thả file vào cửa sổ ứng dụng
+- **Tab mới**: Click nút **+** để tạo tab mới, sau đó kéo thả file vào
+- **Recent files**: Mở tab mới và chọn file từ danh sách gần đây
+- **Open with**: Chuột phải file → Open with → MultiBoardViewer
 
-### BoardViewer bị thoát khi tạo tab mới
-👉 Chưa enable multi-instance - xem lại Bước 1
+### Quản lý tab
 
-### Tab mới không hiển thị gì
-👉 Đợi vài giây (BoardViewer đang khởi động) hoặc thử đóng tab và tạo lại
+- Click **+** để tạo tab mới
+- Click **✕** trên tab để đóng tab
+- Click vào tab để chuyển đổi giữa các file
 
-## Tính năng
+### Định dạng file hỗ trợ
 
-✅ Chạy nhiều instance BoardViewer trong cùng 1 cửa sổ  
-✅ Quản lý tabs dễ dàng  
-✅ Auto-focus khi switch tab  
-✅ Tự động cleanup khi đóng  
+| Viewer | Định dạng |
+|--------|-----------|
+| BoardViewer | `.brd`, `.bdv`, `.fz`, `.cad`, `.asc`, v.v. |
+| SumatraPDF | `.pdf` |
 
-## Tips
+## ❓ Xử lý sự cố
 
-💡 Hover vào tab để tự động set focus  
-💡 Click vào BoardViewer area nếu phím tắt không hoạt động  
-💡 Mỗi tab hoàn toàn độc lập
+| Vấn đề | Giải pháp |
+|--------|-----------|
+| Phím tắt không hoạt động | Click vào vùng BoardViewer trong tab để set focus |
+| BoardViewer thoát khi tạo tab mới | Options > Options > bỏ tick Use Only Instance of Program |
+| Tab mới không hiển thị gì | Đợi vài giây hoặc thử đóng tab và tạo lại |
+| Không mở được PDF | Kiểm tra thư mục `SumatraPDF` có chứa `SumatraPDF.exe` |
+
+## 💡 Tips
+
+- Hover vào tab để tự động set focus
+- Mỗi tab hoàn toàn độc lập với nhau
+- File đã mở sẽ không được mở lại (chuyển sang tab hiện có)
 
 ---
 
-## Development (cho developer)
+## 🛠️ Development
 
 ### Công nghệ
-- WPF + C# .NET 8.0
-- Windows API (SetParent, MoveWindow)
-- Process embedding technique
 
-### Build từ Visual Studio
-1. Cài [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/) với ".NET desktop development" workload
-2. Mở `MultiBoardViewer.sln`
-3. Build → Build Solution (`Ctrl+Shift+B`)
+- **Framework**: WPF + C# .NET 8.0
+- **Windows API**: SetParent, MoveWindow (Process embedding)
+- **External Tools**: BoardViewer, SumatraPDF (plugin mode)
 
-### Các file chính
-- `MainWindow.xaml` - Giao diện UI
-- `MainWindow.xaml.cs` - Logic xử lý tab và process embedding
+### Cấu trúc dự án
+
+```
+Multi-BoardViewer/
+├── MultiBoardViewer/          # Source code chính
+│   ├── MainWindow.xaml        # Giao diện UI
+│   ├── MainWindow.xaml.cs     # Logic xử lý tab và embedding
+│   ├── App.xaml.cs            # Single instance handling
+│   └── ...
+├── BoardViewer/               # BoardViewer executable
+├── SumatraPDF/                # SumatraPDF executable
+├── Build.bat                  # Script build
+└── Run.bat                    # Script chạy ứng dụng
+```
+
+## 📄 License
+
+MIT License
+
+## ☕ Buy me a coffee
+
+Nếu bạn sử dụng và thấy hữu ích, hãy ủng hộ mình một ly cà phê nhé! 😊
+
+| Binance | Vietcombank |
+|:-------:|:-------:|
+| <img src="./Photos/3.png" width="100"> | <img src="./Photos/4.png" width="100"> |
+
+Hứa sẽ ⭐ 🐔 đầy đủ! 🤩
