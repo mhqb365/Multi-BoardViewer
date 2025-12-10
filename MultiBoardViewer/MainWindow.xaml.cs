@@ -119,6 +119,27 @@ namespace MultiBoardViewer
             return false;
         }
 
+        // Check if a file with the same name is already open and switch to that tab
+        private bool TrySwitchToExistingTabByFileName(string filePath)
+        {
+            string fileName = Path.GetFileName(filePath);
+            foreach (var kvp in _tabProcesses)
+            {
+                if (kvp.Value.FilePath != null)
+                {
+                    string existingFileName = Path.GetFileName(kvp.Value.FilePath);
+                    if (existingFileName.Equals(fileName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        // File with same name is already open, switch to that tab
+                        tabControl.SelectedItem = kvp.Key;
+                        ShowStatus($"Switched to existing tab: {fileName}", true);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         // Load recent files from file
         private void LoadRecentFiles()
         {
@@ -518,6 +539,12 @@ namespace MultiBoardViewer
                     {
                         if (File.Exists(capturedPath))
                         {
+                            // Check if file with same name is already open
+                            if (TrySwitchToExistingTabByFileName(capturedPath))
+                            {
+                                return; // Switched to existing tab
+                            }
+                            
                             if (capturedPath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
                             {
                                 OpenPdfInTab(newTab, capturedPath);
