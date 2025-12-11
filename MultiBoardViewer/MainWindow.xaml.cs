@@ -219,7 +219,7 @@ namespace MultiBoardViewer
             try
             {
                 // Supported file extensions
-                string[] extensions = { ".pdf", ".fz", ".brd", ".bom", ".cad", ".bdv", ".asc" };
+                string[] extensions = { ".pdf", ".fz", ".brd", ".bom", ".cad", ".bdv", ".asc", ".bv", ".cst", ".gr", ".f2b", ".faz", ".tvw" };
                 
                 // Search recursively
                 var files = Directory.EnumerateFiles(_searchFolder, "*", SearchOption.AllDirectories)
@@ -1131,7 +1131,7 @@ namespace MultiBoardViewer
                 OpenFileDialog openFileDialog = new OpenFileDialog
                 {
                     Title = "Open File",
-                    Filter = "All Supported Files|*.pdf;*.fz;*.brd;*.bom;*.cad|PDF Files|*.pdf|BoardViewer Files|*.fz;*.brd;*.bom;*.cad|All Files|*.*",
+                    Filter = "All Supported Files|*.pdf;*.fz;*.brd;*.bom;*.cad;*.bdv;*.asc;*.bv;*.cst;*.gr;*.f2b;*.faz;*.tvw|PDF Files|*.pdf|BoardViewer Files|*.fz;*.brd;*.bom;*.cad;*.bdv;*.asc;*.bv;*.cst;*.gr;*.f2b;*.faz;*.tvw|All Files|*.*",
                     Multiselect = true
                 };
 
