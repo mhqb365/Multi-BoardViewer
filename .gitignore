@@ -35,6 +35,10 @@ bld/
 # Keep the built executable in Release if needed (optional - remove if you want to exclude)
 !MultiBoardViewer/bin/Release/net8.0-windows/MultiBoardViewer.exe
 
+# Keep external viewer executables
+!OpenBoardView/OpenBoardView.exe
+!FlexBoardView/FlexBoardView.exe
+
 # NuGet Packages
 *.nupkg
 *.snupkg
