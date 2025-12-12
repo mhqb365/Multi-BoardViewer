@@ -71,6 +71,16 @@ if %ERRORLEVEL% EQU 0 (
     )
     echo.
     
+    REM Copy FlexBoardView folder
+    echo Dang copy FlexBoardView...
+    if exist "FlexBoardView" (
+        xcopy /E /I /Y "FlexBoardView" "MultiBoardViewer\bin\Release\net8.0-windows\FlexBoardView"
+        echo Da copy FlexBoardView thanh cong!
+    ) else (
+        echo WARNING: Khong tim thay folder FlexBoardView!
+    )
+    echo.
+    
     REM Mở thư mục output
     if exist "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" (
         echo Mo thu muc output...

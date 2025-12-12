@@ -10,8 +10,10 @@
 ## 🙏 Lời cảm ơn
 
 Xin chân thành cảm ơn:
-- **[BoardViewer.net](https://www.boardviewer.net/)** - phần mềm xem schematic/board chuyên nghiệp
-- **[Krzysztof Kowalczyk](https://github.com/kjk)** - tác giả của [SumatraPDF](https://www.sumatrapdfreader.org/), trình đọc PDF mã nguồn mở tuyệt vời
+- **[BoardViewer.net](https://www.boardviewer.net/)** - phần mềm xem boardview thông dụng
+- **[sumatrapdfreader](https://github.com/sumatrapdfreader)** - trình đọc PDF mã nguồn mở 
+- **[OpenBoardView](https://github.com/OpenBoardView)** - phần mềm xem board view mã nguồn mở
+- **[FlexBoardView](https://pldaniels.com/flexbv5/)** - phần mềm xem board view đa năng
 
 Dự án này sử dụng sản phẩm của họ để tạo nên trải nghiệm xem file đa năng trong một ứng dụng duy nhất
 
@@ -67,6 +69,8 @@ cd Multi-BoardViewer
 | Viewer | Định dạng |
 |--------|-----------|
 | BoardViewer | `.brd`, `.bdv`, `.fz`, `.cad`, `.asc`, v.v. |
+| OpenBoardView | `.brd`, `.bdv`, `.fz`, `.cad`, `.asc`, v.v. |
+| FlexBoardView | `.brd`, `.bdv`, `.fz`, `.cad`, `.asc`, v.v. |
 | SumatraPDF | `.pdf` |
 
 ## ❓ Xử lý sự cố
