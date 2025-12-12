@@ -9,8 +9,17 @@
         DragOver="Window_DragOver"
         Closing="Window_Closing">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="New Tab" Click="BtnNewTab_Click" Cursor="Hand"/>
+            <MenuItem Header="Voltage Divider Calculator" Click="VoltageDividerCalculator_Click" Cursor="Hand"/>
+        </Menu>
         <!-- Tab Control with horizontal scrolling -->
         <TabControl x:Name="tabControl" 
+                    Grid.Row="1"
                     Margin="0"
                     SelectionChanged="TabControl_SelectionChanged">
             <TabControl.Template>

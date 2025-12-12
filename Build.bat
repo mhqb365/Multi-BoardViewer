@@ -51,6 +51,16 @@ if %ERRORLEVEL% EQU 0 (
     )
     echo.
     
+    REM Copy VoltageDividerCalculator folder
+    echo Dang copy VoltageDividerCalculator...
+    if exist "VoltageDividerCalculator" (
+        xcopy /E /I /Y "VoltageDividerCalculator" "MultiBoardViewer\bin\Release\net8.0-windows\VoltageDividerCalculator"
+        echo Da copy VoltageDividerCalculator thanh cong!
+    ) else (
+        echo WARNING: Khong tim thay folder VoltageDividerCalculator!
+    )
+    echo.
+    
     REM Mở thư mục output
     if exist "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" (
         echo Mo thu muc output...
