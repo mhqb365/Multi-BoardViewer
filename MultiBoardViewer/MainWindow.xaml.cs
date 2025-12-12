@@ -1062,7 +1062,7 @@ namespace MultiBoardViewer
             
             TextBlock appVersion = new TextBlock
             {
-                Text = "Version 1.0.3",
+                Text = "Version 1.0.5",
                 FontSize = 12,
                 Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(100, 100, 100)),
                 Margin = new Thickness(0, 0, 0, 10)
