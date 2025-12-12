@@ -1,0 +1,16 @@
+<Window x:Class="MultiBoardViewer.ViewerSelectionDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Choose Viewer" Height="150" Width="300" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="FileNameText" Grid.Row="0" Margin="10" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="BoardViewerButton" Content="BoardViewer" Width="100" Height="30" Margin="5" Click="BoardViewerButton_Click"/>
+            <Button x:Name="OpenBoardViewButton" Content="OpenBoardView" Width="100" Height="30" Margin="5" Click="OpenBoardViewButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

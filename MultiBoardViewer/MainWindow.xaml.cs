@@ -92,6 +92,7 @@ namespace MultiBoardViewer
         private int _tabCounter = 1;
         private int _sumatraTabCounter = 1;
         private string _boardViewerPath = "";
+        private string _openBoardViewPath = "";
         private string _sumatraPdfPath = "";
         private DispatcherTimer _resizeTimer;
         private bool _dropHandled = false; // Flag to prevent double drop handling
@@ -316,6 +317,9 @@ namespace MultiBoardViewer
 
             // Try to find BoardViewer.exe in the same directory or parent directory
             AutoDetectBoardViewerPath();
+            
+            // Try to find OpenBoardView.exe
+            AutoDetectOpenBoardViewPath();
             
             // Try to find SumatraPDF.exe in app folder
             AutoDetectSumatraPdfPath();
@@ -866,7 +870,7 @@ namespace MultiBoardViewer
                                 }
                                 else
                                 {
-                                    OpenBoardViewerInTab(newTab, capturedPath);
+                                    OpenBoardFileInTab(newTab, capturedPath);
                                 }
                             }
                             else
@@ -989,7 +993,7 @@ namespace MultiBoardViewer
                             }
                             else
                             {
-                                OpenBoardViewerInTab(newTab, capturedPath);
+                                OpenBoardFileInTab(newTab, capturedPath);
                             }
                         }
                         else
@@ -1237,7 +1241,7 @@ namespace MultiBoardViewer
                         }
                         else
                         {
-                            OpenBoardViewerInTab(newTab, firstFile);
+                            OpenBoardFileInTab(newTab, firstFile);
                         }
                         
                         // Open remaining files in new tabs
@@ -1250,7 +1254,7 @@ namespace MultiBoardViewer
                             }
                             else
                             {
-                                OpenBoardViewerWithFile(file);
+                                OpenBoardFileWithFile(file);
                             }
                         }
                     }
@@ -1301,7 +1305,7 @@ namespace MultiBoardViewer
                         }
                         else
                         {
-                            OpenBoardViewerInTab(newTab, firstFile);
+                            OpenBoardFileInTab(newTab, firstFile);
                         }
                         
                         // Open remaining files in new tabs
@@ -1314,7 +1318,7 @@ namespace MultiBoardViewer
                             }
                             else
                             {
-                                OpenBoardViewerWithFile(file);
+                                OpenBoardFileWithFile(file);
                             }
                         }
                     }
@@ -1547,12 +1551,113 @@ namespace MultiBoardViewer
 
                 // Embed the process window into our panel
                 EmbedProcess(process, panel);
+
+                // Add context menu for switching viewers
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem boardViewerItem = new MenuItem { Header = "Open with BoardViewer" };
+                boardViewerItem.Click += (s, e) => { OpenBoardViewerInTab(tab, filePath); };
+                MenuItem openBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
+                openBoardViewItem.Click += (s, e) => { OpenOpenBoardViewInTab(tab, filePath); };
+                contextMenu.Items.Add(boardViewerItem);
+                contextMenu.Items.Add(openBoardViewItem);
+                tab.ContextMenu = contextMenu;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error opening file with BoardViewer: {ex.Message}", 
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        // Open OpenBoardView file in existing tab (replace content)
+        private void OpenOpenBoardViewInTab(TabItem tab, string filePath)
+        {
+            if (string.IsNullOrEmpty(_openBoardViewPath) || !File.Exists(_openBoardViewPath))
+            {
+                MessageBox.Show("OpenBoardView.exe not found!\n\nPlease place OpenBoardView.exe in the same folder as this application.", 
+                    "OpenBoardView Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            try
+            {
+                // Update tab header
+                tab.Header = Path.GetFileName(filePath);
+
+                // Create a WindowsFormsHost to embed the external process
+                WindowsFormsHost host = new WindowsFormsHost();
+                host.Focusable = true;
+                
+                System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
+                {
+                    Dock = System.Windows.Forms.DockStyle.Fill
+                };
+                host.Child = panel;
+                tab.Content = host;
+
+                // Start OpenBoardView process with the file
+                Process process = new Process();
+                process.StartInfo.FileName = _openBoardViewPath;
+                process.StartInfo.Arguments = $"\"{filePath}\"";
+                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(_openBoardViewPath);
+                process.EnableRaisingEvents = true;
+                process.Exited += (s, ev) => Process_Exited(tab);
+
+                process.Start();
+
+                // Store process info
+                _tabProcesses[tab] = new ProcessInfo
+                {
+                    Process = process,
+                    Host = host,
+                    Panel = panel,
+                    TempDirectory = null,
+                    AppType = "OpenBoardView",
+                    WindowHandle = IntPtr.Zero,
+                    FilePath = filePath
+                };
+
+                // Add to recent files
+                AddToRecentFiles(filePath);
+
+                // Embed the process window into our panel
+                EmbedProcess(process, panel);
+
+                // Add context menu for switching viewers
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem boardViewerItem = new MenuItem { Header = "Open with BoardViewer" };
+                boardViewerItem.Click += (s, e) => { OpenBoardViewerInTab(tab, filePath); };
+                MenuItem openBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
+                openBoardViewItem.Click += (s, e) => { OpenOpenBoardViewInTab(tab, filePath); };
+                contextMenu.Items.Add(boardViewerItem);
+                contextMenu.Items.Add(openBoardViewItem);
+                tab.ContextMenu = contextMenu;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error opening file with OpenBoardView: {ex.Message}", 
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void OpenBoardFileInTab(TabItem tab, string filePath)
+        {
+            var dialog = new ViewerSelectionDialog(Path.GetFileName(filePath));
+            dialog.Owner = this;
+            bool? result = dialog.ShowDialog();
+            
+            if (result == true)
+            {
+                if (dialog.Result == ViewerSelectionDialog.ViewerResult.BoardViewer)
+                {
+                    OpenBoardViewerInTab(tab, filePath);
+                }
+                else if (dialog.Result == ViewerSelectionDialog.ViewerResult.OpenBoardView)
+                {
+                    OpenOpenBoardViewInTab(tab, filePath);
+                }
+            }
+            // Cancel does nothing
         }
 
         private void OpenBoardViewerWithFile(string filePath)
@@ -1632,6 +1737,31 @@ namespace MultiBoardViewer
                 MessageBox.Show($"Error opening file: {ex.Message}", 
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void OpenBoardFileWithFile(string filePath)
+        {
+            // Check if file is already open
+            if (TrySwitchToExistingTab(filePath))
+                return;
+
+            // Create new tab
+            TabItem newTab = new TabItem
+            {
+                Header = Path.GetFileName(filePath)
+            };
+
+            // Insert tab before the "+" button
+            int insertIndex = tabControl.Items.Count;
+            if (_addTabButton != null && tabControl.Items.Contains(_addTabButton))
+            {
+                insertIndex = tabControl.Items.IndexOf(_addTabButton);
+            }
+            tabControl.Items.Insert(insertIndex, newTab);
+            tabControl.SelectedItem = newTab;
+
+            // Open with choice
+            OpenBoardFileInTab(newTab, filePath);
         }
 
         private void OpenPdfInNewTab(string pdfPath)
@@ -1803,6 +1933,49 @@ namespace MultiBoardViewer
 
             // BoardViewer not found - drag & drop will show warning
             _boardViewerPath = "";
+        }
+
+        private void AutoDetectOpenBoardViewPath()
+        {
+            string appDir = AppDomain.CurrentDomain.BaseDirectory;
+            
+            // Check in current directory
+            string path1 = Path.Combine(appDir, "OpenBoardView.exe");
+            if (File.Exists(path1))
+            {
+                _openBoardViewPath = path1;
+                return;
+            }
+
+            // Check in OpenBoardView subfolder
+            string path2 = Path.Combine(appDir, "OpenBoardView", "OpenBoardView.exe");
+            if (File.Exists(path2))
+            {
+                _openBoardViewPath = path2;
+                return;
+            }
+
+            // Check in parent directory (for development)
+            string parentDir = Directory.GetParent(appDir)?.FullName;
+            if (parentDir != null)
+            {
+                string path3 = Path.Combine(parentDir, "OpenBoardView", "OpenBoardView.exe");
+                if (File.Exists(path3))
+                {
+                    _openBoardViewPath = path3;
+                    return;
+                }
+                
+                string path4 = Path.Combine(parentDir, "OpenBoardView.exe");
+                if (File.Exists(path4))
+                {
+                    _openBoardViewPath = path4;
+                    return;
+                }
+            }
+
+            // OpenBoardView not found - will show warning
+            _openBoardViewPath = "";
         }
 
         private void CopyDirectory(string sourceDir, string destDir)

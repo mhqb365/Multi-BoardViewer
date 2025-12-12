@@ -61,6 +61,16 @@ if %ERRORLEVEL% EQU 0 (
     )
     echo.
     
+    REM Copy OpenBoardView folder
+    echo Dang copy OpenBoardView...
+    if exist "OpenBoardView" (
+        xcopy /E /I /Y "OpenBoardView" "MultiBoardViewer\bin\Release\net8.0-windows\OpenBoardView"
+        echo Da copy OpenBoardView thanh cong!
+    ) else (
+        echo WARNING: Khong tim thay folder OpenBoardView!
+    )
+    echo.
+    
     REM Mở thư mục output
     if exist "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" (
         echo Mo thu muc output...
