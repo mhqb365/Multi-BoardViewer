@@ -14,8 +14,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
-            <MenuItem Header="New Tab" Click="BtnNewTab_Click" Cursor="Hand"/>
-            <MenuItem Header="Voltage Divider Calculator" Click="VoltageDividerCalculator_Click" Cursor="Hand"/>
+            <MenuItem Header="New Tab" Click="BtnNewTab_Click"/>
+            <MenuItem Header="Voltage Divider Calculator" Click="VoltageDividerCalculator_Click"/>
         </Menu>
         <!-- Tab Control with horizontal scrolling -->
         <TabControl x:Name="tabControl" 
@@ -74,7 +74,6 @@
                                                     Background="Transparent"
                                                     BorderThickness="0"
                                                     Foreground="#666666"
-                                                    Cursor="Hand"
                                                     Click="CloseTab_Click"
                                                     Tag="{Binding RelativeSource={RelativeSource TemplatedParent}}">
                                                 <Button.Style>
