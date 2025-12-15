@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms.Integration;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 using Microsoft.Win32;
 
@@ -114,6 +115,12 @@ namespace MultiBoardViewer
         private const string RecentFilesFileName = "recent_files.txt";
         private string _searchFolder = ""; // Folder for file search
         private const string SearchFolderFileName = "search_folder.txt";
+
+        // Drag and drop for tab reordering
+        private bool _isDragging = false;
+        private TabItem _draggedTab = null;
+        private Point _dragStartPoint;
+        private TabItem _lastTargetTab = null; // Track last target to avoid frequent reordering
 
         private class ProcessInfo
         {
@@ -311,6 +318,11 @@ namespace MultiBoardViewer
         {
             InitializeComponent();
             
+            // Add drag and drop event handlers for tab reordering
+            tabControl.PreviewMouseLeftButtonDown += TabControl_PreviewMouseLeftButtonDown;
+            tabControl.PreviewMouseMove += TabControl_PreviewMouseMove;
+            tabControl.PreviewMouseLeftButtonUp += TabControl_PreviewMouseLeftButtonUp;
+            
             // Load recent files history
             LoadRecentFiles();
             
@@ -443,7 +455,6 @@ namespace MultiBoardViewer
             border.SetValue(Border.CornerRadiusProperty, new CornerRadius(3, 3, 0, 0));
             border.SetValue(Border.PaddingProperty, new Thickness(12, 5, 12, 5));
             border.SetValue(Border.MarginProperty, new Thickness(2, 2, 2, 0));
-            border.SetValue(Border.CursorProperty, Cursors.Hand);
             
             // Create text block for "+"
             FrameworkElementFactory textBlock = new FrameworkElementFactory(typeof(TextBlock));
@@ -649,7 +660,6 @@ namespace MultiBoardViewer
                 Background = System.Windows.Media.Brushes.Transparent,
                 BorderThickness = new Thickness(0),
                 Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(150, 150, 150)),
-                Cursor = Cursors.Hand,
                 HorizontalAlignment = HorizontalAlignment.Right,
                 VerticalAlignment = VerticalAlignment.Center,
                 Margin = new Thickness(0, 0, 5, 0),
@@ -686,8 +696,7 @@ namespace MultiBoardViewer
                 FontSize = 14,
                 Width = 36,
                 Margin = new Thickness(5, 0, 0, 0),
-                ToolTip = string.IsNullOrEmpty(_searchFolder) ? "Select search folder" : $"Folder: {_searchFolder}",
-                Cursor = Cursors.Hand
+                ToolTip = string.IsNullOrEmpty(_searchFolder) ? "Select search folder" : $"Folder: {_searchFolder}"
             };
             Grid.SetColumn(folderButton, 1);
 
@@ -838,7 +847,6 @@ namespace MultiBoardViewer
                             BorderThickness = new Thickness(0),
                             Padding = new Thickness(8, 5, 8, 5),
                             Margin = new Thickness(0, 1, 0, 1),
-                            Cursor = Cursors.Hand,
                             Tag = filePath,
                             ToolTip = filePath
                         };
@@ -955,7 +963,6 @@ namespace MultiBoardViewer
                         BorderThickness = new Thickness(0),
                         Padding = new Thickness(8, 5, 8, 5),
                         Margin = new Thickness(0, 1, 0, 1),
-                        Cursor = Cursors.Hand,
                         Tag = filePath,
                         ToolTip = filePath // Show full path on hover
                     };
@@ -1150,7 +1157,6 @@ namespace MultiBoardViewer
                 Content = "ℹ️ About",
                 FontSize = 12,
                 Padding = new Thickness(15, 8, 15, 8),
-                Cursor = Cursors.Hand,
                 Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(240, 240, 240)),
                 BorderBrush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(180, 180, 180)),
                 BorderThickness = new Thickness(1),
@@ -1226,7 +1232,6 @@ namespace MultiBoardViewer
                 FontSize = 14,
                 Padding = new Thickness(20, 10, 20, 10),
                 Margin = new Thickness(0, 0, 0, 0),
-                Cursor = Cursors.Hand,
                 Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 120, 212)),
                 Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White),
                 BorderThickness = new Thickness(0),
@@ -2760,6 +2765,75 @@ namespace MultiBoardViewer
             }
 
             tabControl.Items.Remove(tabItem);
+        }
+
+        // Drag and drop event handlers for tab reordering
+        private void TabControl_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var tabItem = FindTabItemFromMousePosition(e.GetPosition(tabControl));
+            if (tabItem != null && tabItem != _addTabButton)
+            {
+                _isDragging = false;
+                _draggedTab = tabItem;
+                _dragStartPoint = e.GetPosition(tabControl);
+            }
+        }
+
+        private void TabControl_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (_draggedTab != null && !_isDragging)
+            {
+                var currentPoint = e.GetPosition(tabControl);
+                if (Math.Abs(currentPoint.X - _dragStartPoint.X) > 10 || Math.Abs(currentPoint.Y - _dragStartPoint.Y) > 10)
+                {
+                    _isDragging = true;
+                    _draggedTab.CaptureMouse();
+                    _lastTargetTab = null; // Reset last target when starting drag
+                }
+            }
+            else if (_isDragging && _draggedTab != null)
+            {
+                var targetTab = FindTabItemFromMousePosition(e.GetPosition(tabControl));
+                if (targetTab != null && targetTab != _draggedTab && targetTab != _addTabButton && targetTab != _lastTargetTab)
+                {
+                    int draggedIndex = tabControl.Items.IndexOf(_draggedTab);
+                    int targetIndex = tabControl.Items.IndexOf(targetTab);
+                    
+                    if (draggedIndex != targetIndex)
+                    {
+                        tabControl.Items.RemoveAt(draggedIndex);
+                        tabControl.Items.Insert(targetIndex, _draggedTab);
+                        tabControl.SelectedItem = _draggedTab;
+                        _lastTargetTab = targetTab; // Update last target
+                    }
+                }
+            }
+        }
+
+        private void TabControl_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (_isDragging && _draggedTab != null)
+            {
+                _draggedTab.ReleaseMouseCapture();
+            }
+            _isDragging = false;
+            _draggedTab = null;
+            _lastTargetTab = null; // Reset last target when ending drag
+        }
+
+        private TabItem FindTabItemFromMousePosition(Point mousePosition)
+        {
+            var hitTestResult = VisualTreeHelper.HitTest(tabControl, mousePosition);
+            if (hitTestResult != null)
+            {
+                var element = hitTestResult.VisualHit as FrameworkElement;
+                while (element != null && !(element is TabItem))
+                {
+                    element = VisualTreeHelper.GetParent(element) as FrameworkElement;
+                }
+                return element as TabItem;
+            }
+            return null;
         }
 
         private void Process_Exited(TabItem tabItem)
