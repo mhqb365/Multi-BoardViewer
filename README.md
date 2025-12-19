@@ -15,6 +15,7 @@ Xin chân thành cảm ơn:
 - **[sumatrapdfreader](https://github.com/sumatrapdfreader)** - trình đọc PDF mã nguồn mở 
 - **[OpenBoardView](https://github.com/OpenBoardView)** - phần mềm xem board view mã nguồn mở
 - **[FlexBoardView](https://pldaniels.com/flexbv5/)** - phần mềm xem board view đa năng
+- **[ChinaFix](https://www.xinxunwei.com/)** - phần mềm tính toán điện áp
 
 Dự án này sử dụng sản phẩm của họ để tạo nên trải nghiệm xem file đa năng trong một ứng dụng duy nhất
 
@@ -24,6 +25,7 @@ Dự án này sử dụng sản phẩm của họ để tạo nên trải nghi�
 - 📄 **PDF Viewer**: Xem file PDF với SumatraPDF tích hợp
 - 📑 **Multi-tab**: Mở nhiều file cùng lúc trong các tab riêng biệt
 - 🔎 **Search files**: Tìm kiếm file trong thư mục/ổ đĩa được chỉ định
+- 📊 **Voltage Divider Calculator**: Tính toán điện áp
 
 ## 📋 Yêu cầu hệ thống
 
