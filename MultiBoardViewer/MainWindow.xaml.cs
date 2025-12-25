@@ -138,7 +138,7 @@ namespace MultiBoardViewer
         {
             foreach (var kvp in _tabProcesses)
             {
-                if (kvp.Value.FilePath != null && 
+                if (kvp.Value.FilePath != null &&
                     kvp.Value.FilePath.Equals(filePath, StringComparison.OrdinalIgnoreCase))
                 {
                     // File is already open, switch to that tab
@@ -178,7 +178,7 @@ namespace MultiBoardViewer
             {
                 string appDir = AppDomain.CurrentDomain.BaseDirectory;
                 string recentFilePath = Path.Combine(appDir, RecentFilesFileName);
-                
+
                 if (File.Exists(recentFilePath))
                 {
                     _recentFiles = File.ReadAllLines(recentFilePath)
@@ -209,7 +209,7 @@ namespace MultiBoardViewer
             {
                 string appDir = AppDomain.CurrentDomain.BaseDirectory;
                 string searchFolderPath = Path.Combine(appDir, SearchFolderFileName);
-                
+
                 if (File.Exists(searchFolderPath))
                 {
                     string folder = File.ReadAllText(searchFolderPath).Trim();
@@ -240,14 +240,66 @@ namespace MultiBoardViewer
             ".pdf", ".fz", ".brd", ".bom", ".cad", ".bdv", ".asc", ".bv", ".cst", ".gr", ".f2b", ".faz", ".tvw"
         };
 
+        // Safe enumeration of files that ignores access denied errors
+        private IEnumerable<string> SafeEnumerateFiles(string rootPath, CancellationToken cancellationToken)
+        {
+            var pending = new Stack<string>();
+            pending.Push(rootPath);
+
+            while (pending.Count > 0)
+            {
+                if (cancellationToken.IsCancellationRequested)
+                    yield break;
+
+                var path = pending.Pop();
+                string[] files = null;
+
+                try
+                {
+                    files = Directory.GetFiles(path);
+                }
+                catch { } // Ignore permission errors
+
+                if (files != null)
+                {
+                    foreach (var file in files)
+                    {
+                        yield return file;
+                    }
+                }
+
+                try
+                {
+                    var subDirs = Directory.GetDirectories(path);
+                    foreach (var subdir in subDirs)
+                    {
+                        if (cancellationToken.IsCancellationRequested)
+                            yield break;
+
+                        // Skip system directories to safe time and avoid potential loops/waiting
+                        string dirName = Path.GetFileName(subdir);
+                        if (string.IsNullOrEmpty(dirName)) continue;
+
+                        if (!dirName.StartsWith("$") &&
+                            !dirName.Equals("System Volume Information", StringComparison.OrdinalIgnoreCase) &&
+                            !dirName.Equals("Windows", StringComparison.OrdinalIgnoreCase)) // Optional: Skip Windows folder for speed if not searching there
+                        {
+                            pending.Push(subdir);
+                        }
+                    }
+                }
+                catch { } // Ignore permission errors
+            }
+        }
+
         // Search files in the configured folder (async version)
         private async System.Threading.Tasks.Task<List<string>> SearchFilesAsync(string searchText, CancellationToken cancellationToken)
         {
             var results = new List<string>();
-            
+
             if (string.IsNullOrEmpty(_searchFolder) || !Directory.Exists(_searchFolder))
                 return results;
-            
+
             if (string.IsNullOrWhiteSpace(searchText))
                 return results;
 
@@ -257,23 +309,23 @@ namespace MultiBoardViewer
                 {
                     try
                     {
-                        var files = Directory.EnumerateFiles(_searchFolder, "*", SearchOption.AllDirectories);
+                        var files = SafeEnumerateFiles(_searchFolder, cancellationToken);
                         int count = 0;
-                        
+
                         foreach (var f in files)
                         {
                             if (cancellationToken.IsCancellationRequested)
                                 break;
-                            
+
                             if (count >= 50) // Limit results
                                 break;
-                            
+
                             try
                             {
                                 string fileName = Path.GetFileName(f);
                                 string ext = Path.GetExtension(f);
-                                
-                                if (SupportedExtensions.Contains(ext) && 
+
+                                if (SupportedExtensions.Contains(ext) &&
                                     fileName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
                                 {
                                     results.Add(f);
@@ -288,7 +340,7 @@ namespace MultiBoardViewer
             }
             catch (OperationCanceledException) { }
             catch { }
-            
+
             return results;
         }
 
@@ -300,16 +352,16 @@ namespace MultiBoardViewer
 
             // Remove if already exists (to move it to top)
             _recentFiles.RemoveAll(f => f.Equals(filePath, StringComparison.OrdinalIgnoreCase));
-            
+
             // Add to top
             _recentFiles.Insert(0, filePath);
-            
+
             // Keep only MaxRecentFiles
             if (_recentFiles.Count > MaxRecentFiles)
             {
                 _recentFiles = _recentFiles.Take(MaxRecentFiles).ToList();
             }
-            
+
             // Save to file
             SaveRecentFiles();
         }
@@ -317,18 +369,18 @@ namespace MultiBoardViewer
         public MainWindow()
         {
             InitializeComponent();
-            
+
             // Add drag and drop event handlers for tab reordering
             tabControl.PreviewMouseLeftButtonDown += TabControl_PreviewMouseLeftButtonDown;
             tabControl.PreviewMouseMove += TabControl_PreviewMouseMove;
             tabControl.PreviewMouseLeftButtonUp += TabControl_PreviewMouseLeftButtonUp;
-            
+
             // Load recent files history
             LoadRecentFiles();
-            
+
             // Load search folder setting
             LoadSearchFolder();
-            
+
             // Initialize timer for handling window resizing
             _resizeTimer = new DispatcherTimer();
             _resizeTimer.Interval = TimeSpan.FromMilliseconds(100);
@@ -336,28 +388,28 @@ namespace MultiBoardViewer
 
             // Handle window resize to update embedded processes
             this.SizeChanged += MainWindow_SizeChanged;
-            
+
             // Also handle layout updates for more responsive resizing
             this.LayoutUpdated += MainWindow_LayoutUpdated;
 
             // Try to find BoardViewer.exe in the same directory or parent directory
             AutoDetectBoardViewerPath();
-            
+
             // Try to find OpenBoardView.exe
             AutoDetectOpenBoardViewPath();
-            
+
             // Try to find FlexBoardView.exe
             AutoDetectFlexBoardViewPath();
-            
+
             // Try to find SumatraPDF.exe in app folder
             AutoDetectSumatraPdfPath();
-            
+
             // Create the "+" add tab button
             CreateAddTabButton();
-            
+
             // Subscribe to receive files from other instances
             App.FilesReceived += OnFilesReceivedFromAnotherInstance;
-            
+
             // Check if files were passed via command line (Open with)
             if (App.StartupFiles != null && App.StartupFiles.Length > 0)
             {
@@ -389,11 +441,11 @@ namespace MultiBoardViewer
                 // Skip activation command
                 if (file == "__ACTIVATE__")
                     continue;
-                    
+
                 // Skip if file doesn't exist
                 if (!System.IO.File.Exists(file))
                     continue;
-                
+
                 if (file.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
                 {
                     OpenPdfInNewTab(file);
@@ -408,15 +460,15 @@ namespace MultiBoardViewer
         private void OpenStartupFiles()
         {
             string[] files = App.StartupFiles;
-            
+
             for (int i = 0; i < files.Length; i++)
             {
                 string file = files[i];
-                
+
                 // Skip if file doesn't exist
                 if (!System.IO.File.Exists(file))
                     continue;
-                
+
                 if (file.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
                 {
                     OpenPdfInNewTab(file);
@@ -426,7 +478,7 @@ namespace MultiBoardViewer
                     OpenBoardViewerWithFile(file);
                 }
             }
-            
+
             // If no valid files were opened, create empty tab
             if (tabControl.Items.Count == 1 && tabControl.Items[0] == _addTabButton)
             {
@@ -435,17 +487,17 @@ namespace MultiBoardViewer
         }
 
         private TabItem _addTabButton;
-        
+
         private void CreateAddTabButton()
         {
             // Create a special "+" tab that acts as a button
             _addTabButton = new TabItem();
-            
+
             // Create custom style for the "+" tab (no close button)
             Style addTabStyle = new Style(typeof(TabItem));
-            
+
             ControlTemplate template = new ControlTemplate(typeof(TabItem));
-            
+
             // Create the border
             FrameworkElementFactory border = new FrameworkElementFactory(typeof(Border));
             border.Name = "Border";
@@ -455,7 +507,7 @@ namespace MultiBoardViewer
             border.SetValue(Border.CornerRadiusProperty, new CornerRadius(3, 3, 0, 0));
             border.SetValue(Border.PaddingProperty, new Thickness(12, 5, 12, 5));
             border.SetValue(Border.MarginProperty, new Thickness(2, 2, 2, 0));
-            
+
             // Create text block for "+"
             FrameworkElementFactory textBlock = new FrameworkElementFactory(typeof(TextBlock));
             textBlock.SetValue(TextBlock.TextProperty, "+");
@@ -463,24 +515,24 @@ namespace MultiBoardViewer
             textBlock.SetValue(TextBlock.FontWeightProperty, FontWeights.Bold);
             textBlock.SetValue(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center);
             textBlock.SetValue(TextBlock.HorizontalAlignmentProperty, HorizontalAlignment.Center);
-            
+
             border.AppendChild(textBlock);
             template.VisualTree = border;
-            
+
             // Add hover trigger
             Trigger hoverTrigger = new Trigger { Property = UIElement.IsMouseOverProperty, Value = true };
-            hoverTrigger.Setters.Add(new Setter(Border.BackgroundProperty, 
+            hoverTrigger.Setters.Add(new Setter(Border.BackgroundProperty,
                 new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(200, 230, 255)), "Border"));
             template.Triggers.Add(hoverTrigger);
-            
+
             addTabStyle.Setters.Add(new Setter(Control.TemplateProperty, template));
             _addTabButton.Style = addTabStyle;
-            
+
             _addTabButton.ToolTip = "New tab";
-            
+
             // Handle click on "+" tab directly
             _addTabButton.PreviewMouseLeftButtonDown += AddTabButton_Click;
-            
+
             // Add to TabControl
             tabControl.Items.Add(_addTabButton);
         }
@@ -497,7 +549,7 @@ namespace MultiBoardViewer
         }
 
         private Size _lastSize = Size.Empty;
-        
+
         private void MainWindow_LayoutUpdated(object sender, EventArgs e)
         {
             // Check if size actually changed to avoid unnecessary updates
@@ -513,7 +565,7 @@ namespace MultiBoardViewer
         {
             // Directly resize all SumatraPDF tabs when window size changes
             ResizeAllSumatraTabs();
-            
+
             // Also trigger timer for other embedded apps
             _resizeTimer.Stop();
             _resizeTimer.Start();
@@ -524,8 +576,8 @@ namespace MultiBoardViewer
             foreach (var kvp in _tabProcesses)
             {
                 ProcessInfo processInfo = kvp.Value;
-                if (processInfo.AppType == "SumatraPDF" && 
-                    processInfo.Process != null && 
+                if (processInfo.AppType == "SumatraPDF" &&
+                    processInfo.Process != null &&
                     !processInfo.Process.HasExited)
                 {
                     IntPtr childHandle = GetWindow(processInfo.Panel.Handle, GW_CHILD);
@@ -533,15 +585,15 @@ namespace MultiBoardViewer
                     {
                         int width = processInfo.Panel.Width;
                         int height = processInfo.Panel.Height;
-                        
+
                         if (width > 0 && height > 0)
                         {
                             MoveWindow(childHandle, 0, 0, width, height, true);
-                            
+
                             // Send WM_SIZE to notify of size change
                             IntPtr lParam = new IntPtr((height << 16) | (width & 0xFFFF));
                             SendMessage(childHandle, WM_SIZE, new IntPtr(SIZE_RESTORED), lParam);
-                            
+
                             processInfo.WindowHandle = childHandle;
                         }
                     }
@@ -638,7 +690,7 @@ namespace MultiBoardViewer
                 Padding = new Thickness(8, 6, 28, 6), // Extra padding on right for clear button
                 VerticalContentAlignment = VerticalAlignment.Center
             };
-            
+
             // Placeholder text
             TextBlock placeholder = new TextBlock
             {
@@ -730,12 +782,12 @@ namespace MultiBoardViewer
                 {
                     dialog.Description = "Select folder to search for files";
                     dialog.ShowNewFolderButton = false;
-                    
+
                     if (!string.IsNullOrEmpty(_searchFolder) && Directory.Exists(_searchFolder))
                     {
                         dialog.SelectedPath = _searchFolder;
                     }
-                    
+
                     if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         _searchFolder = dialog.SelectedPath;
@@ -753,12 +805,12 @@ namespace MultiBoardViewer
             searchTimer.Tick += async (s, ev) =>
             {
                 searchTimer.Stop();
-                
+
                 // Cancel previous search
                 searchCts?.Cancel();
                 searchCts = new CancellationTokenSource();
                 var token = searchCts.Token;
-                
+
                 string searchText = searchBox.Text.Trim();
                 searchResultsPanel.Children.Clear();
 
@@ -838,7 +890,7 @@ namespace MultiBoardViewer
                     foreach (string filePath in results)
                     {
                         string fileName = Path.GetFileName(filePath);
-                        
+
                         Button fileButton = new Button
                         {
                             HorizontalAlignment = HorizontalAlignment.Stretch,
@@ -910,7 +962,7 @@ namespace MultiBoardViewer
                         fileButton.MouseRightButtonDown += (sender, args) =>
                         {
                             args.Handled = true; // Prevent default context menu
-                            
+
                             if (!File.Exists(capturedPath))
                                 return;
 
@@ -921,7 +973,7 @@ namespace MultiBoardViewer
                             ContextMenu contextMenu = new ContextMenu();
                             contextMenu.PlacementTarget = fileButton;
                             contextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
-                            
+
                             MenuItem openBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
                             openBoardViewItem.Click += (s, e) =>
                             {
@@ -929,7 +981,7 @@ namespace MultiBoardViewer
                                     return;
                                 OpenOpenBoardViewInTab(newTab, capturedPath);
                             };
-                            
+
                             MenuItem flexBoardViewItem = new MenuItem { Header = "Open with FlexBoardView" };
                             flexBoardViewItem.Click += (s, e) =>
                             {
@@ -937,10 +989,10 @@ namespace MultiBoardViewer
                                     return;
                                 OpenFlexBoardViewInTab(newTab, capturedPath);
                             };
-                            
+
                             contextMenu.Items.Add(openBoardViewItem);
                             contextMenu.Items.Add(flexBoardViewItem);
-                            
+
                             contextMenu.IsOpen = true;
                         };
 
@@ -976,7 +1028,7 @@ namespace MultiBoardViewer
 
             // Recent files list (compact)
             StackPanel recentFilesList = new StackPanel();
-            
+
             if (_recentFiles.Count == 0)
             {
                 TextBlock noRecent = new TextBlock
@@ -993,7 +1045,7 @@ namespace MultiBoardViewer
                 foreach (string filePath in _recentFiles)
                 {
                     string fileName = Path.GetFileName(filePath);
-                    
+
                     // Create compact button for each recent file
                     Button fileButton = new Button
                     {
@@ -1049,7 +1101,7 @@ namespace MultiBoardViewer
                             {
                                 return; // Switched to existing tab
                             }
-                            
+
                             if (capturedPath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
                             {
                                 OpenPdfInTab(newTab, capturedPath);
@@ -1062,7 +1114,7 @@ namespace MultiBoardViewer
                         }
                         else
                         {
-                            MessageBox.Show($"File not found:\n{capturedPath}", "File Not Found", 
+                            MessageBox.Show($"File not found:\n{capturedPath}", "File Not Found",
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                             // Remove from recent files
                             _recentFiles.Remove(capturedPath);
@@ -1074,7 +1126,7 @@ namespace MultiBoardViewer
                     fileButton.MouseRightButtonDown += (s, ev) =>
                     {
                         ev.Handled = true; // Prevent default context menu
-                        
+
                         if (!File.Exists(capturedPath))
                             return;
 
@@ -1085,7 +1137,7 @@ namespace MultiBoardViewer
                         ContextMenu contextMenu = new ContextMenu();
                         contextMenu.PlacementTarget = fileButton;
                         contextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
-                        
+
                         MenuItem openBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
                         openBoardViewItem.Click += (sender, args) =>
                         {
@@ -1093,7 +1145,7 @@ namespace MultiBoardViewer
                                 return;
                             OpenOpenBoardViewInTab(newTab, capturedPath);
                         };
-                        
+
                         MenuItem flexBoardViewItem = new MenuItem { Header = "Open with FlexBoardView" };
                         flexBoardViewItem.Click += (sender, args) =>
                         {
@@ -1101,10 +1153,10 @@ namespace MultiBoardViewer
                                 return;
                             OpenFlexBoardViewInTab(newTab, capturedPath);
                         };
-                        
+
                         contextMenu.Items.Add(openBoardViewItem);
                         contextMenu.Items.Add(flexBoardViewItem);
-                        
+
                         contextMenu.IsOpen = true;
                     };
 
@@ -1136,7 +1188,7 @@ namespace MultiBoardViewer
             };
 
             StackPanel aboutContentPanel = new StackPanel();
-            
+
             TextBlock appName = new TextBlock
             {
                 Text = "Multi BoardViewer",
@@ -1145,15 +1197,15 @@ namespace MultiBoardViewer
                 Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 100, 180)),
                 Margin = new Thickness(0, 0, 0, 8)
             };
-            
+
             TextBlock appVersion = new TextBlock
             {
-                Text = "Version 1.0.8",
+                Text = "Version 1.0.9",
                 FontSize = 12,
                 Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(100, 100, 100)),
                 Margin = new Thickness(0, 0, 0, 10)
             };
-            
+
             TextBlock appDesc = new TextBlock
             {
                 Text = "A multi-tab viewer for BoardViewer files and PDF documents",
@@ -1170,7 +1222,7 @@ namespace MultiBoardViewer
                 Margin = new Thickness(0, 0, 0, 3)
             };
             authorLabel.Inlines.Add("Created by ");
-            
+
             System.Windows.Documents.Hyperlink authorLink = new System.Windows.Documents.Hyperlink
             {
                 NavigateUri = new Uri("https://mhqb365.com"),
@@ -1200,7 +1252,7 @@ namespace MultiBoardViewer
                 Margin = new Thickness(0, 0, 0, 0)
             };
             githubLink.Inlines.Add("Open source ");
-            
+
             System.Windows.Documents.Hyperlink link = new System.Windows.Documents.Hyperlink
             {
                 NavigateUri = new Uri("https://github.com/mhqb365/Multi-BoardViewer"),
@@ -1330,7 +1382,7 @@ namespace MultiBoardViewer
                 if (openFileDialog.ShowDialog() == true)
                 {
                     string[] files = openFileDialog.FileNames;
-                    
+
                     if (files.Length > 0)
                     {
                         // Open first file in this tab
@@ -1343,7 +1395,7 @@ namespace MultiBoardViewer
                         {
                             OpenBoardFileInTab(newTab, firstFile);
                         }
-                        
+
                         // Open remaining files in new tabs
                         for (int i = 1; i < files.Length; i++)
                         {
@@ -1392,9 +1444,9 @@ namespace MultiBoardViewer
                 if (ev.Data.GetDataPresent(DataFormats.FileDrop))
                 {
                     _dropHandled = true; // Mark that we're handling this drop
-                    
+
                     string[] files = (string[])ev.Data.GetData(DataFormats.FileDrop);
-                    
+
                     if (files.Length > 0)
                     {
                         // Open first file in this tab
@@ -1407,7 +1459,7 @@ namespace MultiBoardViewer
                         {
                             OpenBoardFileInTab(newTab, firstFile);
                         }
-                        
+
                         // Open remaining files in new tabs
                         for (int i = 1; i < files.Length; i++)
                         {
@@ -1451,7 +1503,7 @@ namespace MultiBoardViewer
                 {
                     return false;
                 }
-                
+
                 // Check for new tab layout (Grid with drop zone)
                 return selectedTab.Content is Grid || selectedTab.Content is Border;
             }
@@ -1478,7 +1530,7 @@ namespace MultiBoardViewer
                 e.Handled = true;
                 return;
             }
-            
+
             // Only allow drop if current tab is empty
             if (e.Data.GetDataPresent(DataFormats.FileDrop) && IsCurrentTabEmpty())
             {
@@ -1499,20 +1551,20 @@ namespace MultiBoardViewer
                 e.Handled = true;
                 return;
             }
-            
+
             // Check if drop was already handled by a drop zone
             if (e.Handled || _dropHandled)
             {
                 _dropHandled = false; // Reset flag
                 return;
             }
-            
+
             // Only allow drop if current tab is empty
             if (!IsCurrentTabEmpty())
             {
                 return;
             }
-            
+
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
@@ -1537,7 +1589,7 @@ namespace MultiBoardViewer
         {
             if (string.IsNullOrEmpty(_sumatraPdfPath) || !File.Exists(_sumatraPdfPath))
             {
-                MessageBox.Show("SumatraPDF.exe not found!\n\nPlease place SumatraPDF.exe in the SumatraPDF folder.", 
+                MessageBox.Show("SumatraPDF.exe not found!\n\nPlease place SumatraPDF.exe in the SumatraPDF folder.",
                     "SumatraPDF Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -1550,7 +1602,7 @@ namespace MultiBoardViewer
                 // Create a WindowsFormsHost to embed SumatraPDF
                 WindowsFormsHost host = new WindowsFormsHost();
                 host.Focusable = true;
-                
+
                 System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
                 {
                     Dock = System.Windows.Forms.DockStyle.Fill,
@@ -1593,7 +1645,7 @@ namespace MultiBoardViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error opening PDF: {ex.Message}", 
+                MessageBox.Show($"Error opening PDF: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -1603,7 +1655,7 @@ namespace MultiBoardViewer
         {
             if (string.IsNullOrEmpty(_boardViewerPath) || !File.Exists(_boardViewerPath))
             {
-                MessageBox.Show("BoardViewer.exe not found!\n\nPlease place BoardViewer.exe in the same folder as this application.", 
+                MessageBox.Show("BoardViewer.exe not found!\n\nPlease place BoardViewer.exe in the same folder as this application.",
                     "BoardViewer Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -1616,7 +1668,7 @@ namespace MultiBoardViewer
                 // Create a WindowsFormsHost to embed the external process
                 WindowsFormsHost host = new WindowsFormsHost();
                 host.Focusable = true;
-                
+
                 System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
                 {
                     Dock = System.Windows.Forms.DockStyle.Fill
@@ -1667,7 +1719,7 @@ namespace MultiBoardViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error opening file with BoardViewer: {ex.Message}", 
+                MessageBox.Show($"Error opening file with BoardViewer: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -1677,7 +1729,7 @@ namespace MultiBoardViewer
         {
             if (string.IsNullOrEmpty(_openBoardViewPath) || !File.Exists(_openBoardViewPath))
             {
-                MessageBox.Show("OpenBoardView.exe not found!\n\nPlease place OpenBoardView.exe in the same folder as this application.", 
+                MessageBox.Show("OpenBoardView.exe not found!\n\nPlease place OpenBoardView.exe in the same folder as this application.",
                     "OpenBoardView Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -1690,7 +1742,7 @@ namespace MultiBoardViewer
                 // Create a WindowsFormsHost to embed the external process
                 WindowsFormsHost host = new WindowsFormsHost();
                 host.Focusable = true;
-                
+
                 System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
                 {
                     Dock = System.Windows.Forms.DockStyle.Fill
@@ -1741,7 +1793,7 @@ namespace MultiBoardViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error opening file with OpenBoardView: {ex.Message}", 
+                MessageBox.Show($"Error opening file with OpenBoardView: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -1751,7 +1803,7 @@ namespace MultiBoardViewer
         {
             if (string.IsNullOrEmpty(_flexBoardViewPath) || !File.Exists(_flexBoardViewPath))
             {
-                MessageBox.Show("FlexBoardView.exe not found!\n\nPlease place FlexBoardView.exe in the same folder as this application.", 
+                MessageBox.Show("FlexBoardView.exe not found!\n\nPlease place FlexBoardView.exe in the same folder as this application.",
                     "FlexBoardView Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -1764,7 +1816,7 @@ namespace MultiBoardViewer
                 // Create a WindowsFormsHost to embed the external process
                 WindowsFormsHost host = new WindowsFormsHost();
                 host.Focusable = true;
-                
+
                 System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
                 {
                     Dock = System.Windows.Forms.DockStyle.Fill
@@ -1818,7 +1870,7 @@ namespace MultiBoardViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error opening file with FlexBoardView: {ex.Message}", 
+                MessageBox.Show($"Error opening file with FlexBoardView: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -1828,7 +1880,7 @@ namespace MultiBoardViewer
             var dialog = new ViewerSelectionDialog(Path.GetFileName(filePath));
             dialog.Owner = this;
             bool? result = dialog.ShowDialog();
-            
+
             if (result == true)
             {
                 if (dialog.Result == ViewerSelectionDialog.ViewerResult.BoardViewer)
@@ -1855,7 +1907,7 @@ namespace MultiBoardViewer
 
             if (string.IsNullOrEmpty(_boardViewerPath) || !File.Exists(_boardViewerPath))
             {
-                MessageBox.Show("BoardViewer.exe not found!\n\nPlease place BoardViewer.exe in the same folder as this application.", 
+                MessageBox.Show("BoardViewer.exe not found!\n\nPlease place BoardViewer.exe in the same folder as this application.",
                     "BoardViewer Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -1871,7 +1923,7 @@ namespace MultiBoardViewer
                 // Create a WindowsFormsHost to embed the external process
                 WindowsFormsHost host = new WindowsFormsHost();
                 host.Focusable = true;
-                
+
                 System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
                 {
                     Dock = System.Windows.Forms.DockStyle.Fill
@@ -1921,7 +1973,7 @@ namespace MultiBoardViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error opening file: {ex.Message}", 
+                MessageBox.Show($"Error opening file: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -1959,7 +2011,7 @@ namespace MultiBoardViewer
 
             if (string.IsNullOrEmpty(_openBoardViewPath) || !File.Exists(_openBoardViewPath))
             {
-                MessageBox.Show("OpenBoardView.exe not found!\n\nPlease place OpenBoardView.exe in the same folder as this application.", 
+                MessageBox.Show("OpenBoardView.exe not found!\n\nPlease place OpenBoardView.exe in the same folder as this application.",
                     "OpenBoardView Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -1975,7 +2027,7 @@ namespace MultiBoardViewer
                 // Create a WindowsFormsHost to embed the external process
                 WindowsFormsHost host = new WindowsFormsHost();
                 host.Focusable = true;
-                
+
                 System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
                 {
                     Dock = System.Windows.Forms.DockStyle.Fill
@@ -2024,7 +2076,7 @@ namespace MultiBoardViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error opening file: {ex.Message}", 
+                MessageBox.Show($"Error opening file: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -2037,7 +2089,7 @@ namespace MultiBoardViewer
 
             if (string.IsNullOrEmpty(_flexBoardViewPath) || !File.Exists(_flexBoardViewPath))
             {
-                MessageBox.Show("FlexBoardView.exe not found!\n\nPlease place FlexBoardView.exe in the same folder as this application.", 
+                MessageBox.Show("FlexBoardView.exe not found!\n\nPlease place FlexBoardView.exe in the same folder as this application.",
                     "FlexBoardView Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -2053,7 +2105,7 @@ namespace MultiBoardViewer
                 // Create a WindowsFormsHost to embed the external process
                 WindowsFormsHost host = new WindowsFormsHost();
                 host.Focusable = true;
-                
+
                 System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
                 {
                     Dock = System.Windows.Forms.DockStyle.Fill
@@ -2105,7 +2157,7 @@ namespace MultiBoardViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error opening file: {ex.Message}", 
+                MessageBox.Show($"Error opening file: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -2118,7 +2170,7 @@ namespace MultiBoardViewer
 
             if (string.IsNullOrEmpty(_sumatraPdfPath) || !File.Exists(_sumatraPdfPath))
             {
-                MessageBox.Show("SumatraPDF.exe not found!\n\nPlease place SumatraPDF.exe in the same folder as this application.", 
+                MessageBox.Show("SumatraPDF.exe not found!\n\nPlease place SumatraPDF.exe in the same folder as this application.",
                     "SumatraPDF Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -2134,7 +2186,7 @@ namespace MultiBoardViewer
                 // Create a WindowsFormsHost to embed the external process
                 WindowsFormsHost host = new WindowsFormsHost();
                 host.Focusable = true;
-                
+
                 System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
                 {
                     Dock = System.Windows.Forms.DockStyle.Fill,
@@ -2190,7 +2242,7 @@ namespace MultiBoardViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error opening PDF: {ex.Message}", 
+                MessageBox.Show($"Error opening PDF: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -2198,7 +2250,7 @@ namespace MultiBoardViewer
         private void AutoDetectSumatraPdfPath()
         {
             string appDir = AppDomain.CurrentDomain.BaseDirectory;
-            
+
             // Check in current directory
             string path1 = Path.Combine(appDir, "SumatraPDF.exe");
             if (File.Exists(path1))
@@ -2225,7 +2277,7 @@ namespace MultiBoardViewer
                     _sumatraPdfPath = path3;
                     return;
                 }
-                
+
                 string path4 = Path.Combine(parentDir, "SumatraPDF.exe");
                 if (File.Exists(path4))
                 {
@@ -2233,7 +2285,7 @@ namespace MultiBoardViewer
                     return;
                 }
             }
-            
+
             // SumatraPDF not found - drag & drop will show warning
             _sumatraPdfPath = "";
         }
@@ -2241,7 +2293,7 @@ namespace MultiBoardViewer
         private void AutoDetectBoardViewerPath()
         {
             string appDir = AppDomain.CurrentDomain.BaseDirectory;
-            
+
             // Check in current directory
             string path1 = Path.Combine(appDir, "BoardViewer.exe");
             if (File.Exists(path1))
@@ -2268,7 +2320,7 @@ namespace MultiBoardViewer
                     _boardViewerPath = path3;
                     return;
                 }
-                
+
                 string path4 = Path.Combine(parentDir, "BoardViewer.exe");
                 if (File.Exists(path4))
                 {
@@ -2284,7 +2336,7 @@ namespace MultiBoardViewer
         private void AutoDetectOpenBoardViewPath()
         {
             string appDir = AppDomain.CurrentDomain.BaseDirectory;
-            
+
             // Check in current directory
             string path1 = Path.Combine(appDir, "OpenBoardView.exe");
             if (File.Exists(path1))
@@ -2311,7 +2363,7 @@ namespace MultiBoardViewer
                     _openBoardViewPath = path3;
                     return;
                 }
-                
+
                 string path4 = Path.Combine(parentDir, "OpenBoardView.exe");
                 if (File.Exists(path4))
                 {
@@ -2327,7 +2379,7 @@ namespace MultiBoardViewer
         private void AutoDetectFlexBoardViewPath()
         {
             string appDir = AppDomain.CurrentDomain.BaseDirectory;
-            
+
             // Check in current directory
             string path1 = Path.Combine(appDir, "FlexBoardView.exe");
             if (File.Exists(path1))
@@ -2354,7 +2406,7 @@ namespace MultiBoardViewer
                     _flexBoardViewPath = path3;
                     return;
                 }
-                
+
                 string path4 = Path.Combine(parentDir, "FlexBoardView.exe");
                 if (File.Exists(path4))
                 {
@@ -2393,7 +2445,7 @@ namespace MultiBoardViewer
         {
             // Wait for SumatraPDF to create its window inside the panel
             await System.Threading.Tasks.Task.Delay(1000);
-            
+
             if (process.HasExited)
                 return;
 
@@ -2401,17 +2453,17 @@ namespace MultiBoardViewer
             // We need to find that child window
             IntPtr windowHandle = IntPtr.Zero;
             IntPtr panelHandle = panel.Handle;
-            
+
             for (int i = 0; i < 50; i++)
             {
                 if (process.HasExited) return;
-                
+
                 // Find child window of the panel
                 windowHandle = GetWindow(panelHandle, GW_CHILD);
-                    
+
                 if (windowHandle != IntPtr.Zero)
                     break;
-                    
+
                 await System.Threading.Tasks.Task.Delay(100);
             }
 
@@ -2427,7 +2479,7 @@ namespace MultiBoardViewer
             processInfo.WindowHandle = windowHandle;
 
             // Helper to make LPARAM for WM_SIZE
-            Func<int, int, IntPtr> MakeLParam = (low, high) => 
+            Func<int, int, IntPtr> MakeLParam = (low, high) =>
                 new IntPtr((high << 16) | (low & 0xFFFF));
 
             // Action to resize the SumatraPDF window
@@ -2440,13 +2492,13 @@ namespace MultiBoardViewer
                     {
                         int width = panel.Width;
                         int height = panel.Height;
-                        
+
                         // Move the window
                         MoveWindow(childHandle, 0, 0, width, height, true);
-                        
+
                         // Send WM_SIZE message to notify SumatraPDF of the size change
                         SendMessage(childHandle, WM_SIZE, new IntPtr(SIZE_RESTORED), MakeLParam(width, height));
-                        
+
                         processInfo.WindowHandle = childHandle;
                     }
                 }
@@ -2487,27 +2539,27 @@ namespace MultiBoardViewer
             {
                 IntPtr processHandle = IntPtr.Zero;
                 int processId = process.Id;
-                
+
                 // Wait a bit for window to be created
                 await System.Threading.Tasks.Task.Delay(500);
-                
+
                 // Try to get the window handle
                 for (int i = 0; i < 50; i++)
                 {
                     if (process.HasExited)
                         return;
-                    
+
                     process.Refresh();
                     processHandle = process.MainWindowHandle;
-                    
+
                     if (processHandle == IntPtr.Zero)
                     {
                         processHandle = FindWindowByProcessId(processId);
                     }
-                    
+
                     if (processHandle != IntPtr.Zero)
                         break;
-                        
+
                     await System.Threading.Tasks.Task.Delay(100);
                 }
 
@@ -2519,7 +2571,7 @@ namespace MultiBoardViewer
 
                 // Embed the window into panel
                 DoEmbedWindow(processHandle, panel, process);
-                
+
                 // Re-apply embedding after a short delay (some apps reset their style)
                 await System.Threading.Tasks.Task.Delay(200);
                 if (!process.HasExited)
@@ -2554,14 +2606,14 @@ namespace MultiBoardViewer
 
             // Move and resize to fill the panel completely
             MoveWindow(windowHandle, 0, 0, panel.Width, panel.Height, true);
-            
+
             // Force redraw
             ShowWindow(windowHandle, SW_SHOW);
 
             // Setup resize handler (remove old handlers first to avoid duplicates)
             panel.Resize -= Panel_Resize;
             panel.Resize += Panel_Resize;
-            
+
             void Panel_Resize(object sender, EventArgs e)
             {
                 if (!process.HasExited && windowHandle != IntPtr.Zero)
@@ -2573,7 +2625,7 @@ namespace MultiBoardViewer
             // Setup focus handlers
             panel.Click -= Panel_Click;
             panel.Click += Panel_Click;
-            
+
             void Panel_Click(object sender, EventArgs e)
             {
                 if (!process.HasExited && windowHandle != IntPtr.Zero)
@@ -2584,7 +2636,7 @@ namespace MultiBoardViewer
 
             panel.MouseEnter -= Panel_MouseEnter;
             panel.MouseEnter += Panel_MouseEnter;
-            
+
             void Panel_MouseEnter(object sender, EventArgs e)
             {
                 if (!process.HasExited && windowHandle != IntPtr.Zero)
@@ -2600,18 +2652,18 @@ namespace MultiBoardViewer
             {
                 IntPtr processHandle = IntPtr.Zero;
                 int processId = process.Id;
-                
+
                 // Wait for the main window handle to be available (up to 10 seconds)
                 for (int i = 0; i < 100 && processHandle == IntPtr.Zero; i++)
                 {
                     await System.Threading.Tasks.Task.Delay(100);
-                    
+
                     if (process.HasExited)
                         return;
-                    
+
                     process.Refresh();
                     processHandle = process.MainWindowHandle;
-                    
+
                     // If MainWindowHandle is still zero, try to find window by process ID
                     if (processHandle == IntPtr.Zero)
                     {
@@ -2688,11 +2740,11 @@ namespace MultiBoardViewer
         private IntPtr FindWindowByProcessId(int processId)
         {
             IntPtr foundHandle = IntPtr.Zero;
-            
+
             EnumWindows((hWnd, lParam) =>
             {
                 GetWindowThreadProcessId(hWnd, out uint windowProcessId);
-                
+
                 if (windowProcessId == processId && IsWindowVisible(hWnd))
                 {
                     foundHandle = hWnd;
@@ -2700,7 +2752,7 @@ namespace MultiBoardViewer
                 }
                 return true; // Continue enumeration
             }, IntPtr.Zero);
-            
+
             return foundHandle;
         }
 
@@ -2740,13 +2792,13 @@ namespace MultiBoardViewer
                 for (int i = 0; i < 100; i++)
                 {
                     await System.Threading.Tasks.Task.Delay(200);
-                    
+
                     if (process.HasExited)
                         return;
-                    
+
                     process.Refresh();
                     processHandle = process.MainWindowHandle;
-                    
+
                     // If MainWindowHandle is still zero, try to find window by process ID
                     if (processHandle == IntPtr.Zero)
                     {
@@ -2781,7 +2833,7 @@ namespace MultiBoardViewer
 
                 // Move and resize to fill the panel
                 MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
-                
+
                 // Force redraw
                 ShowWindow(processHandle, SW_SHOW);
 
@@ -2831,13 +2883,13 @@ namespace MultiBoardViewer
                 for (int i = 0; i < 50 && processHandle == IntPtr.Zero; i++)
                 {
                     await System.Threading.Tasks.Task.Delay(100);
-                    
+
                     if (process.HasExited)
                         return;
-                    
+
                     process.Refresh();
                     processHandle = process.MainWindowHandle;
-                    
+
                     // If MainWindowHandle is still zero, try to find window by process ID
                     if (processHandle == IntPtr.Zero)
                     {
@@ -2917,24 +2969,24 @@ namespace MultiBoardViewer
         private void CloseTab_Click(object sender, RoutedEventArgs e)
         {
             e.Handled = true; // Prevent event bubbling
-            
+
             Button button = sender as Button;
             TabItem tabItem = button?.Tag as TabItem;
 
             if (tabItem != null && tabItem != _addTabButton)
             {
                 _isCreatingTab = true; // Prevent creating new tab during close
-                
+
                 // Find index of closing tab
                 int closingIndex = tabControl.Items.IndexOf(tabItem);
                 int addButtonIndex = tabControl.Items.IndexOf(_addTabButton);
-                
+
                 // Determine which tab to select after closing
                 TabItem nextTab = null;
-                
+
                 // Count real tabs (excluding "+" button)
                 int realTabCount = tabControl.Items.Count - 1; // minus the "+" button
-                
+
                 if (realTabCount > 1)
                 {
                     // There are other tabs to switch to
@@ -2949,10 +3001,10 @@ namespace MultiBoardViewer
                         nextTab = tabControl.Items[closingIndex - 1] as TabItem;
                     }
                 }
-                
+
                 // Close the tab
                 CloseTabItem(tabItem);
-                
+
                 // Select next tab or create new empty tab if no tabs left
                 if (nextTab != null && nextTab != _addTabButton)
                 {
@@ -2963,7 +3015,7 @@ namespace MultiBoardViewer
                     // Only "+" tab remains, create a new empty tab
                     CreateEmptyTab();
                 }
-                
+
                 _isCreatingTab = false;
             }
         }
@@ -3036,7 +3088,7 @@ namespace MultiBoardViewer
                 {
                     int draggedIndex = tabControl.Items.IndexOf(_draggedTab);
                     int targetIndex = tabControl.Items.IndexOf(targetTab);
-                    
+
                     if (draggedIndex != targetIndex)
                     {
                         tabControl.Items.RemoveAt(draggedIndex);
@@ -3081,7 +3133,7 @@ namespace MultiBoardViewer
                 if (_tabProcesses.ContainsKey(tabItem))
                 {
                     ProcessInfo processInfo = _tabProcesses[tabItem];
-                    
+
                     // Clean up temp directory
                     if (!string.IsNullOrEmpty(processInfo.TempDirectory) && Directory.Exists(processInfo.TempDirectory))
                     {
@@ -3091,7 +3143,7 @@ namespace MultiBoardViewer
                         }
                         catch { }
                     }
-                    
+
                     _tabProcesses.Remove(tabItem);
                     tabControl.Items.Remove(tabItem);
                     ShowStatus("BoardViewer process exited", false);
@@ -3101,7 +3153,7 @@ namespace MultiBoardViewer
 
         private TabItem _previousSelectedTab;
         private bool _isCreatingTab = false;
-        
+
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Skip if "+" tab is selected (handled by click event)
@@ -3114,9 +3166,9 @@ namespace MultiBoardViewer
                 }
                 return;
             }
-            
+
             _previousSelectedTab = tabControl.SelectedItem as TabItem;
-            
+
             // Trigger resize when tab is switched
             _resizeTimer.Stop();
             _resizeTimer.Start();
@@ -3128,7 +3180,7 @@ namespace MultiBoardViewer
                 if (processInfo.Process != null && !processInfo.Process.HasExited)
                 {
                     IntPtr handle;
-                    
+
                     // For SumatraPDF in plugin mode, find child window of panel
                     if (processInfo.AppType == "SumatraPDF")
                     {
@@ -3144,11 +3196,11 @@ namespace MultiBoardViewer
                     }
                     else
                     {
-                        handle = processInfo.WindowHandle != IntPtr.Zero 
-                            ? processInfo.WindowHandle 
+                        handle = processInfo.WindowHandle != IntPtr.Zero
+                            ? processInfo.WindowHandle
                             : processInfo.Process.MainWindowHandle;
                     }
-                        
+
                     if (handle != IntPtr.Zero)
                     {
                         // Set focus to the embedded window
@@ -3169,7 +3221,7 @@ namespace MultiBoardViewer
                 if (processInfo.Process != null && !processInfo.Process.HasExited)
                 {
                     IntPtr handle = IntPtr.Zero;
-                    
+
                     // For SumatraPDF in plugin mode, find child window of panel
                     if (processInfo.AppType == "SumatraPDF")
                     {
@@ -3181,21 +3233,21 @@ namespace MultiBoardViewer
                     }
                     else
                     {
-                        handle = processInfo.WindowHandle != IntPtr.Zero 
-                            ? processInfo.WindowHandle 
+                        handle = processInfo.WindowHandle != IntPtr.Zero
+                            ? processInfo.WindowHandle
                             : processInfo.Process.MainWindowHandle;
                     }
-                        
+
                     if (handle != IntPtr.Zero)
                     {
                         // Force update panel size first
                         processInfo.Host.UpdateLayout();
-                        
+
                         int width = processInfo.Panel.Width;
                         int height = processInfo.Panel.Height;
-                        
+
                         Debug.WriteLine($"ResizeTimer: Resizing {processInfo.AppType} to {width}x{height}");
-                        
+
                         MoveWindow(handle, 0, 0, width, height, true);
                     }
                 }
@@ -3206,10 +3258,10 @@ namespace MultiBoardViewer
         {
             // Stop resize timer
             try { _resizeTimer?.Stop(); } catch { }
-            
+
             // Close all processes when window is closing - use parallel for speed
             var processesToKill = _tabProcesses.Values.ToList();
-            
+
             System.Threading.Tasks.Parallel.ForEach(processesToKill, processInfo =>
             {
                 try
@@ -3220,7 +3272,7 @@ namespace MultiBoardViewer
                     }
                 }
                 catch { }
-                
+
                 try
                 {
                     processInfo.Process?.Dispose();
@@ -3242,7 +3294,7 @@ namespace MultiBoardViewer
             });
 
             _tabProcesses.Clear();
-            
+
             // Clean up any remaining temp directories
             CleanupOldTempDirectories();
         }
@@ -3271,13 +3323,13 @@ namespace MultiBoardViewer
                 for (int i = 0; i < 100; i++)
                 {
                     await System.Threading.Tasks.Task.Delay(200);
-                    
+
                     if (process.HasExited)
                         return;
-                    
+
                     process.Refresh();
                     processHandle = process.MainWindowHandle;
-                    
+
                     // If MainWindowHandle is still zero, try to find window by process ID
                     if (processHandle == IntPtr.Zero)
                     {
@@ -3290,7 +3342,7 @@ namespace MultiBoardViewer
 
                 if (processHandle == IntPtr.Zero)
                 {
-                    Dispatcher.Invoke(() => 
+                    Dispatcher.Invoke(() =>
                     {
                         // Fall back to showing message if embedding fails
                         TextBlock messageBlock = new TextBlock
@@ -3335,7 +3387,7 @@ namespace MultiBoardViewer
 
                 // Move and resize to fill the panel
                 MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
-                
+
                 // Force redraw
                 ShowWindow(processHandle, SW_SHOW);
 
@@ -3370,7 +3422,7 @@ namespace MultiBoardViewer
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error embedding FlexBoardView: {ex.Message}");
-                Dispatcher.Invoke(() => 
+                Dispatcher.Invoke(() =>
                 {
                     // Fall back to message on error
                     TextBlock messageBlock = new TextBlock
@@ -3409,17 +3461,17 @@ namespace MultiBoardViewer
                 for (int i = 0; i < 50; i++) // 5 seconds total (100ms * 50) - same as BoardViewer
                 {
                     await System.Threading.Tasks.Task.Delay(100);
-                    
+
                     if (process.HasExited)
                     {
                         // Process exited before we could embed it
                         Dispatcher.Invoke(() => ShowSeparateWindowMessage(tab, filePath, "FlexBoardView exited before embedding"));
                         return;
                     }
-                    
+
                     process.Refresh();
                     processHandle = process.MainWindowHandle;
-                    
+
                     // If MainWindowHandle is still zero, try to find window by process ID
                     if (processHandle == IntPtr.Zero)
                     {
@@ -3454,10 +3506,10 @@ namespace MultiBoardViewer
 
                     // Now set parent after modifying styles
                     SetParent(processHandle, panel.Handle);
-                    
+
                     // Move to fill the panel but keep original window style
                     MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
-                    
+
                     // Force redraw
                     ShowWindow(processHandle, SW_SHOW);
 
@@ -3581,7 +3633,7 @@ namespace MultiBoardViewer
 
                 // Find FlexBV crash dialog window
                 IntPtr crashDialogHandle = IntPtr.Zero;
-                
+
                 // Use Windows API to enumerate windows
                 EnumWindows((hwnd, lParam) =>
                 {
@@ -3602,7 +3654,7 @@ namespace MultiBoardViewer
                 if (crashDialogHandle != IntPtr.Zero)
                 {
                     Debug.WriteLine($"Found FlexBV crash dialog: {crashDialogHandle}");
-                    
+
                     // Find "Erase crash logs and ignore" button
                     IntPtr buttonHandle = FindWindowEx(crashDialogHandle, IntPtr.Zero, "Button", null);
                     while (buttonHandle != IntPtr.Zero)
@@ -3615,10 +3667,10 @@ namespace MultiBoardViewer
                             if (buttonText.Contains("Erase crash logs and ignore") || buttonText.Contains("Erase") || buttonText.Contains("ignore"))
                             {
                                 Debug.WriteLine($"Found button: {buttonText}");
-                                
+
                                 // Click the button
                                 SendMessage(buttonHandle, BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-                                
+
                                 Dispatcher.Invoke(() => ShowStatus("Handled FlexBV crash dialog", true));
                                 break;
                             }
