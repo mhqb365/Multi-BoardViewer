@@ -31,14 +31,7 @@ namespace MultiBoardViewer
         [DllImport("user32.dll", SetLastError = true)]
         private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
-        [DllImport("user32.dll")]
-        private static extern IntPtr SetFocus(IntPtr hWnd);
 
-        [DllImport("user32.dll")]
-        private static extern IntPtr GetFocus();
-
-        [DllImport("user32.dll")]
-        private static extern bool SetForegroundWindow(IntPtr hWnd);
 
         [DllImport("user32.dll")]
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
@@ -3289,22 +3282,7 @@ namespace MultiBoardViewer
                     }
                 };
 
-                // Setup focus handlers
-                panel.Click += (s, e) =>
-                {
-                    if (!process.HasExited && processHandle != IntPtr.Zero)
-                    {
-                        SetFocus(processHandle);
-                    }
-                };
 
-                panel.MouseEnter += (s, e) =>
-                {
-                    if (!process.HasExited && processHandle != IntPtr.Zero)
-                    {
-                        SetFocus(processHandle);
-                    }
-                };
 
                 Dispatcher.Invoke(() => ShowStatus("FlexBoardView embedded successfully", true));
             }
@@ -3414,8 +3392,6 @@ namespace MultiBoardViewer
                             catch { /* Ignore resize errors */ }
                         }
                     };
-
-
 
                     // Wait a bit more after embedding to ensure stability
                     await System.Threading.Tasks.Task.Delay(500);
