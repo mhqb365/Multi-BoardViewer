@@ -24,24 +24,7 @@ bld/
 *.user
 *.userosscache
 *.sln.docstates
-
-# Build results
-*.dll
-*.exe
-*.pdb
-*.cache
 *.log
-
-# Keep the built executable in Release if needed (optional - remove if you want to exclude)
-!MultiBoardViewer/bin/Release/net8.0-windows/MultiBoardViewer.exe
-
-# Keep external viewer executables and all contents of these directories
-!BoardViewer/
-!SumatraPDF/
-!OpenBoardView/
-!FlexBoardView/
-!VoltageDividerCalculator/
-!Photos/
 
 # NuGet Packages
 *.nupkg
