@@ -79,7 +79,7 @@ TreeFontName = automatic
 SmoothScroll = false
 ShowStartPage = true
 CheckForUpdates = false
-WindowState = 1
+WindowState = 2
 WindowPos = 625 149 795 1030
 UseTabs = true
 UseSysColors = false
@@ -90,6 +90,6 @@ FileStates [
 SessionData [
 ]
 TimeOfLastUpdateCheck = 0 0
-OpenCountWeek = 779
+OpenCountWeek = 780
 
 # Settings below are not recognized by the current version
