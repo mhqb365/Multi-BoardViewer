@@ -1253,7 +1253,7 @@ namespace MultiBoardViewer
 
             TextBlock appDesc = new TextBlock
             {
-                Text = "A multi-tab viewer for BoardViewer files and PDF documents",
+                Text = "A versatile viewer for all schematics",
                 FontSize = 12,
                 Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(60, 60, 60)),
                 TextWrapping = TextWrapping.Wrap,
