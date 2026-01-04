@@ -93,6 +93,13 @@ namespace MultiBoardViewer
 
         private const uint BM_CLICK = 0x00F5;
 
+        // Keyboard message constants
+        private const uint WM_KEYDOWN = 0x0100;
+        private const uint WM_KEYUP = 0x0101;
+        private const uint WM_CHAR = 0x0102;
+        private const uint WM_SYSKEYDOWN = 0x0104;
+        private const uint WM_SYSKEYUP = 0x0105;
+
         // Dictionary to track processes and their containers
         private Dictionary<TabItem, ProcessInfo> _tabProcesses = new Dictionary<TabItem, ProcessInfo>();
         private int _tabCounter = 1;
@@ -380,6 +387,10 @@ namespace MultiBoardViewer
             tabControl.PreviewMouseLeftButtonDown += TabControl_PreviewMouseLeftButtonDown;
             tabControl.PreviewMouseMove += TabControl_PreviewMouseMove;
             tabControl.PreviewMouseLeftButtonUp += TabControl_PreviewMouseLeftButtonUp;
+
+            // Hook keyboard events to forward to embedded windows
+            this.PreviewKeyDown += MainWindow_PreviewKeyDown;
+            this.PreviewKeyUp += MainWindow_PreviewKeyUp;
 
             // Load recent files history
             LoadRecentFiles();
@@ -3153,6 +3164,115 @@ namespace MultiBoardViewer
 
         }
 
+        // Forward keyboard events to embedded windows
+        private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            ForwardKeyboardEvent(e, WM_KEYDOWN, WM_SYSKEYDOWN);
+        }
+
+        private void MainWindow_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            ForwardKeyboardEvent(e, WM_KEYUP, WM_SYSKEYUP);
+        }
+
+        private void ForwardKeyboardEvent(KeyEventArgs e, uint normalMsg, uint sysMsg)
+        {
+            // Only forward if we have an active embedded window
+            if (tabControl.SelectedItem is TabItem selectedTab && _tabProcesses.ContainsKey(selectedTab))
+            {
+                ProcessInfo processInfo = _tabProcesses[selectedTab];
+                if (processInfo.Process != null && !processInfo.Process.HasExited)
+                {
+                    IntPtr windowHandle = IntPtr.Zero;
+
+                    // Get the appropriate window handle
+                    if (processInfo.AppType == "SumatraPDF")
+                    {
+                        // For SumatraPDF plugin mode, get child window
+                        windowHandle = GetWindow(processInfo.Panel.Handle, GW_CHILD);
+                        if (windowHandle == IntPtr.Zero)
+                        {
+                            windowHandle = processInfo.WindowHandle;
+                        }
+                    }
+                    else
+                    {
+                        // For other apps, use stored handle
+                        windowHandle = processInfo.WindowHandle != IntPtr.Zero
+                            ? processInfo.WindowHandle
+                            : processInfo.Process.MainWindowHandle;
+                    }
+
+                    if (windowHandle != IntPtr.Zero)
+                    {
+                        // Convert WPF key to virtual key code
+                        int virtualKey = KeyInterop.VirtualKeyFromKey(e.Key);
+                        
+                        // Determine if it's a system key (Alt pressed)
+                        bool isSystemKey = (Keyboard.Modifiers & ModifierKeys.Alt) != 0;
+                        uint message = isSystemKey ? sysMsg : normalMsg;
+
+                        // Build lParam (repeat count, scan code, extended key flag, etc.)
+                        // For simplicity, we use basic values here
+                        IntPtr lParam = IntPtr.Zero;
+
+                        // Send the message to the embedded window
+                        SendMessage(windowHandle, message, new IntPtr(virtualKey), lParam);
+
+                        // Mark event as handled for certain keys to prevent WPF from processing them
+                        // This allows shortcuts like Ctrl+F to go directly to the embedded app
+                        if (ShouldHandleKey(e.Key))
+                        {
+                            e.Handled = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        private bool ShouldHandleKey(Key key)
+        {
+            // Handle common shortcuts that should go to embedded apps
+            // You can customize this list based on your needs
+            
+            // Don't handle if no modifiers (allow normal typing in search boxes, etc.)
+            if (Keyboard.Modifiers == ModifierKeys.None)
+            {
+                return false;
+            }
+
+            // Handle Ctrl+key combinations (common shortcuts)
+            if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
+            {
+                switch (key)
+                {
+                    case Key.F:      // Find
+                    case Key.G:      // Find next
+                    case Key.H:      // Replace
+                    case Key.Z:      // Undo
+                    case Key.Y:      // Redo
+                    case Key.C:      // Copy
+                    case Key.V:      // Paste
+                    case Key.X:      // Cut
+                    case Key.A:      // Select all
+                    case Key.S:      // Save
+                    case Key.O:      // Open
+                    case Key.P:      // Print
+                    case Key.W:      // Close (but we handle this in WPF)
+                        return key != Key.W; // Don't forward Ctrl+W, let WPF handle tab closing
+                    default:
+                        return false;
+                }
+            }
+
+            // Handle function keys
+            if (key >= Key.F1 && key <= Key.F12)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
 
         private void ResizeTimer_Tick(object sender, EventArgs e)
