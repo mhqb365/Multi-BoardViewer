@@ -1,30 +1,29 @@
 # Multi BoardViewer
 
-Ứng dụng Windows giúp xem nhiều sơ đồ mạch (board view) và sơ đồ nguyên lý (schematic) trong cùng một ứng dụng
+Ứng dụng Windows giúp xem nhiều boardview và schematic trong cùng một ứng dụng
 
 ![Multi BoardViewer](https://img.shields.io/badge/.NET-8.0-blue) ![Platform](https://img.shields.io/badge/Platform-Windows-brightgreen) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ![Multi BoardViewer](./Photos/1.png)
 ![Multi BoardViewer](./Photos/2.png)
-![Multi BoardViewer](./Photos/3.png)
 
 ## 🙏 Lời cảm ơn
 
 Xin chân thành cảm ơn:
-- **[BoardViewer.net](https://www.boardviewer.net/)** - phần mềm xem boardview thông dụng
-- **[OpenBoardView](https://github.com/OpenBoardView)** - phần mềm xem board view mã nguồn mở
-- **[FlexBoardView](https://pldaniels.com/flexbv5/)** - thêm một phần mềm xem board view nữa
-- **[SumatraPDF](https://github.com/sumatrapdfreader)** - trình đọc PDF mã nguồn mở
+- **[BoardViewer.net](https://www.boardviewer.net/)** - phần mềm xem boardview miễn phí
+- **[OpenBoardView](https://github.com/OpenBoardView)** - phần mềm xem boardview mã nguồn mở
+- **[FlexBoardView](https://pldaniels.com/flexbv5/)** - thêm một phần mềm xem boardview nữa
+- **[SumatraPDF](https://github.com/sumatrapdfreader)** - phần mềm đọc PDF mã nguồn mở
 - **[ChinaFix - Voltage Divider Calculator](https://www.xinxunwei.com/)** - phần mềm tính toán điện áp qua cầu phân áp
 
 Dự án này sử dụng sản phẩm của họ để tạo nên trải nghiệm xem file đa năng trong một ứng dụng duy nhất
 
 ## ✨ Tính năng
 
-- **Multi-tab**: Mở nhiều file cùng lúc trong các tab riêng biệt
-- **Multi BoardViewer**: Xem các file board view với nhiều lựa chọn viewer khác nhau
-- **PDF Viewer**: Xem file PDF với SumatraPDF tích hợp
-- **Search files**: Tìm kiếm file trong thư mục hoặc ổ đĩa được chỉ định
+- **Multi tab**: Mở nhiều file cùng lúc
+- **Multi viewer**: Xem file boardview với 3 lựa chọn viewer
+- **PDF viewer**: Xem file PDF với SumatraPDF tích hợp
+- **Search files**: Tìm kiếm file trong thư mục hoặc ổ đĩa chỉ định
 - **Voltage Divider Calculator**: Tính toán điện áp qua cầu phân áp
 
 ## 📋 Yêu cầu hệ thống
@@ -58,8 +57,8 @@ cd Multi-BoardViewer
 ### Mở file
 
 - **Tab mới**: Click nút **+** để tạo tab mới → Kéo thả file vào phần cửa sổ bên phải của ứng dụng hoặc click nút **+ Open file** và dẫn đến file cần mở
-- **Search files**: Chọn thư mục hoặc ổ đĩa chứa các file tài liệu ở icon thư mục → Nhập tên file vào ô tìm kiếm → Click file để mở bằng BoardViewer hoặc click chuột phải vào file để chọn viewer
-- **Recent files**: Mở tab mới và chọn file từ danh sách gần đây
+- **Search files**: Chọn thư mục hoặc ổ đĩa chứa các file tài liệu ở icon thư mục → Nhập tên file vào ô tìm kiếm → Click file và chọn viewer phù hợp để mở. Nếu mở không thành công thì đóng tab rồi mở lại với viewer khác
+- **Recent files**: Danh sách các file đã mở gần đây, cũng click file để mở
 
 ### Định dạng file hỗ trợ
 
@@ -85,6 +84,8 @@ cd Multi-BoardViewer
 ```
 Multi-BoardViewer/
 ├── MultiBoardViewer/          # Source code chính (WPF .NET 8)
+│   ├── Controls/              # User Controls (StartPage, etc.)
+│   ├── Services/              # Services (FileSearch, RecentFiles)
 │   ├── MainWindow.xaml        # Giao diện chính và quản lý tab
 │   ├── App.xaml               # Cấu hình ứng dụng
 │   └── ...
