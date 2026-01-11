@@ -786,18 +786,6 @@ namespace MultiBoardViewer
                 // Embed the process window into our panel
                 EmbedProcess(process, panel);
 
-                // Add context menu for switching viewers
-                ContextMenu contextMenu = new ContextMenu();
-                MenuItem boardViewerItem = new MenuItem { Header = "Open with BoardViewer" };
-                boardViewerItem.Click += (s, e) => { OpenBoardViewerInTab(tab, filePath); };
-                MenuItem openBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
-                openBoardViewItem.Click += (s, e) => { OpenOpenBoardViewInTab(tab, filePath); };
-                MenuItem flexBoardViewItem = new MenuItem { Header = "Open with FlexBoardView" };
-                flexBoardViewItem.Click += (s, e) => { OpenFlexBoardViewInTab(tab, filePath); };
-                contextMenu.Items.Add(boardViewerItem);
-                contextMenu.Items.Add(openBoardViewItem);
-                contextMenu.Items.Add(flexBoardViewItem);
-                tab.ContextMenu = contextMenu;
             }
             catch (Exception ex)
             {
@@ -860,18 +848,6 @@ namespace MultiBoardViewer
                 // Embed the process window into our panel
                 _ = EmbedProcessAsOverlay(process, panel, _tabProcesses[tab]);
 
-                // Add context menu for switching viewers
-                ContextMenu contextMenu = new ContextMenu();
-                MenuItem boardViewerItem = new MenuItem { Header = "Open with BoardViewer" };
-                boardViewerItem.Click += (s, e) => { OpenBoardViewerInTab(tab, filePath); };
-                MenuItem openBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
-                openBoardViewItem.Click += (s, e) => { OpenOpenBoardViewInTab(tab, filePath); };
-                MenuItem flexBoardViewItem = new MenuItem { Header = "Open with FlexBoardView" };
-                flexBoardViewItem.Click += (s, e) => { OpenFlexBoardViewInTab(tab, filePath); };
-                contextMenu.Items.Add(boardViewerItem);
-                contextMenu.Items.Add(openBoardViewItem);
-                contextMenu.Items.Add(flexBoardViewItem);
-                tab.ContextMenu = contextMenu;
             }
             catch (Exception ex)
             {
@@ -937,18 +913,6 @@ namespace MultiBoardViewer
                 // Embed as overlay to keep keyboard input working
                 _ = EmbedProcessAsOverlay(process, panel, _tabProcesses[tab]);
 
-                // Add context menu for switching viewers
-                ContextMenu contextMenu = new ContextMenu();
-                MenuItem boardViewerItem = new MenuItem { Header = "Open with BoardViewer" };
-                boardViewerItem.Click += (s, e) => { OpenBoardViewerInTab(tab, filePath); };
-                MenuItem openBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
-                openBoardViewItem.Click += (s, e) => { OpenOpenBoardViewInTab(tab, filePath); };
-                MenuItem flexBoardViewItem = new MenuItem { Header = "Open with FlexBoardView" };
-                flexBoardViewItem.Click += (s, e) => { OpenFlexBoardViewInTab(tab, filePath); };
-                contextMenu.Items.Add(boardViewerItem);
-                contextMenu.Items.Add(openBoardViewItem);
-                contextMenu.Items.Add(flexBoardViewItem);
-                tab.ContextMenu = contextMenu;
             }
             catch (Exception ex)
             {
