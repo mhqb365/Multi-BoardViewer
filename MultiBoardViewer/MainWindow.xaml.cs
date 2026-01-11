@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms.Integration;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
 using Microsoft.Win32;
@@ -64,6 +65,34 @@ namespace MultiBoardViewer
         [DllImport("user32.dll")]
         private static extern IntPtr GetParent(IntPtr hWnd);
 
+        [DllImport("user32.dll")]
+        private static extern IntPtr SetFocus(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SetActiveWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        private static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
+
+        [DllImport("kernel32.dll")]
+        private static extern uint GetCurrentThreadId();
+
+        [DllImport("user32.dll", SetLastError = true, EntryPoint = "SetWindowLong")]
+        private static extern IntPtr SetWindowLongPtr32(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+        [DllImport("user32.dll", SetLastError = true, EntryPoint = "SetWindowLongPtr")]
+        private static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+        private static IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong)
+        {
+            return IntPtr.Size == 8
+                ? SetWindowLongPtr64(hWnd, nIndex, dwNewLong)
+                : SetWindowLongPtr32(hWnd, nIndex, dwNewLong);
+        }
+
         // For disabling drag & drop on embedded windows
         [DllImport("ole32.dll")]
         private static extern int RevokeDragDrop(IntPtr hwnd);
@@ -77,8 +106,10 @@ namespace MultiBoardViewer
 
         private const int GWL_STYLE = -16;
         private const int GWL_EXSTYLE = -20;
+        private const int GWL_HWNDPARENT = -8;
         private const int WS_VISIBLE = 0x10000000;
         private const int WS_CHILD = 0x40000000;
+        private const int WS_POPUP = unchecked((int)0x80000000);
         private const int WS_BORDER = 0x00800000;
         private const int WS_CAPTION = 0x00C00000;
         private const int WS_THICKFRAME = 0x00040000;
@@ -101,6 +132,9 @@ namespace MultiBoardViewer
         private const uint WM_CHAR = 0x0102;
         private const uint WM_SYSKEYDOWN = 0x0104;
         private const uint WM_SYSKEYUP = 0x0105;
+        private const uint WM_ACTIVATE = 0x0006;
+        private const uint WM_ACTIVATEAPP = 0x001C;
+        private const int WA_ACTIVE = 1;
 
         // Dictionary to track processes and their containers
         private Dictionary<TabItem, ProcessInfo> _tabProcesses = new Dictionary<TabItem, ProcessInfo>();
@@ -130,6 +164,7 @@ namespace MultiBoardViewer
             public string AppType { get; set; } // "BoardViewer" or "SumatraPDF"
             public IntPtr WindowHandle { get; set; } // Store window handle for resize
             public string FilePath { get; set; } // Store the file path being viewed
+            public bool IsOverlayWindow { get; set; }
         }
 
         // Check if file is already open and switch to that tab
@@ -202,6 +237,7 @@ namespace MultiBoardViewer
             // Hook keyboard events to forward to embedded windows
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
             this.PreviewKeyUp += MainWindow_PreviewKeyUp;
+            this.PreviewTextInput += MainWindow_PreviewTextInput;
 
             // Initialize services
             _recentFilesService = new RecentFilesService();
@@ -216,6 +252,8 @@ namespace MultiBoardViewer
 
             // Handle window activation to restore focus to embedded apps
             this.Activated += MainWindow_Activated;
+            this.LocationChanged += MainWindow_LocationChanged;
+            this.StateChanged += MainWindow_StateChanged;
 
             // Also handle layout updates for more responsive resizing
             this.LayoutUpdated += MainWindow_LayoutUpdated;
@@ -393,6 +431,7 @@ namespace MultiBoardViewer
         {
             // Directly resize all SumatraPDF tabs when window size changes
             ResizeAllSumatraTabs();
+            UpdateOverlayWindowsForSelection();
 
             // Also trigger timer for other embedded apps
             _resizeTimer.Stop();
@@ -798,7 +837,7 @@ namespace MultiBoardViewer
                 AddToRecentFiles(filePath);
 
                 // Embed the process window into our panel
-                EmbedProcess(process, panel);
+                _ = EmbedProcessAsOverlay(process, panel, _tabProcesses[tab]);
 
                 // Add context menu for switching viewers
                 ContextMenu contextMenu = new ContextMenu();
@@ -821,7 +860,7 @@ namespace MultiBoardViewer
         }
 
         // Open FlexBoardView file in existing tab (replace content)
-        private async void OpenFlexBoardViewInTab(TabItem tab, string filePath)
+        private void OpenFlexBoardViewInTab(TabItem tab, string filePath)
         {
             if (string.IsNullOrEmpty(_flexBoardViewPath) || !File.Exists(_flexBoardViewPath))
             {
@@ -874,8 +913,8 @@ namespace MultiBoardViewer
                 // Add to recent files
                 AddToRecentFiles(filePath);
 
-                // Try to embed FlexBoardView with improved error handling
-                await EmbedFlexBoardViewSafely(process, panel, tab, filePath);
+                // Embed as overlay to keep keyboard input working
+                _ = EmbedProcessAsOverlay(process, panel, _tabProcesses[tab]);
 
                 // Add context menu for switching viewers
                 ContextMenu contextMenu = new ContextMenu();
@@ -1101,7 +1140,7 @@ namespace MultiBoardViewer
                 AddToRecentFiles(filePath);
 
                 // Embed the process window into the panel
-                EmbedProcess(process, panel);
+                _ = EmbedProcessAsOverlay(process, panel, _tabProcesses[newTab]);
 
                 ShowStatus($"Opened: {Path.GetFileName(filePath)}", true);
             }
@@ -1112,7 +1151,7 @@ namespace MultiBoardViewer
             }
         }
 
-        private async void OpenFlexBoardViewWithFile(string filePath)
+        private void OpenFlexBoardViewWithFile(string filePath)
         {
             // Check if file is already open
             if (TrySwitchToExistingTab(filePath, "FlexBoardView"))
@@ -1181,8 +1220,8 @@ namespace MultiBoardViewer
                 // Add to recent files
                 AddToRecentFiles(filePath);
 
-                // Try to embed FlexBoardView with improved error handling
-                await EmbedFlexBoardViewSafely(process, panel, newTab, filePath);
+                // Embed as overlay to keep keyboard input working
+                _ = EmbedProcessAsOverlay(process, panel, _tabProcesses[newTab]);
 
                 ShowStatus($"Opened: {Path.GetFileName(filePath)}", true);
             }
@@ -1910,6 +1949,88 @@ namespace MultiBoardViewer
             }
         }
 
+        private async System.Threading.Tasks.Task EmbedProcessAsOverlay(Process process, System.Windows.Forms.Panel panel, ProcessInfo processInfo)
+        {
+            if (process == null || panel == null || processInfo == null)
+            {
+                return;
+            }
+
+            try
+            {
+                IntPtr processHandle = IntPtr.Zero;
+                int processId = process.Id;
+
+                for (int i = 0; i < 50 && processHandle == IntPtr.Zero; i++)
+                {
+                    await System.Threading.Tasks.Task.Delay(100);
+
+                    if (process.HasExited)
+                        return;
+
+                    process.Refresh();
+                    processHandle = process.MainWindowHandle;
+
+                    if (processHandle == IntPtr.Zero)
+                    {
+                        processHandle = FindWindowByProcessId(processId);
+                    }
+                }
+
+                if (processHandle == IntPtr.Zero)
+                {
+                    Debug.WriteLine("Could not get overlay window handle");
+                    return;
+                }
+
+                MoveWindow(processHandle, -10000, -10000, 1, 1, false);
+
+                processInfo.WindowHandle = processHandle;
+                processInfo.IsOverlayWindow = true;
+
+                bool isFlexBoardView = string.Equals(processInfo.AppType, "FlexBoardView", StringComparison.OrdinalIgnoreCase);
+                int style = GetWindowLong(processHandle, GWL_STYLE);
+                if (isFlexBoardView)
+                {
+                    style &= ~WS_CHILD;
+                    style |= WS_VISIBLE;
+                }
+                else
+                {
+                    style &= ~(WS_CAPTION | WS_BORDER | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU | WS_CHILD);
+                    style |= WS_POPUP | WS_VISIBLE;
+                }
+                SetWindowLong(processHandle, GWL_STYLE, style);
+
+                if (!isFlexBoardView)
+                {
+                    int exStyle = GetWindowLong(processHandle, GWL_EXSTYLE);
+                    exStyle &= ~(WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE | WS_EX_CLIENTEDGE | WS_EX_STATICEDGE);
+                    SetWindowLong(processHandle, GWL_EXSTYLE, exStyle);
+                }
+
+                IntPtr ownerHandle = new WindowInteropHelper(this).Handle;
+                if (ownerHandle != IntPtr.Zero)
+                {
+                    SetWindowLongPtr(processHandle, GWL_HWNDPARENT, ownerHandle);
+                }
+
+                UpdateOverlayWindowPosition(processInfo);
+                ShowWindow(processHandle, SW_SHOW);
+
+                panel.Resize += (s, e) => UpdateOverlayWindowPosition(processInfo);
+                processInfo.Host.SizeChanged += (s, e) => UpdateOverlayWindowPosition(processInfo);
+                processInfo.Host.Loaded += (s, e) => UpdateOverlayWindowPosition(processInfo);
+                Dispatcher.BeginInvoke(new Action(() => UpdateOverlayWindowPosition(processInfo)), DispatcherPriority.Loaded);
+
+                UpdateOverlayWindowsForSelection();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error embedding overlay window: {ex.Message}");
+            }
+        }
+
         private void CloseTab_Click(object sender, RoutedEventArgs e)
         {
             e.Handled = true; // Prevent event bubbling
@@ -2118,12 +2239,253 @@ namespace MultiBoardViewer
             _resizeTimer.Start();
 
             // Set focus to the selected tab's embedded window
-
+            Dispatcher.BeginInvoke(new Action(FocusSelectedEmbeddedWindow), DispatcherPriority.Background);
+            UpdateOverlayWindowsForSelection();
         }
 
         private void MainWindow_Activated(object sender, EventArgs e)
         {
+            UpdateOverlayWindowsForSelection();
+            Dispatcher.BeginInvoke(new Action(FocusSelectedEmbeddedWindow), DispatcherPriority.Background);
+        }
 
+        private void MainWindow_LocationChanged(object sender, EventArgs e)
+        {
+            UpdateOverlayWindowsForSelection();
+        }
+
+        private void MainWindow_StateChanged(object sender, EventArgs e)
+        {
+            UpdateOverlayWindowsForSelection();
+        }
+
+        private void FocusSelectedEmbeddedWindow()
+        {
+            if (tabControl.SelectedItem is TabItem selectedTab && _tabProcesses.TryGetValue(selectedTab, out ProcessInfo processInfo))
+            {
+                FocusEmbeddedWindow(processInfo);
+            }
+        }
+
+        private void FocusEmbeddedWindow(ProcessInfo processInfo)
+        {
+            if (processInfo == null || processInfo.Process == null || processInfo.Process.HasExited)
+            {
+                return;
+            }
+
+            IntPtr windowHandle = GetEmbeddedWindowHandle(processInfo);
+            if (windowHandle == IntPtr.Zero)
+            {
+                return;
+            }
+
+            try
+            {
+                if (string.Equals(processInfo.AppType, "OpenBoardView", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(processInfo.AppType, "FlexBoardView", StringComparison.OrdinalIgnoreCase))
+                {
+                    SendMessage(windowHandle, WM_ACTIVATEAPP, new IntPtr(1), IntPtr.Zero);
+                    SendMessage(windowHandle, WM_ACTIVATE, new IntPtr(WA_ACTIVE), IntPtr.Zero);
+                }
+
+                uint targetProcessId;
+                uint targetThreadId = GetWindowThreadProcessId(windowHandle, out targetProcessId);
+                uint currentThreadId = GetCurrentThreadId();
+
+                if (targetThreadId != 0 && targetThreadId != currentThreadId)
+                {
+                    AttachThreadInput(currentThreadId, targetThreadId, true);
+                }
+
+                if (processInfo.IsOverlayWindow)
+                {
+                    SetForegroundWindow(windowHandle);
+                    SetActiveWindow(windowHandle);
+                }
+
+                SetFocus(windowHandle);
+
+                if (targetThreadId != 0 && targetThreadId != currentThreadId)
+                {
+                    AttachThreadInput(currentThreadId, targetThreadId, false);
+                }
+            }
+            catch { }
+        }
+
+        private IntPtr GetEmbeddedWindowHandle(ProcessInfo processInfo)
+        {
+            if (processInfo == null)
+            {
+                return IntPtr.Zero;
+            }
+
+            if (processInfo.IsOverlayWindow && processInfo.WindowHandle != IntPtr.Zero)
+            {
+                return processInfo.WindowHandle;
+            }
+
+            if (processInfo.Panel != null)
+            {
+                try
+                {
+                    IntPtr childHandle = GetWindow(processInfo.Panel.Handle, GW_CHILD);
+                    if (childHandle != IntPtr.Zero)
+                    {
+                        processInfo.WindowHandle = childHandle;
+                        return childHandle;
+                    }
+                }
+                catch { }
+            }
+
+            if (processInfo.WindowHandle != IntPtr.Zero)
+            {
+                return processInfo.WindowHandle;
+            }
+
+            if (processInfo.Process != null && !processInfo.Process.HasExited)
+            {
+                IntPtr handle = processInfo.Process.MainWindowHandle;
+                if (handle == IntPtr.Zero)
+                {
+                    handle = FindWindowByProcessId(processInfo.Process.Id);
+                }
+
+                if (handle != IntPtr.Zero)
+                {
+                    processInfo.WindowHandle = handle;
+                }
+
+                return handle;
+            }
+
+            return IntPtr.Zero;
+        }
+
+        private void UpdateOverlayWindowsForSelection()
+        {
+            if (WindowState == WindowState.Minimized)
+            {
+                HideAllOverlayWindows();
+                return;
+            }
+
+            foreach (var kvp in _tabProcesses)
+            {
+                ProcessInfo processInfo = kvp.Value;
+                if (!processInfo.IsOverlayWindow || processInfo.Process == null || processInfo.Process.HasExited)
+                {
+                    continue;
+                }
+
+                if (kvp.Key == tabControl.SelectedItem)
+                {
+                    if (processInfo.WindowHandle != IntPtr.Zero)
+                    {
+                        ShowWindow(processInfo.WindowHandle, SW_SHOW);
+                        UpdateOverlayWindowPosition(processInfo);
+                    }
+                }
+                else
+                {
+                    if (processInfo.WindowHandle != IntPtr.Zero)
+                    {
+                        ShowWindow(processInfo.WindowHandle, SW_HIDE);
+                    }
+                }
+            }
+        }
+
+        private void HideAllOverlayWindows()
+        {
+            foreach (var kvp in _tabProcesses)
+            {
+                ProcessInfo processInfo = kvp.Value;
+                if (processInfo.IsOverlayWindow && processInfo.WindowHandle != IntPtr.Zero)
+                {
+                    ShowWindow(processInfo.WindowHandle, SW_HIDE);
+                }
+            }
+        }
+
+        private void UpdateOverlayWindowPosition(ProcessInfo processInfo)
+        {
+            if (processInfo == null || !processInfo.IsOverlayWindow || processInfo.WindowHandle == IntPtr.Zero)
+            {
+                return;
+            }
+
+            int x;
+            int y;
+            int width;
+            int height;
+            if (!TryGetOverlayRect(processInfo, out x, out y, out width, out height))
+            {
+                return;
+            }
+
+            try
+            {
+                MoveWindow(processInfo.WindowHandle, x, y, width, height, true);
+            }
+            catch { }
+        }
+
+        private bool TryGetOverlayRect(ProcessInfo processInfo, out int x, out int y, out int width, out int height)
+        {
+            x = 0;
+            y = 0;
+            width = 0;
+            height = 0;
+
+            if (processInfo == null)
+            {
+                return false;
+            }
+
+            if (processInfo.Host != null && processInfo.Host.IsLoaded)
+            {
+                try
+                {
+                    System.Windows.Point topLeft = processInfo.Host.PointToScreen(new System.Windows.Point(0, 0));
+                    var dpi = VisualTreeHelper.GetDpi(processInfo.Host);
+                    int w = (int)Math.Round(processInfo.Host.ActualWidth * dpi.DpiScaleX);
+                    int h = (int)Math.Round(processInfo.Host.ActualHeight * dpi.DpiScaleY);
+
+                    if (w > 0 && h > 0)
+                    {
+                        x = (int)Math.Round(topLeft.X);
+                        y = (int)Math.Round(topLeft.Y);
+                        width = w;
+                        height = h;
+                        return true;
+                    }
+                }
+                catch { }
+            }
+
+            if (processInfo.Panel != null)
+            {
+                try
+                {
+                    int w = processInfo.Panel.Width;
+                    int h = processInfo.Panel.Height;
+                    if (w > 0 && h > 0)
+                    {
+                        System.Drawing.Point screenPoint = processInfo.Panel.PointToScreen(new System.Drawing.Point(0, 0));
+                        x = screenPoint.X;
+                        y = screenPoint.Y;
+                        width = w;
+                        height = h;
+                        return true;
+                    }
+                }
+                catch { }
+            }
+
+            return false;
         }
 
         // Forward keyboard events to embedded windows
@@ -2137,6 +2499,31 @@ namespace MultiBoardViewer
             ForwardKeyboardEvent(e, WM_KEYUP, WM_SYSKEYUP);
         }
 
+        private void MainWindow_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.Text))
+            {
+                return;
+            }
+
+            if (tabControl.SelectedItem is TabItem selectedTab &&
+                _tabProcesses.TryGetValue(selectedTab, out ProcessInfo processInfo))
+            {
+                IntPtr windowHandle = GetEmbeddedWindowHandle(processInfo);
+                if (windowHandle == IntPtr.Zero)
+                {
+                    return;
+                }
+
+                foreach (char ch in e.Text)
+                {
+                    SendMessage(windowHandle, WM_CHAR, new IntPtr(ch), IntPtr.Zero);
+                }
+
+                e.Handled = true;
+            }
+        }
+
         private void ForwardKeyboardEvent(KeyEventArgs e, uint normalMsg, uint sysMsg)
         {
             // Only forward if we have an active embedded window
@@ -2145,28 +2532,15 @@ namespace MultiBoardViewer
                 ProcessInfo processInfo = _tabProcesses[selectedTab];
                 if (processInfo.Process != null && !processInfo.Process.HasExited)
                 {
-                    IntPtr windowHandle = IntPtr.Zero;
-
-                    // Get the appropriate window handle
-                    if (processInfo.AppType == "SumatraPDF")
-                    {
-                        // For SumatraPDF plugin mode, get child window
-                        windowHandle = GetWindow(processInfo.Panel.Handle, GW_CHILD);
-                        if (windowHandle == IntPtr.Zero)
-                        {
-                            windowHandle = processInfo.WindowHandle;
-                        }
-                    }
-                    else
-                    {
-                        // For other apps, use stored handle
-                        windowHandle = processInfo.WindowHandle != IntPtr.Zero
-                            ? processInfo.WindowHandle
-                            : processInfo.Process.MainWindowHandle;
-                    }
+                    IntPtr windowHandle = GetEmbeddedWindowHandle(processInfo);
 
                     if (windowHandle != IntPtr.Zero)
                     {
+                        if (normalMsg == WM_KEYDOWN)
+                        {
+                            FocusEmbeddedWindow(processInfo);
+                        }
+
                         // Convert WPF key to virtual key code
                         int virtualKey = KeyInterop.VirtualKeyFromKey(e.Key);
                         
@@ -2246,6 +2620,12 @@ namespace MultiBoardViewer
                 ProcessInfo processInfo = _tabProcesses[selectedTab];
                 if (processInfo.Process != null && !processInfo.Process.HasExited)
                 {
+                    if (processInfo.IsOverlayWindow)
+                    {
+                        UpdateOverlayWindowPosition(processInfo);
+                        return;
+                    }
+
                     IntPtr handle = IntPtr.Zero;
 
                     // For SumatraPDF in plugin mode, find child window of panel
