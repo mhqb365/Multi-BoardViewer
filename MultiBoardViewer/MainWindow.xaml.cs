@@ -539,7 +539,10 @@ namespace MultiBoardViewer
                 }
                 else
                 {
-                    OpenBoardFileInTab(newTab, firstFile);
+                    if (!TrySwitchToExistingTab(firstFile, "BoardViewer"))
+                    {
+                        OpenBoardViewerInTab(newTab, firstFile);
+                    }
                 }
 
                 // Open remaining files in new tabs
@@ -552,7 +555,41 @@ namespace MultiBoardViewer
                     }
                     else
                     {
-                        OpenBoardFileWithFile(file);
+                        OpenBoardViewerWithFile(file);
+                    }
+                }
+            };
+
+            startPage.FileOpenWithViewerRequested += (s, e) =>
+            {
+                if (e == null || string.IsNullOrWhiteSpace(e.FilePath)) return;
+
+                if (e.FilePath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+                {
+                    OpenPdfInTab(newTab, e.FilePath);
+                    return;
+                }
+
+                string viewerType = e.ViewerType ?? "BoardViewer";
+                if (string.Equals(viewerType, "OpenBoardView", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!TrySwitchToExistingTab(e.FilePath, "OpenBoardView"))
+                    {
+                        OpenOpenBoardViewInTab(newTab, e.FilePath);
+                    }
+                }
+                else if (string.Equals(viewerType, "FlexBoardView", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!TrySwitchToExistingTab(e.FilePath, "FlexBoardView"))
+                    {
+                        OpenFlexBoardViewInTab(newTab, e.FilePath);
+                    }
+                }
+                else
+                {
+                    if (!TrySwitchToExistingTab(e.FilePath, "BoardViewer"))
+                    {
+                        OpenBoardViewerInTab(newTab, e.FilePath);
                     }
                 }
             };
@@ -923,33 +960,10 @@ namespace MultiBoardViewer
 
         private void OpenBoardFileInTab(TabItem tab, string filePath)
         {
-            var dialog = new ViewerSelectionDialog(Path.GetFileName(filePath));
-            dialog.Owner = this;
-            bool? result = dialog.ShowDialog();
-
-            if (result == true)
+            if (!TrySwitchToExistingTab(filePath, "BoardViewer"))
             {
-                string viewerType = null;
-                if (dialog.Result == ViewerSelectionDialog.ViewerResult.BoardViewer) viewerType = "BoardViewer";
-                else if (dialog.Result == ViewerSelectionDialog.ViewerResult.OpenBoardView) viewerType = "OpenBoardView";
-                else if (dialog.Result == ViewerSelectionDialog.ViewerResult.FlexBoardView) viewerType = "FlexBoardView";
-
-                if (viewerType != null && TrySwitchToExistingTab(filePath, viewerType))
-                    return;
-                if (dialog.Result == ViewerSelectionDialog.ViewerResult.BoardViewer)
-                {
-                    OpenBoardViewerInTab(tab, filePath);
-                }
-                else if (dialog.Result == ViewerSelectionDialog.ViewerResult.OpenBoardView)
-                {
-                    OpenOpenBoardViewInTab(tab, filePath);
-                }
-                else if (dialog.Result == ViewerSelectionDialog.ViewerResult.FlexBoardView)
-                {
-                    OpenFlexBoardViewInTab(tab, filePath);
-                }
+                OpenBoardViewerInTab(tab, filePath);
             }
-            // Cancel does nothing
         }
 
         private void OpenBoardViewerWithFile(string filePath)
@@ -1033,29 +1047,7 @@ namespace MultiBoardViewer
 
         private void OpenBoardFileWithFile(string filePath)
         {
-            // Check if file is already open
-            // Do NOT check here globally as we want to allow opening same file with different viewer
-            // Logic is handled in OpenBoardFileInTab after user selects viewer
-            // if (TrySwitchToExistingTab(filePath))
-            //    return;
-
-            // Create new tab
-            TabItem newTab = new TabItem
-            {
-                Header = Path.GetFileName(filePath)
-            };
-
-            // Insert tab before the "+" button
-            int insertIndex = tabControl.Items.Count;
-            if (_addTabButton != null && tabControl.Items.Contains(_addTabButton))
-            {
-                insertIndex = tabControl.Items.IndexOf(_addTabButton);
-            }
-            tabControl.Items.Insert(insertIndex, newTab);
-            tabControl.SelectedItem = newTab;
-
-            // Open with choice
-            OpenBoardFileInTab(newTab, filePath);
+            OpenBoardViewerWithFile(filePath);
         }
 
         private void OpenOpenBoardViewWithFile(string filePath)

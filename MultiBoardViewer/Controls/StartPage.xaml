@@ -84,20 +84,18 @@
                     <Border x:Name="AboutContent" Background="#F5F5F5" BorderBrush="#C8C8C8" BorderThickness="1" 
                             CornerRadius="5" Padding="15" Margin="0,10,0,0" Visibility="Collapsed">
                         <StackPanel>
-                            <TextBlock Text="Multi BoardViewer" FontSize="16" FontWeight="Bold" Foreground="#0064B4" Margin="0,0,0,8"/>
-                            <TextBlock Text="Version 1.1.0" FontSize="12" Foreground="#646464" Margin="0,0,0,10"/>
-                            <TextBlock Text="A versatile viewer for boardviews and schematics" FontSize="12" Foreground="#3C3C3C" TextWrapping="Wrap" Margin="0,0,0,10"/>
-                            
-                            <TextBlock FontSize="11" Foreground="#646464" Margin="0,0,0,3">
+                            <TextBlock Text="Multi BoardViewer" FontSize="16" FontWeight="Bold" Foreground="#0064B4" Margin="0,0,0,5"/>
+                            <TextBlock Text="A versatile viewer for boardviews and schematics" FontSize="12" Foreground="#3C3C3C" TextWrapping="Wrap" Margin="0,0,0,5"/>
+                            <TextBlock Text="Version 1.1.1" FontSize="12" Foreground="#646464" Margin="0,0,0,5"/>
+                            <TextBlock FontSize="11" Foreground="#646464" Margin="0,0,0,5">
                                 <Run Text="Created by "/>
-                                <Hyperlink NavigateUri="https://mhqb365.com" RequestNavigate="Hyperlink_RequestNavigate">
+                                <Hyperlink NavigateUri="https://mhqb365.com" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="None">
                                     mhqb365.com
                                 </Hyperlink>
                             </TextBlock>
-                            
-                            <TextBlock FontSize="11" Foreground="#646464">
+                            <TextBlock FontSize="11" Foreground="#646464" Margin="0,0,0,5">
                                 <Run Text="Open source "/>
-                                <Hyperlink NavigateUri="https://github.com/mhqb365/Multi-BoardViewer" RequestNavigate="Hyperlink_RequestNavigate">
+                                <Hyperlink NavigateUri="https://github.com/mhqb365/Multi-BoardViewer" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="None">
                                     github.com/mhqb365/Multi-BoardViewer
                                 </Hyperlink>
                             </TextBlock>

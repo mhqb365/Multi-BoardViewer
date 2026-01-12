@@ -23,6 +23,7 @@ namespace MultiBoardViewer.Controls
 
         // Event to notify parent window to open files
         public event EventHandler<string[]> FilesOpenRequested;
+        public event EventHandler<FileOpenWithViewerEventArgs> FileOpenWithViewerRequested;
 
         public StartPage()
         {
@@ -77,6 +78,7 @@ namespace MultiBoardViewer.Controls
             try
             {
                 string fileName = Path.GetFileName(filePath);
+                bool isPdf = filePath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase);
 
                 Button fileButton = new Button
                 {
@@ -117,32 +119,56 @@ namespace MultiBoardViewer.Controls
                 // Click handler
                 fileButton.Click += (s, ev) =>
                 {
-                    if (File.Exists(filePath))
-                    {
-                        FilesOpenRequested?.Invoke(this, new string[] { filePath });
-                    }
-                    else
-                    {
-                        MessageBox.Show($"File not found:\n{filePath}", "File Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        _recentFilesService.RemoveFile(filePath);
-                    }
+                    RequestOpenFile(filePath);
                 };
 
-                // Context Menu
-                ContextMenu contextMenu = new ContextMenu();
-                // Add specific open options if needed, for now just general open
-                // In a real refactor, we might want to expose "OpenWith" intentions too.
-                // Keeping it simple for now: Right click allows specific viewers which we can pass as encoded strings or handle differently.
-                // For now, let's just Stick to the main event. If user needs right-click "Open with X", we need to pipe that through.
-                
-                // Let's implement full context menu support later or just stick to standard open for now. 
-                // The original code had specific "Open with BoardViewer" etc.
-                // For this refactor, let's keep it simple.
-                // If we want to support "Open With", we can use a custom event args.
+                if (!isPdf)
+                {
+                    ContextMenu contextMenu = new ContextMenu();
+
+                    MenuItem openBoardViewerItem = new MenuItem { Header = "Open with BoardViewer" };
+                    openBoardViewerItem.Click += (s, ev) => RequestOpenWithViewer(filePath, "BoardViewer");
+
+                    MenuItem openOpenBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
+                    openOpenBoardViewItem.Click += (s, ev) => RequestOpenWithViewer(filePath, "OpenBoardView");
+
+                    MenuItem openFlexBoardViewItem = new MenuItem { Header = "Open with FlexBoardView" };
+                    openFlexBoardViewItem.Click += (s, ev) => RequestOpenWithViewer(filePath, "FlexBoardView");
+
+                    contextMenu.Items.Add(openBoardViewerItem);
+                    contextMenu.Items.Add(openOpenBoardViewItem);
+                    contextMenu.Items.Add(openFlexBoardViewItem);
+
+                    fileButton.ContextMenu = contextMenu;
+                }
 
                 container.Children.Add(fileButton);
             }
             catch { }
+        }
+
+        private void RequestOpenFile(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                FilesOpenRequested?.Invoke(this, new string[] { filePath });
+                return;
+            }
+
+            MessageBox.Show($"File not found:\n{filePath}", "File Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
+            _recentFilesService.RemoveFile(filePath);
+        }
+
+        private void RequestOpenWithViewer(string filePath, string viewerType)
+        {
+            if (File.Exists(filePath))
+            {
+                FileOpenWithViewerRequested?.Invoke(this, new FileOpenWithViewerEventArgs(filePath, viewerType));
+                return;
+            }
+
+            MessageBox.Show($"File not found:\n{filePath}", "File Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
+            _recentFilesService.RemoveFile(filePath);
         }
 
         // --- Search Logic ---
@@ -348,5 +374,17 @@ namespace MultiBoardViewer.Controls
         {
             e.Handled = true;
         }
+    }
+
+    public class FileOpenWithViewerEventArgs : EventArgs
+    {
+        public FileOpenWithViewerEventArgs(string filePath, string viewerType)
+        {
+            FilePath = filePath;
+            ViewerType = viewerType;
+        }
+
+        public string FilePath { get; }
+        public string ViewerType { get; }
     }
 }
