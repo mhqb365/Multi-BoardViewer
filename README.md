@@ -103,3 +103,9 @@ Multi-BoardViewer/
 ## 📄 License
 
 MIT License
+
+## Issue
+
+FlexBoardView.exe và OpenBoardView chỉ là binary bên ngoài (không có source), và cả hai dùng SDL + OpenGL/EGL/GLES. Nếu OpenGL context tạo chậm/lỗi hoặc rơi xuống software renderer thì rất dễ bị lag/white screen. Ngược lại BoardViewer là .NET + SharpDX (DirectX), nhìn rõ ở SharpDX.Direct3D11.dll và BoardViewer.exe.config, nên thường mượt hơn.
+
+Ngoài ra, khi mở từ app MultiBoardViewer, hai viewer này được embed dạng overlay window (MoveWindow/SetWindowLong, liên tục resize) trong MainWindow.xaml.cs. SDL/OpenGL rất nhạy với kiểu nhúng này nên có thể lag/đơ trắng, còn BoardViewer thì embed dạng child window nên ổn hơn
