@@ -6,6 +6,7 @@
 
 ![Multi BoardViewer](./Photos/1.png)
 ![Multi BoardViewer](./Photos/2.png)
+![Multi BoardViewer](./Photos/3.png)
 
 ## 🙏 Lời cảm ơn
 
@@ -57,8 +58,8 @@ cd Multi-BoardViewer
 ### Mở file
 
 - **Tab mới**: Click nút **+** để tạo tab mới → Kéo thả file vào phần cửa sổ bên phải của ứng dụng hoặc click nút **+ Open file** và dẫn đến file cần mở
-- **Search files**: Chọn thư mục hoặc ổ đĩa chứa các file tài liệu ở icon thư mục → Nhập tên file vào ô tìm kiếm → Click file và chọn viewer phù hợp để mở. Nếu mở không thành công thì đóng tab rồi mở lại với viewer khác
-- **Recent files**: Danh sách các file đã mở gần đây, cũng click file để mở
+- **Search files**: Chọn thư mục hoặc ổ đĩa chứa các file tài liệu ở icon thư mục → Nhập tên file vào ô tìm kiếm → Click file để mở bằng BoardViewer, hoặc click chuột phải để mở bằng viewer khác. Nếu không mở được thì đóng tab rồi mở lại với viewer khác
+- **Recent files**: Danh sách các file đã mở gần đây
 
 ### Định dạng file hỗ trợ
 
@@ -100,12 +101,6 @@ Multi-BoardViewer/
 └── Run.bat                    # Script chạy ứng dụng nhanh
 ```
 
-## 📄 License
+## ⚠️ Issue
 
-MIT License
-
-## Issue
-
-FlexBoardView.exe và OpenBoardView chỉ là binary bên ngoài (không có source), và cả hai dùng SDL + OpenGL/EGL/GLES. Nếu OpenGL context tạo chậm/lỗi hoặc rơi xuống software renderer thì rất dễ bị lag/white screen. Ngược lại BoardViewer là .NET + SharpDX (DirectX), nhìn rõ ở SharpDX.Direct3D11.dll và BoardViewer.exe.config, nên thường mượt hơn.
-
-Ngoài ra, khi mở từ app MultiBoardViewer, hai viewer này được embed dạng overlay window (MoveWindow/SetWindowLong, liên tục resize) trong MainWindow.xaml.cs. SDL/OpenGL rất nhạy với kiểu nhúng này nên có thể lag/đơ trắng, còn BoardViewer thì embed dạng child window nên ổn hơn
+OpenBoardView và FlexBoardView, cả hai dùng SDL + OpenGL/EGL/GLES và được embed dạng overlay window (MoveWindow/SetWindowLong, liên tục resize), nếu OpenGL context tạo chậm/lỗi hoặc rơi xuống software renderer thì rất dễ bị lag/white screen. Ngược lại BoardViewer là .NET + SharpDX (DirectX) nên sẽ mượt hơn
