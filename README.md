@@ -8,7 +8,7 @@
 ![Multi BoardViewer](./Photos/2.png)
 ![Multi BoardViewer](./Photos/3.png)
 
-## 🙏 Lời cảm ơn
+## Lời cảm ơn
 
 Xin chân thành cảm ơn:
 - **[BoardViewer.net](https://www.boardviewer.net/)** - phần mềm xem boardview miễn phí
@@ -18,7 +18,7 @@ Xin chân thành cảm ơn:
 
 Dự án này sử dụng sản phẩm của họ để tạo nên trải nghiệm xem file đa năng trong một ứng dụng duy nhất
 
-## ✨ Tính năng
+## Tính năng
 
 - **Multi tab**: Mở nhiều file cùng lúc
 - **Multi viewer**: Xem file boardview với 3 lựa chọn viewer
@@ -26,12 +26,12 @@ Dự án này sử dụng sản phẩm của họ để tạo nên trải nghi�
 - **Search files**: Tìm kiếm file trong thư mục hoặc ổ đĩa chỉ định
 - **Voltage Divider Calculator**: Tính toán điện áp qua cầu phân áp
 
-## 📋 Yêu cầu hệ thống
+## Yêu cầu hệ thống
 
 - Windows 10/11
 - [.NET 8.0 Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-## 🚀 Cài đặt và chạy
+## Cài đặt và chạy
 
 ### Cách 1: Tải bản Release
 
@@ -52,7 +52,7 @@ cd Multi-BoardViewer
 .\Run.bat
 ```
 
-## 📖 Hướng dẫn sử dụng
+## Hướng dẫn sử dụng
 
 ### Mở file
 
@@ -71,7 +71,7 @@ cd Multi-BoardViewer
 
 ---
 
-## 🛠️ Development
+## Development
 
 ### Công nghệ
 
@@ -100,6 +100,12 @@ Multi-BoardViewer/
 └── Run.bat                    # Script chạy ứng dụng nhanh
 ```
 
-## ⚠️ Issue
+## Issue
 
-OpenBoardView và FlexBoardView, cả hai dùng SDL + OpenGL/EGL/GLES và được embed dạng overlay window (MoveWindow/SetWindowLong, liên tục resize), nếu OpenGL context tạo chậm/lỗi hoặc rơi xuống software renderer thì rất dễ bị lag/white screen. Ngược lại BoardViewer là .NET + SharpDX (DirectX) nên sẽ mượt hơn
+1. OpenBoardView và FlexBoardView dùng công nghệ khác với BoardViewer nên khi dùng multi tab thì BoardViewer mượt hơn OpenBoardView và FlexBoardView
+
+2. Không mở được nhiều tab BoardViewer
+
+- Trong giao diện BoardViewer > Options > Bỏ tick chọn Use Only One Instance of Program > OK
+
+![Fix Multi Tab BoardViewer](./Photos/Fix-Multi-Tab-BoardViewer.png)
