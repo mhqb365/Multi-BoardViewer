@@ -295,15 +295,13 @@ namespace MultiBoardViewer.Controls
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            if (AboutContent.Visibility == Visibility.Collapsed)
+            try
             {
-                AboutContent.Visibility = Visibility.Visible;
-                AboutButton.Content = "ℹ️ About ▼";
+                Process.Start(new ProcessStartInfo("https://github.com/mhqb365/Multi-BoardViewer") { UseShellExecute = true });
             }
-            else
+            catch (Exception ex)
             {
-                AboutContent.Visibility = Visibility.Collapsed;
-                AboutButton.Content = "ℹ️ About";
+                MessageBox.Show($"Could not open the link: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

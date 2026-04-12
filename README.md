@@ -15,7 +15,6 @@ Xin chân thành cảm ơn:
 - **[OpenBoardView](https://github.com/OpenBoardView)** - phần mềm xem boardview mã nguồn mở
 - **[FlexBoardView](https://pldaniels.com/flexbv5/)** - thêm một phần mềm xem boardview nữa
 - **[SumatraPDF](https://github.com/sumatrapdfreader)** - phần mềm đọc PDF mã nguồn mở
-- **[ChinaFix - Voltage Divider Calculator](https://www.xinxunwei.com/)** - phần mềm tính toán điện áp qua cầu phân áp
 
 Dự án này sử dụng sản phẩm của họ để tạo nên trải nghiệm xem file đa năng trong một ứng dụng duy nhất
 
