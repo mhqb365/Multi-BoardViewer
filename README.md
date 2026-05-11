@@ -4,9 +4,9 @@
 
 ![Multi BoardViewer](https://img.shields.io/badge/.NET-8.0-blue) ![Platform](https://img.shields.io/badge/Platform-Windows-brightgreen) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-![Multi BoardViewer](./Photos/1.png)
-![Multi BoardViewer](./Photos/2.png)
-![Multi BoardViewer](./Photos/3.png)
+| ![Multi BoardViewer 1](./Photos/1.png) | ![Multi BoardViewer 2](./Photos/2.png) |
+| :---: | :---: |
+| ![Multi BoardViewer 3](./Photos/3.png) | ![Multi BoardViewer 4](./Photos/4.png) |
 
 ## Lời cảm ơn
 
