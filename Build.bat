@@ -31,13 +31,13 @@ if %ERRORLEVEL% EQU 0 (
     echo File exe: MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe
     echo.
     
-    REM Copy BoardViewer folder
-    echo Dang copy BoardViewer...
-    if exist "BoardViewer" (
-        xcopy /E /I /Y "BoardViewer" "MultiBoardViewer\bin\Release\net8.0-windows\BoardViewer"
-        echo Da copy BoardViewer thanh cong!
+    REM Copy NexusBV folder
+    echo Dang copy NexusBV...
+    if exist "NexusBV" (
+        xcopy /E /I /Y "NexusBV" "MultiBoardViewer\bin\Release\net8.0-windows\NexusBV"
+        echo Da copy NexusBV thanh cong!
     ) else (
-        echo WARNING: Khong tim thay folder BoardViewer!
+        echo WARNING: Khong tim thay folder NexusBV!
     )
     echo.
     
@@ -71,15 +71,6 @@ if %ERRORLEVEL% EQU 0 (
     )
     echo.
     
-    REM Copy FlexBoardView folder
-    echo Dang copy FlexBoardView...
-    if exist "FlexBoardView" (
-        xcopy /E /I /Y "FlexBoardView" "MultiBoardViewer\bin\Release\net8.0-windows\FlexBoardView"
-        echo Da copy FlexBoardView thanh cong!
-    ) else (
-        echo WARNING: Khong tim thay folder FlexBoardView!
-    )
-    echo.
     
     REM Mở thư mục output
     if exist "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" (
