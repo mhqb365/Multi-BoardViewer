@@ -65,7 +65,23 @@
                 <Grid Grid.Row="1" VerticalAlignment="Top">
                     <!-- Recent Files -->
                     <StackPanel x:Name="RecentFilesPanel">
-                        <TextBlock Text="📋 Recent files" FontSize="16" FontWeight="SemiBold" Foreground="#323232" Margin="0,0,0,10"/>
+                        <Grid Margin="0,0,0,10">
+                            <TextBlock Text="📋 Recent files" FontSize="16" FontWeight="SemiBold" Foreground="#323232"/>
+                            <Button x:Name="ClearRecentButton" Content="Clear" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                    FontSize="11" Padding="8,2,8,2" Background="Transparent" BorderBrush="#DCDCDC" Foreground="#646464"
+                                    Click="ClearRecentButton_Click">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#FF5050"/>
+                                                <Setter Property="BorderBrush" Value="#FF5050"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
                         <StackPanel x:Name="RecentFilesList"/>
                     </StackPanel>
 

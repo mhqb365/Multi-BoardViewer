@@ -55,6 +55,7 @@ namespace MultiBoardViewer.Controls
 
             if (files.Count == 0)
             {
+                ClearRecentButton.Visibility = Visibility.Collapsed;
                 TextBlock noRecent = new TextBlock
                 {
                     Text = "No recent files",
@@ -66,10 +67,20 @@ namespace MultiBoardViewer.Controls
             }
             else
             {
+                ClearRecentButton.Visibility = Visibility.Visible;
                 foreach (string file in files)
                 {
                     AddFileButton(file, RecentFilesList);
                 }
+            }
+        }
+
+        private void ClearRecentButton_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to clear the recent files list?", "Clear Recent Files", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                _recentFilesService.Clear();
             }
         }
 

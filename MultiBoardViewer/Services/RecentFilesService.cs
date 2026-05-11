@@ -51,6 +51,13 @@ namespace MultiBoardViewer.Services
             RecentFilesChanged?.Invoke(this, EventArgs.Empty);
         }
 
+        public void Clear()
+        {
+            _recentFiles.Clear();
+            SaveRecentFiles();
+            RecentFilesChanged?.Invoke(this, EventArgs.Empty);
+        }
+
         private void LoadRecentFiles()
         {
             try
