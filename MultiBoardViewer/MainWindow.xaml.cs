@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -250,6 +251,10 @@ namespace MultiBoardViewer
         {
             InitializeComponent();
 
+            // Set window title with version
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            this.Title = $"Multi BoardViewer v{version.ToString(3)}";
+
             // Add drag and drop event handlers for tab reordering
             tabControl.PreviewMouseLeftButtonDown += TabControl_PreviewMouseLeftButtonDown;
             tabControl.PreviewMouseMove += TabControl_PreviewMouseMove;
@@ -307,6 +312,20 @@ namespace MultiBoardViewer
                 // Create initial empty tab on startup
                 CreateEmptyTab();
             }
+
+            // Check for updates on startup
+            CheckForUpdates(false);
+        }
+
+        private async void CheckForUpdates(bool showUpToDateMessage)
+        {
+            UpdateService updateService = new UpdateService();
+            await updateService.CheckForUpdatesAsync(showUpToDateMessage);
+        }
+
+        private void CheckForUpdates_Click(object sender, RoutedEventArgs e)
+        {
+            CheckForUpdates(true);
         }
 
         private void OnFilesReceivedFromAnotherInstance(string[] files)
