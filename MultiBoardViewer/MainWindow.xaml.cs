@@ -153,9 +153,9 @@ namespace MultiBoardViewer
         private Dictionary<TabItem, ProcessInfo> _tabProcesses = new Dictionary<TabItem, ProcessInfo>();
         private int _tabCounter = 1;
         private int _sumatraTabCounter = 1;
-        private string _boardViewerPath = "";
+        private string _nexusBvPath = "";
         private string _openBoardViewPath = "";
-        private string _flexBoardViewPath = "";
+
         private string _sumatraPdfPath = "";
         private DispatcherTimer _resizeTimer;
         private bool _dropHandled = false; // Flag to prevent double drop handling
@@ -176,7 +176,7 @@ namespace MultiBoardViewer
             public WindowsFormsHost Host { get; set; }
             public System.Windows.Forms.Panel Panel { get; set; }
             public string TempDirectory { get; set; }
-            public string AppType { get; set; } // "BoardViewer" or "SumatraPDF"
+            public string AppType { get; set; } // "NexusBV" or "SumatraPDF"
             public IntPtr WindowHandle { get; set; } // Store window handle for resize
             public string FilePath { get; set; } // Store the file path being viewed
             public bool IsOverlayWindow { get; set; }
@@ -279,14 +279,13 @@ namespace MultiBoardViewer
             // Also handle layout updates for more responsive resizing
             this.LayoutUpdated += MainWindow_LayoutUpdated;
 
-            // Try to find BoardViewer.exe in the same directory or parent directory
-            AutoDetectBoardViewerPath();
+            // Try to find NexusBV.exe in the same directory or parent directory
+            AutoDetectNexusBvPath();
 
             // Try to find OpenBoardView.exe
             AutoDetectOpenBoardViewPath();
 
-            // Try to find FlexBoardView.exe
-            AutoDetectFlexBoardViewPath();
+
 
             // Try to find SumatraPDF.exe in app folder
             AutoDetectSumatraPdfPath();
@@ -339,7 +338,7 @@ namespace MultiBoardViewer
                 }
                 else
                 {
-                    OpenBoardViewerWithFile(file);
+                    OpenNexusBvWithFile(file);
                 }
             }
         }
@@ -362,7 +361,7 @@ namespace MultiBoardViewer
                 }
                 else
                 {
-                    OpenBoardViewerWithFile(file);
+                    OpenNexusBvWithFile(file);
                 }
             }
 
@@ -539,9 +538,9 @@ namespace MultiBoardViewer
                 }
                 else
                 {
-                    if (!TrySwitchToExistingTab(firstFile, "BoardViewer"))
+                    if (!TrySwitchToExistingTab(firstFile, "NexusBV"))
                     {
-                        OpenBoardViewerInTab(newTab, firstFile);
+                        OpenNexusBvInTab(newTab, firstFile);
                     }
                 }
 
@@ -555,7 +554,7 @@ namespace MultiBoardViewer
                     }
                     else
                     {
-                        OpenBoardViewerWithFile(file);
+                        OpenNexusBvWithFile(file);
                     }
                 }
             };
@@ -570,7 +569,7 @@ namespace MultiBoardViewer
                     return;
                 }
 
-                string viewerType = e.ViewerType ?? "BoardViewer";
+                string viewerType = e.ViewerType ?? "NexusBV";
                 if (string.Equals(viewerType, "OpenBoardView", StringComparison.OrdinalIgnoreCase))
                 {
                     if (!TrySwitchToExistingTab(e.FilePath, "OpenBoardView"))
@@ -578,18 +577,12 @@ namespace MultiBoardViewer
                         OpenOpenBoardViewInTab(newTab, e.FilePath);
                     }
                 }
-                else if (string.Equals(viewerType, "FlexBoardView", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (!TrySwitchToExistingTab(e.FilePath, "FlexBoardView"))
-                    {
-                        OpenFlexBoardViewInTab(newTab, e.FilePath);
-                    }
-                }
+
                 else
                 {
-                    if (!TrySwitchToExistingTab(e.FilePath, "BoardViewer"))
+                    if (!TrySwitchToExistingTab(e.FilePath, "NexusBV"))
                     {
-                        OpenBoardViewerInTab(newTab, e.FilePath);
+                        OpenNexusBvInTab(newTab, e.FilePath);
                     }
                 }
             };
@@ -692,8 +685,8 @@ namespace MultiBoardViewer
                     }
                     else
                     {
-                        // Other files -> Open with BoardViewer
-                        OpenBoardViewerWithFile(file);
+                        // Other files -> Open with NexusBV
+                        OpenNexusBvWithFile(file);
                     }
                 }
             }
@@ -769,13 +762,13 @@ namespace MultiBoardViewer
             }
         }
 
-        // Open BoardViewer file in existing tab (replace content)
-        private void OpenBoardViewerInTab(TabItem tab, string filePath)
+        // Open NexusBV file in existing tab (replace content)
+        private void OpenNexusBvInTab(TabItem tab, string filePath)
         {
-            if (string.IsNullOrEmpty(_boardViewerPath) || !File.Exists(_boardViewerPath))
+            if (string.IsNullOrEmpty(_nexusBvPath) || !File.Exists(_nexusBvPath))
             {
-                MessageBox.Show("BoardViewer.exe not found!\n\nPlease place BoardViewer.exe in the same folder as this application.",
-                    "BoardViewer Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("NexusBV.exe not found!\n\nPlease place NexusBV.exe in the NexusBV folder.",
+                    "NexusBV Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -795,11 +788,11 @@ namespace MultiBoardViewer
                 host.Child = panel;
                 tab.Content = host;
 
-                // Start BoardViewer process with the file
+                // Start NexusBV process with the file
                 Process process = new Process();
-                process.StartInfo.FileName = _boardViewerPath;
+                process.StartInfo.FileName = _nexusBvPath;
                 process.StartInfo.Arguments = $"\"{filePath}\"";
-                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(_boardViewerPath);
+                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(_nexusBvPath);
                 process.EnableRaisingEvents = true;
                 process.Exited += (s, ev) => Process_Exited(tab);
 
@@ -812,7 +805,7 @@ namespace MultiBoardViewer
                     Host = host,
                     Panel = panel,
                     TempDirectory = null,
-                    AppType = "BoardViewer",
+                    AppType = "NexusBV",
                     WindowHandle = IntPtr.Zero,
                     FilePath = filePath
                 };
@@ -826,7 +819,7 @@ namespace MultiBoardViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error opening file with BoardViewer: {ex.Message}",
+                MessageBox.Show($"Error opening file with NexusBV: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -894,88 +887,26 @@ namespace MultiBoardViewer
         }
 
         // Open FlexBoardView file in existing tab (replace content)
-        private void OpenFlexBoardViewInTab(TabItem tab, string filePath)
-        {
-            if (string.IsNullOrEmpty(_flexBoardViewPath) || !File.Exists(_flexBoardViewPath))
-            {
-                MessageBox.Show("FlexBoardView.exe not found!\n\nPlease place FlexBoardView.exe in the same folder as this application.",
-                    "FlexBoardView Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
 
-            try
-            {
-                // Update tab header
-                tab.Header = Path.GetFileName(filePath);
-
-                // Create a WindowsFormsHost to embed the external process
-                WindowsFormsHost host = new WindowsFormsHost();
-                host.Focusable = true;
-
-                System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
-                {
-                    Dock = System.Windows.Forms.DockStyle.Fill
-                };
-                host.Child = panel;
-                tab.Content = host;
-
-                // Clean FlexBoardView logs folder before starting to prevent crash dialogs
-                CleanFlexBoardViewLogs();
-
-                // Start FlexBoardView process with the file
-                Process process = new Process();
-                process.StartInfo.FileName = _flexBoardViewPath;
-                process.StartInfo.Arguments = $"\"{filePath}\"";
-                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(_flexBoardViewPath);
-                process.EnableRaisingEvents = true;
-                process.Exited += (s, ev) => Process_Exited(tab);
-
-                process.Start();
-
-                // Store process info
-                _tabProcesses[tab] = new ProcessInfo
-                {
-                    Process = process,
-                    Host = host,
-                    Panel = panel,
-                    TempDirectory = null,
-                    AppType = "FlexBoardView",
-                    WindowHandle = IntPtr.Zero,
-                    FilePath = filePath
-                };
-
-                // Add to recent files
-                AddToRecentFiles(filePath);
-
-                // Embed as overlay to keep keyboard input working
-                _ = EmbedProcessAsOverlay(process, panel, _tabProcesses[tab]);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error opening file with FlexBoardView: {ex.Message}",
-                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
 
         private void OpenBoardFileInTab(TabItem tab, string filePath)
         {
-            if (!TrySwitchToExistingTab(filePath, "BoardViewer"))
+            if (!TrySwitchToExistingTab(filePath, "NexusBV"))
             {
-                OpenBoardViewerInTab(tab, filePath);
+                OpenNexusBvInTab(tab, filePath);
             }
         }
 
-        private void OpenBoardViewerWithFile(string filePath)
+        private void OpenNexusBvWithFile(string filePath)
         {
             // Check if file is already open
-            if (TrySwitchToExistingTab(filePath, "BoardViewer"))
+            if (TrySwitchToExistingTab(filePath, "NexusBV"))
                 return;
 
-            if (string.IsNullOrEmpty(_boardViewerPath) || !File.Exists(_boardViewerPath))
+            if (string.IsNullOrEmpty(_nexusBvPath) || !File.Exists(_nexusBvPath))
             {
-                MessageBox.Show("BoardViewer.exe not found!\n\nPlease place BoardViewer.exe in the same folder as this application.",
-                    "BoardViewer Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("NexusBV.exe not found!\n\nPlease place NexusBV.exe in the NexusBV folder.",
+                    "NexusBV Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -1007,11 +938,11 @@ namespace MultiBoardViewer
                 tabControl.Items.Insert(insertIndex, newTab);
                 tabControl.SelectedItem = newTab;
 
-                // Start BoardViewer process with the file
+                // Start NexusBV process with the file
                 Process process = new Process();
-                process.StartInfo.FileName = _boardViewerPath;
+                process.StartInfo.FileName = _nexusBvPath;
                 process.StartInfo.Arguments = $"\"{filePath}\"";
-                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(_boardViewerPath);
+                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(_nexusBvPath);
                 process.EnableRaisingEvents = true;
                 process.Exited += (s, ev) => Process_Exited(newTab);
 
@@ -1026,7 +957,7 @@ namespace MultiBoardViewer
                     Host = host,
                     Panel = panel,
                     TempDirectory = null,
-                    AppType = "BoardViewer",
+                    AppType = "NexusBV",
                     FilePath = filePath
                 };
 
@@ -1047,7 +978,7 @@ namespace MultiBoardViewer
 
         private void OpenBoardFileWithFile(string filePath)
         {
-            OpenBoardViewerWithFile(filePath);
+            OpenNexusBvWithFile(filePath);
         }
 
         private void OpenOpenBoardViewWithFile(string filePath)
@@ -1128,86 +1059,7 @@ namespace MultiBoardViewer
             }
         }
 
-        private void OpenFlexBoardViewWithFile(string filePath)
-        {
-            // Check if file is already open
-            if (TrySwitchToExistingTab(filePath, "FlexBoardView"))
-                return;
 
-            if (string.IsNullOrEmpty(_flexBoardViewPath) || !File.Exists(_flexBoardViewPath))
-            {
-                MessageBox.Show("FlexBoardView.exe not found!\n\nPlease place FlexBoardView.exe in the same folder as this application.",
-                    "FlexBoardView Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            try
-            {
-                // Create new tab
-                TabItem newTab = new TabItem
-                {
-                    Header = Path.GetFileName(filePath)
-                };
-
-                // Create a WindowsFormsHost to embed the external process
-                WindowsFormsHost host = new WindowsFormsHost();
-                host.Focusable = true;
-
-                System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
-                {
-                    Dock = System.Windows.Forms.DockStyle.Fill
-                };
-                host.Child = panel;
-                newTab.Content = host;
-
-                // Insert tab before the "+" button
-                int insertIndex = tabControl.Items.Count;
-                if (_addTabButton != null && tabControl.Items.Contains(_addTabButton))
-                {
-                    insertIndex = tabControl.Items.IndexOf(_addTabButton);
-                }
-                tabControl.Items.Insert(insertIndex, newTab);
-                tabControl.SelectedItem = newTab;
-
-                // Clean FlexBoardView logs folder before starting to prevent crash dialogs
-                CleanFlexBoardViewLogs();
-
-                // Start FlexBoardView process with the file
-                Process process = new Process();
-                process.StartInfo.FileName = _flexBoardViewPath;
-                process.StartInfo.Arguments = $"\"{filePath}\"";
-                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(_flexBoardViewPath);
-                process.EnableRaisingEvents = true;
-                process.Exited += (s, ev) => Process_Exited(newTab);
-
-                process.Start();
-
-                // Store process info
-                _tabProcesses[newTab] = new ProcessInfo
-                {
-                    Process = process,
-                    Host = host,
-                    Panel = panel,
-                    TempDirectory = null,
-                    AppType = "FlexBoardView",
-                    WindowHandle = IntPtr.Zero,
-                    FilePath = filePath
-                };
-
-                // Add to recent files
-                AddToRecentFiles(filePath);
-
-                // Embed as overlay to keep keyboard input working
-                _ = EmbedProcessAsOverlay(process, panel, _tabProcesses[newTab]);
-
-                ShowStatus($"Opened: {Path.GetFileName(filePath)}", true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error opening file: {ex.Message}",
-                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
 
         private void OpenPdfInNewTab(string pdfPath)
         {
@@ -1337,23 +1189,23 @@ namespace MultiBoardViewer
             _sumatraPdfPath = "";
         }
 
-        private void AutoDetectBoardViewerPath()
+        private void AutoDetectNexusBvPath()
         {
             string appDir = AppDomain.CurrentDomain.BaseDirectory;
 
-            // Check in current directory
-            string path1 = Path.Combine(appDir, "BoardViewer.exe");
+            // Check in NexusBV subfolder (New default)
+            string path1 = Path.Combine(appDir, "NexusBV", "NexusBV.exe");
             if (File.Exists(path1))
             {
-                _boardViewerPath = path1;
+                _nexusBvPath = path1;
                 return;
             }
 
-            // Check in BoardViewer subfolder
-            string path2 = Path.Combine(appDir, "BoardViewer", "BoardViewer.exe");
+            // Check in current directory
+            string path2 = Path.Combine(appDir, "NexusBV.exe");
             if (File.Exists(path2))
             {
-                _boardViewerPath = path2;
+                _nexusBvPath = path2;
                 return;
             }
 
@@ -1361,23 +1213,23 @@ namespace MultiBoardViewer
             string parentDir = Directory.GetParent(appDir)?.FullName;
             if (parentDir != null)
             {
-                string path3 = Path.Combine(parentDir, "BoardViewer", "BoardViewer.exe");
+                string path3 = Path.Combine(parentDir, "NexusBV", "NexusBV.exe");
                 if (File.Exists(path3))
                 {
-                    _boardViewerPath = path3;
+                    _nexusBvPath = path3;
                     return;
                 }
 
-                string path4 = Path.Combine(parentDir, "BoardViewer.exe");
+                string path4 = Path.Combine(parentDir, "NexusBV.exe");
                 if (File.Exists(path4))
                 {
-                    _boardViewerPath = path4;
+                    _nexusBvPath = path4;
                     return;
                 }
             }
 
-            // BoardViewer not found - drag & drop will show warning
-            _boardViewerPath = "";
+            // NexusBV not found - drag & drop will show warning
+            _nexusBvPath = "";
         }
 
         private void AutoDetectOpenBoardViewPath()
@@ -1423,48 +1275,7 @@ namespace MultiBoardViewer
             _openBoardViewPath = "";
         }
 
-        private void AutoDetectFlexBoardViewPath()
-        {
-            string appDir = AppDomain.CurrentDomain.BaseDirectory;
 
-            // Check in current directory
-            string path1 = Path.Combine(appDir, "FlexBoardView.exe");
-            if (File.Exists(path1))
-            {
-                _flexBoardViewPath = path1;
-                return;
-            }
-
-            // Check in FlexBoardView subfolder
-            string path2 = Path.Combine(appDir, "FlexBoardView", "FlexBoardView.exe");
-            if (File.Exists(path2))
-            {
-                _flexBoardViewPath = path2;
-                return;
-            }
-
-            // Check in parent directory (for development)
-            string parentDir = Directory.GetParent(appDir)?.FullName;
-            if (parentDir != null)
-            {
-                string path3 = Path.Combine(parentDir, "FlexBoardView", "FlexBoardView.exe");
-                if (File.Exists(path3))
-                {
-                    _flexBoardViewPath = path3;
-                    return;
-                }
-
-                string path4 = Path.Combine(parentDir, "FlexBoardView.exe");
-                if (File.Exists(path4))
-                {
-                    _flexBoardViewPath = path4;
-                    return;
-                }
-            }
-
-            // FlexBoardView not found - will show warning
-            _flexBoardViewPath = "";
-        }
 
         private void CopyDirectory(string sourceDir, string destDir)
         {
@@ -1877,7 +1688,7 @@ namespace MultiBoardViewer
 
                 if (processHandle == IntPtr.Zero)
                 {
-                    Debug.WriteLine("Could not get BoardViewer window handle");
+                    Debug.WriteLine("Could not get NexusBV window handle");
                     return;
                 }
 
@@ -1922,7 +1733,7 @@ namespace MultiBoardViewer
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error embedding BoardViewer: {ex.Message}");
+                Debug.WriteLine($"Error embedding NexusBV: {ex.Message}");
             }
         }
 
@@ -2015,7 +1826,7 @@ namespace MultiBoardViewer
                 panel.Resize += (s, e) => UpdateOverlayWindowPosition(processInfo);
                 processInfo.Host.SizeChanged += (s, e) => UpdateOverlayWindowPosition(processInfo);
                 processInfo.Host.Loaded += (s, e) => UpdateOverlayWindowPosition(processInfo);
-                Dispatcher.BeginInvoke(new Action(() => UpdateOverlayWindowPosition(processInfo)), DispatcherPriority.Loaded);
+                await Dispatcher.BeginInvoke(new Action(() => UpdateOverlayWindowPosition(processInfo)), DispatcherPriority.Loaded);
 
                 RequestOverlayUpdate();
             }
@@ -2205,7 +2016,7 @@ namespace MultiBoardViewer
 
                     _tabProcesses.Remove(tabItem);
                     tabControl.Items.Remove(tabItem);
-                    ShowStatus("BoardViewer process exited", false);
+                    ShowStatus("NexusBV process exited", false);
                 }
             });
         }
@@ -2822,350 +2633,7 @@ namespace MultiBoardViewer
             catch { }
         }
 
-        private async System.Threading.Tasks.Task EmbedFlexBoardViewProcess(Process process, System.Windows.Forms.Panel panel)
-        {
-            try
-            {
-                IntPtr processHandle = IntPtr.Zero;
-                int processId = process.Id;
 
-                // Wait longer for SDL window to be created (FlexBV takes time to initialize)
-                for (int i = 0; i < 100; i++)
-                {
-                    await System.Threading.Tasks.Task.Delay(200);
-
-                    if (process.HasExited)
-                        return;
-
-                    process.Refresh();
-                    processHandle = process.MainWindowHandle;
-
-                    // If MainWindowHandle is still zero, try to find window by process ID
-                    if (processHandle == IntPtr.Zero)
-                    {
-                        processHandle = FindWindowByProcessId(processId);
-                    }
-
-                    if (processHandle != IntPtr.Zero)
-                        break;
-                }
-
-                if (processHandle == IntPtr.Zero)
-                {
-                    Dispatcher.Invoke(() =>
-                    {
-                        // Fall back to showing message if embedding fails
-                        TextBlock messageBlock = new TextBlock
-                        {
-                            Text = "FlexBoardView is running in a separate window.\n\nUse the context menu to switch viewers.",
-                            FontSize = 14,
-                            Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Gray),
-                            TextWrapping = TextWrapping.Wrap,
-                            HorizontalAlignment = HorizontalAlignment.Center,
-                            VerticalAlignment = VerticalAlignment.Center,
-                            TextAlignment = TextAlignment.Center
-                        };
-                        // Find the tab and set content
-                        foreach (var kvp in _tabProcesses)
-                        {
-                            if (kvp.Value.Process == process)
-                            {
-                                kvp.Key.Content = messageBlock;
-                                break;
-                            }
-                        }
-                        ShowStatus("Could not embed FlexBoardView - running separately", false);
-                    });
-                    return;
-                }
-
-                // For SDL apps, try a gentler embedding approach
-                // Set as child of panel
-                SetParent(processHandle, panel.Handle);
-
-                // Keep window styles mostly intact for SDL compatibility
-                // Only remove caption and borders, keep other styles
-                int style = GetWindowLong(processHandle, GWL_STYLE);
-                style = style & ~WS_CAPTION & ~WS_THICKFRAME & ~WS_BORDER;
-                style = style | WS_CHILD | WS_VISIBLE;
-                SetWindowLong(processHandle, GWL_STYLE, style);
-
-                // Modify extended styles minimally
-                int exStyle = GetWindowLong(processHandle, GWL_EXSTYLE);
-                exStyle = exStyle & ~WS_EX_WINDOWEDGE & ~WS_EX_CLIENTEDGE;
-                SetWindowLong(processHandle, GWL_EXSTYLE, exStyle);
-
-                // Move and resize to fill the panel
-                MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
-
-                // Force redraw
-                ShowWindow(processHandle, SW_SHOW);
-
-                // Setup resize handler
-                panel.Resize += (s, e) =>
-                {
-                    if (!process.HasExited && processHandle != IntPtr.Zero)
-                    {
-                        MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
-                    }
-                };
-
-
-
-                Dispatcher.Invoke(() => ShowStatus("FlexBoardView embedded successfully", true));
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error embedding FlexBoardView: {ex.Message}");
-                Dispatcher.Invoke(() =>
-                {
-                    // Fall back to message on error
-                    TextBlock messageBlock = new TextBlock
-                    {
-                        Text = "FlexBoardView encountered an error.\n\nUse the context menu to switch viewers.",
-                        FontSize = 14,
-                        Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red),
-                        TextWrapping = TextWrapping.Wrap,
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Center,
-                        TextAlignment = TextAlignment.Center
-                    };
-                    // Find the tab and set content
-                    foreach (var kvp in _tabProcesses)
-                    {
-                        if (kvp.Value.Process == process)
-                        {
-                            kvp.Key.Content = messageBlock;
-                            break;
-                        }
-                    }
-                    ShowStatus($"Failed to embed FlexBoardView: {ex.Message}", false);
-                });
-            }
-        }
-
-        private async System.Threading.Tasks.Task EmbedFlexBoardViewSafely(Process process, System.Windows.Forms.Panel panel, TabItem tab, string filePath)
-        {
-            try
-            {
-                IntPtr processHandle = IntPtr.Zero;
-                int processId = process.Id;
-
-                // Wait for SDL window to be created (FlexBV takes time to initialize)
-                // Use timeout similar to other viewers for consistency
-                for (int i = 0; i < 50; i++) // 5 seconds total (100ms * 50) - same as BoardViewer
-                {
-                    await System.Threading.Tasks.Task.Delay(100);
-
-                    if (process.HasExited)
-                    {
-                        // Process exited before we could embed it
-                        Dispatcher.Invoke(() => ShowSeparateWindowMessage(tab, filePath, "FlexBoardView exited before embedding"));
-                        return;
-                    }
-
-                    process.Refresh();
-                    processHandle = process.MainWindowHandle;
-
-                    // If MainWindowHandle is still zero, try to find window by process ID
-                    if (processHandle == IntPtr.Zero)
-                    {
-                        processHandle = FindWindowByProcessId(processId);
-                    }
-
-                    if (processHandle != IntPtr.Zero)
-                        break;
-                }
-
-                if (processHandle == IntPtr.Zero)
-                {
-                    // Could not find window handle - fall back to separate window
-                    Dispatcher.Invoke(() => ShowSeparateWindowMessage(tab, filePath, "Could not find FlexBoardView window"));
-                    return;
-                }
-
-                // Try minimal embedding approach for SDL apps
-                // Remove window decorations but keep SDL compatibility
-                try
-                {
-                    // Remove window borders and caption for cleaner look
-                    int style = GetWindowLong(processHandle, GWL_STYLE);
-                    style = style & ~WS_CAPTION & ~WS_BORDER & ~WS_THICKFRAME;
-                    style = style | WS_CHILD | WS_VISIBLE;
-                    SetWindowLong(processHandle, GWL_STYLE, style);
-
-                    // Remove extended window styles for cleaner appearance
-                    int exStyle = GetWindowLong(processHandle, GWL_EXSTYLE);
-                    exStyle = exStyle & ~WS_EX_WINDOWEDGE & ~WS_EX_CLIENTEDGE & ~WS_EX_STATICEDGE;
-                    SetWindowLong(processHandle, GWL_EXSTYLE, exStyle);
-
-                    // Now set parent after modifying styles
-                    SetParent(processHandle, panel.Handle);
-
-                    // Move to fill the panel but keep original window style
-                    MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
-
-                    // Force redraw
-                    ShowWindow(processHandle, SW_SHOW);
-
-                    // Setup resize handler
-                    panel.Resize += (s, e) =>
-                    {
-                        if (!process.HasExited && processHandle != IntPtr.Zero)
-                        {
-                            try
-                            {
-                                MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
-                            }
-                            catch { /* Ignore resize errors */ }
-                        }
-                    };
-
-                    // Wait a bit more after embedding to ensure stability
-                    await System.Threading.Tasks.Task.Delay(500);
-
-                    // Check if process is still running after embedding
-                    if (process.HasExited)
-                    {
-                        Dispatcher.Invoke(() => ShowSeparateWindowMessage(tab, filePath, "FlexBoardView crashed after embedding"));
-                        return;
-                    }
-
-                    Dispatcher.Invoke(() => ShowStatus("FlexBoardView embedded successfully", true));
-                }
-                catch (Exception embedEx)
-                {
-                    Debug.WriteLine($"Embedding failed, falling back to separate window: {embedEx.Message}");
-                    Dispatcher.Invoke(() => ShowSeparateWindowMessage(tab, filePath, $"Embedding failed: {embedEx.Message}"));
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error in safe embedding: {ex.Message}");
-                Dispatcher.Invoke(() => ShowSeparateWindowMessage(tab, filePath, $"Error: {ex.Message}"));
-            }
-        }
-
-        private void CleanFlexBoardViewLogs()
-        {
-            try
-            {
-                // Clean logs in the correct FlexBV5 folder
-                string localAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                string flexBvLogsPath = Path.Combine(localAppDataPath, "FlexBV5", "logs");
-
-                if (Directory.Exists(flexBvLogsPath))
-                {
-                    try
-                    {
-                        Directory.Delete(flexBvLogsPath, true);
-                        Debug.WriteLine($"Cleaned FlexBoardView logs folder: {flexBvLogsPath}");
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine($"Failed to delete logs folder {flexBvLogsPath}: {ex.Message}");
-                    }
-                }
-
-                // Also try to clean logs in FlexBoardView directory if it exists
-                string flexBvDir = Path.GetDirectoryName(_flexBoardViewPath);
-                string exeLogsPath = Path.Combine(flexBvDir, "logs");
-
-                if (Directory.Exists(exeLogsPath))
-                {
-                    try
-                    {
-                        Directory.Delete(exeLogsPath, true);
-                        Debug.WriteLine($"Cleaned FlexBoardView logs in exe directory: {exeLogsPath}");
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine($"Failed to delete exe logs folder {exeLogsPath}: {ex.Message}");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error cleaning FlexBoardView logs: {ex.Message}");
-            }
-        }
-
-        private void ShowSeparateWindowMessage(TabItem tab, string filePath, string reason)
-        {
-            TextBlock messageBlock = new TextBlock
-            {
-                Text = $"FlexBoardView is running in a separate window.\n\nFile: {Path.GetFileName(filePath)}\n\nReason: {reason}\n\nUse the context menu to switch viewers.",
-                FontSize = 12,
-                Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Orange),
-                TextWrapping = TextWrapping.Wrap,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                TextAlignment = TextAlignment.Center
-            };
-            tab.Content = messageBlock;
-            ShowStatus($"FlexBoardView running separately: {reason}", false);
-        }
-
-        private async System.Threading.Tasks.Task HandleFlexBoardViewCrash(Process process)
-        {
-            try
-            {
-                // Wait for crash dialog to appear
-                await System.Threading.Tasks.Task.Delay(2000);
-
-                // Find FlexBV crash dialog window
-                IntPtr crashDialogHandle = IntPtr.Zero;
-
-                // Use Windows API to enumerate windows
-                EnumWindows((hwnd, lParam) =>
-                {
-                    const int nChars = 256;
-                    StringBuilder buff = new StringBuilder(nChars);
-                    if (GetWindowText(hwnd, buff, nChars) > 0)
-                    {
-                        string title = buff.ToString();
-                        if (title.Contains("FlexBV") && (title.Contains("crash") || title.Contains("error") || title.Contains("Crash")))
-                        {
-                            crashDialogHandle = hwnd;
-                            return false; // Stop enumeration
-                        }
-                    }
-                    return true; // Continue enumeration
-                }, IntPtr.Zero);
-
-                if (crashDialogHandle != IntPtr.Zero)
-                {
-                    Debug.WriteLine($"Found FlexBV crash dialog: {crashDialogHandle}");
-
-                    // Find "Erase crash logs and ignore" button
-                    IntPtr buttonHandle = FindWindowEx(crashDialogHandle, IntPtr.Zero, "Button", null);
-                    while (buttonHandle != IntPtr.Zero)
-                    {
-                        const int nChars = 256;
-                        StringBuilder buff = new StringBuilder(nChars);
-                        if (GetWindowText(buttonHandle, buff, nChars) > 0)
-                        {
-                            string buttonText = buff.ToString();
-                            if (buttonText.Contains("Erase crash logs and ignore") || buttonText.Contains("Erase") || buttonText.Contains("ignore"))
-                            {
-                                Debug.WriteLine($"Found button: {buttonText}");
-
-                                // Click the button
-                                SendMessage(buttonHandle, BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-
-                                Dispatcher.Invoke(() => ShowStatus("Handled FlexBV crash dialog", true));
-                                break;
-                            }
-                        }
-                        buttonHandle = FindWindowEx(crashDialogHandle, buttonHandle, "Button", null);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error handling FlexBV crash: {ex.Message}");
-            }
-        }
 
         private void ShowStatus(string message, bool isSuccess)
         {

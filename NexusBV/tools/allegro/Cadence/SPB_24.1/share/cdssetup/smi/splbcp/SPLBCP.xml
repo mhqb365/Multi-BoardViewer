@@ -1,0 +1,301 @@
+<?xml version="1.0" ?>
+<MsgFile>
+	<Msg>
+		<Id>9</Id>
+		<Category>E</Category>
+		<Desc>
+			""Capture Write failed because the cluster has no symbols. Make sure that the cluster to be imported has symbol information.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>8</Id>
+		<Category>E</Category>
+		<Desc>
+			""Capture device creation failed because Capture cell creation failed.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>7</Id>
+		<Category>E</Category>
+		<Desc>
+			""Capture device creation failed because no Capture cell attached""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>6</Id>
+		<Category>E</Category>
+		<Desc>
+			""Capture package creation failed""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>5</Id>
+		<Category>E</Category>
+		<Desc>
+			""Capture package already exists. Specify another library.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>4</Id>
+		<Category>E</Category>
+		<Desc>
+			""Capture library creation failed""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+  <Msg>
+    <Id>39</Id>
+    <Category>E</Category>
+    <Desc>
+      ""Pin %s of symbol %s is not supported in Capture. Pin will be skipped in the Capture symbol.""
+    </Desc>
+    <ExtDesc>
+      ""
+    </ExtDesc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+		<Id>38</Id>
+		<Category>E</Category>
+		<Desc>
+			""Cell %s of library %s cannot be exported to EDA XML because it does not have any package. Correct the part and then export.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>37</Id>
+		<Category>E</Category>
+		<Desc>
+			""Library/cell name is empty.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>36</Id>
+		<Category>E</Category>
+		<Desc>
+			""Capture library save failed""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>35</Id>
+		<Category>E</Category>
+		<Desc>
+			""Capture package save failed""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>34</Id>
+		<Category>E</Category>
+		<Desc>
+			""Could not export Capture successfully""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>33</Id>
+		<Category>I</Category>
+		<Desc>
+			""Capture export successfully done""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>32</Id>
+		<Category>I</Category>
+		<Desc>
+			""Cannot be exported to Capture because no symbol is selected. Select at least one symbol from each function group.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>31</Id>
+		<Category>E</Category>
+		<Desc>
+			""Cannot be exported to Capture because no symbol is associated with function group(s) %s. Associate or synchronize the package(s) with symbol(s).""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>30</Id>
+		<Category>I</Category>
+		<Desc>
+			""End loading cell for Capture export""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>3</Id>
+		<Category>I</Category>
+		<Desc>
+			""Completed loading Capture file %s""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>29</Id>
+		<Category>I</Category>
+		<Desc>
+			""Analyzing symbol information""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>28</Id>
+		<Category>I</Category>
+		<Desc>
+			""Cell %s of library %s is already loaded.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>27</Id>
+		<Category>I</Category>
+		<Desc>
+			""Start loading cell for Capture export.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>26</Id>
+		<Category>E</Category>
+		<Desc>
+			""Cannot be exported to Capture because cell %s of library %s does not have any symbol. Cannot be exported to Capture.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>25</Id>
+		<Category>E</Category>
+		<Desc>
+			""Cell %s of library %s cannot be loaded successfully for Capture export.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>2</Id>
+		<Category>E</Category>
+		<Desc>
+			""Could not import part %s from Capture library %s.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>12</Id>
+		<Category>W</Category>
+		<Desc>
+			""Capture package names larger than 31 characters are not supported. Package name %s will be renamed to %s.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>11</Id>
+		<Category>E</Category>
+		<Desc>
+			""Capture library part creation failed""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>10</Id>
+		<Category>E</Category>
+		<Desc>
+			""Capture device creation failed""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>1</Id>
+		<Category>I</Category>
+		<Desc>
+			""Importing Capture file %s""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+</MsgFile>
+

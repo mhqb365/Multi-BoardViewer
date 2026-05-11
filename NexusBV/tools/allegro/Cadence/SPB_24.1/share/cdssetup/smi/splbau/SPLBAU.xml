@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<MsgFile>
+	<Msg>
+		<Id>9</Id>
+		<Category>E</Category>
+		<Desc>
+			""Failed.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>10</Id>
+		<Category>E</Category>
+		<Desc>
+			""Successful.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>3</Id>
+		<Category>E</Category>
+		<Desc>
+			""XML write failed because there is no physical pin mapping for %s.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>4</Id>
+		<Category>E</Category>
+		<Desc>
+			""IBM XML parser has failed because the format of the XML file is incorrect.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>5</Id>
+		<Category>E</Category>
+		<Desc>
+			""Exception occurred in the IBM XML parser because: %s""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>2</Id>
+		<Category>E</Category>
+		<Desc>
+			""The project could not be opened. Either the project is already open or there is some other error.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>1</Id>
+		<Category>E</Category>
+		<Desc>
+			""The project has been successfully opened.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+</MsgFile>
+

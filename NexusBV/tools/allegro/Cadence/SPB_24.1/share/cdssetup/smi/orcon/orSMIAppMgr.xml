@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+
+<MsgFile>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eAPPMGR_E_DSN_MGR_START_ERR</CDNUSR_DEFINE_NAME>
+
+    <Id>3001</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Cannot start Design Manager."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eAPPMGR_E_CONCEPT_MPS_SERV_IMPORT_ERR</CDNUSR_DEFINE_NAME>
+
+    <Id>3002</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Could not Import MPS Services of Concept"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eAPPMGR_E_MPS_MSG_SEND_EFF</CDNUSR_DEFINE_NAME>
+
+    <Id>3003</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Failed to send mps message to concept"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eAPPMGR_E_IDP_OLE_INIT_FAILED</CDNUSR_DEFINE_NAME>
+
+    <Id>3004</Id>
+
+    <Category>E</Category>
+
+    <Desc>"OLE initialization failed.  Make sure that the OLE libraries are the correct version."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eAPPMGR_E_MPS_SERV_EXPORT_ERR</CDNUSR_DEFINE_NAME>
+
+    <Id>3005</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Could not Export MPS Services"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eAPPMGR_E_EDESIGN_VERSION</CDNUSR_DEFINE_NAME>
+
+    <Id>3006</Id>
+
+    <Category>E</Category>
+
+    <Desc>"The Application Bridge and %1 have mismatched IPC version numbers.  One or the other is out of date.  Please correct the problem or call OrCAD technical support."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eAPPMGR_I_SRC_UNABLE_OBTAIN_DESIGNLAB_LICENSE</CDNUSR_DEFINE_NAME>
+
+    <Id>3008</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Unable to obtain a DesignLab license for %s"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+</MsgFile>

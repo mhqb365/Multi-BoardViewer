@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+
+<MsgFile>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>SPECIFY_REPORT_FILE_NAME</CDNUSR_DEFINE_NAME>
+
+    <Id>48001</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Specify the report file name."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>OPEN_FAILED</CDNUSR_DEFINE_NAME>
+
+    <Id>48002</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Failed to open library."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>READING_PACKAGE_NAME</CDNUSR_DEFINE_NAME>
+
+    <Id>48003</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Reading package names"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>COMPLETED_READING_PACKAGE_NAME</CDNUSR_DEFINE_NAME>
+
+    <Id>48004</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Completed reading package names"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+    <Msg>
+    <CDNUSR_DEFINE_NAME>FAILED_TO_REMOVE_NON_RECOVERABLE</CDNUSR_DEFINE_NAME>
+
+    <Id>48005</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Failed to remove non-recoverable package name : %s"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>REMOVE_NON-RECOVERABLE_ALIAS</CDNUSR_DEFINE_NAME>
+
+    <Id>48006</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Removed non-recoverable alias package name : %s"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>REMOVE_NON-RECOVERABLE</CDNUSR_DEFINE_NAME>
+
+    <Id>48007</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Removed non-recoverable package name :  %s"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>NUMBER_OF_NON_RECOVERABLE_PACKAGE</CDNUSR_DEFINE_NAME>
+
+    <Id>48008</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Number of Non-recoverable package errors :  %s"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+   <Msg>
+    <CDNUSR_DEFINE_NAME>LIBRARY_HAS_NO_PACKAGE_ERRORS</CDNUSR_DEFINE_NAME>
+
+    <Id>48009</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Library has no package errors"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>PASSED</CDNUSR_DEFINE_NAME>
+
+    <Id>48010</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Total number of corrupted packages removed: %s"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>COMPLETED READING PACKAGES</CDNUSR_DEFINE_NAME>
+
+    <Id>48011</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Completed reading packages"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>FOLLOWING PACKAGES ARE CORRUPT</CDNUSR_DEFINE_NAME>
+
+    <Id>48012</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Following packages are corrupt (non-recoverable) : "</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+    <Msg>
+    <CDNUSR_DEFINE_NAME>NUMBER_OF_TOTAL_PACKAGES</CDNUSR_DEFINE_NAME>
+
+    <Id>48013</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Number of total packages in library:%s"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+ <Msg>
+    <CDNUSR_DEFINE_NAME>WARNING_POPUP_MESSAGE</CDNUSR_DEFINE_NAME>
+
+    <Id>48015</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Library opened in current capture session(either in PM or in place part dialog). Library need to be reloaded in capture after running "Check/Correct Corrupt Library" utility to view corrected packages."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>WARNING_POPUP_MESSAGE</CDNUSR_DEFINE_NAME>
+
+    <Id>48016</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Number of total corrupted packages in library : %s"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  
+ 
+</MsgFile>

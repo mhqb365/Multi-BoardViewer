@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<MsgFile>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eCANNOT_ROUTE_POINTS</CDNUSR_DEFINE_NAME>
+    <Id>101</Id>
+    <Category>E</Category>
+    <Desc>"Could not route points between (%f, %f) and (%f, %f). Please check if there is any space available for routing."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eCANNOT_ROUTE_POINTS_NO_PATH</CDNUSR_DEFINE_NAME>
+    <Id>102</Id>
+    <Category>E</Category>
+    <Desc>"Could not route points between (%f, %f) and (%f, %f). Please check if there is any space available for routing."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>ePOINTS_ROUTING_STATUS_I</CDNUSR_DEFINE_NAME>
+    <Id>103</Id>
+    <Category>I</Category>
+    <Desc>"Routing between (%d, %d) and (%d, %d) %s."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eADDINGPOINTS_FOR_ROUTER_I</CDNUSR_DEFINE_NAME>
+    <Id>104</Id>
+    <Category>I</Category>
+    <Desc>"Adding router point (%d, %d) for net %s."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eADDINGLINE_BETWEEN_PTS_FOR_NET</CDNUSR_DEFINE_NAME>
+    <Id>105</Id>
+    <Category>I</Category>
+    <Desc>"Adding line segment (%d, %d)  (%d, %d) for net %s."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eSTUB_DOESNOTMEET_LENGTH_CNS</CDNUSR_DEFINE_NAME>
+    <Id>106</Id>
+    <Category>W</Category>
+    <Desc>"Route Stub at  (%f, %f) for net %s is not meeting the desired length requirement. Please check if there is sufficient space for routing"</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  
+</MsgFile>

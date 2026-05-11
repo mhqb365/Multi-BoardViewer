@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<MsgFile>
+  <Msg>
+    <Id>19</Id>
+    <Category>E</Category>
+    <Desc>
+      "Allegro Desktop Workflow is only supported when you are connected to a remote Pulse server."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+
+ <Msg>
+    <Id>20</Id>
+    <Category>E</Category>
+    <Desc>
+      "No command specified. Specify a valid command."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+   <Msg>
+    <Id>21</Id>
+    <Category>E</Category>
+    <Desc>
+      "Unable to run the command due to an internal error. If the problem persists, contact Cadence Customer Support with the Pulse logs."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+   <Msg>
+    <Id>22</Id>
+    <Category>I</Category>
+    <Desc>
+      "This operation is already running."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+   <Msg>
+   <Id>23</Id>
+    <Category>E</Category>
+    <Desc>"The operation was not completed due to an internal error. For details and a possible solution, check the Pulse logs. If the problem persists, contact Cadence Customer Support with the Pulse logs."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+   <Id>24</Id>
+    <Category>E</Category>
+    <Desc>
+	"The operation was not completed due to : '%s'. For details and a possible solution, check the Pulse logs. If the problem persists, contact Cadence Customer Support with the Pulse logs."</Desc>
+    <Output>U</Output>
+  </Msg>
+
+  <Msg>
+   <Id>25</Id>
+    <Category>E</Category>
+    <Desc>
+	"The operation was not completed as Pulse is not in running state. Ensure that Pulse is in running state and then retry the operation."</Desc>
+    <Output>U</Output>
+  </Msg>
+ 
+</MsgFile>

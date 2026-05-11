@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<MsgFile>
+	<Msg>
+		<Id>7</Id>
+    <Category>E
+      <Sub-Category>Internal</Sub-Category>
+    </Category>
+		<Desc>
+			""xml2scr.exe does not exist in the path.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>6</Id>
+    <Category>E
+      <Sub-Category>Internal</Sub-Category>
+    </Category>
+		<Desc>
+			""XML write failed because there are no symbols for %s.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>5</Id>
+    <Category>E
+      <Sub-Category>Internal</Sub-Category>
+    </Category>
+		<Desc>
+			""XML write failed because there is no physical pin mapping for %s.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>4</Id>
+    <Category>E
+      <Sub-Category>Internal</Sub-Category>
+    </Category>
+		<Desc>
+			""IBM XML parser has failed because the format of the XML file is incorrect.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>3</Id>
+    <Category>E
+      <Sub-Category>Internal</Sub-Category>
+    </Category>
+		<Desc>
+			""Exception occurred in the IBM XML parser because: %s""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>2</Id>
+    <Category>E
+      <Sub-Category>Internal</Sub-Category>
+    </Category>
+		<Desc>
+			""Initialization for the IBM XML parser has failed because: %s""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>13</Id>
+		<Category>E</Category>
+		<Desc>
+			""XML file has error "%s" at line no %s and column %s.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>12</Id>
+    <Category>E
+      <Sub-Category>Internal</Sub-Category>
+    </Category>
+		<Desc>
+			""xml2scr.exe had errors. For help, view logfile %s.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>11</Id>
+    <Category>E
+      <Sub-Category>Internal</Sub-Category>
+    </Category>
+		<Desc>
+			""Intermediate files not written while running xml2scr.exe""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>10</Id>
+    <Category>E
+      <Sub-Category>Internal</Sub-Category>
+    </Category>
+		<Desc>
+			""Unable to execute xml2scr.exe""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>1</Id>
+    <Category>E
+      <Sub-Category>Internal</Sub-Category>
+    </Category>
+		<Desc>
+			""Environment settings for the IBM XML parser have failed.""
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>U</Output>
+	</Msg>
+</MsgFile>
+

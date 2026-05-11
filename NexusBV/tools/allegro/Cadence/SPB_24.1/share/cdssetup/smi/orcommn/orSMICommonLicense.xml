@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<MsgFile>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eORCOMMONLICENSE_I_LITE_LAUNCH</CDNUSR_DEFINE_NAME>
+    <Id>12001</Id>
+    <Category>Q</Category>
+    <Desc>"Would you like to launch %s Lite ?"</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eORCOMMONLICENSE_I_HELP_LITE_LIMITATION</CDNUSR_DEFINE_NAME>
+    <Id>12002</Id>
+    <Category>I</Category>
+    <Desc>"Click the Help button to view the limitations in the lite version of the tool."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eORCOMMONLICENSE_I_SRC_FAILED_INITIALIZE_OPEN_BOOK</CDNUSR_DEFINE_NAME>
+    <Id>12003</Id>
+    <Category>I</Category>
+    <Desc>"Failed to initialize Open Book : %d"</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eORCOMMONLICENSE_I_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Id>12004</Id>
+    <Category>E</Category>
+    <Desc>"Unable to launch %s because the license server %s cannot be reached.&#xA; Ensure the CDS_LIC_FILE environment variable is set correctly and points to a working Cadence license server."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eORCOMMONLICENSE_I_NOTVALID_LIC_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Id>12005</Id>
+    <Category>E</Category>
+    <Desc>"Unable to launch %s. A valid license was not found at the %s license server.&#xA; Update the license server configuration to include %s licenses."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eORCOMMONLICENSE_I_NOTVALID_SUL_LIC_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Id>12006</Id>
+    <Category>E</Category>
+    <Desc>"Cannot run %s because the Cadence OrCAD installation is set to a Single User License mode and the currently signed in user is not  registered for %s or the registration has expired."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eORCOMMONLICENSE_I_SUL_LIC_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Id>12007</Id>
+    <Category>E</Category>
+    <Desc>"Unable to launch %s because the Single User License cannot be authenticated. Ensure the system is connected to the net and try again."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+</MsgFile>

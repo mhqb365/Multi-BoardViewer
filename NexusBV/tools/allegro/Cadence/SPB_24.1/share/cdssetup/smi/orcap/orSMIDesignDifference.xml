@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<MsgFile>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_SPECIFY_OPEN_WITH_EXE</CDNUSR_DEFINE_NAME>
+    <Id>44001</Id>
+    <Category>E</Category>
+    <Desc>"Specify the install location of the browser executable that is to be used for displaying the design differences HTML"</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_PATH_NOT_SPECIFIED</CDNUSR_DEFINE_NAME>
+    <Id>44002</Id>
+    <Category>E</Category>
+    <Desc>"Specify the location for saving the HTML file listing the design differences"</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_NAME_NOT_SPECIFIED</CDNUSR_DEFINE_NAME>
+    <Id>44003</Id>
+    <Category>E</Category>
+    <Desc>"Specify the name of the HTML file to be created for listing the design differences."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_PAGE_DIFF</CDNUSR_DEFINE_NAME>
+    <Id>44004</Id>
+    <Category>E</Category>
+    <Desc>"Comparing one page of  schematic with all pages of the other schematic is not supported.  To compare individual pages, select the pages from the Page drop-down list for both the designs.  To compare all pages, select 'All' for both designs."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_SCH_DIFF</CDNUSR_DEFINE_NAME>
+    <Id>44005</Id>
+    <Category>E</Category>
+    <Desc>"Comparing one schematic in a design with multiple schematic in another design is not supported. From the Schematic drop-down list, either select a schematic name  for each design, or select 'All' for both designs."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_DSN_COMP</CDNUSR_DEFINE_NAME>
+    <Id>44006</Id>
+    <Category>E</Category>
+    <Desc>"Select the designs to be compared. One or more designs are not specified."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_SPECIAL_CHAR</CDNUSR_DEFINE_NAME>
+    <Id>44007</Id>
+    <Category>E</Category>
+    <Desc>Following characters are not supported in the HTML file name:
+			&#47; &#92; &#58; &#42; &#63; &#34; &#60; &#62; &#124; &#35;</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_CHAR_LENGTH</CDNUSR_DEFINE_NAME>
+    <Id>44008</Id>
+    <Category>E</Category>
+    <Desc>"HTML Name concatenated to HTML Path, cannot be more than %s characters. Reduce the number of characters either in the HTML Path or in the HTML Name"</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_DSN_VIEW</CDNUSR_DEFINE_NAME>
+    <Id>44009</Id>
+    <Category>E</Category>
+    <Desc>"Select the design to export."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_SPECIFY_OPEN_WITH_EXE_DSN_VIEW</CDNUSR_DEFINE_NAME>
+    <Id>44010</Id>
+    <Category>E</Category>
+    <Desc>"Specify the browser location."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_PATH_NOT_SPECIFIED_DSN_VIEW</CDNUSR_DEFINE_NAME>
+    <Id>44011</Id>
+    <Category>E</Category>
+    <Desc>"Specify where to save the HTML file."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  <Msg>
+    <CDNUSR_DEFINE_NAME>eDESIGN_DIFF_NAME_NOT_SPECIFIED</CDNUSR_DEFINE_NAME>
+    <Id>44012</Id>
+    <Category>E</Category>
+    <Desc>"Specify a name for the HTML file."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+</MsgFile>

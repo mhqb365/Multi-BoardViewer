@@ -65,3 +65,7 @@ $RECYCLE.BIN/
 *.g.cs
 *.g.i.cs
 *.resources
+
+.agent
+GEMINI.md
+ERRORS.md

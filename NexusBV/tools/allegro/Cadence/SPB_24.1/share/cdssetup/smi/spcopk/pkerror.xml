@@ -1,0 +1,2493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MsgFile>
+	<Msg>
+		<Id>1001</Id>
+		<Category>E</Category>
+		<Desc>
+			"Global project file: '%s' not found.
+"
+		</Desc>
+		<ExtDesc>
+			"Packager-XL is unable to execute from the command-line prompt as you may have misspelled the <![CDATA[-proj]]> directive or have specified a <![CDATA[<project_filename>]]> that does not exist. Use the <![CDATA[-proj]]> option correctly and specify the correct <![CDATA[<project_filename>]]>. Also ensure that the following environment variable is set:
+			<![CDATA[setenv CDS_CONCEPT_HDL TRUE
+			Set the environmental variable, CDS_CONCEPT_HDL, to TRUE and run Packager-XL again.]]>"
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1002</Id>
+		<Category>I</Category>
+		<Desc>
+			"Command file: '%s' not found.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1003</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error(s) found while reading the project file. 
+        The cpm file might have been manually edited. Correct the syntax errors in the project file and rerun the program.
+"
+		</Desc>
+		<ExtDesc>
+			"This error message is always generated with other error conditions that prevent Packager-XL from reading the project file. For example, if you do not have proper REF_DES_PATTERN directive assignment, Packager-XL will not read the project file. Or the cpm file might have been manually edited. Correct the syntax errors in the project file and rerun the program."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1005</Id>
+		<Category>E</Category>
+		<Desc>
+			"%s is an invalid project file argument.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1006</Id>
+		<Category>E</Category>
+		<Desc>
+			"%s is an invalid command line argument.
+"
+		</Desc>
+		<ExtDesc>
+			"If Packager-XL generates an invalid argument for -proj, although -proj is a valid argument, and is unable to run from the command line prompt, this might indicate that you have not have set the environment to Design Entry HDL. This error often appears with Error 1001. To resolve the error, set the environmental variable, CDS_CONCEPT_HDL, to TRUE and run Packager-XL again."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1007</Id>
+		<Category>E</Category>
+		<Desc>
+			"-%s directive expects an argument
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1008</Id>
+		<Category>E</Category>
+		<Desc>
+			"%s directive expects an argument
+%s"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1010</Id>
+		<Category>E</Category>
+		<Desc>
+			"Syntax error when parsing a comment.
+        From line %d to line %d. File: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1012</Id>
+		<Category>E</Category>
+		<Desc>
+			"Syntax error. Invalid '}' (end comment character).
+        Found in line %d when parsing file '%s'
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1014</Id>
+		<Category>W</Category>
+		<Desc>
+			"%s is an invalid value for directive %s.
+Reason : %s. 
+Change the directive value using Packager Setup dialog box. To ensure valid values, use the Packager Setup dialog box and do not directly modify the cpm file"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1015</Id>
+		<Category>E</Category>
+		<Desc>
+			"-h must be the first and only command line option.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1027</Id>
+		<Category>E</Category>
+		<Desc>
+			"Command %s cannot be entered in %s.
+        It must be entered in global.cmd.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1029</Id>
+		<Category>E</Category>
+		<Desc>
+			"%s cannot be combined with any other Feedback option.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1030</Id>
+		<Category>E</Category>
+		<Desc>
+			"%c is a hard coded invalid argument for %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1031</Id>
+		<Category>W</Category>
+		<Desc>
+			"Argument not used '%s' in line %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1032</Id>
+		<Category>W</Category>
+		<Desc>
+			"Duplicate entry %s for directive %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1033</Id>
+		<Category>W</Category>
+		<Desc>
+			"The value %s cannot be combined with other property names.
+        Directive: %s
+        Using the default - all properties will be passed.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1036</Id>
+		<Category>W</Category>
+		<Desc>
+			"%s is an invalid value for directive %s.
+        Must be a property from PACKAGE_PROP or COMP_INST_PROP directive.
+        Ignoring %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1037</Id>
+		<Category>E</Category>
+		<Desc>
+			"Create run directory %s before running pxl.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1038</Id>
+		<Category>E</Category>
+		<Desc>
+			"Add a ',' between arguments for %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1039</Id>
+		<Category>W</Category>
+		<Desc>
+			"Specify the command %s in global.cmd.
+        This command is used by many tools.
+        global.cmd is the file to specify such shared commands.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1040</Id>
+		<Category>E</Category>
+		<Desc>
+			"This command is used by many tools.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1042</Id>
+		<Category>I</Category>
+		<Desc>
+			"Setting USE_STATE=%s because REPACKAGE=%s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1043</Id>
+		<Category>I</Category>
+		<Desc>
+			"Setting REPACKAGE=%s because %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1044</Id>
+		<Category>W</Category>
+		<Desc>
+			"Using command file %s. Ignoring %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1045</Id>
+		<Category>E</Category>
+		<Desc>
+			"Setting OVERWRITE_CONSTRAINTS=%s because %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1046</Id>
+		<Category>W</Category>
+		<Desc>
+			"Invalid View_Packager "%s". Changing it to "packaged".
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs when Packager-XL finds an invalid value for the VIEW_PACKAGER directive. If white space is used as VIEW_PACKAGER, Packager-XL will change the value to packaged and generate this warning."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1047</Id>
+		<Category>W</Category>
+		<Desc>
+			"Invalid View_Constraints "%s". Changing it to "constraints".
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs when Packager-XL finds an invalid value for the VIEW_CONSTRAINTS directive. If white space is used as VIEW_CONSTRAINTS, Packager-XL will change the value to constraints and generate this warning."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1048</Id>
+		<Category>W</Category>
+		<Desc>
+			"Invalid value '%s' specified for directive 'sd_suffix_separator' in the project file (cpm file). Defaulting it to '_'.
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs when Packager-XL finds an invalid value for the SD_SUFFIX_GENERATOR directive. If white space is used as SD_SUFFIX_GENERATOR, Packager-XL will generate reference designators with white spaces, which will prevent Netrev from importing the design in PCB Editor. You should not use white space as the value for SD_SUFFIX_GENERATOR."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1050</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot associate a logical part from chips.prt for:
+        Schematic Instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1051</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot find the physical part %s for 
+        Schematic instance: %s
+        The chips.prt file might have been accidentally edited, or the PACK_TYPE property might be missing from the ptf file or the schematic.
+        Ensure that a physical part corresponding to the instance used in the schematic exists and the PACK_TYPE property is defined in the schematic or the part table file.        
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs when Packager-XL does not find a physical part in the chips.prt file when an instance of that part is being used in the schematic. This error can occur because of accidental editing of the chips.prt file. Another reason for this error is a missing PACK_TYPE property in the ptf file or the schematic. As a result of this error, Packager-XL may also generate ERROR 1052. Ensure that a physical part corresponding to the instance used in the schematic exists."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1052</Id>
+		<Category>E</Category>
+		<Desc>
+			"No ppt part selected because the instance has no physical part.
+        Schematic instance: %s
+        Check the PACK_TYPE or PART_NAME property assigned to the instance and ensure that the part exists in the part table file.
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs when Packager-XL is unable to find a physical part corresponding to a schematic instance. As a result, Packager-XL is unable to select any PPT part. This error generally occurs with ERROR 1051. Ensure that a physical part corresponding to the instance used in the schematic exists."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1053</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot find a ppt part that matches the instance properties.
+        Ppt Name: %s
+        Schematic instance: %s
+		This error occurs when Packager-XL matches the schematic properties, if any, with the part table information for a component and is unable to match any row with the given set of properties. 
+		In such cases, no part table row is selected for the part. The part table properties should be in sync with the schematic instance properties. 
+		This error might also occur if the key property value contains a % character. Also ensure that the key property value does not contain the % character.
+		Other likely causes - This error may also occur if there are duplicate part names across libraries. When there are duplicate parts in multiple libraries, the part that is picked from the library is the one that is specified first in the expand.cfg file in cfg_package. The information that the part might be in other libraries is not available at the time of loading the design in Packager-XL.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1054</Id>
+		<Category>E</Category>
+		<Desc>
+			"Multiple ppt parts match the instance properties.
+        Ppt Name: %s
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1055</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error loading ppts.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1060</Id>
+		<Category>E</Category>
+		<Desc>
+			"refDesPattern %s on physPart %s is invalid.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1062</Id>
+		<Category>I</Category>
+		<Desc>
+			"Property Name: %s     %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1063</Id>
+		<Category>I</Category>
+		<Desc>
+			"Property Name: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1064</Id>
+		<Category>I</Category>
+		<Desc>
+			"Property Value: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1066</Id>
+		<Category>W</Category>
+		<Desc>
+			"Duplicate Part Subtype Name %d: %s
+        Duplicate Part Subtype Name %d: %s
+        Schematic instance: %s
+        Fix the POWER_GROUP property and rerun Packager-XL.
+"
+		</Desc>
+		<ExtDesc>
+			"Multiple sub type values are defined on the instance that is specified in the warning. These values are from different component definition properties. Packager-XL will assign any one of these values to the instance and continue. Ensure that only one sub type value is specified for the instance.
+			Example:
+			WARNING(1066): Duplicate Part Subtype Name 1: ~GOOD
+			Duplicate Part Subtype Name 2: BAD
+			Schematic instance: @TEST_LIB.D1(SCH_1):PAGE1_I8@LSTTL.LS373(CHIPS)
+			Ignoring 1. Using 2.
+			Because COMP_NAME has more precedence.
+			Explanation: In the above warning, the two subtypes are defined in the following way:
+			POWER_GROUP = VCC=VDD(~GOOD) and
+			COMP_NAME = BAD
+			Both, the POWER_GROUP, and COMP_NAME properties, are of component definition type. COMP_NAME will overwrite the POWER_GROUP subtype. As a result, Packager-XL will assign the part name as BAD."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1069</Id>
+		<Category>E</Category>
+		<Desc>
+			"Invalid POWER_GROUP property value: %s
+        Schematic instance: %s
+        The correct syntax is PWR_NET1=NEW_NET1;PWR_NET2=NEW_NET2(SUBTYPE)
+        To avoid syntax errors, use the Assign Power Pins dialog box in Design Entry HDL for assigning the POWER_GROUP property to the schematic.
+"
+		</Desc>
+		<ExtDesc>
+			"You have specified an invalid value for the POWER_GROUP property. The correct value for the property must conform to the following syntax:
+			POWER_GROUP = supply=newsupply [;supply=newsupply...][(subtype_name)]
+			Ensure that you have defined the correct value for the POWER_GROUP property."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1072</Id>
+		<Category>E</Category>
+		<Desc>
+			"Net %s is present in more than one POWER_GROUP properties in the schematic instance.
+        Schematic instance: %s
+        Correct the POWER_GROUP property and rerun Packager-XL. To avoid such errors, use Assign Power Pins dialog box to specify power pin details.
+"
+		</Desc>
+		<ExtDesc>
+			"This error appears when you define a POWER_GROUP property multiple times. Packager-XL in that case cannot decide which value is the right value."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1073</Id>
+		<Category>E</Category>
+		<Desc>
+			"Subtype name %s is used for a part with parent %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1075</Id>
+		<Category>E</Category>
+		<Desc>
+			"Component Definition property values different for subtype %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1076</Id>
+		<Category>W</Category>
+		<Desc>
+			"No Component Definition properties on schematic instance.
+        Subtype name %s will be ignored.
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1078</Id>
+		<Category>E</Category>
+		<Desc>
+			"PACK_TYPE value %s of the part %s is not defined in chips.prt for the schematic instance.
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs if the pack_type value of a part in the schematic is not defined in the chips.prt file. Ensure that the value of the PACK_TYPE property for a part on the schematic is defined in the chips.prt file."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1080</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot create alternate physical part: %s
+        There is already a part with the same name.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1082</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot assign physical part to schematic instance.
+         Schematic instance: %s
+         Physical part: %s
+         Add PART_NAME='%s' to chips.prt entry for %s.
+"
+		</Desc>
+		<ExtDesc>
+			"This error message is generated when Packager-XL is unable to associate logical and physical parts based on the definitions in the chips.prt file and schematic instances. Packager-XL determines the logical part name for each primitive section and determines the physical parts that are linked to this logical part. The PART_NAME property supplies the name of the logical part. If this property is not present, the shortest name is used for the logical name. This shortest name may be the same for two primitives. To solve this error, you need to add a PART_NAME=TL431C property to the BODY section of the second primitive in the chips.prt file."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1084</Id>
+		<Category>E</Category>
+		<Desc>
+			"The alternate physical part '%s' for the schematic instance cannot be created.
+        Schematic instance: %s
+        The physical part might be incorrectly defined. Check the component definition properties (COMP_DEF_PROP) defined on the instance in Design Entry HDL for any possible syntax error. For more information on COMP_DEF_PROP, refer to the Packager documentation.
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs when Packager-XL is unable to create an alternate physical part for a schematic instance. The cause of this error could be some syntax error in any property definition such as NC_PINS, MERGE_NC_PINS, POWER_PINS, or MERGE_POWER_PINS. Ensure that you fix the other errors that appear with ERROR 1084."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1085</Id>
+		<Category>E</Category>
+		<Desc>
+			"No key property found in the ppt file for the part '%s'.
+"
+		</Desc>
+		<ExtDesc>
+			"The above error occurs when you have not defined a key property in the ptf file for this part. Ensure that you have defined a key property in the ptf file for the specified part."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1086</Id>
+		<Category>E</Category>
+		<Desc>
+			"Parent part not found for the alternate part of %s.
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1087</Id>
+		<Category>W</Category>
+		<Desc>
+			"No ptf entry found for the instance.
+        Schematic instance: %s
+        Packager-XL is checking the existence of part table file for each instance. To disable this message,  deselect the Check for ppt entry for all instances in design check box from the Result tab of the Export Physical dialog box.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1088</Id>
+		<Category>E</Category>
+		<Desc>
+			"%s=%s property on the following instance having physical part '%s' is ignored by Packager-XL. Packager-XL considers only one PHYS_DES_PREFIX value per physical part on the schematic for assigning new reference designators.
+        Schematic Instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			"Packager-XL generates this error when multiple PHYS_DES_PREFIX property values are found on the schematic for the same physical parts. It exits with error status 1. Ensure that you have only one PHYS_DES_PREFIX property value defined for a physical part."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1105</Id>
+		<Category>E</Category>
+		<Desc>
+			"Properties on instance and package do not match.
+        Schematic instance: %s
+        Package: %s
+        Property: %s
+        Value on instance: %s
+        Value on package: %s
+        This error occurred because multiple instances have the same LOCATION property value but have different values for the property name(s) listed above. Ensure the following: that instances with different component instance properties do not have the same reference designator assigned or that the properties listed in the error match for the instances with same reference designator assigned.
+"
+		</Desc>
+		<ExtDesc>
+			"Packager-XL compares the property value assigned on the schematic instance with the values in the package. If discrepancies exist, it displays this error. It also lists the name of the package and property, and the value of the property in the schematic instance and the package instance. Ensure that the value of property listed in the error message for both instances is the same."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1108</Id>
+		<Category>E</Category>
+		<Desc>
+			"SEC %d on pin of HAS_FIXED_SIZE instance is invalid.
+        Must be between %d and %d.
+        Pin: %s
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1109</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot package instance into package %s.
+        Schematic instance: %s
+        The instances have the same location property value. Change the location property value for any one of the instances in the Design Entry HDL Schematic.
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs if you try to package an invalid instance or an instance that does not exist into a package. Error 1109 can also occur if an instance has a user-defined reference designator (Hard Location property) defined in a block and that block is instantiated multiple times but is not reused in the design. Change the reference designator value or reduce the value of the SIZE property defined. 
+			Note: In case of a block instantiated multiple times, change the reference designator value."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1110</Id>
+		<Category>E</Category>
+		<Desc>
+			"Section %d is assigned %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1116</Id>
+		<Category>E</Category>
+		<Desc>
+			"Section %d is used more than once.
+        Pin: %s
+        Pin: %s
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1117</Id>
+		<Category>E</Category>
+		<Desc>
+			"Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1118</Id>
+		<Category>E</Category>
+		<Desc>
+			"A section of HAS_FIXED_SIZE instance has more than one SEC.
+        Pin %s has SEC %d
+        Pin %s has SEC %d
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1120</Id>
+		<Category>E</Category>
+		<Desc>
+			"Reference designator %s for the following instance is longer than the one specified by the REF_DES_LENGTH = %d directive.
+        This instance will not be packaged. Change the ref_des_pattern or REF_DES_LENGTH directive and rerun the packager.
+        Schematic Instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			"Packager-XL uses the REF_DES_LENGTH directive to determine the maximum permissible length of reference designators. By default, this value is 31, which is usually enough to represent the reference designator. You may have set this value to a lower value. In such cases, you may increase the REF_DES_LENGTH value. To address this error, change the REF_DES_PATTERN value by entering a new value in the Ref Des Length field in the Packager Setup - Layout tab and rerun Packager-XL. Alternatively, you can change the LOCATION property on the schematic and rerun Packager-XL."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1126</Id>
+		<Category>E</Category>
+		<Desc>
+			"%s has logical pin %s assigned to PN %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1128</Id>
+		<Category>E</Category>
+		<Desc>
+			"SEC %d is invalid.
+        Physical part: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1129</Id>
+		<Category>E</Category>
+		<Desc>
+			"Multiple '%s' properties found on:
+        Schematic instance: %s
+        Ignoring all '%s' properties on this object.
+"
+		</Desc>
+		<ExtDesc>
+			"This error can occur if instances within a hierarchical block are assigned two values for each soft packaging property. This may happen if you assign soft packaging properties (CDS_LOCATION, CDS_SEC) to a hierarchical block that has already been backannotated. Assigning soft packaging property to the hierarchical block causes these properties to be inherited down to all instances within the block thereby causing two values for each soft packaging property. If you remove the soft packaging properties from the hierarchical block, the design will package correctly."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1131</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pin Numbers with different PIN_GROUP values have got swapped.
+        Pin %s has PIN_GROUP = %s and default PN = %s.
+        Pin %s has PIN_GROUP = %s and default PN = %s.
+        Instance pin %s has PN = %s.
+        Schematic instance: %s.
+        The user might have changed PIN_GROUP value in chips.prt after the swapping was done in the schematic or in PCB Editor.
+        Open the part in Part Developer and correct the PIN_GROUP value of the logical pins.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1134</Id>
+		<Category>E</Category>
+		<Desc>
+			"PN %s does not belong to SEC %d.
+        Pin: %s
+        Schematic instance: %s
+        There might be a mismatch between the subdesign state file and the schematic of the subdesign. To update the subdesign state file, set the module as root and run Packager-XL. Once the subdesign state file is corrected, set the top as root and run Packager-XL again.
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs when a particular pin does not belong to its associated section. This error may be generated if you make changes to a block that contains subdesigns and then package it using the FORCE_SUBDESIGN directive. If this error occurs in reused blocks, ensure that you use the USE_SUBDESIGN directive and not the FORCE_SUBDESIGN directive to package the design."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1135</Id>
+		<Category>E</Category>
+		<Desc>
+			"PN %s does not belong to HAS_FIXED_SIZE SEC range starting %d
+        Pin: %s
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1136</Id>
+		<Category>E</Category>
+		<Desc>
+			"PN %s used more than once.
+        Pin: %s
+        Pin: %s
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1137</Id>
+		<Category>E</Category>
+		<Desc>
+			"Hard PN property value %s on the schematic not found on phys part %s in chips.prt file.
+        Pin: %s
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			"You may get this error if you have added the PN=number property to a pin on a symbol body to make the property invisible. To make the pin number property invisible, add the $PN=number property to the pin and not the PN=number property."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1138</Id>
+		<Category>E</Category>
+		<Desc>
+			"A hard location was found on instances of different physical part types. Refer to error (%d) for a complete list of instances assigned this location.
+        Schematic instance: %s
+        Instance physical part: %s
+        Package: %s
+        Package physical part: %s
+        The same value for location on instances of different physical part names is not supported. Correct the location for the appropriate instance(s) in Design Entry HDL.
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs due to the assignment of the LOCATION value to two different types of instances, such as LS00 or LS241. This error often occurs (as is the present case) with ERROR 1149. Refer to ERROR 1149 for a complete list of instances assigned to this location. To address the error, change the LOCATION value of one of the instances.
+			Other likely cause: This error may also occur if a new (unpackaged) symbol does not have a placeholder for the PATH property. When you save a design with such a symbol, the PATH property of the symbol is replaced by the original value of the PATH property as no placeholder can be found. In addition, during backannotation, the canonical path of the part is not found and as a result, the value of the LOCATION property on the board is not honored. This leads to a duplicate LOCATION property on parts and results in this error. Add the PATH placeholder on new symbols to avoid this problem."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1142</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot derive SEC from PN property %s on pin %s.
+        It is a common pin and does not specify a unique section.
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1145</Id>
+		<Category>E</Category>
+		<Desc>
+			"Section %d, common pin %s is connected to different nets:
+        Schematic net: %s
+       Package net: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1147</Id>
+		<Category>E</Category>
+		<Desc>
+			"Empty %s property value found on :
+        Schematic Instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			"You must always specify a value for the LOCATION property. When you define a LOCATION property, Packager-XL does not assign a location for that instance and creates a reference designator based on the value you define. If you leave the LOCATION property with a NULL value, Packager-XL will not be able to define a reference designator for that instance. Ensure that you have specified a proper value for the LOCATION property."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1148</Id>
+		<Category>E</Category>
+		<Desc>
+			"SEC = '%d' conflicts with other section/pin number(s) specified for packaging this inst. Compare this SEC property with SEC and PN properties specified on all instance pins and delete the appropriate properties.
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1149</Id>
+		<Category>E</Category>
+		<Desc>
+			"Found a hard location '%s' for 
+        Schematic instance: %s
+        A hard location on instances of different physical part names is not supported. Correct the location for the appropriate instance(s).
+"
+		</Desc>
+		<ExtDesc>
+			"This error message occurs along with ERROR 1138. The message shows the LOCATION value, which is the same for two different physical parts. For instance, the LOCATION value of U1 is defined for both, LS00, and LS241. Packager-XL does not support the same hard location on instances of different physical part names. Therefore, correct the location for the appropriate instance(s). For example, change the LOCATION value of U1 for either LS00 or LS241."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1175</Id>
+		<Category>E</Category>
+		<Desc>
+			"REF_DES_PATTERN range must be terminated with a ']'.
+"
+		</Desc>
+		<ExtDesc>
+			"The REF_DES_PATTERN range begins with the '[' character and is terminated with the ']' character. If you forget to terminate the REF_DES_PATTERN range with ']', this error occurs. As a result of this error, Packager-XL may also generate ERROR 1003. For example, if you use U($DRAWING)X[1-9(1) as the REF_DES_PATTERN, Packager-XL will generate this error. Ensure that the REF_DES_PATTERN range is terminated with the ']' character."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1176</Id>
+		<Category>E</Category>
+		<Desc>
+			"REF_DES_PATTERN range specifiers must both be characters or integers.
+"
+		</Desc>
+		<ExtDesc>
+			"The default REF_DES_PATTERN directive supports a number range from 0-9. You can change this number range to say, 3-9, or use characters such as A-H to specify the number range. However, you cannot specify a combination of numbers and characters (for example, 0-S or D-8). Ensure that the REF_DES_PATTERN range consists of either numbers or characters but not both. The range should be ascending and should not contain a space."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1177</Id>
+		<Category>E</Category>
+		<Desc>
+			"The REF_DES_PATTERN number range is not in the increasing order. 
+        Specify the number range in the increasing order, for example, 0-9, by editing the REF_DES_PATTERN directive from the Layout tab of the Packager Setup dialog box.
+"
+		</Desc>
+		<ExtDesc>
+			"The default REF_DES_PATTERN directive supports a number range from 0-9. Note that this range is always ascending. If you specify a descending range, this message will be displayed. Ensure that the REF_DES_PATTERN value range is ascending. For example, you can specify 1-9 as the range."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1178</Id>
+		<Category>E</Category>
+		<Desc>
+			"The REF_DES_PATTERN value is invalid. Use only alphanumeric characters: letters (a-z or A-Z) or numbers (0-9). Other characters, such as $ or %, are not supported. Edit the REF_DES_PATTERN directive from the Layout tab of the Packager Setup dialog box.
+"
+		</Desc>
+		<ExtDesc>
+			"The REF_DES_PATTERN directive supports either characters (a-z or A-Z) or numbers (0-9) for defining the number range. If you use a  non-alphanumeric character such as $ or % in REF_DES_PATTERN, this error occurs. For example, if you use U($DRAWING)X[$-*](6) as REF_DES_PATTERN, Packager-XL will generate the above error. Ensure that the REF_DES_PATTERN value range consists of alphanumeric characters."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1179</Id>
+		<Category>E</Category>
+		<Desc>
+			"The format for REF_DES_PATTERN is ['character/digit'-'character/digit'].
+"
+		</Desc>
+		<ExtDesc>
+			"The REF_DES_PATTERN directive supports a standard pattern for defining the format of reference designators. This pattern is of the format [character/digitcharacter/digit]. If you do not use this format, this error is generated. For example, if you use U($DRAWING)X[$-*](6) as the REF_DES_PATTERN, Packager-XL will generate this error. If you add any spaces or use a non-alphanumeric character, you can get this error message. Ensure that the REF_DES_PATTERN definition conforms to the format [character/digit-character/digit] and that there are no spaces in the range definition."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1180</Id>
+		<Category>E</Category>
+		<Desc>
+			"The starting value for REF_DES_PATTERN is not terminated with ')' character.
+"
+		</Desc>
+		<ExtDesc>
+			"The REF_DES_PATTERN directive supports a number range and a starting value in that number range. This starting value begins with the '(' character and terminates with the ')' character. If you do not terminate the starting value with the ')' character, this error is displayed. For example, if you use U($DRAWING)X[1-9](6 as the REF_DES_PATTERN, Packager-XL will generate this error. Ensure that the REF_DES_PATTERN value range consists of alphanumeric characters."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1181</Id>
+		<Category>E</Category>
+		<Desc>
+			"The starting value for REF_DES_PATTERN must be an alphanumeric character.
+"
+		</Desc>
+		<ExtDesc>
+			"The starting value in the REF_DES_PATTERN directive should either be an alphabet or a number. For example, if you use U($DRAWING)X[1-9]($) as the REF_DES_PATTERN, Packager-XL will generate this error. Ensure that the starting value in the REF_DES_PATTERN directive is either an alphabet or a number. This starting value should be within the specified range. For example, in the instance illustrated in this case, specify the starting value as a number between 1 and 9."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1182</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to generate output file because null reference designator pattern found. Specify a valid value for the Ref Des Pattern in the Layout tab of the Packager setup.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1183</Id>
+		<Category>E</Category>
+		<Desc>
+			"The starting value for REF_DES_PATTERN should follow the specified range.
+        Edit the REF_DES_PATTERN directive from the Layout tab of the Packager Setup dialog box.
+"
+		</Desc>
+		<ExtDesc>
+			"The starting value in the REF_DES_PATTERN directive should always follow the number range. For example, the default REF_DES_PATTERN definition has the following value: ($PHYS_DES_PREFIX)[0-9](1) Note that the starting value 1 lies within the acceptable range 0-9. Ensure that the starting value in the REF_DES_PATTERN directive always follows the number range."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1185</Id>
+		<Category>W</Category>
+		<Desc>
+			"Warning - Property name/value not found in list - %s - for REF_DES_PATTERN.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1186</Id>
+		<Category>W</Category>
+		<Desc>
+			"Warning - REF_DES_PATTERN exhausted - will attempt to increase width.
+"
+		</Desc>
+		<ExtDesc>
+			"The number of digits specified in the REF_DES_PATTERN have been exhausted. Packager-XL will assign new reference designators going beyond the specified limit."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1187</Id>
+		<Category>E</Category>
+		<Desc>
+			"Empty data structure passed to routine for REF_DES_PATTERN.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1188</Id>
+		<Category>E</Category>
+		<Desc>
+			"No ranges in REF_DES_PATTERN for incrementing width.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1189</Id>
+		<Category>E</Category>
+		<Desc>
+			"Invalid starting value specified in REF_DES_PATTERN.
+"
+		</Desc>
+		<ExtDesc>
+			" This error message is generated when you specify an invalid starting value for the REF_DES_PATTERN directive. For example, if you specify the following REFDES_PATTERN value, REFDES_PATTERN ($PHYS_DES_PREFIX)[1-9](0), this message will be generated because the starting value 0 is not defined in the range 1-9. Ensure that the starting value defined in the REFDES_PATTERN directive is part of the value range you have specified."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1190</Id>
+		<Category>E</Category>
+		<Desc>
+			"Invalid end delimiter for property %s in REF_DES_PATTERN.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1200</Id>
+		<Category>E</Category>
+		<Desc>
+			"Packager-XL run is not successful in feedback mode while bringing Allegro changes to schematic because the %s state file is missing. Choose File->Export Physical in Design Entry HDL to run Packager-XL in the forward mode and generate the required state file.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1201</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot use FORCE_SUBDESIGN or USE_SUBDESIGN when using old state files.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1203</Id>
+		<Category>W</Category>
+		<Desc>
+			"Problem reading %s. State file not loaded.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1204</Id>
+		<Category>E</Category>
+		<Desc>
+			"Provide root_drawing name in global.cmd file.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1205</Id>
+		<Category>W</Category>
+		<Desc>
+			"Cannot open %s in write mode.
+        Disabling debugging.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1207</Id>
+		<Category>W</Category>
+		<Desc>
+			"The local net name is same as the power name
+        Power net name: %s
+        Logical net name: %s
+"
+		</Desc>
+		<ExtDesc>
+			"This warning is generated when you are shorting specific logical nets with power nets."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1210</Id>
+		<Category>W</Category>
+		<Desc>
+			"Net synonym name is same as power name.
+        Power net name: %s
+        Logical net name: %s
+        When a net is aliased with another net, the compiler uses the lowest alphanumeric name as the name of the net. To prevent a power net name becoming a synonym name, assign higher alphanumeric names to nets synonymed with a power net.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1215</Id>
+		<Category>E</Category>
+		<Desc>
+			"Invalid FORCE_SAME_NET property: %s on phys part %s
+        Must be of the form '(5 5A) (8 8A 8B)'
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1217</Id>
+		<Category>W</Category>
+		<Desc>
+			"Invalid pin name %s in FORCE_SAME_NET property for phys part %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1218</Id>
+		<Category>E</Category>
+		<Desc>
+			"Processing FORCE_SAME_NET property for ref des %s.
+        Pins %s and %s must be connected to same net.
+        They are connected to %s and %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1221</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot locate a '%s' file because:
+'%s'
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1222</Id>
+		<Category>W</Category>
+		<Desc>
+			"Problem reading %s. Constraints file not processed.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1223</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error: The constraints file belongs to a version earlier than 15.7. As a result, you will not be allowed to edit constraints in Constraints Manager. Run Constraints->Synch All utility before you generate feedback files.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1240</Id>
+		<Category>I</Category>
+		<Desc>
+			"Feedback is changing %s from %s to %s.
+        Design instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1241</Id>
+		<Category>I</Category>
+		<Desc>
+			"Feedback is changing SEC from %s to %s.
+        Design instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1271</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot find physical part %s
+        Line Number: %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1273</Id>
+		<Category>E</Category>
+		<Desc>
+			"Package %s in %s refers to multiple physical parts.
+        Line Number: %d
+        Phys Part Name: %s
+        Phys Part Name: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1277</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pin %s is not valid for physPart %s.
+        File Name: %s
+        Line Number: %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1291</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error generating physical net names for design.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1300</Id>
+		<Category>E</Category>
+		<Desc>
+			"File not found %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1302</Id>
+		<Category>E</Category>
+		<Desc>
+			"File %s line %d has incorrect format.
+        Must be: FILE_TYPE=%s;
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1303</Id>
+		<Category>E</Category>
+		<Desc>
+			"File %s line %d has incorrect format.
+        Must be: ROOT_DRAWING='DRAWING_NAME';
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1304</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pin %s %s is connected to different nets.
+        Net: %s
+        Net: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1305</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pin %s %s is defined more than once.
+        File Name: %s
+        Line Number: %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1306</Id>
+		<Category>W</Category>
+		<Desc>
+			"Feedback ROOT_DRAWING %s does not match design ROOT_DRAWING.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1307</Id>
+		<Category>E</Category>
+		<Desc>
+			"Invalid delimiter %c. Expecting ' ' or ','
+        Line Number: %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1308</Id>
+		<Category>E</Category>
+		<Desc>
+			"Invalid delimiter %c. Expecting ';'
+        Line Number: %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1309</Id>
+		<Category>W</Category>
+		<Desc>
+			"Empty token. Expecting %s
+        Line Number: %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1312</Id>
+		<Category>E</Category>
+		<Desc>
+			"Duplicate entry: %s
+        Ignoring line: %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1313</Id>
+		<Category>E</Category>
+		<Desc>
+			"Null entry: %s
+        Ignoring line: %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1314</Id>
+		<Category>E</Category>
+		<Desc>
+			"Package %s not found in design.
+        %s %s
+        Ignoring line: %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1315</Id>
+		<Category>E</Category>
+		<Desc>
+			"Net %s not found in design.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1316</Id>
+		<Category>E</Category>
+		<Desc>
+			"INTERNAL ERROR - Unable to rename net %s to %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1317</Id>
+		<Category>I</Category>
+		<Desc>
+			"Updated physical net name %s to %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1318</Id>
+		<Category>E</Category>
+		<Desc>
+			"Errors found while processing "%s".
+        Ignoring line: %d
+"
+		</Desc>
+		<ExtDesc>
+			"This error is generated when Packager-XL is unable to complete the operation because of issues in the pstsecx.dat file. 
+			Example:
+			Errors found while processing "U1 1 U1 3".
+			Ignoring line: 2
+			In this example, U1(LS04) has two sections, section5 (pin1), and section6 (pin3). The problem arises because the pstsecx.dat file shows the following data: U1 1 U1 3 This data requires Packager-XL to change the net name from U1 of pin 1 to U1 of pin 3. However, Packager-XL is unable to complete the operation as pin 3 is already being used in the design. To address the error, change the data in the pstsecx.dat file to some other pin (section), which is not being used in the design."
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1319</Id>
+		<Category>E</Category>
+		<Desc>
+			"Package %s not found in design.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1320</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pin %s not found in physical part %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1321</Id>
+		<Category>E</Category>
+		<Desc>
+			"Following Instance cannot be packaged into section %d.
+        Schematic Instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1322</Id>
+		<Category>E</Category>
+		<Desc>
+			"The HAS_FIXED_SIZE part does not have all sections specified.
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1323</Id>
+		<Category>E</Category>
+		<Desc>
+			"INTERNAL ERROR - unknown feedback type passed - %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1324</Id>
+		<Category>W</Category>
+		<Desc>
+			"Token found after 'END.'
+%s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1325</Id>
+		<Category>E</Category>
+		<Desc>
+			"'END.' found as %s token.
+        Line Number: %d
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1326</Id>
+		<Category>E</Category>
+		<Desc>
+			"%s assigned as %s and as %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1327</Id>
+		<Category>I</Category>
+		<Desc>
+			"Processing %s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1328</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot use common pin %s to specify a section in %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1329</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot swap a HAS_FIXED_SIZE part to two packages - %s and %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1330</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot swap HAS_FIXED_SIZE sections to different section ranges.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1331</Id>
+		<Category>E</Category>
+		<Desc>
+			"Found a section swapped to itself.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1400</Id>
+		<Category>E</Category>
+		<Desc>
+			"Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1410</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to run Packager-XL. Ensure that a .cpm file with the specified filename exists and the pxl command is specified with  the syntax -proj &lt;project filename&gt;.cpm.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1411</Id>
+		<Category>E</Category>
+		<Desc>
+			"Specify the top level library and cell name.
+        lib.cell:view
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1412</Id>
+		<Category>E</Category>
+		<Desc>
+			"Reference designator %s for the following instance is longer than the one specified by the REF_DES_LENGTH = %d directive.This instance will not be packaged. Change the ref_des_pattern or REF_DES_LENGTH directive and rerun the packager or REF_DES_LENGTH directive and rerun the packager.
+        Schematic Instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1413</Id>
+		<Category>E</Category>
+		<Desc>
+			"Reference designator %s for the following instance is longer than the one specified by the REF_DES_LENGTH = %d directive.This instance will not be packaged. Change the ref_des_pattern. Change the %s property on the schematic and rerun the packager.
+        Schematic Instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1414</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to package the instance into package %s.
+        Schematic instance: %s
+        Section %d is assigned %s
+        The instances are not packaged in the given location because they have the same location property value. Change the location property value for any one of the instances in the Design Entry HDL schematic.	
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1415</Id>
+		<Category>E</Category>
+		<Desc>
+			"SEC %d is invalid. The maximum valid section for instance %s is %d.
+        Schematic instance: %s
+        Physical part: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1416</Id>
+		<Category>E</Category>
+		<Desc>
+			"SEC %d is invalid. SEC is not valid for this instance of asymmetrical part. 
+		Schematic instance: %s 
+		Physical part: %s 
+		Section the instance again to ensure valid section assignment.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1417</Id>
+		<Category>E</Category>
+		<Desc>
+			"PACK_TYPE value %s of the part %s is not defined in chips.prt for the schematic instance.
+        Schematic instance: %s
+        Ensure that the value of the PACK_TYPE property for the part is defined in the chips.prt file.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1418</Id>
+		<Category>E</Category>
+		<Desc>
+			"PACK_TYPE value %s for part %s is not defined in chips.prt for the schematic instance. PACK_TYPE is not in chips.prt and is not a ppt key property. 
+        Schematic instance: %s
+        Ensure that the value of the PACK_TYPE property for the part is defined in the chips.prt file.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1419</Id>
+		<Category>E</Category>
+		<Desc>
+			"Duplicate Part Subtype Name %d: %s
+        Duplicate Part Subtype Name %d: %s
+        Schematic instance: %s
+        Ignoring 1. Using 2.
+        Because %s has more precedence.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1420</Id>
+		<Category>E</Category>
+		<Desc>
+			"Subtype name %s is used for a part with parent %s
+        Schematic instance: %s
+        Cannot reuse it for a part with parent %s
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1421</Id>
+		<Category>E</Category>
+		<Desc>
+			"Subtype name %s is used for a part with parent %s
+        Cannot reuse it for a part with parent %s
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1422</Id>
+		<Category>E</Category>
+		<Desc>
+			"Section %d, common pin %s is connected to different nets:
+        Schematic net: %s
+        Package net: %s
+        Packaged instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1423</Id>
+		<Category>E</Category>
+		<Desc>
+			"Duplicate Part Subtype Name %d: %s
+        Duplicate Part Subtype Name %d: %s
+        Schematic instance: %s
+        Ignoring 1. Using 2.
+        Because %s has more precedence.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1424</Id>
+		<Category>E</Category>
+		<Desc>
+			"Feedback is changing SEC from %s to %s.
+        Design instance: %s
+        Pin name: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1425</Id>
+		<Category>I</Category>
+		<Desc>
+			"
+        Cadence Design Systems, Inc.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1426</Id>
+		<Category>I</Category>
+		<Desc>
+			"    (C) Copyright 1994, Cadence Design Systems, Inc.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1427</Id>
+		<Category>I</Category>
+		<Desc>
+			"Processing project file and command line"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1428</Id>
+		<Category>I</Category>
+		<Desc>
+			"End processing project file and command line"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1429</Id>
+		<Category>I</Category>
+		<Desc>
+			"Calling the linker to process the design"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1430</Id>
+		<Category>I</Category>
+		<Desc>
+			"End linker"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1431</Id>
+		<Category>I</Category>
+		<Desc>
+			"Loading State Files"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1432</Id>
+		<Category>I</Category>
+		<Desc>
+			"End loading State Files"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1433</Id>
+		<Category>I</Category>
+		<Desc>
+			"Starting to feedback."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1434</Id>
+		<Category>I</Category>
+		<Desc>
+			"End feedback."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1435</Id>
+		<Category>I</Category>
+		<Desc>
+			"Starting to assign physical parts."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1436</Id>
+		<Category>I</Category>
+		<Desc>
+			"End assigning physical parts."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1437</Id>
+		<Category>I</Category>
+		<Desc>
+			"Packaging"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1438</Id>
+		<Category>I</Category>
+		<Desc>
+			"End packaging"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1439</Id>
+		<Category>I</Category>
+		<Desc>
+			"Starting optimization."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1440</Id>
+		<Category>I</Category>
+		<Desc>
+			"End optimization."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1441</Id>
+		<Category>I</Category>
+		<Desc>
+			"%d errors detected
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1442</Id>
+		<Category>I</Category>
+		<Desc>
+			"No errors detected
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1443</Id>
+		<Category>I</Category>
+		<Desc>
+			"%d warnings detected
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1444</Id>
+		<Category>I</Category>
+		<Desc>
+			"No warnings detected
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1445</Id>
+		<Category>I</Category>
+		<Desc>
+			"Error number limit reached. Terminating.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1446</Id>
+		<Category>I</Category>
+		<Desc>
+			"Use max_errors directive to change limit.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1447</Id>
+		<Category>W</Category>
+		<Desc>
+			"Unable to shorten the net %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1448</Id>
+		<Category>I</Category>
+		<Desc>
+      "Use Tools - Markers - Packager in Design Entry HDL to highlight the instances for which errors or warnings are reported
+"
+    </Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1449</Id>
+		<Category>E</Category>
+		<Desc>
+			"Could not locate cdsZip. Please check Cadence installation.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1450</Id>
+		<Category>E</Category>
+		<Desc>
+			"%s zip file could not be created successfully. Packager-XL exiting with failure status
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1451</Id>
+		<Category>W</Category>
+		<Desc>
+			"Cannot find a ppt part that matches the instance properties.
+        Ppt Name: %s
+        Schematic instance: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1452</Id>
+		<Category>W</Category>
+		<Desc>
+			"REF_DES_PATTERN value "%s" has leading blank or tab character(s). These will be omitted for reference designator generation.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1453</Id>
+		<Category>W</Category>
+		<Desc>
+			"REF_DES_PATTERN value "%s" has trailing blank or tab character(s). These will be omitted for reference designator generation.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1454</Id>
+		<Category>E</Category>
+		<Desc>
+			"Models assigned to instances cannot be found. To proceed, set the library path for missing models in the Model Assignment in DE-HDL.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1455</Id>
+		<Category>E</Category>
+		<Desc>
+			"Failure(s) were detected in applying the ecset. To view the error details, check the ConCM.log in the temp area.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1456</Id>
+		<Category>E</Category>
+		<Desc>
+			"Schematic error(s) or warning(s) have been found in current design. Load marker files in %s folder to resolve them. Run File > Save Hierarchy to update the error status.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1457</Id>
+		<Category>I</Category>
+		<Desc>
+			"No Schematic error(s) or warning(s) found in the current design. Proceeding with packaging. Run File > Save Hierarchy to update the error status.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>1458</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to package the design as the design connectivity data is in use by another user '%s'
+"
+		</Desc>
+		<ExtDesc>
+			"This error occurs when the design is in use by another user or if there are lock files in the design. 
+The other user may be packaging the design, has launched Constraint Manager, or is saving the design. If there are lock files, delete them, save the design in Design Entry HDL and package the design again.
+"
+		</ExtDesc>
+		<Output>C</Output>
+  </Msg>
+  <Msg>
+		<Id>1459</Id>
+		<Category>E</Category>
+		<Desc>
+			"The design has changes which could make the differential pair definition in the signal models out of sync. Synchronize the Signal Models and the design before packaging the design.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+  </Msg>
+  <Msg>
+		<Id>1460</Id>
+		<Category>I</Category>
+		<Desc>
+			"Reference designator %s was not generated according to the PHYS_DES_PREFIX property defined for the physical part for 
+		Schematic Instance: %s  
+Auto-correcting the reference designator to %s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+  </Msg>
+  <Msg>
+		<Id>1461</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to package the design because the XNet state of the following block(s) is different from the XNet state defined in the project files, which is '%s'
+
+%s
+
+Reload the design in DE-HDL and migrate the design to '%s' to synchronize the XNet states."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+  </Msg>
+  <Msg>
+		<Id>1462</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to package the design because the XNet state of the root design is '%s', and the XNet state defined in the project files is '%s.
+Reload the design in DE-HDL and migrate the design to '%s' to synchronize the XNet states."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+  </Msg>
+</MsgFile>
+

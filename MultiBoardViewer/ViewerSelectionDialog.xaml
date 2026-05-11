@@ -9,9 +9,9 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="FileNameText" Grid.Row="0" Margin="10" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="BoardViewerButton" Content="BoardViewer" Width="120" Height="35" Margin="8" Click="BoardViewerButton_Click"/>
+            <Button x:Name="NexusBvButton" Content="NexusBV" Width="120" Height="35" Margin="8" Click="NexusBvButton_Click"/>
             <Button x:Name="OpenBoardViewButton" Content="OpenBoardView" Width="120" Height="35" Margin="8" Click="OpenBoardViewButton_Click"/>
-            <Button x:Name="FlexBoardViewButton" Content="FlexBoardView" Width="120" Height="35" Margin="8" Click="FlexBoardViewButton_Click"/>
+
         </StackPanel>
     </Grid>
 </Window>

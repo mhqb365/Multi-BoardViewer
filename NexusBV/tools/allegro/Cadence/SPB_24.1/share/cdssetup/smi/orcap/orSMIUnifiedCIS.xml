@@ -1,0 +1,488 @@
+<?xml version="1.0"?>
+
+<MsgFile>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>CADENCE_LOGIN_BE_MUST</CDNUSR_DEFINE_NAME>
+
+    <Id>51001</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Provide a valid Cadence login ID and password to proceed."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>UL_LOGIN_BE_MUST</CDNUSR_DEFINE_NAME>
+
+    <Id>51002</Id>
+
+    <Category>I</Category>
+
+    <Desc>"Provide a valid Ultra Librarian login ID and password to proceed."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>DOWNLOAD_PART_FAILED</CDNUSR_DEFINE_NAME>
+
+    <Id>51003</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Failed to download symbol instance for model '%s' due to an error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+   
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>PSPICE_MODEL_DATA_NOT_FETCHED</CDNUSR_DEFINE_NAME>
+
+    <Id>51004</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to fetch PSpice model data due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>PARAMETRIC_DATA_NOT_FETCHED</CDNUSR_DEFINE_NAME>
+
+    <Id>51005</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to fetch parametric data due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>PARTS_DATA_NOT_FETCHED</CDNUSR_DEFINE_NAME>
+
+    <Id>51006</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to fetch parts data due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>ALL_FOOTPRINTS_NOT_FETCHED</CDNUSR_DEFINE_NAME>
+
+    <Id>51007</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to fetch user footprints from the workspace area due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>ALL_SYMBOLS_NOT_FETCHED</CDNUSR_DEFINE_NAME>
+
+    <Id>51008</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to fetch user symbols from the workspace area due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>FOOTPRINT_NOT_FETCHED</CDNUSR_DEFINE_NAME>
+
+    <Id>51009</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to fetch footprints for part due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>SYMBOL_NOT_FETCHED</CDNUSR_DEFINE_NAME>
+
+    <Id>51010</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to fetch part symbols due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>LIBTREE_NOT_FETCHED</CDNUSR_DEFINE_NAME>
+
+    <Id>51011</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to fetch library tree due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>CATEGORY_TREE_NOT_FETCHED</CDNUSR_DEFINE_NAME>
+
+    <Id>51012</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to fetch category tree due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>NEW_N_EDIT_PART_FAILED</CDNUSR_DEFINE_NAME>
+
+    <Id>51013</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to create or edit part due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>DELETE_PART_FAILED</CDNUSR_DEFINE_NAME>
+
+    <Id>51014</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to delete part due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>SUBCATEGORY_FETCH_FAILED</CDNUSR_DEFINE_NAME>
+
+    <Id>51015</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to fetch sub-categories due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>UNSAVED_CHANGES_IN_COMPONENT</CDNUSR_DEFINE_NAME>
+
+    <Id>51016</Id>
+
+    <Category>Q</Category>
+
+    <Desc>"Do you want to save the changes?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>NO_INTERNET_CONNECTION</CDNUSR_DEFINE_NAME>
+
+    <Id>51017</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Some operations cannot be performed because the system is not connected to the internet."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>LINK_EXT_PART_SUCCESS</CDNUSR_DEFINE_NAME>
+
+    <Id>51018</Id>
+
+    <Category>I</Category>
+
+    <Desc>"To link a part to the database, right-click the part in the workspace and choose Link MPN."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+  
+    <CDNUSR_DEFINE_NAME>WORKSPACE_ADD_LIMIT</CDNUSR_DEFINE_NAME>
+
+    <Id>51019</Id>
+
+    <Category>I</Category>
+
+    <Desc>"More workspaces cannot be added because the maximum limit of 10 workspaces is reached."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+    <Msg>
+
+    <CDNUSR_DEFINE_NAME>MEMBER_ADD_LIMIT</CDNUSR_DEFINE_NAME>
+
+    <Id>51020</Id>
+
+    <Category>I</Category>
+
+    <Desc>"More members cannot be added to the selected workspace because the maximum limit of 10 members per workspace is reached."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>DELETE_COMPONENT</CDNUSR_DEFINE_NAME>
+
+    <Id>51021</Id>
+
+    <Category>Q</Category>
+
+    <Desc>"The selected component will be deleted from the shared workspace, ‘%s’. Are you sure you want to delete this component?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>LOCK_PART_FAILED</CDNUSR_DEFINE_NAME>
+
+    <Id>51022</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to lock part due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>UNLOCK_PART_FAILED</CDNUSR_DEFINE_NAME>
+
+    <Id>51023</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to unlock part due to an internal error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>UNHANDLED_SERVER_ERROR</CDNUSR_DEFINE_NAME>
+
+    <Id>51024</Id>
+
+    <Category>E</Category>
+
+    <Desc>"The requested operation could not be completed due to an internal server error. Contact Cadence Customer Support with the steps resulting in the error."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>PUBLISH_ACROSS_REGIONS</CDNUSR_DEFINE_NAME>
+
+    <Id>51025</Id>
+
+    <Category>Q</Category>
+
+    <Desc>"The destination workspace location, ‘%s’, is different from the source workspace location, ‘%s’. Do you want to publish the data across regions?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+  <Msg>
+    <CDNUSR_DEFINE_NAME>DELETE_FILE</CDNUSR_DEFINE_NAME>
+    <Id>52001</Id>
+    <Category>Q</Category>
+<!-- Q(Question), I(info), E(error),  -->
+    <Desc>"The selected file/folder will be deleted permanently from the workspace, ‘%s’. Are you sure you want to continue?"</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+
+  <Msg>
+    <CDNUSR_DEFINE_NAME>COPY_FILE_TO_MYWS</CDNUSR_DEFINE_NAME>
+    <Id>52002</Id>
+    <Category>Q</Category>
+    <Desc>"The selected file/folder with identical name, if present in My Workspace, will be overwritten. Are you sure you want to continue?"</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+
+  <Msg>
+    <CDNUSR_DEFINE_NAME>SYNC_UTILITY_NOT_RUNNING</CDNUSR_DEFINE_NAME>
+    <Id>52003</Id>
+    <Category>E</Category>
+    <Desc>"%s cannot start because the sync utility is not running. Run the 'capStartSyncUtility' command in Command Window to start the sync utility and then launch %s."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>DOWNLOAD_FILE_SUCCESS</CDNUSR_DEFINE_NAME>
+    <Id>52004</Id>
+    <Category>I</Category>
+    <Desc>"The %s, '%s',  is successfully downloaded. See the Session Log window for more information."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>DOWNLOAD_FILE_FAILED</CDNUSR_DEFINE_NAME>
+    <Id>52005</Id>
+    <Category>E</Category>
+    <Desc>"Download failed for the %s, '%s'."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>DELETE_FILE_FAILED</CDNUSR_DEFINE_NAME>
+    <Id>52006</Id>
+    <Category>E</Category>
+    <Desc>"One or more errors occurred while deleting file(s). See the Session Log window for more information."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>PUBLISH_NO_SHARED_WORKSPACE</CDNUSR_DEFINE_NAME>
+    <Id>52007</Id>
+    <Category>E</Category>
+    <Desc>"The selected component cannot be published. At least one shared workspace is required to publish the components in My Workspace."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>PUBLISH_ONE_SHARED_WORKSPACE</CDNUSR_DEFINE_NAME>
+    <Id>52008</Id>
+    <Category>E</Category>
+    <Desc>"The selected component cannot be published. At least one more shared workspace is required to publish components across shared workspaces."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  
+  <Msg>
+    <CDNUSR_DEFINE_NAME>USER_NOT_LOGGEDIN</CDNUSR_DEFINE_NAME>
+    <Id>52009</Id>
+    <Category>E</Category>
+    <Desc>"Do OrCADX login to launch Workspace File Manager."</Desc>
+    <Output>U</Output>
+    <ExtDesc>""</ExtDesc>
+  </Msg>
+  
+</MsgFile>

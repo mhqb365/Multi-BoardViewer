@@ -1,0 +1,116 @@
+<MsgFile>
+    <Msg>
+        <Id>1</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_UI_DEGASOOD</CDNUSR_DEFINE_NAME>
+        <Category>E</Category>
+        <Desc>
+Degas shapes are out of date, update the shapes manually.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+    <Msg>
+        <Id>2</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_DEGASOOD_DISABLE_1</CDNUSR_DEFINE_NAME>
+        <Category>W</Category>
+        <Desc>
+Disabling out-of-date checks for degassing. %d degassed shapes are out-of-date. Generated file may not be correct for degassing rules.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+    <Msg>
+        <Id>3</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_UI_DEGASOOD_CONFIRM</CDNUSR_DEFINE_NAME>
+        <Category>I</Category>
+        <Desc>
+Generated shapes may not be correct for degassing rules because degassed shapes are out-of-date. Do you want to proceed?
+
+Add the design-level property DEGAS_DISABLE_OOD_CHECKS to not see this message again.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+    <Msg>
+        <Id>4</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_EXPORT_OBJ_3</CDNUSR_DEFINE_NAME>
+        <Category>E</Category>
+        <Desc>
+Cannot export %s near (%s). Ensure the %s is correct and try again.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+    <Msg>
+        <Id>5</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_EXPORT_OBJ_LAYER_5</CDNUSR_DEFINE_NAME>
+        <Category>E</Category>
+        <Desc>
+Cannot export %s on %s/%s near (%s). Ensure the %s is correct and try again.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+    <Msg>
+        <Id>6</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_OVERFLOW_3</CDNUSR_DEFINE_NAME>
+        <Category>E</Category>
+        <Desc>
+stream_out is exiting because value %s exceeds the maximum supported by the GDS format (%s to %s).  Change output units or accuracy to ensure all values fall within the limits of the export format.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+    <Msg>
+        <Id>7</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_MIRROR_1</CDNUSR_DEFINE_NAME>
+        <Category>E</Category>
+        <Desc>
+stream_out is exiting because design has mirrored %s. Use the 'Flatten Geometry' option.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+    <Msg>
+        <Id>8</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_UNEXPECTED_ERROR_1</CDNUSR_DEFINE_NAME>
+        <Category>E</Category>
+        <Desc>
+Exiting stream_out because of unexpected error: %s.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+
+    <Msg>
+        <Id>9</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_INSUFFICIENT_MEMORY</CDNUSR_DEFINE_NAME>
+        <Category>E</Category>
+        <Desc>
+Cannot complete stream_out because of insufficient memory. Increase memory and try again.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+    <Msg>
+        <Id>10</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_UI_METALFILLOOD</CDNUSR_DEFINE_NAME>
+        <Category>E</Category>
+        <Desc>
+Metal fill shapes are out of date, update the shapes manually.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+    <Msg>
+        <Id>11</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_METALFILLOOD_DISABLE_1</CDNUSR_DEFINE_NAME>
+        <Category>W</Category>
+        <Desc>
+Disabling out-of-date checks for metal filling. %d metal fill shapes are out-of-date. Generated file may not be correct for metal filling rules.
+        </Desc>
+        <Output>C</Output>
+    </Msg>
+    <Msg>
+        <Id>12</Id>
+        <CDNUSR_DEFINE_NAME>STREAM_UI_METALFILLOOD_CONFIRM</CDNUSR_DEFINE_NAME>
+        <Category>I</Category>
+        <Desc>
+Generated shapes may not be correct for metal filling rules because metal fill shapes are out-of-date. Do you want to proceed?
+
+Add the design-level property METAL_FILL_DISABLE_OOD_CHECKS to not see this message again.
+        </Desc>
+        <Output>C</Output>
+    </Msg>    
+</MsgFile>
+

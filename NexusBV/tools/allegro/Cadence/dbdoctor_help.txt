@@ -1,0 +1,114 @@
+
+Command line arguments for dbdoctor
+    Database maintenance utility.  Uprevs, checks, and in some
+    instances will repair allegro databases.  This command is
+    also used to manage the lock state of the database.
+
+dbdoctor [<args>] [<input brd>]
+
+    GENERIC
+    [<input board>]
+        Wildcards can be used for input boards.
+
+    GENERIC ARGUMENTS
+    [-check_only]
+        Checks database but does not attempt to fix it.
+    [-drc]
+        Checks and repairs database, updates all DRC's, including BATCH only.
+    [-drc_only] 
+        Updates all DRC's, including BATCH only. Does not check database.
+    [-no_dbcheck] 
+        Disables checking and fixing the database. Superseeds -drc_only
+        flag but can also be used with the shape update, purge, and regenerate
+        xnet options.
+    [-shapes] 
+        Checks and repairs database with additional shape checks.
+    [-no_backup] 
+        Do not copy the input board to <input brd>.orig.
+    [-outfile <output brd>]
+        Output database. When this option is used it will also set
+        the -no_backup option.  Only available with a single <input brd>.
+    [-purge_vialist]
+        Purge vias from constraint vialist that are not found.
+        This is the same functionality found with the Purge Vialist
+        button in the physical constraint form.
+    [-purge_padstacks]
+        Purge unused padstacks from the database. Same functionality
+        found Purge->All padstacks in the padeditldb Allegro command.
+        When both purge_vialist and purge_padstacks are given the
+        purge_vialist is done first. These cleanup passes are
+        done after the database check but before DRC checking.
+    [-purge_unused_user_sc]
+        Purge unused user-defined subclasses from the database. The 
+        log file also displays any film records associated with the 
+        user-defined subclasses.
+    [-regenerate_xnets]
+        Recreates all Xnets and diff pairs.
+    [-no_dyn_shape_update]
+        Disables dynamic shape updating. This will NOT update out-of-date
+        dynamic shapes, it prevents dynamic shapes from updating due to
+        other database fixes.
+    [-shape_update]
+        Update just dynamic shapes that are out-of-date.
+    [-force_shape_update]
+        Forces all dynamic shapes to be updated.
+    [-check_properties]
+        Removes properties found on incorrect parents.
+    [-property <filename>]
+        Updates design with properties contained in the provided file.
+        See <cdsroot>/share/local/pcb/dbdoctor_property_template.txt
+        for file format.
+    [-force_sector_tune]
+        Forces the sector table to be regenerated. By default, Allegro will
+        reduce the sector size for performance when opening or saving a design,
+        but will not increase it. This option may increase the sector size,
+        reducing database size and increasing performance in cases where the
+        sector size is too small.
+
+    DATABASE LOCKING
+    [-islocked] 
+        Returns the lock status of the database.
+    [-lock] 
+        Locks the database. This does nothing if the database is already
+        locked.
+    [-unlock] 
+        Unlocks the database. This does nothing if the database is already
+        unlocked. If database has a lock with a password, then the password
+        option is required.
+    [-password]  <password>
+        Sets the password if locking or uses the password if unlocking. The
+        password must be 20 characters or less. The first character cannot
+        be a "-" and the password cannot contain "\" or space characters.
+    [-locklevel] [1,2,4,8]
+        Numeric value that indicates database lock type. Supported values are:
+            1 - Write lock
+            2 - View lock   (requires password)
+            4 - Export lock (requires password)
+            8 - Pulse lock
+    [-exp_duration] <days>
+        Lock duration in days from when the lock is set. This is optional and 0 
+        indicates no expiration. Once the number of days has passed, the
+        database will no longer be locked.
+    [-lockComment]  "<comment>"
+        Optionally sets a comment. When passing a comment string with spaces,
+        the comment should be quoted. The maximum number of characters is 1024.
+        Comments can only be applied when locking the database.
+
+
+Standard command line arguments:
+
+	[-help]
+		- This information
+	[-version]
+		- Program prints its version and exits
+	[-versionLong]
+		- Program prints its long version (if available) and exits
+
+Legend:
+	[...] - optional argument
+	<...> - provide indicated data. Typically a filename.
+	|     - provide one of these arguments. Example -j|-o 
+	...   - required argument
+	-$    - most Allegro programs accept this argument which means
+		do not prompt for missing command line arguments
+

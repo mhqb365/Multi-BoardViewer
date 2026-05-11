@@ -6,9 +6,9 @@ namespace MultiBoardViewer
     {
         public enum ViewerResult
         {
-            BoardViewer,
+            NexusBV,
             OpenBoardView,
-            FlexBoardView,
+
             Cancel
         }
 
@@ -21,9 +21,9 @@ namespace MultiBoardViewer
             Result = ViewerResult.Cancel;
         }
 
-        private void BoardViewerButton_Click(object sender, RoutedEventArgs e)
+        private void NexusBvButton_Click(object sender, RoutedEventArgs e)
         {
-            Result = ViewerResult.BoardViewer;
+            Result = ViewerResult.NexusBV;
             DialogResult = true;
             Close();
         }
@@ -35,11 +35,6 @@ namespace MultiBoardViewer
             Close();
         }
 
-        private void FlexBoardViewButton_Click(object sender, RoutedEventArgs e)
-        {
-            Result = ViewerResult.FlexBoardView;
-            DialogResult = true;
-            Close();
-        }
+
     }
 }

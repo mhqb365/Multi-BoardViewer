@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MsgFile>
+  <Msg>
+    <Id>101</Id>
+    <Category>E</Category>
+    <Desc>
+      "%1
+%2
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>102</Id>
+    <Category>E</Category>
+    <Desc>
+      "Unable to find the log file '%1'.
+Browse to the location of the log file and ensure that it is readable. 
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>103</Id>
+    <Category>E</Category>
+    <Desc>
+      "Unable to the read log file '%1'.
+Ensure that the log file is readable. 
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>104</Id>
+    <Category>E</Category>
+    <Desc>
+      "Unable to open the log file '%1' for writing.
+Ensure that the file and the directory containing the file have write permission. 
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>105</Id>
+    <Category>E</Category>
+    <Desc>
+      "Unable to change directory to '%1'.
+Ensure that the directory path exists and has write permission.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>106</Id>
+    <Category>E</Category>
+    <Desc>
+      "Unable to create the directory '%1'.
+Ensure that the directory path exists and has write permission.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>107</Id>
+    <Category>E</Category>
+    <Desc>
+      "Unable to find the technology file '%1'.
+Ensure that the file exists or translate a PCB with technology to make this file available.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>108</Id>
+    <Category>E</Category>
+    <Desc>
+      "Unable to open file '%1' for recording script.
+Ensure that the file has write permission.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>109</Id>
+    <Category>W</Category>
+    <Desc>
+      "Selected libraries or cells will be deleted from destination library locations. The delete operation may take some time, depending on the size of the libraries.
+Do you want to continue ?
+"
+    </Desc>
+  </Msg>
+    <Msg>
+    <Id>110</Id>
+    <Category>I</Category>
+    <Desc>
+      "Source and destination library path cannot be the same in the append mode. 
+"
+    </Desc>
+  </Msg>
+</MsgFile>

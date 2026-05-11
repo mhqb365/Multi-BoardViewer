@@ -1,0 +1,632 @@
+<?xml version="1.0"?>
+<MsgFile>
+    <Msg>
+        <Id>	
+		 1
+		</Id>
+        <Category>W</Category>
+        <Desc>"Part Calculator cannot be opened because a shopping cart cannot be found for this project. Ensure the shopping cart file is available."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 2
+		</Id>
+        <Category>E</Category>
+        <Desc>"Part Information Manager cannot read the Design Workbench configuration. Launch Part Information Manager from the ADW prompt or Flow Manager to ensure the ADW settings are available."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 3
+		</Id>
+        <Category>E</Category>
+        <Desc>"Part Information Manager cannot be launched in the Database mode. The server access information cannot be read. Ensure the workbench.ini has valid values for SERVER_HOST, SERVER_USER, and SERVER_PASSWORD. The current values are: %s, %s, %s from the %s file."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 4
+		</Id>
+        <Category>E</Category>
+        <Desc>"Part Information Manager cannot be initialized because cds.lib cannot be read. Ensure that the cds.lib file contains valid entries and is accessible. "</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 5
+		</Id>
+        <Category>I</Category>
+        <Desc>"Part Information Manager is connected to the %s server."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 6
+		</Id>
+        <Category>E</Category>
+        <Desc>"Part Information Manager cannot connect to the following servers: %s&#xA;%sFor more information about server connectivity problems, refer to the product documentation."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 7
+		</Id>
+        <Category>W</Category>
+        <Desc>"Cannot remove all the nodes from the display. At least one node must be displayed."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 8
+		</Id>
+        <Category>E</Category>
+        <Desc>"Property name specified is invalid. The name can contain only alphanumeric characters without spaces or special characters."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 9
+		</Id>
+        <Category>W</Category>
+        <Desc>"Unable to add an attribute with the %s name. An attribute already exists with this name. Specify another name."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 10
+		</Id>
+        <Category>Q</Category>
+        <Desc>"If you remove all the attributes, no attributes will be displayed in the searchable properties. Are you sure you want to remove all attributes?"</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 11
+		</Id>
+        <Category>W</Category>
+        <Desc>"Invalid value specified for the number of rows. Specify a value between 1 and %s."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 12
+		</Id>
+        <Category>W</Category>
+        <Desc>"Invalid value specified for Tolerance. Ensure the number specified is between 0 and 100."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 13
+		</Id>
+        <Category>W</Category>
+        <Desc>"Invalid value specified for Quantity. Ensure the value specified is 1 or greater."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 14
+		</Id>
+        <Category>E</Category>
+        <Desc>"BOM call out file path directive not found in the cpm file. Generate the BOM with Design Entry HDL and then try viewing the BOM call out file."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 15
+		</Id>
+        <Category>W</Category>
+        <Desc>"No server address and user ID found. Specify a valid address and user ID for the server you are trying to connect to."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>
+		 16
+		</Id>
+        <Category>W</Category>
+        <Desc>"Shopping cart cannot be saved because some files seem to be missing from the Cadence installation. Ensure no files have been deleted and the installation is complete."</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>
+		 17
+		</Id>
+        <Category>I</Category>
+        <Desc>"This part is not included in the project's preferred part list."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 18
+		</Id>
+        <Category>E</Category>
+        <Desc>"Unable to read the %s file. Ensure the file exists and has the required permissions."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 19
+		</Id>
+        <Category>E</Category>
+        <Desc>"File viewer cannot be launched. Set the %s variable and try again."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 34
+		</Id>
+        <Category>E</Category>
+        <Desc>"Unable to process the entered query. Ensure that the query contains the	appropriate binary token that is meaningful and can be parsed."</Desc>
+        <Output>U</Output>
+	</Msg>
+    <Msg>
+        <Id>	
+		 35
+		</Id>
+        <Category>E</Category>
+        <Desc>"Unable to process the equation. Operand found before the operator. Ensure that each operand pair is separated by one operator only."</Desc>
+        <Output>U</Output>
+
+	</Msg>
+
+	<Msg>
+        <Id>	
+		 36
+		</Id>
+        <Category>E</Category>
+        <Desc>"Query cannot be processed. Ensure the query is correctly formed and the opening and closing parentheses are correctly placed."</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>	
+		 37
+		</Id>
+        <Category>E</Category>
+        <Desc>"Query cannot be processed correctly because it contains operators with similar precedence. Ensure the operators are placed with appropriate parentheses."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 38
+		</Id>
+        <Category>E</Category>
+        <Desc>"No opening braces found in the query. Ensure that opening braces are present in the query."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 39
+		</Id>
+        <Category>E</Category>
+        <Desc>"Number of operands specified is less than what is required. Ensure that the query has the minimum number of operands required."</Desc>
+        <Output>U</Output>
+	</Msg>
+    <Msg>
+        <Id>	
+		 40
+		</Id>
+        <Category>E</Category>
+        <Desc>"Incorrect operand types specified. Ensure that the query has the correct types of operands."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 41
+		</Id>
+        <Category>E</Category>
+        <Desc>"No operand specified. Ensure there is an operand present."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 42
+		</Id>
+        <Category>E</Category>
+        <Desc>"Operation failed because operand type is incorrect. Ensure there is a valid operand present."</Desc>
+        <Output>U</Output>
+	</Msg>
+      <Msg>
+        <Id>	
+		 43
+		</Id>
+        <Category>E</Category>
+        <Desc>"Operation failed because operands have blank spaces. Ensure that no blank spaces exist between two operands."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 44
+		</Id>
+        <Category>E</Category>
+        <Desc>"Unable to contact the license server. Ensure the license server specified is accessible."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>	
+		 45
+		</Id>
+        <Category>E</Category>
+        <Desc>"Unable to check out a required license. Ensure that one of the following license is available and the server specified is accessible.
+		&#xA;Allegro Data Manager &#xD;Allegro Library Manager &#xD;Allegro Enterprise Authoring Solution"
+		</Desc>
+        <Output>U</Output>
+	</Msg>
+    <Msg>
+        <Id>46</Id>
+        <Category>E</Category>
+        <Desc>"%s project file cannot be read. It might have been modified manually or got corrupt. Ensure the file is accessible and has no syntax errors."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>47</Id>
+        <Category>E</Category>
+        <Desc>"Unable to display part details in a single tab because the part has duplicate part numbers. Disable the Single Detail Tab option to show part details for the duplicate parts."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>48</Id>
+        <Category>E</Category>
+        <Desc>"Selected part is no longer available in the database. Contact the librarian for information on the part or alternatives."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>49</Id>
+        <Category>E</Category>
+        <Desc>"Information for the selected part cannot be displayed. The information in the shopping cart does not match the reference library. Contact the librarian for details."</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>50</Id>
+        <Category>E</Category>
+        <Desc>"Request timed out. The server might not be responding or the timeout is set to a low value. Reconfigure the timeout interval and ensure the server is accessible."</Desc>
+	<Output>U</Output>
+	</Msg>
+    <Msg>
+        <Id>51</Id>
+        <Category>E</Category>
+        <Desc>"An error has been encountered. Details of the error cannot be displayed. Message number %s is missing from the file registered for the %s application. Ensure the Cadence installation files are all from the same release. In case the problem still persists, report this error to the Cadence Development team through your Cadence support contact."</Desc>
+	<Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>52</Id>
+        <Category>E</Category>
+        <Desc>"An error has been encountered. Details of the error cannot be displayed. Message number %s for the %s application is incorrect. Ensure the Cadence installation files are all from the same release. In case the problem still persists, report this error to the Cadence Development team through your Cadence support contact."</Desc>
+	<Output>U</Output>
+	</Msg>
+	<Msg>
+        <Id>53</Id>
+        <Category>E</Category>
+        <Desc>"Some of the required files are missing or unreadable. Ensure the Cadence installation files are all from the same release. In case the problem still persists, report this error to the Cadence Development team through your Cadence support contact."</Desc>
+	<Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>54</Id>
+        <Category>W</Category>
+        <Desc>"A row in the %s configuration file for the %s attribute does not match the current set. The row will be ignored."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>55</Id>
+        <Category>E</Category>
+        <Desc>"Unable to parse the %s configuration file. The rest of the file will be ignored. Try saving the search configuration again."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>56</Id>
+        <Category>E</Category>
+        <Desc>"Unable to retrieve shopping cart information. Use Purge to regenerate the shopping cart. If the problem persists, contact the administrator to restart the Allegro EDM server, or, if needed, run the installer to repair the installation."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>57</Id>
+        <Category>E</Category>
+        <Desc>"Unable to save file: %s. Ensure the file is not currently in use and has the required permissions."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>58</Id>
+        <Category>E</Category>
+         <Desc>"To connect to the online Component Browser, you must have one of the following licenses:
+		  &#xA;Allegro Data Manager &#xD;Allegro Library Manager &#xD;Allegro Enterprise Authoring Solution"
+		</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>59</Id>
+        <Category>E</Category>
+        <Desc>"Part Information Manager cannot connect to the following servers. %s&#xA;Ensure that the server is accessible.&#xA;&#xA;For more information about server connectivity problems, refer to the product documentation."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>60</Id>
+        <Category>W</Category>
+        <Desc>"A logical part cannot be added to the shopping cart."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>61</Id>
+        <Category>W</Category>
+        <Desc>"PTF optionset cannot be applied to models."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>62</Id>
+        <Category>W</Category>
+        <Desc>"PTF optionset cannot be applied to logical parts."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>63</Id>
+        <Category>W</Category>
+        <Desc>"The part number information cannot be retrieved from the server. Contact your librarian for more information."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>64</Id>
+        <Category>W</Category>
+        <Desc>"No search results to save."</Desc>
+        <Output>U</Output>
+	</Msg>
+    <Msg>
+        <Id>65</Id>
+        <Category>W</Category>
+        <Desc>"Unable to get the library %s because it is missing from %s."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>66</Id>
+        <Category>E</Category>
+        <Desc>"Unable to open %s. Ensure it exists and has the required permissions."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>67</Id>
+        <Category>W</Category>
+        <Desc>"Unable to read the cds.lib file %s. Reason: %s."</Desc>
+        <Output>U</Output>
+	</Msg>
+     <Msg>
+        <Id>68</Id>
+        <Category>W</Category>
+        <Desc>"The cache library cannot be loaded. Ensure the Cadence installation files are all from the same release. In case the problem still persists, report this error to the Cadence Development team through your Cadence support contact. "</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>69</Id>
+        <Category>W</Category>
+        <Desc>"The version of the part has changed. The Injected properties are different in the cache and in reference area. Run LRM to update the part properties."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>70</Id>
+        <Category>I</Category>
+        <Desc>"More than %d results found. To see all the results, right-click and choose Show All Results."</Desc>
+        <Output>U</Output>
+	</Msg>
+    <Msg>
+        <Id>71</Id>
+        <Category>I</Category>
+        <Desc>"Part Information Manager cannot be launched in the database mode for user %s on host %s. Ensure the cpm project file contains no errors and the host is valid and accessible."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>72</Id>
+        <Category>I</Category>
+        <Desc>"Part Information Manager cannot be launched in the database mode for user %s on host %s. Error: %s. Ensure the cpm project file contains no errors and the host is valid and accessible."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>73</Id>
+        <Category>I</Category>
+        <Desc>"Unable to apply the PTF options. "</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>74</Id>
+        <Category>Q</Category>
+        <Desc>"Part with property %s and value %s does not follow the organization policy. Continue?"</Desc>
+        <Output>U</Output>
+	</Msg>
+    <Msg>
+        <Id>75</Id>
+        <Category>E</Category>
+        <Desc>"Part with property %s and value %s cannot be added to design as this part is not compliant with the organization policy."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>76</Id>
+        <Category>E</Category>
+        <Desc>"The search configuration file cannot be loaded. The search configuration file mode is: %s mode and the current browser mode: %s. You can load the configuration files of the %s mode only."</Desc>
+        <Output>U</Output>
+	</Msg>
+    <Msg>
+        <Id>77</Id>
+        <Category>E</Category>
+        <Desc>"Cannot remove last matching option set for currently displayed part %s"</Desc>
+        <Output>U</Output>
+	</Msg>
+    <Msg>
+        <Id>78</Id>
+        <Category>E</Category>
+        <Desc>"File %s cannot be read. Reason: %s. Ensure the PTF option set file is not corrupt."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>79</Id>
+        <Category>E</Category>
+        <Desc>"Property name cannot be blank."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>80</Id>
+        <Category>E</Category>
+        <Desc>"Cannot hide all the columns."</Desc>
+        <Output>U</Output>
+    </Msg>
+     <Msg>
+        <Id>81</Id>
+        <Category>I</Category>
+        <Desc>"Unable to open the %s PTF option file. Ensure the file exists and has the required permissions."</Desc>
+        <Output>U</Output>
+     </Msg>
+     <Msg>
+        <Id>82</Id>
+        <Category>I</Category>
+        <Desc>"Shopping cart saved."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>83</Id>
+        <Category>E</Category>
+        <Desc>"Part Information Manager cannot run because the last successful PTF generation time is not available. to set the PTF generation time, run ptfgen and then run Part Information Manager."</Desc>
+        <Output>U</Output>
+    </Msg>
+
+    <Msg>
+        <Id>84</Id>
+        <Category>E</Category>
+        <Desc>"%s."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>85</Id>
+        <Category>Q</Category>
+        <Desc>"%s. Do you want to add this part?"</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>86</Id>
+        <Category>E</Category>
+        <Desc>""Selected part cannot be added to the design as it is deleted."</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>87</Id>
+        <Category>I</Category>
+        <Desc>"More than %d results found for the query entered. Only the first %d results can be displayed. To reduce the number of results to best match your requirements, specify a detailed search criteria."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>88</Id>
+        <Category>Q</Category>
+        <Desc>"Selected part is not included in the project's preferred part list. Do you wish to use this part in your design ?"</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>89</Id>
+        <Category>E</Category>
+        <Desc>"Unable to open %s. This is not a valid Shopping List."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>90</Id>
+        <Category>E</Category>
+        <Desc>"Unable to get %s queries. Reason : %s."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>91</Id>
+        <Category>E</Category>
+        <Desc>"Unable to generate report for query %s. Reason : %s."</Desc>
+        <Output>U</Output>
+    </Msg>
+     <Msg>
+        <Id>92</Id>
+        <Category>I</Category>
+        <Desc>"Unable to show report. Report can be accessed at location %s."</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>93</Id>
+        <Category>E</Category>
+        <Desc>"Selected part is not included in the projects preferred part list. You cannot  use this part in your design in ppl mode."</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>94</Id>
+        <Category>W</Category>
+        <Desc>"Cannot add the following approved parts to the shopping cart as the part(s) are not available in the ADW Component Database. Ensure that the approved part(s) exists and is accessible from the ADW Component Database.
+		%s
+	"</Desc>
+        <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>95</Id>
+        <Category>W</Category>
+        <Desc>"Cannot add the following approved parts to the shopping cart as the part(s) are not available in the reference library. Ensure that the approved part(s) exists and is accessible from the ADW Component Database.
+		%s
+	"</Desc>
+        <Output>U</Output>
+    </Msg> 
+    <Msg>
+        <Id>96</Id>
+        <Category>E</Category>
+        <Desc>"Cannot add the selected part(s) because it is not added in the shopping cart. In the strict mode, you can only add parts available in the shopping cart."</Desc>
+      <Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>97</Id>
+        <Category>E</Category>
+        <Desc>"Cannot add the selected cell because it has part(s) associated with it. In the strict mode, a cell with associated parts can only be added when one of the part rows is selected from the Search Results tab."</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>98</Id>
+        <Category>I</Category>
+        <Desc>"No alternative parts available."</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>99</Id>
+        <Category>E</Category>
+        <Desc>"No datasheet found at %s. Ensure the location is correct and you have the required permissions."</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>100</Id>
+        <Category>W</Category>
+        <Desc>"Unable to read the %s file. Ensure the file exists and has the required permissions."</Desc>
+        <Output>U</Output>
+    </Msg>		<Msg>		<Id>101</Id>        <Category>E</Category>        <Desc>		"Invalid search syntax in '%s'. %s.		    Specify a valid query. "		</Desc>        <Output>U</Output>    </Msg>	
+	<Msg>
+        <Id>102</Id>
+        <Category>W</Category>
+        <Desc>
+		"Unable to search because the application has encountered an unknown error. This error can occur for any number of reasons. A common cause could be that the server is inaccessible, is unresponsive, or is down."
+		</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>103</Id>
+        <Category>W</Category>
+        <Desc>
+		"Invalid search syntax in '%s'. %s. Specify a valid query."
+		</Desc>
+        <Output>U</Output>
+    </Msg>  <Msg>    <Id>104</Id>    <Category>E</Category>    <Desc>      "Unable to access the project in the shared area. Ensure that the shared area is accessible and the project exists under it."    </Desc>    <Output>U</Output>  </Msg>
+	<Msg>
+        <Id>200</Id>
+        <Category>E</Category>
+        <Desc>"Component Browser unable to retrieve data from server. Ensure Component Browser version is compatible with the ADW Server version."</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>301</Id>
+        <Category>E</Category>
+        <Desc>"Component Browser has closed unexpectedly. Save your changes and relaunch the application."</Desc>
+        <Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>401</Id>
+        <Category>E</Category>
+        <Desc>"The server and client could not be synchronized. As a result, some features might not work correctly."</Desc>
+        <Output>U</Output>
+    </Msg>
+	
+	<CharsPerLine>80
+		<CharsPerLineForO>80</CharsPerLineForO>
+		<CharsPerLineForE>80</CharsPerLineForE>
+	</CharsPerLine>
+	
+</MsgFile>

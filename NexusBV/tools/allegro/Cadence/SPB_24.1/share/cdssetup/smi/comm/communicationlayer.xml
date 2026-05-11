@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<MsgFile>
+  <Msg>
+    <Id>10001</Id>
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_ERROR_SEND</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Send error %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>10002</Id>
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_ERROR_TRANSPORT_REGISTRATION</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Transport registration error %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+    <Msg>
+    <Id>10003</Id>
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_ERROR_MESSAGE_RECEIVE</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Message receive error %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>10004</Id>
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_ERROR_INVALID_MESSAGE_FORMAT</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Invalid message format error %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+    <Msg>
+    <Id>10005</Id>
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_ERROR_STRAY_MESSAGE</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Stray message error %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>10006</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_ERROR_TRANSPORT_NOT_FOUND</CDNUSR_DEFINE_NAME>
+    <Desc>"Transport not found error %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+    <Msg>
+    <Id>10007</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_ERROR_CONNECTION</CDNUSR_DEFINE_NAME>
+    <Desc>"Connection error %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>10008</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_ERROR_TOKEN_MNGR</CDNUSR_DEFINE_NAME>
+    <Desc>"Token Manager error %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+    <Msg>
+    <Id>10009</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_ERROR_TOKEN_MNGR_MAINTENANCE</CDNUSR_DEFINE_NAME>
+    <Desc>"Token Manager Maintenance error %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>10010</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_STALE_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Communication object stale due to disconnection, construct a new object.%s"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>10011</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_THREAD_CREATION_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to create thread. %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>10012</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_REUSE_OF_CALLBACK_THREAD_FOR_NEW_REQ_UNSUPPORTED</CDNUSR_DEFINE_NAME>
+    <Desc>"Using callback thread (%s) to create new async requests is not supported"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>10013</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMMUNICATIONLAYER_SOCK_TIMEOUT_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Socket Timeout Error: %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+</MsgFile>

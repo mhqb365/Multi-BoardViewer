@@ -1,0 +1,3764 @@
+<?xml version="1.0" ?>
+<MsgFile>
+	<Msg>
+		<Id>7</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot bind instance : %s, pathval : %s to a valid view. Incorrect pc.db generated
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>8</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot bind instance : %s, page : %s pathval : %s to a valid view. The instance may not be present in pc.db or is a plumbing body
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>9</Id>
+		<Category>W</Category>
+		<Desc>
+			"The Generics in Entity for library %s, cell %s, are not found on the instance %s, page %d pathval %s. The list of missing generics is
+ %s.
+The instance needs to be updated with the generics or use the LOOSE entity check option to netlist the design
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>10</Id>
+		<Category>W</Category>
+		<Desc>
+			"The REMOVE property was ignored for the instance: %s, PATH: %s because the specified value is incorrect. Specify a value from the following list of supported values: LINK, AUTO, EXCLUDE, and FALSE."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>11</Id>
+		<Category>W</Category>
+		<Desc>
+			"The REMOVE property was ignored for the instance: %s, PATH: %s because the property assignment, REMOVE = LINK, can be used only for parts with exactly one input and one output."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>12</Id>
+		<Category>W</Category>
+		<Desc>
+			"The REMOVE property was ignored for the instance: %s, PATH: %s because the property assignment, REMOVE = AUTO, can be used only for parts with exactly one set of input and one set of output."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>13</Id>
+		<Category>E</Category>
+		<Desc>
+			"Incorrect property specified for instance : %s, pathval : %s . The specified property remove = auto is being ignored. The remove property can only be used with parts having no exactly two base names.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>14</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Property On Instance. Common net connections specified for instance : %s, pathval : %s. The remove = auto property can only be used with parts having exactly one input and one output which are connected to different nets.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>15</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+Power net connections specified for instance : %s, pathval : %s. One side of the instance is connected to supply 1 and the other side to supply0. The remove = auto property can only be used with parts having one input and one output which are connected to different nets. Remove one of the power net connections for this instance from the schematic.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>16</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+Power net connections specified for instance : %s, pathval : %s. The instance is connected to supply 1 and also to supply 0. The remove = auto property can only be used with parts having one set of input and output which are connected to different nets. Remove one of the power net connections for this instance from the schematic.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>17</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Remove=Auto Property On Instance.
+Power net connections specified for instance : %s, pathval : %s. The signal : %s on the instance is connected to supply 1 and also to supply 0. The connection to supply 0 is being ignored. The remove = auto property can only be used with parts having one input and one output which are connected to different nets. Remove one of the power net connections for the signal from the schematic.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>18</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Remove=Auto Property On Instance.
+Power net connections specified for instance : %s, pathval : %s. The signal : %s on the instance is connected to supply 1 and also to supply 0. The connection to supply 1 is being ignored. The remove = auto property can only be used with parts having one input and one output which are connected to different nets. Remove one of the power net connections for the signal from the schematic.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>20</Id>
+		<Category>W</Category>
+		<Desc>
+			"Incorrect property value specified for instance : %s, pathval : %s . The specified property : %s %s is being ignored. Supported property values alphabets, digits and underscore
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>21</Id>
+		<Category>W</Category>
+		<Desc>
+			"Binding instance : %s, page : %s pathval :%s to a invalid architecture. The netlist for this instance will not simulate correctly. Add a valid vhdl architecture for this instance in the library : %s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>22</Id>
+		<Category>W</Category>
+		<Desc>
+			"The specified property: %s = %s was ignored for the instance: %s, PATH: %s because two split properties are specified for the instance. Ensure that you specify either SPLIT_INST_NAME or SPLIT_INST for one instance."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>23</Id>
+		<Category>W</Category>
+		<Desc>
+			"The value for the $SPLIT_INST_NAME or LOCATION property on instance: %s, pathval: %s is not specified.
+You must specify a value for the LOCATION property if the SPLIT_INST = TRUE property is present on the instance
+or specify a value for the $SPLIT_INST_NAME property on the instance.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>24</Id>
+		<Category>E</Category>
+		<Desc>
+			"Specifying Parameter/Generic Value for instance : %s, page : %s pathval :%s. The specified property value: %s is being ignored. The correct syntax is &lt;param/generic name:type> and &lt;name, value>
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>25</Id>
+		<Category>E</Category>
+		<Desc>
+			"Specifying VLOG_PARAMETER Value for instance : %s, page : %s pathval :%s. The specified property value: %s is being ignored. The correct syntax is &lt;vlog_parameter, name1=value1;name2=value2&gt;
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>26</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Parameter On Instance.
+No Value Specified for Parameter on instance : %s, page : %s pathval :%s. The specified parameter : %s is incorrect. The correct syntax is &lt;vlog_param name:type> and &lt;name, value&gt;
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>27</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Generic On Instance.
+No Value Specified for Generic on instance : %s, page : %s pathval :%s. The specified generic : %s is incorrect. The correct syntax is &lt;vhdl_generic name:type> and &lt;name, value&gt;
+
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>28</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Parameter On Instance.
+Incorrect Parameter/Generic type on instance : %s, page : %s pathval :%s parameter property : %s. The specified parameter/generic type: %s should be consistent across instances in the same split inst group. The following type : %s specified on page : %s instance : %s will be ignored in the simulation netlist
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>29</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Parameter On Instance.
+Incorrect Parameter/Generic value on instance : %s, page : %s pathval :%s, parameter property : %s. The specified parameter/generic value : %s should be consistent across instances in the same split inst group. The following value : %s specified on page : %s instance : %s will be ignored in the simulation netlist
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>30</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Model Name For Instance.
+Illegal Model Name specified for instance : %s, pathval : %s . The specified Model Name %s is illegal in Verilog Name Space, which will result in an incorrect pc.db and verilog.v file generation for the design. Specify a valid model name."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>31</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Model Name For Instance.
+Illegal Model Name specified for instance : %s, pathval : %s . The specified Model Name %s is illegal in VHDL Name Space, which will result in an incorrect pc.db and vhdl.vhd file generation for the design. Specify a valid model name. 
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>33</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Net Names On Alias.
+Specifying Nets Names for Alias net : %s. The specified names : %s%s  and : %s%s have the same basename. This will lead to an incorrect netlist generation. Specify a valid name on either side of the alias in the schematic and recreate the design netlist."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>34</Id>
+		<Category>W</Category>
+		<Desc>
+			"The specified widths for : %s and %s do not match. 
+This will lead to an incorrect netlist generation. Verify that the signal name is connected to each of the pins and none of them is unconnected."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>36</Id>
+		<Category>W</Category>
+		<Desc>
+			"Binding Instance.
+Incorrect value for the SIM_BIND_VIEW property on the instance %s %s pathval %s. The value of the SIM_BIND_VIEW property should be consistent across the split group %s.
+The value %s specified on %s is being ignored. The value %s specified on %s instance %s will be used in the netlist.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>37</Id>
+		<Category>W</Category>
+		<Desc>
+			"Binding Instance.
+Incorrect SIM_MAP_VIEW value on : %s, instance : %s pathval :%s. The specified property : %s, %s should be consistent across instances in the same split inst group. The value specified is being ignored. The following value :%s specified on page : %s instance %s will be used in the netlist.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>38</Id>
+		<Category>W</Category>
+		<Desc>
+			"The view specified by SIM_BIND_VIEW property does not exist for instance : %s, pathval : %s . The specified property : %s %s is being ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>39</Id>
+		<Category>W</Category>
+		<Desc>
+			"The view specified by SIM_MAP_VIEW property for instance : %s, pathval : %s does not exist or does not have a valid map file. The specified property : %s %s is being ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>40</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Parameter On Instance.
+Inconsistency in Parameter type and value on instance : %s, page : %s pathval :%s parameter property : %s. The specified parameter type : %s should be consistent with the specified value : %s. Taking parameter type as : %s 
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>41</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Generic On Instance.
+Inconsistency in Parameter/Generic type on instance : %s, page : %s pathval :%s parameter/generic property : %s. The specified parameter/generic type : %s should be consistent with the type : %s specified on the drawing body. Taking type as : %s 
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>42</Id>
+		<Category>E</Category>
+		<Desc>
+			"Incorrect property specified for instance : %s, pathval : %s . The specified property is being ignored. The property HAS_FIXED_SIZE / SIZE is not supported for NEEDS_NO_SIZE parts.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>43</Id>
+		<Category>E</Category>
+		<Desc>
+			"Incorrect property specified for instance : %s, pathval : %s . The property PORT_ORDER is being ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>44</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Generic On Instance.
+The Generic %s is present in the Entity but not on instance : %s, page : %s pathval :%s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>45</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+Unable to use PORT_ORDER property for instance : %s, pathval : %s . The directive MAP_BY_POSITION is being ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>46</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+Incorrect Synonym property on instance : %s, pathval : %s. The property can be specified only on components with exactly 2 pins. The property HDL_SYNONYM is being ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>47</Id>
+		<Category>E</Category>
+		<Desc>
+			"Null port list for instance : %s, pathval : %s .
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>48</Id>
+		<Category>W</Category>
+		<Desc>
+			"Entity not found.
+Entity not found for model : %s for instance : %s, pathval : %s .
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>49</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Split Inst Property On Instance.
+Two Different Signals are connected to Common pin for SPLIT instance : %s, pin : %s, pathval1 : %s, signal1 : %s, pathval2 : %s, signal2 : %s. The Signal %s is being ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>50</Id>
+		<Category>E</Category>
+		<Desc>
+			"Incorrect SPLIT_INST_NAME/LOCATION value : %s, on instance : %s, pathval : %s, page : %d. 
+The specified value already exists for instance : %s, pathval : %s, page : %d.
+The same SPLIT_INST_NAME/LOCATION value can not be specified on two different components. 
+Ignoring the SPLIT_INST_NAME/SPLIT_INST property on this component.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>51</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+Incorrect property specified for instance : %s, pathval : %s.The property HDL_REPLICATE is being ignored.
+The property HDL_REPLICATE can be added only on instances that have two pins. The input pin must be scalar with pin name INPUT. The output pin must be sizeable like PINNAME&lt;SIZE-1..0&gt;. The SIZE property on the instance will determine the number of times the signal connected to pin INPUT is to be replicated.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>52</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+Incorrect VHDL_INIT property specified for signal : %s.
+There is a mismatch between the signal width and the VHDL_INIT property value.
+The VHDL_INIT property will be ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>53</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+Incorrect VHDL_INIT property specified for signal : %s.
+There is a mismatch between the signal width and the VHDL_INIT property value.
+Only the left most %d characters of the VHDL_INIT property will be used. Extra characters will be ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>54</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+Instance : %s, pathval : %s. has MODEL_FILE and MODEL_DIR properties applied on it.
+Use either of the two properties on an instance.The MODEL_DIR property is being ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>55</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+The Directory specified by the MODEL_DIR property on instance : %s, pathval : %s. does not exist.
+Ensure that such a directory exists. The MODEL_DIR property is being ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>56</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+The file specified by the MODEL_FILE property on instance : %s, pathval : %s. does not exist.
+Ensure that such a file exists. The MODEL_FILE property is being ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>57</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+The library specified by the VERILOG_LIB property on instance : %s, pathval : %s. does not exist.
+Ensure that such a library exists. The VERILOG_LIB property is being ignored.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>58</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Pin to Port Mapping.
+No Pin to Port mapping is present in the map file for Pin:%s of model : %s for instance : %s, pathval : %s .
+Assuming Port name is same as Pin name
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>101</Id>
+		<Category>W</Category>
+		<Desc>
+			"Unrecognized property on DECLARATIONS symbol."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>102</Id>
+		<Category>W</Category>
+		<Desc>
+			"Unable to close child stdout handle."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>103</Id>
+		<Category>W</Category>
+		<Desc>
+			"Name is a VHDL keyword. It will be escaped in VHDL."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>104</Id>
+		<Category>W</Category>
+		<Desc>
+			"Name is a Verilog keyword. It will be escaped in Verilog."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>105</Id>
+		<Category>E</Category>
+		<Desc>
+			"SUPPLY_1 and SUPPLY_0 signal names must begin with a / (forward slash)."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>106</Id>
+		<Category>E</Category>
+		<Desc>
+			"SUPPLY_1 and SUPPLY_0 signals cannot be vectored."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>107</Id>
+		<Category>E</Category>
+		<Desc>
+			"Illegal character after signal, port or instance name."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>108</Id>
+		<Category>E</Category>
+		<Desc>
+			"Closing parenthesis is missing."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>109</Id>
+		<Category>E</Category>
+		<Desc>
+			"With FIXED_RANGES option set, range can only contain digits."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>110</Id>
+		<Category>E</Category>
+		<Desc>
+			"Range direction needs to be changed to TO."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>111</Id>
+		<Category>E</Category>
+		<Desc>
+			"Range direction needs to be changed to DOWNTO."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>112</Id>
+		<Category>E</Category>
+		<Desc>
+			"Value of VHDL_PORT property is set improperly."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>113</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port is attached to an unnamed signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>114</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port is not connected."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>115</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pass thru pin must be left unconnected."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>116</Id>
+		<Category>W</Category>
+		<Desc>
+			"Failed to create Stdout pipe."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>117</Id>
+		<Category>W</Category>
+		<Desc>
+			"Failed to redirect Stdout."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>118</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal has two different VHDL_VECTOR_TYPE values."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>119</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal has two different VHDL_SCALAR_TYPE values."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>120</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal is declared to be both a port and an alias."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>121</Id>
+		<Category>W</Category>
+		<Desc>
+			"Port has two different port modes. Port being declared as inout"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>122</Id>
+		<Category>W</Category>
+		<Desc>
+			"Signal %s is declared as a global signal (defined as /signal_name or !signal_name) only at one location. The signal will be treated as a global signal at both locations of the signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>123</Id>
+		<Category>E</Category>
+		<Desc>
+			"Same alias is made to two different signals."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>124</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal is declared to be both a scalar and a vector."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>125</Id>
+		<Category>E</Category>
+		<Desc>
+			"Both TO and DOWNTO are used for range direction."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>126</Id>
+		<Category>E</Category>
+		<Desc>
+			"Identifier is used as both a PATH value and a signal name."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>127</Id>
+		<Category>E</Category>
+		<Desc>
+			"Identifier is used as both a component name and a signal name."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>128</Id>
+		<Category>E</Category>
+		<Desc>
+			"Net has two port symbols connected to it."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>129</Id>
+		<Category>E</Category>
+		<Desc>
+			"A signal can either be declared as a global signal or as an interface signal. 
+Use same signal scope."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>130</Id>
+		<Category>E</Category>
+		<Desc>
+			"You cannot tap from a concatenation of signals."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>131</Id>
+		<Category>E</Category>
+		<Desc>
+			"You cannot tap from an unnamed signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>132</Id>
+		<Category>E</Category>
+		<Desc>
+			"You cannot tap from an unconnected signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>133</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal coming out of a tap cannot be a concatenation of signals."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>134</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal coming out of a tap cannot be connected to the output of another tap or concatenation symbol."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>135</Id>
+		<Category>E</Category>
+		<Desc>
+			"The signal coming out of the tap has the wrong name."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>136</Id>
+		<Category>E</Category>
+		<Desc>
+			"The signal coming out of the concatenation symbol must be unnamed."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>137</Id>
+		<Category>E</Category>
+		<Desc>
+			"Each pin on a concatenation symbol must be connected to a signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>138</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal coming out of a concatenation symbol cannot be connected to the output of another tap or concatenation symbol and left unnamed."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>139</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal coming out of a concatenation symbol cannot be determined."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>140</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal coming out of an alias symbol cannot be connected to the output of another tap or concatenation symbol."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>141</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal coming out of an alias symbol cannot be a concatenation."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>142</Id>
+		<Category>E</Category>
+		<Desc>
+			"Alias symbol has only one pin."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>143</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal going into an alias symbol cannot be a concatenation."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>144</Id>
+		<Category>E</Category>
+		<Desc>
+			"Alias symbol has an unconnected pin."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>145</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pin on alias symbol has an unnamed signal attached."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>146</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal coming out of an alias symbol is also a port."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>147</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal coming out of an alias symbol cannot be a global signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>148</Id>
+		<Category>W</Category>
+		<Desc>
+			"Cannot determine the width of unnamed signal. Specify a valid name for the signal. Assuming a width of 1."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>149</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal connected to pin is too wide."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>150</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal connected to pin has incorrect width."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>151</Id>
+		<Category>E</Category>
+		<Desc>
+			"Entity declaration for instance declares a port that is not on the instance."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>152</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port '%s' in cell '%s' is missing in block '%s'.
+This error occurs when there is a mismatch between the entity view of the cell and the ports of the cell instantiated in the design.  
+To fix this problem, regenerate the entity port list of the cell by saving the symbol in the cell in PCB Librarian or Design Entry HDL."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>153</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port on instance is vectored but port in entity declaration for instance is not."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>154</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port on instance is scalar but port in entity declaration for instance is not."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>155</Id>
+		<Category>E</Category>
+		<Desc>
+			"Range direction for port on instance conflicts with port in entity declaration for instance."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>156</Id>
+		<Category>E</Category>
+		<Desc>
+			"Instance port and entity port modes are incompatible.
+Instance Port Mode: %s, Entity Port Mode: %s"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>157</Id>
+		<Category>E</Category>
+		<Desc>
+			"Input port on instance is not connected to a signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>158</Id>
+		<Category>W</Category>
+		<Desc>
+			"Sizeable pin cannot be represented in Verilog because it is partly unconnected."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>159</Id>
+		<Category>E</Category>
+		<Desc>
+			"Iteration range must contain only constants."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>160</Id>
+		<Category>E</Category>
+		<Desc>
+			"Iteration range is too large."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>161</Id>
+		<Category>E</Category>
+		<Desc>
+			"To iterate pin must have constant width."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>162</Id>
+		<Category>E</Category>
+		<Desc>
+			"To iterate pin must be connected to a named signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>163</Id>
+		<Category>E</Category>
+		<Desc>
+			"To iterate pin must be connected to a fixed width signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>164</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pin width is greater than attached signal width."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>165</Id>
+		<Category>E</Category>
+		<Desc>
+			"Concatenated signal width must match pin width."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>166</Id>
+		<Category>E</Category>
+		<Desc>
+			"Attached signal width is not an integer multiple of pin width."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>167</Id>
+		<Category>E</Category>
+		<Desc>
+			"Attached signal has unused bits after iteration."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>168</Id>
+		<Category>E</Category>
+		<Desc>
+			"Schematic has port but port does not exist in the symbol. Either delete this port from the schematic or add this port in the symbol.
+Port name: %s
+Entity file location: %s"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>169</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port mode for the pin on the symbol is different from that on the pin of the instance. Modify the port mode to make it the same."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>170</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port type specified in the schematic and symbol is different. Modify schematic/symbol to make port type same.
+Port name: %s
+Entity file location: %s
+First port type: %s
+Second port type: %s"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>171</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port exists in symbol but not in the schematic. Either delete this port from the symbol or add this port in the schematic.
+Port name: %s
+Entity file location: %s"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>172</Id>
+		<Category>E</Category>
+		<Desc>
+			"Generic parameter is declared in the schematic but does not exist in the symbol. Symbol may needs to be updated.
+Generic parameter name: %s"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>173</Id>
+		<Category>E</Category>
+		<Desc>
+			"Directory name within library should not contain uppercase letters.
+Directory: %s  Path: %s"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>174</Id>
+		<Category>E</Category>
+		<Desc>
+			"Output of tap is unconnected."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>175</Id>
+		<Category>E</Category>
+		<Desc>
+			"Value of MODE property is incorrect."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>176</Id>
+		<Category>W</Category>
+		<Desc>
+			"Cannot find part in libraries."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>177</Id>
+		<Category>W</Category>
+		<Desc>
+			"The symbol for the component no longer exists in the libraries being used by the project. Ensure that all the components in the design have a corresponding symbol entry in a project library."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>178</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port exists in the entity but not on the instantiated symbol. Rewrite the necessary pages."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>179</Id>
+		<Category>E</Category>
+		<Desc>
+			"Two signal names are attached to this net."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>180</Id>
+		<Category>E</Category>
+		<Desc>
+			"TIE direction cannot be determined because instance port mode is not known."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>181</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signals on both sides of the MERGE/TIE symbol are connected to driver pins of other instances.
+Signals on both sides of %s, path: %s are connected to driver pins of other instances.
+Signal: %s is connected to driver pin: %s of instance: %s, path: %s.
+Signal: %s is connected to driver pin: %s of instance: %s, path: %s.
+If the signals on one side of %s, path: %s, are connected to driver pins of other instances,
+ensure that the signals on the other side of %s are not connected to driver pins of other instances."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>182</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal on one side of the MERGE/TIE symbol is a global signal and signal on the other side is connected to driver pin of another instance.
+Signal on one side of %s, path: %s is a global signal and signal on the other side is connected to the driver pin of another instance.
+Signal: %s is a global signal.
+Signal: %s is connected to driver pin: %s of instance: %s, path: %s.
+If signal on one side of %s, path: %s is connected to the driver pin of another instance,
+ensure that the signal on the other side is not a global signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>183</Id>
+		<Category>E</Category>
+		<Desc>
+			"Both sides of the MERGE/TIE symbol are connected to global signals.
+Both sides of instance: %s, path: %s are connected to global signals.
+Signal: %s, and Signal: %s are global signals.
+Ensure that both the sides of MERGE/TIE symbol are not connected to global signals."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>184</Id>
+		<Category>W</Category>
+		<Desc>
+			"A MERGE/TIE symbol connected to an OUTPORT symbol on one side must be connected to output pin(s) on the other side.
+The OUTPORT symbol: %s, path: %s is connected to instance %s, path: %s.
+			"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>185</Id>
+		<Category>E</Category>
+		<Desc>
+			"One of the pins of MERGE/TIE symbol is unconnected."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>186</Id>
+		<Category>E</Category>
+		<Desc>
+			"MERGE/TIE is constructed improperly."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>187</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signals attached to MERGE/TIE symbol have parameterized width."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>188</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signals attached to each side of MERGE/TIE symbol have different width.
+Widths are %d bits and %d bits."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>189</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal attached to MERGE/TIE symbol is unnamed."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>190</Id>
+		<Category>W</Category>
+		<Desc>
+			"Signals on both sides of the MERGE/TIE symbol are undriven.
+Signals on both sides of %s, path: %s are undriven.
+Signal: %s is connected to pin: %s of instance: %s, path: %s which is not a driver pin.
+Signal: %s is connected to pin: %s of instance: %s, path: %s which is not a driver pin.
+If the signals on one side of %s, path: %s, are connected to undriven pins of other instances,
+ensure that the signals on the other side of %s are connected to driver pins of other instances."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>191</Id>
+		<Category>W</Category>
+		<Desc>
+			"Cannot place pin properties on a pin with parameterized width if other pins on the instance have the same basename."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>192</Id>
+		<Category>W</Category>
+		<Desc>
+			"Cannot place properties on specific bits of a signal which has parameterized width."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>193</Id>
+		<Category>E</Category>
+		<Desc>
+			"Name starts with an illegal character."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>194</Id>
+		<Category>W</Category>
+		<Desc>
+			"Name is not a legal VHDL name. It will be escaped in VHDL."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>195</Id>
+		<Category>W</Category>
+		<Desc>
+			"Name is not a legal Verilog name. It will be escaped in Verilog."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>196</Id>
+		<Category>E</Category>
+		<Desc>
+			"Escaped identifier cannot be low asserted using * character."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>197</Id>
+		<Category>E</Category>
+		<Desc>
+			"Property on declarations symbol has incorrect value."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>198</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signal syntax is incorrect."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>199</Id>
+		<Category>E</Category>
+		<Desc>
+			"Replication count must be an integer constant."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>200</Id>
+		<Category>E</Category>
+		<Desc>
+			"Bounds for vector iteration must all be integer constants."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>201</Id>
+		<Category>E</Category>
+		<Desc>
+			"Vector iteration step must be a positive integer."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>202</Id>
+		<Category>I</Category>
+		<Desc>
+			"The REMOVE property with the value LINK results in a connectivity change so the SCALD output will not match the schematic. Hence the SCALD files will not be generated."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>203</Id>
+		<Category>E</Category>
+		<Desc>
+			"REMOVE property can be used only with parts having exactly one input and one output pin."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>204</Id>
+		<Category>E</Category>
+		<Desc>
+			"One or more input pins on the concatenation symbol are connected to unnamed signals."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>205</Id>
+		<Category>E</Category>
+		<Desc>
+			"The HDL file could not be generated properly because the specified bus tap value is beyond the bus range. Make sure that you specify a bus tap value within the range of the bus. The valid value is an integer or a range, for example, &lt;1..0&gt;."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>206</Id>
+		<Category>E</Category>
+		<Desc>
+			"The property on the DEFINE body must have integer value."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>207</Id>
+		<Category>E</Category>
+		<Desc>
+			"Property X_STEP not present on DEFINE instance."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>208</Id>
+		<Category>E</Category>
+		<Desc>
+			"Property SIZE not present on DEFINE instance."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>209</Id>
+		<Category>E</Category>
+		<Desc>
+			"Net needing replication is unconnected."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>210</Id>
+		<Category>W</Category>
+		<Desc>
+			"Can not determine net size from instance pin."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>211</Id>
+		<Category>W</Category>
+		<Desc>
+			"Size property not present on instance. Assuming a value of 1"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>212</Id>
+		<Category>E</Category>
+		<Desc>
+			"Net connected to the output of Replicate instance should be unnamed or have the same width as the Replicate instance."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>213</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to evaluate the size of unnamed net connected to the output of "concat" instance."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>214</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot determine the vector net connected to the tap part. One of the pins on must be sized."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>215</Id>
+		<Category>E</Category>
+		<Desc>
+			"Name is not a valid Design Entry HDL identifier."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>216</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot evaluate range of the signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>217</Id>
+		<Category>W</Category>
+		<Desc>
+			"Bit property not present on instance. Assuming a value of 0."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>218</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot determine the vector net connected to the bit-tap part."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>219</Id>
+		<Category>E</Category>
+		<Desc>
+			"Insufficient number of arguments provided.
+Open %s file for more details"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>220</Id>
+		<Category>E</Category>
+		<Desc>
+			"Incorrect destination type specified.
+Open %s file for more details"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>221</Id>
+		<Category>E</Category>
+		<Desc>
+			"Input path for symbols does not exist.
+Open %s file for more details"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>222</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error in symbol files.
+Open %s file for more details"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>223</Id>
+		<Category>E</Category>
+		<Desc>
+			"Symbol not found for part.
+Open %s file for more details"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>224</Id>
+		<Category>I</Category>
+		<Desc>
+			"Entity not being generated because symbol is a comment body."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>225</Id>
+		<Category>I</Category>
+		<Desc>
+			"Entity not being generated because symbol is a plumbing or flag body."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>226</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to write intermediate file for entity generation.
+Open %s file for more details"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>227</Id>
+		<Category>E</Category>
+		<Desc>
+			"Verilog entity not generated.
+Open %s file for more details"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>228</Id>
+		<Category>E</Category>
+		<Desc>
+			"VHDL entity not generated.
+Open %s file for more details"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>229</Id>
+		<Category>E</Category>
+		<Desc>
+			"Failed to generate entities."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>230</Id>
+		<Category>E</Category>
+		<Desc>
+			"Net widths on both sides of the merge body do not match."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>231</Id>
+		<Category>E</Category>
+		<Desc>
+			"Symbol pin is wider than the entity port."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>232</Id>
+		<Category>E</Category>
+		<Desc>
+			"Syntax error in property specifying parameters/generics."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>233</Id>
+		<Category>E</Category>
+		<Desc>
+			"Sizeable entity is not supported for asymmetric parts."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>234</Id>
+		<Category>E</Category>
+		<Desc>
+			"Two or more components have same SPLIT_INST_NAME/SPLIT_INST property value. Use different property value on each component.
+Incorrect SPLIT_INST_NAME/LOCATION value : %s, on instance : %s, pathval : %s, page : %d. 
+The specified value already exists for instance : %s, pathval : %s, page : %d.
+The same SPLIT_INST_NAME/LOCATION value can not be specified on two different components. 
+Ignoring the SPLIT_INST_NAME/SPLIT_INST property on this component."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>235</Id>
+		<Category>E</Category>
+		<Desc>
+			"This pin is declared as common pin in the wrapper but connected to different signals. Either wrapper is wrong or you might have added some additional parts or all these common pins in the same SPLIT_INST group, needs to be connected to same signal."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>236</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pin used in SPLIT_INST group has lesser width than pin width specified in the wrapper. Either wrapper is wrong or you have not instantiated the part."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>237</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pin is repeated in SPLIT_INST group, wrapper is needed to resolve this."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>238</Id>
+		<Category>E</Category>
+		<Desc>
+			"Sizeable Parts having SPLIT_INST_NAME/SPLIT_INST property can not have size value other than 1. Either use Sizeable part with Size=1 or use HAS_FIXED_SIZE or NEEDS_NO_SIZE part."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>239</Id>
+		<Category>W</Category>
+		<Desc>
+			"SIM_BIND_VIEW property not found for parts containing SPLIT_INST_NAME/SPLIT_INST property. Using vlog_model view as default for reading the wrapper for generating the netlist."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>240</Id>
+		<Category>E</Category>
+		<Desc>
+			"parameter/generic type should be consistent across the instances."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>241</Id>
+		<Category>E</Category>
+		<Desc>
+			"Invalid type is declared on parameter/generic ."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>242</Id>
+		<Category>E</Category>
+		<Desc>
+			"parameter type specified on instance differs with parameter type specified on drawing body."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>243</Id>
+		<Category>E</Category>
+		<Desc>
+			"parameter should have default value."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>244</Id>
+		<Category>E</Category>
+		<Desc>
+			"generic should have some value on instance."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>245</Id>
+		<Category>E</Category>
+		<Desc>
+			"Parts having SPLIT_INST_NAME/SPLIT_INST property should not have sizeable wrapper. Wrapper should have complete description of the model."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>246</Id>
+		<Category>W</Category>
+		<Desc>
+			"Property is already taken from the other instance of the same SPLIT_INST group. Ignoring this property."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>247</Id>
+		<Category>E</Category>
+		<Desc>
+			"Pin width in the SPLIT_INST group is not matching with wrapper width."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>248</Id>
+		<Category>E</Category>
+		<Desc>
+			"Same part/version is repeated in the same SPLIT_INST group, either change SPLIT_INST_NAME/SPLIT_INST property for the repeated part(s) or delete the additional part(s)."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>249</Id>
+		<Category>E</Category>
+		<Desc>
+			"An additional pin is found, which does not match with the wrapper width. Either the part which contains this pin is extra in this same SPLIT_INST group or the wrapper is incorrect."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>250</Id>
+		<Category>E</Category>
+		<Desc>
+			"SPLIT_INST_NAME/SPLIT_INST property is found on the part. A wrapper is must for parts having SPLIT_INST_NAME/SPLIT_INST property."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>251</Id>
+		<Category>E</Category>
+		<Desc>
+			"One terminal of the  part having REMOVE=AUTO property  is connected to supply1 and other terminal is connected to supply0. Only one terminal should be connected to either supply1 or supply0."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>252</Id>
+		<Category>E</Category>
+		<Desc>
+			"This net is connected to SUPPLY1 and SUPPLY0 both. Ignoring SUPPLY0."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>253</Id>
+		<Category>E</Category>
+		<Desc>
+			"This net is connected to SUPPLY1 and SUPPLY0 both. Ignoring SUPPLY1."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>254</Id>
+		<Category>E</Category>
+		<Desc>
+			"Remove property is used on a part having only one pin. This property should be used on a part having exactly two pins."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>255</Id>
+		<Category>E</Category>
+		<Desc>
+			"Parts of SPLIT_INST group is not sectioned. Section these parts to get the correct netlist."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>256</Id>
+		<Category>W</Category>
+		<Desc>
+			"Both SPLIT_INST_NAME and SPLIT_INST property found. Only one of these two properties should be used. Ignoring SPLIT_INST_NAME property."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>257</Id>
+		<Category>W</Category>
+		<Desc>
+			"Both SPLIT_INST_NAME and SPLIT_INST property found. Only one of these two properties should be used. Using SPLIT_INST property."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>258</Id>
+		<Category>E</Category>
+		<Desc>
+			"LOCATION property not found. This property is required along with SPLIT_INST property."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>259</Id>
+		<Category>E</Category>
+		<Desc>
+			"Entity for this schematic is not created. First, correct all the errors then save the schematic."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>260</Id>
+		<Category>E</Category>
+		<Desc>
+			"Two assertion character - and * used in the signal name, it is not allowed. Use only one assertion character"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>261</Id>
+		<Category>E</Category>
+		<Desc>
+			"VLOG_PARAMETER property is not used correctly. Use the correct syntax (name1=value1;name2=value2;)"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>262</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port exists on the symbol but not on the schematic. Either delete this port from the symbol or add this port in the schematic."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>263</Id>
+		<Category>E</Category>
+		<Desc>
+			"Property (SIZE/HAS_FIXED_SIZE/TIMES) can have only integer value. Ignoring the property value"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>264</Id>
+		<Category>E</Category>
+		<Desc>
+			"Property (SIZE/HAS_FIXED_SIZE/TIMES) can have only integer value. Ignoring this value and using 1 as the default value"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>265</Id>
+		<Category>E</Category>
+		<Desc>
+			"Signals attached to each side of Plumbing body have different width. Verify that the signal name is connected to each of the pins and none of them is unconnected."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>266</Id>
+		<Category>E</Category>
+		<Desc>
+			"Parameter type is declared as non string but parameter value is a string. Taking parameter type as string."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>267</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port range specified in the schematic and symbol is different. Modify schematic/symbol to make port range same.Port name: %s
+Entity file location: %s
+First port range: %d..%d
+Second port range: %s..%s"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>268</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port is specified vectored in the schematic but scalar on symbol. Modify schematic/symbol to make port consistent.Port name: %s
+Entity file location: %s
+First port: %s&lt;%d..%d>
+Second port: %s"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>269</Id>
+		<Category>E</Category>
+		<Desc>
+			"Port is specified scalar in the schematic but vectored on symbol. Modify schematic/symbol to make port consistent.Port name: %s
+Entity file location: %s
+First port: %s
+Second port: %s&lt;%s..%s>"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>270</Id>
+		<Category>E</Category>
+		<Desc>
+			"Newgenasym Internal Error !!!.
+Open %s file for more details"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>271</Id>
+		<Category>E</Category>
+		<Desc>
+			"Both Scalar and Vector pins are found for the same pin name.
+Open %s file for more details"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>272</Id>
+		<Category>E</Category>
+		<Desc>
+			"Failed to analyze. Check the log file for details.
+Verilog-Analyzer reports error on %s.%s(%s). Check the log file: %s."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>273</Id>
+		<Category>E</Category>
+		<Desc>
+			"Two different nets have been shorted internally. This is because of the '$' &amp; '_' characters in the unnamed nets. Cannot proceed."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>274</Id>
+		<Category>E</Category>
+		<Desc>
+			"Instance name does not match the module name in the entity declaration. Descend into the symbol and save it to regenerate entity."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>275</Id>
+		<Category>E</Category>
+		<Desc>
+			"Two global signals are shorted.
+Two global signals can not be shorted.If you want to short these global signals, 
+add them in Allowed Global Shorts list in Design Entry HDL setup options."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>276</Id>
+		<Category>E</Category>
+		<Desc>
+			"Failed to analyze. Check the log file for details.
+Failed %s on %s, Open %s file for more details."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>277</Id>
+		<Category>E</Category>
+		<Desc>
+			"Failed to analyze. Check the log file for details.
+Failed %s on %s."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>278</Id>
+		<Category>E</Category>
+		<Desc>
+			"Entity declaration for part: %s, path: %s, page %d, does not exist in library. Save the symbol of the part."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>279</Id>
+		<Category>W</Category>
+		<Desc>
+			"A MERGE/TIE symbol connected to an OUTPORT symbol on one side must be connected to output pin(s) on the other side.
+The OUTPORT symbol: %s, path: %s is connected to instance %s, path: %s.
+An OUTPORT must be connected only to instance OUT ports.
+			"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>401</Id>
+		<Category>E</Category>
+		<Desc>
+			"Binding Instance"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>402</Id>
+		<Category>W</Category>
+		<Desc>
+			"Binding Instance"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>411</Id>
+		<Category>E</Category>
+		<Desc>
+			"Reading Map File"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>412</Id>
+		<Category>E</Category>
+		<Desc>
+			"Map File Packaging Error"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>413</Id>
+		<Category>W</Category>
+		<Desc>
+			"Reading Map File"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>421</Id>
+		<Category>E</Category>
+		<Desc>
+			"Reading Chips File"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>422</Id>
+		<Category>E</Category>
+		<Desc>
+			"Chips File Packaging Error"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>423</Id>
+		<Category>E</Category>
+		<Desc>
+			"Assigning Physical Part"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>424</Id>
+		<Category>W</Category>
+		<Desc>
+			"Updating Section Properties"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>425</Id>
+		<Category>W</Category>
+		<Desc>
+			"Reading Chips File"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>503</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Net Names On Alias"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>504</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Net Widths On Alias"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>510</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Generic On Instance"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>511</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Generic On Instance"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>512</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Parameter On Instance"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>513</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Parameter On Instance"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>514</Id>
+		<Category>E</Category>
+		<Desc>
+			"Mismatch of Generics for Instance"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>520</Id>
+		<Category>E</Category>
+		<Desc>
+			"Entity not found"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>521</Id>
+		<Category>W</Category>
+		<Desc>
+			"Entity not found"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>522</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Remove=Auto Property On Instance"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>525</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Model Name For Instance"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>526</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Split Inst Property On Instance"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>527</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Pin to Port Mapping"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>528</Id>
+		<Category>W</Category>
+		<Desc>
+			"Schematic constraints.
+Constraints captured in schematic in %s block may not get transferred to Allegro Design Editor database. Run the concept2cm command before netlisting the design.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>529</Id>
+		<Category>E</Category>
+		<Desc>
+			"Constraints Version.
+Constraints file with version older than 15.5 is found in the constraints folder. Save the constraints in Constraint Manager in version 15.5 or later and then netlist the design for System Connectivity Manager.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>530</Id>
+		<Category>E</Category>
+		<Desc>
+			"Library Paths File Error"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>531</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Generic On Instance.
+Incorrect Parameter/Generic type on instance : %s, page : %s pathval :%s parameter property : %s. The specified parameter/generic type: %s should be consistent across instances in the same split inst group. The following type : %s specified on page : %s instance : %s will be ignored in the simulation netlist
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>532</Id>
+		<Category>E</Category>
+		<Desc>
+			"In Specifying Property On Instance.
+Signal: "%s" is used in the property "POWER_GROUP" = "%s" is not declared in the design.Adding the global signal to connectivity file."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>533</Id>
+		<Category>W</Category>
+		<Desc>
+			"In Specifying Generic On Instance.
+Incorrect Parameter/Generic value on instance : %s, page : %s pathval :%s, parameter property : %s. The specified parameter/generic value : %s should be consistent across instances in the same split inst group. The following value : %s specified on page : %s instance : %s will be ignored in the simulation netlist
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>534</Id>
+		<Category>W</Category>
+		<Desc>
+			"Library Paths File Error"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>535</Id>
+		<Category>I</Category>
+		<Desc>
+			"Binding %s Instance %s pathval %s to view %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>536</Id>
+		<Category>I</Category>
+		<Desc>
+			"Iterating instance for %s, instance %s, pathval %s: new pathval %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>537</Id>
+		<Category>E</Category>
+		<Desc>
+			"Only standard view names are allowed at this point of time
+. The view name "%s" cannot be used.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>538</Id>
+		<Category>W</Category>
+		<Desc>
+			"Behavioral assignment used to drive port %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>539</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error iterating %s/%s/%s: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>540</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error releasing view file iterator: %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>541</Id>
+		<Category>E</Category>
+		<Desc>
+			"Global signal %s is shorted with another global signal %s"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+<Msg>
+  <Id>542</Id>
+  <Category>I</Category>
+  <Desc>
+    "Cannot change permission of file %s to %s permission
+"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>543</Id>
+  <Category>E</Category>
+  <Desc>
+    "Same DIFFERENTIAL_PAIR property value '%s' has been applied on more than 2 nets. DIFFERENTIAL_PAIR property should be applied on exactly 2 nets.
+"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>544</Id>
+  <Category>W</Category>
+  <Desc>
+    "DIFFERENTIAL_PAIR property '%s' is applied to a net '%s' with concatenated name. DIFFERENTIAL_PAIR property should be applied on single scalar or vector bit.
+"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>545</Id>
+  <Category>W</Category>
+  <Desc>
+    "DIFFERENTIAL_PAIR property '%s' is applied to a vector net '%s' with width greater than one. DIFFERENTIAL_PAIR property should be applied on single scalar or vector bit.
+"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>546</Id>
+  <Category>W</Category>
+  <Desc>
+    "DIFFERENTIAL_PAIR property value '%s' has been applied on only 1 net. DIFFERENTIAL_PAIR property should be applied on exactly 2 nets.
+"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>547</Id>
+  <Category>E</Category>
+  <Desc>
+    "Net '%s' has multiple DIFFERENTIAL_PAIR property values applied on it. Only one DIFFERENTIAL_PAIR property should be applied on a net.
+"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>548</Id>
+  <Category>E</Category>
+  <Desc>
+    "Net '%s' could not be added in connectivity data. As a result its connectivity cannot be established. Check the net name syntax.
+"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>549</Id>
+  <Category>E</Category>
+  <Desc>
+    "Error occurred in file: %s at line number: %d.
+Open the symbol for the component %s present in library %s and save it.
+"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+	<Id>550</Id>
+	<Category>E</Category>
+	<Desc>
+		"A %s signal %s is declared as %s in schematic. 
+A signal cannot be declared as both scalar and vector in a design. Update the signal as %s in the page(s) %s .
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+	<Id>551</Id>
+	<Category>W</Category>
+	<Desc>
+		"Setting MULTI_FORMAT option to OFF is not supported in netlisting.
+Netlisting design with MULTI_FORMAT option as ON.
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+	<Id>552</Id>
+	<Category>W</Category>
+	<Desc>
+		"Connectivity Server Warning: %s
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+	<Id>553</Id>
+	<Category>E</Category>
+	<Desc>
+		"Connectivity Server Error: %s
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+	<Id>554</Id>
+	<Category>E</Category>
+	<Desc>
+		"Bundled constraint found in schematic. 
+Uprev constraint database in previous release before netlisting design.
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+	<Id>555</Id>
+	<Category>W</Category>
+	<Desc>
+		"Bundled constraint %s found in occurrence property data on design object %s. 
+Ignoring bundled constraint in occurrence data.
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+	<Id>556</Id>
+	<Category>W</Category>
+	<Desc>
+		"Bundled constraint found in schematic is not valid on pin/component object.
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+	<Id>557</Id>
+	<Category>W</Category>
+	<Desc>
+		"Bundled constraint %s found in occurrence property data on design object %s is not valid on specified object. 
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+	<Id>558</Id>
+	<Category>E</Category>
+	<Desc>
+		"Cell %s.%s interface has changed and needs to be updated for all instances.
+Save page(s) %s to update all instances with updated cell interface."
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+	<Id>559</Id>
+	<Category>E</Category>
+	<Desc>
+		"The netlist could not be generated for the design because a block named %s in the design is read-only.
+Regenerate netlist for the read-only block before netlisting the current design.
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+	<Id>560</Id>
+	<Category>E</Category>
+	<Desc>
+		"POWER_GROUP property value %s has incorrect syntax. 
+Use Assign Power Pins to correct the POWER_GROUP value.
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+  <Id>561</Id>
+  <Category>E</Category>
+  <Desc>
+    "Differential pair with name same as DIFFERENTIAL_PAIR property '%s' is present in design with different set of members. The DIFFERENTIAL_PAIR property is being ignored.
+"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+	<Id>562</Id>
+	<Category>W</Category>
+	<Desc>
+		"POWER_GROUP property value %s has incorrect syntax. Power Pin %s is assigned to same power net multiple times.
+Use Assign Power Pins to correct the POWER_GROUP value.
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+  <Id>563</Id>
+  <Category>E</Category>
+  <Desc>
+    "POWER_GROUP property value %s has incorrect syntax. Power Pin %s is assigned to 2 or more different power nets.
+Use Assign Power Pins to correct the POWER_GROUP value.
+	"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>564</Id>
+  <Category>E</Category>
+  <Desc>
+    "Physical pages %d and %d have same logical page number: %d.
+Use 'page forcereset' console command and save the schematic to resolve the conflict."
+	"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>565</Id>
+  <Category>W</Category>
+  <Desc>
+    "Following pages have netlisting errors: %s.
+Save all the pages mentioned to view netlisting errors."
+	"
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+	<Id>566</Id>
+	<Category>W</Category>
+	<Desc>
+		"POWER_GROUP property found in occurrence property data on design object %s. 
+Ignoring POWER_GROUP property in occurrence data.
+	"
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+</Msg>
+<Msg>
+  <Id>567</Id>
+  <Category>E</Category>
+  <Desc>
+      "Pin '%s' exists on block but no corresponding port exists in the underlying schematic. As a result its connectivity cannot be established. Add corresponding port in lower level schematic, save it and then save current block.
+      "
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>568</Id>
+  <Category>E</Category>
+  <Desc>
+    "Bits '%s' of pin '%s' exist on block but no corresponding ports exist in the underlying schematic. As a result their connectivity cannot be established. Add corresponding ports in lower level schematic, save it and then save current block.
+    "
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>569</Id>
+  <Category>E</Category>
+  <Desc>
+    "Global signal '%s' coming from block '%s' has a conflicting scope with a signal with same name in design '%s'.
+ If you are defining a signal as a global in the lower level block, then the signal with the same name should be defined as global in higher level blocks. 
+    "
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>570</Id>
+  <Category>E</Category>
+  <Desc>
+	"Signal name '%s' cannot be added to the design because it is not a legal Concept name.
+ Rename the signal name to a valid Concept name before adding it to the design.
+ "
+
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>571</Id>
+  <Category>E</Category>
+  <Desc>
+	"Error in schematic extension parsing: %s 
+Archive the current project and contact Cadence Customer Support to submit it. 
+ "
+
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>572</Id>
+  <Category>W</Category>
+  <Desc>
+	"All symbols of split block cell '%s' with SPLIT_BLOCK_NAME='%s' have not been instantiated. Instantiate symbols %s in the current design.
+ "
+
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>573</Id>
+  <Category>E</Category>
+  <Desc>
+	"Multiple instances of symbol version '%d' of block '%s' have been found with the property SPLIT_BLOCK_NAME having the same value '%s'. 
+Since the same symbol version cannot be accommodated in the same block instance, the value of property SPLIT_BLOCK_NAME needs to be unique. Changing the value of the property SPLIT_BLOCK_NAME to a unique value would remove this error.
+ "
+
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>574</Id>
+  <Category>W</Category>
+  <Desc>
+	"You have specified ELECTRICAL_CONSTRAINT_SET property as Synch Constraint. 
+This constraint is being ignored and can be applied in Constraint Manager UI only. 
+ "
+
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>575</Id>
+  <Category>W</Category>
+  <Desc>
+	"You have specified NO_XNET_CONNECTION property on instance pin. 
+This property should be applied on instance only. This property is being ignored in netlisting. 
+ "
+
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>576</Id>
+  <Category>W</Category>
+  <Desc>
+	"An interface signal was added in the block '%s' during netlisting. 
+You should save all blocks where this block has been instantiated to update interface connections.
+ "
+
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>577</Id>
+  <Category>W</Category>
+  <Desc>
+	"Page %d cannot be saved as logical page %d has different page mapping in connectivity data and schematic.
+ "
+
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>578</Id>
+  <Category>W</Category>
+   <Desc>
+      "Soft VOLTAGE property found, thereby incorrectly making it a packager property. 
+      If $VOLTAGE is used, make it VOLTAGE, else delete and add the VOLTAGE property in General Properties worksheet of CM and save design to make this a hard property.
+      "
+
+    </Desc>
+    <ExtDesc>
+      ""
+    </ExtDesc>
+    <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>579</Id>
+  <Category>E</Category>
+  <Desc>
+	"Cannot add instance to the design connectivity.
+A design cannot contain an instance of itself. You need to delete this instance from schematic.
+ "
+
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>581</Id>
+  <Category>E</Category>
+  <Desc>
+    "Unsupported pin name syntax . Check the use of special characters in the pin name.
+Parentheses '( )' and brackets '[]' are special characters used for defining vectored pins, and by default, cannot be used in scalar pin names.
+To use these special characters for naming scalar pins, set the MULTI_FORMAT directive to OFF in the .cpm file,
+and ensure that parentheses are matched correctly and that they enclose an integer or a parameter.
+ "
+ 
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>582</Id>
+  <Category>W</Category>
+  <Desc>
+    "The net '%s' is not connected to any component pin.
+The net will be ignored from the physical netlist because there are zero nodes connected to it.
+ "
+ 
+  </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+<Msg>
+  <Id>583</Id>
+  <Category>E</Category>
+  <Desc>
+    "The tap body '%s' does not have BN property.
+Specify BN value using Wire>Bus Tap Value... in DE HDL.
+ "
+   </Desc>
+  <ExtDesc>
+    ""
+  </ExtDesc>
+  <Output>C</Output>
+</Msg>
+  <Msg>
+    <Id>584</Id>
+    <Category>E</Category>
+    <Desc>
+      "PortGroup members cannot be added as symbol ports. 
+      Use the Generate View command to update the symbol with the latest port information.
+      Port name: %s
+      Entity file location: %s"
+    </Desc>
+    <ExtDesc>
+      ""
+    </ExtDesc>
+    <Output>C</Output>
+  </Msg>
+  <Msg>
+    <Id>585</Id>
+    <Category>E</Category>
+    <Desc>
+      "An incorrect port symbol was used to create the port group. Only IOPORT is allowed for port groups."
+    </Desc>
+    <ExtDesc>
+      ""
+    </ExtDesc>
+    <Output>C</Output>	   
+  </Msg>
+  <Msg>
+	<Id>586</Id>
+	<Category>E</Category>
+	<Desc>
+		"Signal '%s' has the same name as a netgroup in the design.  
+		 Netgroup and signal names must be unique. Rename the netgroup or the signal."
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+	</Msg>
+	<Msg>
+	<Id>587</Id>
+	<Category>E</Category>
+	<Desc>
+		"Signal '%s' is connected to a component with property 'HDL_POWER = NC'.
+		Nets connected to components with HDL_POWER = NC should not be named."
+	</Desc>
+	<ExtDesc>
+		""
+	</ExtDesc>
+	<Output>C</Output>
+	</Msg>
+        <Msg>
+        <Id>588</Id>
+        <Category>E</Category>
+        <Desc>
+                "Signal '%s' cannot be added to the design because a netgroup with the same name already exists. 
+		 Signal and netgroup names must be unique. Rename the signal or the netgroup."
+        </Desc>
+        <ExtDesc>
+                ""
+        </ExtDesc>
+        <Output>C</Output>
+      </Msg>
+	  <Msg>
+		  <Id>589</Id>
+		  <Category>E</Category>
+		  <Desc>
+			"The '%s' net is connected to more than one component pin but it has the 'OK_NET_ONE_PIN' property.
+		 The 'OK_NET_ONE_PIN' property should be specified only for nets that are connected to one pin. Check the connections for the net and if required, delete the 'OK_NET_ONE_PIN' property from the net.
+		 "
+		 
+		  </Desc>
+		  <ExtDesc>
+			""
+		  </ExtDesc>
+		  <Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>590</Id>
+		<Category>W</Category>
+		<Desc>
+			"Net '%s' has the DIFFERENTIAL_PAIR and NO_DIFF_PAIR property values applied to it. It is recommended that you use only one of these properties."
+		</Desc>
+		<ExtDesc>
+		""
+		</ExtDesc>
+		<Output>C</Output>
+	  </Msg>
+	  <Msg>
+		<Id>591</Id>
+		<Category>W</Category>
+		<Desc>
+		  "The DIFFERENTIAL_PAIR and NO_DIFF_PAIR properties have both been found on the member nets of this Xnet.
+		  The DIFFERENTIAL_PAIR property will be applied to net '%s' but the following net(s) have the NO_DIFF_PAIR property:
+'%s'
+When the DIFFERENTIAL_PAIR property is applied to a net, the property is applied to all the member nets of this extended net. This will override the NO_DIFF_PAIR property defined for the specified nets."
+		</Desc>
+		<ExtDesc>
+		""
+		</ExtDesc>
+		<Output>C</Output>
+	  </Msg>
+</MsgFile>

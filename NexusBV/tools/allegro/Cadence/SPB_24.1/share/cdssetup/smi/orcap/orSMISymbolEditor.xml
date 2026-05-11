@@ -1,0 +1,405 @@
+<?xml version="1.0"?>
+
+<MsgFile>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_INVALID_NUMERIC_PARTCOUNT</CDNUSR_DEFINE_NAME>
+
+    <Id>50001</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Section count is invalid because part number is Alphabetic.&#xA;Specify a section count from 1 through 26."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_CLIPBOARD_MEM_EXCEEDED</CDNUSR_DEFINE_NAME>
+
+    <Id>50002</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Cannot copy objects because clipboard memory limit has been exceeded.&#xA;Select fewer objects."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_PSPICE_MODEL_CANNOT_ATTACH_TO_CONVERTVIEW</CDNUSR_DEFINE_NAME>
+
+    <Id>50003</Id>
+
+    <Category>E</Category>
+
+    <Desc>"PSpice models cannot be attached in the convert view.&#xA;Attach models in the normal view."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_DUPLICATE_PIN_NUMBER</CDNUSR_DEFINE_NAME>
+
+    <Id>50004</Id>
+
+    <Category>W</Category>
+
+    <Desc>"There are duplicate pin numbers in the package.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+    <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_DUPLICATE_PIN_NAME</CDNUSR_DEFINE_NAME>
+
+    <Id>50005</Id>
+
+    <Category>W</Category>
+
+    <Desc>"There are duplicate pin names in the package.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+    <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_DUPLICATE_PIN_NUMBER_NAME</CDNUSR_DEFINE_NAME>
+
+    <Id>50006</Id>
+
+    <Category>W</Category>
+
+    <Desc>"There are duplicate pin names and numbers in the package.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+    <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_NAME_FIELD_EMPTY</CDNUSR_DEFINE_NAME>
+
+    <Id>50007</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Name cannot be empty. Specify a %s name."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+   
+   <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_SAVE_MESSAGE_SECTIONCOUNTCHANGE</CDNUSR_DEFINE_NAME>
+
+    <Id>50008</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Package has been modified and must be saved before changing section count.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_CUSTOM_PIN_SHAPE_NOT_EXISTS</CDNUSR_DEFINE_NAME>
+
+    <Id>50009</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Cannot update pin shape %s because the %s library does not contain this pin shape.&#xA;Either select a different pin shape or add the pin shape to the library."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_ALIASES_NOT_UPDATED</CDNUSR_DEFINE_NAME>
+
+    <Id>500010</Id>
+
+    <Category>E</Category>
+
+    <Desc>"One or more aliases could not be updated because the aliases are being edited in another session.&#xA;Check the aliases listed under Library in the project manager and edit or create the aliases again."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_HOMO_PKG_ONE_PARTS_ERR</CDNUSR_DEFINE_NAME>
+
+    <Id>500011</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Cannot delete section %s because homogeneous package %s must have at least one section."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>  
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_SECTION_NOT_EXIST_ERR</CDNUSR_DEFINE_NAME>
+
+    <Id>500012</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Cannot delete  section %s because the section does not exist in package %s."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_SAVE_AND_DELTE_SECTION_MESSAGE</CDNUSR_DEFINE_NAME>
+
+    <Id>500013</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Part %s will be saved and section %s will be deleted.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_DELETE_SECTION_MESSAGE</CDNUSR_DEFINE_NAME>
+
+    <Id>500014</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Section %s will be deleted.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_INVALID_PARTNUMBER_TYPE</CDNUSR_DEFINE_NAME>
+
+    <Id>500015</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Part Numbering  is invalid.&#xA;Specify either Numeric or Alphabetic."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_CAN_NOT_CONVERT_TO_ALPHABETIC</CDNUSR_DEFINE_NAME>
+
+    <Id>500016</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Cannot convert Part Numbering to Alphabetic because section count is %d.&#xA;Section count must be from 2 through 26 to convert to Alphabetic"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_SAVE_MESSAGE_PARTNUMBERINGCHANGE</CDNUSR_DEFINE_NAME>
+
+    <Id>500017</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Part must be saved before changing Part Numbering.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_SAVE_MESSAGE_ADDCONVERTVIEW</CDNUSR_DEFINE_NAME>
+
+    <Id>500018</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Part must be saved before adding a convert view.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_MESSAGE_ADDCONVERTVIEW</CDNUSR_DEFINE_NAME>
+
+    <Id>500019</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Convert view will be added to the part.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_SAVE_MESSAGE_DELETECONVERTVIEW</CDNUSR_DEFINE_NAME>
+
+    <Id>500020</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Part must be saved before deleting a convert view.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_MESSAGE_DELETECONVERTVIEW</CDNUSR_DEFINE_NAME>
+
+    <Id>500021</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Convert view will be deleted from the part.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_I_IDS_UNDO_REDO_HISTORY_CLEAR_MESSAGE</CDNUSR_DEFINE_NAME>
+
+    <Id>500022</Id>
+
+    <Category>I</Category>
+
+    <Desc>"This action cannot be undone and undo/redo history will be cleared."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_DELTE_SECTION_AND_UNDO_REDO_HISTORY_CLEAR_MESSAGE</CDNUSR_DEFINE_NAME>
+
+    <Id>500023</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Section %s will be deleted from the part %s.&#xA;This action cannot be undone and undo/redo history will be cleared.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_SAVE_MESSAGE_DELETECONVERTVIEW_AND_UNDO_REDO_HISTORY_CLEAR</CDNUSR_DEFINE_NAME>
+
+    <Id>500024</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Convert view will be deleted from the part.&#xA;This action cannot be undone and undo/redo history will be cleared.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>eCAPTURE_E_IDS_MESSAGE_ADDCONVERTVIEW_AND_UNDO_REDO_HISTORY_CLEAR</CDNUSR_DEFINE_NAME>
+
+    <Id>500025</Id>
+
+    <Category>W</Category>
+
+    <Desc>"Convert view will be added to the part.&#xA;This action cannot be undone and undo/redo history will be cleared.&#xA;Do you want to continue?"</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+
+</MsgFile>

@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MsgFile>
+  <Msg>
+    <Id>100</Id>
+    <Category>E</Category>
+    <Desc>
+      "Unable to read project file '%s'. Check if it exists, valid, readable and then try again.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>101</Id>
+    <Category>I</Category>
+    <Desc>
+      "The log file is generated at path '%s'.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>102</Id>
+    <Category>E</Category>
+    <Desc>
+      "Unable to find any library in cds.lib. Check that a valid and readable cds.lib is available in the current directory and then try again.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>103</Id>
+    <Category>W</Category>
+    <Desc>
+      "Unable to convert cell '%s' to proper namespace. Ignoring this cell for translation.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>104</Id>
+    <Category>W</Category>
+    <Desc>
+      "Unable find cell '%s/%s'. Ignoring this cell for translation. Ensure that the cell exists and then try again.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>105</Id>
+    <Category>W</Category>
+    <Desc>
+      "Unable find '%s' in '%s/%s/%s'. Ignoring the cell for translation. To translate this cell, ensure that it is valid and then try again.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>106</Id>
+    <Category>W</Category>
+    <Desc>
+      "Unable find any symbol view in '%s/%s'. Ignoring the cell for translation. Ensure that the symbol view exist and then try again.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+		<Id>107</Id>
+		<Category>E</Category>
+		<Desc>
+		"Unable to create log in directory '%s'. Ensure that the directory has write permission and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>108</Id>
+		<Category>E</Category>
+		<Desc>
+		Unable to create temporary directory '%s'. Ensure that the path has write permission and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>109</Id>
+		<Category>E</Category>
+		<Desc>
+		"Unable to create log file at '%s'. Ensure that the path has write permission and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>110</Id>
+		<Category>I</Category>
+		<Desc>
+		"Creating package technology database for TILP in library '%s'.
+"
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>111</Id>
+		<Category>I</Category>
+		<Desc>
+		"Part table location for '%s/%s' : '%s'.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>112</Id>
+		<Category>I</Category>
+		<Desc>
+		"Unable to create CDF parameters for TILP as no part table file was found for '%s/%s'.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>113</Id>
+		<Category>I</Category>
+		<Desc>
+		"The part table files available during translation are:
+    '%s'.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>114</Id>
+		<Category>E</Category>
+		<Desc>
+		"No valid part table data found for '%s/%s'. Ensure that the part table file for this cell exists, readable and syntactically correct and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>115</Id>
+		<Category>I</Category>
+		<Desc>
+		"Generating CDF for TILP in '%s'.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>116</Id>
+		<Category>I</Category>
+		<Desc>
+		"Deleting generated view '%s/%s' because errors were encountered in translation.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>117</Id>
+		<Category>E</Category>
+		<Desc>
+		"Unble to open file '%s'. Check if the file is present in the installation and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>118</Id>
+		<Category>E</Category>
+		<Desc>
+		"Unable to open view '%s/%s/%s' for editing. Ensure that it is not locked for editing, has write permission and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>119</Id>
+		<Category>W</Category>
+		<Desc>
+		"Skipping translation of '%s/%s' as this is a sizeable symbol.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>120</Id>
+		<Category>W</Category>
+		<Desc>
+		"Translation failed for symbol terminal name '%s' in cell '%s'. Fix the symbol and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>121</Id>
+		<Category>W</Category>
+		<Desc>
+		"Cell '%s' could not be translated because it has invalid terminal name '%s' in the symbol. Fix the symbol and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>122</Id>
+		<Category>W</Category>
+		<Desc>
+		"Coordinates of terminal '%s' in '%s/%s' may not lie on grid, leading to problems in establishing connection. Fix the symbol so that pin connection points lie on valid grid and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>123</Id>
+		<Category>W</Category>
+		<Desc>
+		"Skipping translation of '%s/%s' as it has property '%s' that marks it to be ignored.
+"
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>124</Id>
+		<Category>I</Category>
+		<Desc>
+		"Starting to write CDF for cell '%s'.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>125</Id>
+		<Category>I</Category>
+		<Desc>
+		"Writing CDF for cell '%s' done.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>126</Id>
+		<Category>I</Category>
+		<Desc>
+		"Error encountered while writing CDF of cell '%s'.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>127</Id>
+		<Category>W</Category>
+		<Desc>
+		"Unable to access path '%s'. Ensure that it exists, has write permission and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>128</Id>
+		<Category>W</Category>
+		<Desc>
+		"Chips view not found for '%s/%s'.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>129</Id>
+		<Category>E</Category>
+		<Desc>
+		"Incorrect argument for switch '--cell' specified. Ensure that cell '%s' exists in library '%s' and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>130</Id>
+		<Category>E</Category>
+		<Desc>
+		"Error while translating '%s/%s'. Ensure that it exists, have write permission and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>131</Id>
+		<Category>I</Category>
+		<Desc>
+		"Creating TILP Pcell for '%s'.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>132</Id>
+		<Category>I</Category>
+		<Desc>
+    "Ignoring cell '%s' for translation as chips view is not present.
+"
+    </Desc>
+	</Msg>	
+	<Msg>
+		<Id>133</Id>
+		<Category>I</Category>
+		<Desc>
+		"Completed translation of '%s/sym_1' to 'symbol'.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>134</Id>
+		<Category>W</Category>
+		<Desc>
+      "Failed to translate view '%s/%s'. Skipping further translation steps for this cell. Fix the reported error and then try again.
+"
+    </Desc>
+	</Msg>	
+	<Msg>
+		<Id>135</Id>
+		<Category>I</Category>
+		<Desc>
+		"Successfully completed translation of view '%s' to '%s'.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>136</Id>
+		<Category>W</Category>
+		<Desc>
+		"Ignoring translation of '%s' because no DE-HDL symbol view present.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>137</Id>
+		<Category>E</Category>
+		<Desc>
+		"Ensure that the library name '%s' specified with '--lib' switch exists in cds.lib and has a valid physical path and then try again.
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>138</Id>
+		<Category>I</Category>
+		<Desc>
+		"Translation Summary:
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>139</Id>
+		<Category>I</Category>
+		<Desc>
+		"%s %d
+"		
+		</Desc>
+	</Msg>	
+	<Msg>
+		<Id>140</Id>
+		<Category>I</Category>
+		<Desc>
+		"%s %s
+"		
+		</Desc>
+	</Msg>
+  <Msg>
+    <Id>141</Id>
+    <Category>I</Category>
+    <Desc>
+    "Generating physical pin to logical pin mapping of cell '%s'.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>143</Id>
+    <Category>W</Category>
+    <Desc>
+    "No logical terminal mapping found for physical pin '%s' in symbol '%s'. Physical pin to logical pin mapping cannot be generated.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>144</Id>
+    <Category>W</Category>
+    <Desc>
+    "Physical pin to logical pin mapping for '%s' could not be generated because it has invalid terminal name '%s' in the symbol. Fix the symbol and then try again.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>145</Id>
+    <Category>W</Category>
+    <Desc>
+    "No chips found for cell '%s'. Skipping the generation of physical pin to logical pin mapping.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>146</Id>
+    <Category>W</Category>
+    <Desc>
+    "No valid physical pin to logical pin mapping found for cell '%s'. Skipping the generation of physical pin to logical pin mapping.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>147</Id>
+    <Category>W</Category>
+    <Desc>
+    "No pin on the symbol can be found for physical pin '%s'. Skipping the generation of physical pin to logical pin mapping.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>148</Id>
+    <Category>E</Category>
+    <Desc>
+      "Found no valid cell to translate. Fix the reported issues and then try again.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>149</Id>
+    <Category>W</Category>
+    <Desc>
+      "Ignoring cell '%s' for translation as it does not have write permission. Ensure that it has writeable and then try again.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>150</Id>
+    <Category>W</Category>
+    <Desc>
+      "Translation of cell '%s' failed due to above issues.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>151</Id>
+    <Category>I</Category>
+    <Desc>
+      "Translating symbols of cell '%s'.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>152</Id>
+    <Category>W</Category>
+    <Desc>
+      "No symbol of cell '%s' could be successfully translated.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>153</Id>
+    <Category>W</Category>
+    <Desc>
+      "The part table path '%s' does not exist and will be ignored.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>154</Id>
+    <Category>W</Category>
+    <Desc>
+      "Unable to create CDF parameters for TILP of '%s/%s' as no valid data was found in the loaded part table(s).
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>155</Id>
+    <Category>W</Category>
+    <Desc>
+      "Problem encountered in generating physical pin to logical pin mapping. Try translating this cell individually using --cell switch.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>156</Id>
+    <Category>W</Category>
+    <Desc>
+      "This is a split part and it will not be translated.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>157</Id>
+    <Category>I</Category>
+    <Desc>
+      "Translating library '%s'.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>158</Id>
+    <Category>W</Category>
+    <Desc>
+      "Ignoring translation of library '%s' as it does not have write permission.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>159</Id>
+    <Category>W</Category>
+    <Desc>
+      "Translation of cell '%s' failed due to above issues. Removing the cell from the translated library.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>160</Id>
+    <Category>W</Category>
+    <Desc>
+      "Skipping translation of '%s' as it is a multi-primitive part.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>161</Id>
+    <Category>W</Category>
+    <Desc>
+      "Skipping translation of '%s' as it has NC pins in the body section.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>162</Id>
+    <Category>W</Category>
+    <Desc>
+      "Skipping translation of '%s' as it is an assymetric or a split part.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>163</Id>
+    <Category>W</Category>
+    <Desc>
+      "Unable to generate TILP Pcell for '%s' as no footprint found.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>164</Id>
+    <Category>W</Category>
+    <Desc>
+      "Skipping translation of '%s/%s' as it contains a multi-bit pin '%s'.
+"
+    </Desc>
+  </Msg>
+	<Msg>
+		<Id>165</Id>
+		<Category>W</Category>
+		<Desc>
+			"Failed to translate '%s/%s'. Skipping further translation for this cell.
+"
+		</Desc>
+	</Msg>
+	<Msg>
+    <Id>166</Id>
+    <Category>I</Category>
+    <Desc>
+      "The '--verifyLib' switch validates all the libraries defined in the cds.lib file and ignores the libraries '%s' specified with the con2ul command.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+		<Id>167</Id>
+		<Category>I</Category>
+		<Desc>
+			"Skipping translation of library '%s' as no update was found. 
+"
+		</Desc>
+	</Msg>
+	<Msg>
+		<Id>169</Id>
+		<Category>I</Category>
+		<Desc>
+			"'%s' library not found in destination library.
+"
+		</Desc>
+	</Msg>
+	<Msg>
+	<Id>170</Id>
+	<Category>I</Category>
+	<Desc>
+	 "
+	   No differences found for libraries:
+		Number of libraries  : %d
+		Names of libraries 	 : %s
+"
+	</Desc>
+	</Msg>
+	<Msg>
+		<Id>171</Id>
+		<Category>I</Category>
+		<Desc>
+			"'%s' library is deleted.
+"
+		</Desc>
+	</Msg>
+	<Msg>
+		<Id>172</Id>
+		<Category>I</Category>
+		<Desc>
+			"'%s' cell of '%s' library is deleted. 
+"
+		</Desc>
+	</Msg>
+	<Msg>
+    <Id>173</Id>
+    <Category>E</Category>
+    <Desc>
+      "Found no valid cell to delete. Fix the reported issues and then try again.
+"
+    </Desc>
+  </Msg>
+    <Msg>
+    <Id>174</Id>
+    <Category>W</Category>
+    <Desc>
+      "Unable to  find cell '%s/%s'. Ignoring this cell for deletion. Ensure that the cell exists and then try again.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>175</Id>
+    <Category>W</Category>
+    <Desc>
+      "Ignoring cell '%s' for deletion as it does not have write permission. Ensure that it is writeable and then try again.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>176</Id>
+    <Category>I</Category>
+    <Desc>
+      "
+	   Comparison summary for library '%s':	
+		Number of footprint not found in destination library: %d
+		Names of footprint not found in destination library	: %s
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>179</Id>
+    <Category>I</Category>
+    <Desc>
+      "
+	   Comparison summary for library '%s':	
+		Number of cells not found in destination library: %d
+		Names of cells not found in destination library	: %s
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>180</Id>
+    <Category>I</Category>
+    <Desc>
+      "
+	   No differences found for library '%s'
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>181</Id>
+    <Category>I</Category>
+    <Desc>
+      "
+	   Allegro schematic libraries section.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>182</Id>
+    <Category>I</Category>
+    <Desc>
+      "
+	   Allegro Footprint libraries section.
+"
+    </Desc>
+  </Msg>
+	<Msg>
+		<Id>183</Id>
+		<Category>I</Category>
+		<Desc>
+			"Unable find part data in '%s/%s'. Ignoring the cell for translation. Ensure that the symbol view exist and then try again.
+"
+		</Desc>
+	</Msg>
+</MsgFile>

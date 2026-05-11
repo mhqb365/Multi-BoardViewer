@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<MsgFile>   
+	<Msg>
+        <Id>1</Id>
+        <Category>E</Category>
+        <Desc>
+        "Error releasing cla iterator"
+		</Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>2</Id>
+        <Category>E</Category>
+        <Desc>
+        "Error iterating libraries: %s"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>3</Id>
+        <Category>E</Category>
+        <Desc>
+        "Error iterating cells of library: %s"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>4</Id>
+        <Category>E</Category>
+        <Desc>
+        "Part Name not exist in component header."
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>5</Id>
+        <Category>E</Category>
+        <Desc>
+        "Unable to get %s name for Part Name: %s"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>6</Id>
+        <Category>E</Category>
+        <Desc>
+        "Error getting part row from ptf file"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>7</Id>
+        <Category>E</Category>
+        <Desc>
+        "Part row not found in the ptf file. Part:%s lib:%s cell:%s Properties:%s"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+
+    <Msg>
+        <Id>201</Id>
+        <Category>E</Category>
+        <Desc>
+        "Message number %s not found in error message file registered for module %s."
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>202</Id>
+        <Category>E</Category>
+        <Desc>
+        "Number of parameters specified for message id %s of module %s do not match the required number of params."
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>203</Id>
+        <Category>I</Category>
+        <Desc>
+        "%s"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+    
+	<CharsPerLine>80
+			<CharsPerLineForO>80</CharsPerLineForO>
+			<CharsPerLineForE>80</CharsPerLineForE>
+	</CharsPerLine>
+
+</MsgFile>

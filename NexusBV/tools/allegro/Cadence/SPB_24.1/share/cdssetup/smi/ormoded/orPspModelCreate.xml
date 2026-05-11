@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<MsgFile>
+
+	<Msg>
+
+		<CDNUSR_DEFINE_NAME>eMODEL_CREATE_INVALID_DIRECTORY</CDNUSR_DEFINE_NAME>
+		<Id>2001</Id>
+		<Category>E</Category>
+		<Desc>"Please select a valid directory"</Desc>
+
+	</Msg>
+</MsgFile>

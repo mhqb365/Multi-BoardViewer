@@ -1,0 +1,220 @@
+<?xml version="1.0" ?>
+<MsgFile>
+   <Msg>
+    <Id>1001</Id>
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_LOADING_MODULE</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Error loading module '%s':"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1002</Id>
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_COPY_PROJECT</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Failed to copy project [%s]"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1003</Id>
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_ZIP_PROJECT</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Failed to zip project [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1004</Id>
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_CREATING_VERSION_ON_SAVE</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Failed to create version on save for [%s]"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1005</Id>
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_COMMIT</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Failed to commit [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1006</Id>
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_OBJECT_NOT_FOUND</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Object not found [%s]"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1007</Id>
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_RESOURCE_NOT_FOUND_DUE_TO_STALE_CONTEXT</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Resource not found due to stale context [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1008</Id>
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_CONTEXT_DOESNT_EXIST</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Context does not exist [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1009</Id>
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_CONTEXT_PATH_INCORRECT</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Context path incorrect [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1010</Id>
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_CONTEXT_CREATION</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Context [%s] creation failure [%s]"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1011</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_CONTEXT_MODIFICATION</CDNUSR_DEFINE_NAME>
+    <Desc>"Context modification failure [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1017</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>BIFROST_ERROR_CHANGELIST_VALIDATION_COMMIT</CDNUSR_DEFINE_NAME>
+    <Desc>"Changelist validation on commit failure [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1018</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_SAVE_WITHOUT_CHANGES_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Save failed as no changes were made [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1019</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_COMMIT_WITHOUT_CHANGES_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit failed as no changes were made [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1020</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_PENDING_CHANGES_RESULTING_IN_COMMIT_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit failed as there are pending changes [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1021</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_SET_SHARE_MODE_EXCEPTION</CDNUSR_DEFINE_NAME>
+    <Desc>"Set share mode failed due to exception from server dao [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1022</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_SHARE_MODE_OPERATION_FAILURE_BAD_CAST</CDNUSR_DEFINE_NAME>
+    <Desc>"Share mode operation could not be completed due to bad cast [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+    <Msg>
+    <Id>1023</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_GET_UPDATE_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Failed to get pending updates for the design [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1024</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_REVERT_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Failed to revert the design [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+   <Msg>
+    <Id>1025</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_CAN_LOCK_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Can lock operation failed [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1026</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_TRANSACTION_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Transaction failed [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1027</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_GET_REVISION_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Get revision failed [%s] :"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1028</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_FETCHING_PENDING_CHANGES_RESULTING_IN_COMMIT_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit failed as pending changes could not be fetched [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1029</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_COMMIT_FAILED_CHECKSUM_MISMATCH</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit failed due to checksum mismatch, no changes available [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>1030</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_ERROR_COMMIT_FAILED_CHECKSUM_MISMATCH_CHANGES_AVAILABLE</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit failed due to checksum mismatch, changes available [%s]:"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+	<Id>1031</Id>
+    <Category>W</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_TRANSACTION_INPROGRESS</CDNUSR_DEFINE_NAME>
+    <Desc>"Transaction in progress"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+	<Id>1032</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_GET_PENDING_CHANGES_FAILED_DUE_TO_PENDING_TNX</CDNUSR_DEFINE_NAME>
+    <Desc>"Get pending changes failed due as there's an open transaction"</Desc>
+    <Output>U</Output>
+  </Msg>    
+  <Msg>
+	<Id>1033</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_PROPERTIES_UPDATE_OPERATION_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Failed to update the design properties."</Desc>
+    <Output>U</Output>
+  </Msg>  
+  <Msg>
+	<Id>1034</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>BIFROST_BASE_UPDATE_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Failed to update the base design."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+	<Id>1035</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>OPERATION_CANCELLED</CDNUSR_DEFINE_NAME>
+    <Desc>"The operation has been cancelled."</Desc>
+    <Output>U</Output>
+  </Msg> 
+  <Msg>
+	<Id>1036</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>COMMIT_SUCCEEDED_UNLOCK_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Lock couldn't be removed after commit."</Desc>
+    <Output>U</Output>
+  </Msg>   
+</MsgFile>

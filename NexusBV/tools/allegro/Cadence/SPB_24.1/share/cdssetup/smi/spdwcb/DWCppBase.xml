@@ -1,0 +1,467 @@
+<?xml version="1.0"?>
+<MsgFile>
+    <Msg>
+        <Id>1</Id>
+        <Category>E</Category>
+        <Desc>"Message number %s not found in error message file(s) registered for module %s. Ensure a valid installation is available."</Desc>
+	<Output>U</Output>
+    </Msg>
+	<Msg>
+		<Id>
+			2
+		</Id>
+		<Category>
+			E
+			<Sub-Category>N</Sub-Category>
+		</Category >
+		<Desc>
+      "Unable to read file '%s'. Reason: '%s'"
+    </Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			3
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>"Unable to iterate views of cell '%s'. Reason: '%s'. Ensure that the the cell exists along with the views."</Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			4
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>"Unable to get path to the cell '%s'. Reason: '%s'. Ensure that the cell exists and cds.lib has the library entry."</Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			5
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>
+      "Identifier '%s' not valid in '%s' namespace. Ensure a valid installation is available."
+    </Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			6
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>
+      "Unable to load project cpm file '%s'. Reason: '%s'"
+    </Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			7
+		</Id>
+		<Category>
+			W
+		</Category >
+		<Desc>
+			"Unable to read directive %s of program %s from project cpm file. Ensure that the required directives are present."
+		</Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			8
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>
+      "Unable to save %s. Ensure that the required permissions are available."
+    </Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			9
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>
+      "Unable to set the directive %s under the program %s of project %s. Ensure a valid installation is available."
+    </Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			10
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>
+      "Cell %s cannot be baselined. Reason: %s"
+    </Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			11
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>
+      "Unable to create an LDAP connection. Ensure the connectivity information file %s exists and has the required information."
+    </Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			12
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>
+			"LDAP connection failed due to missing information for %s. Ensure that the connectivity information is specified in %s."
+		</Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			13
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>
+      "Unable to create LDAP connection using server %s and port %s. Ensure that the LDAP server and port can be connected to."
+    </Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			14
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>
+      "Unable to create LDAP connection using server %s and port %s. Reason: %s. Resolve the error and retry the operation."
+    </Desc>
+		<Output>U</Output>
+	</Msg>
+	<Msg>
+		<Id>
+			15
+		</Id>
+		<Category>
+			E
+			<Sub-Category>T</Sub-Category>
+		</Category >
+		<Desc>
+      "Unable to query the LDAP server with query = %s and filter = %s. Reason: %s. Resolve the error and retry the operation."
+    </Desc>
+		<Output>U</Output>
+	</Msg>
+  <Msg>
+    <Id>
+      16
+    </Id>
+    <Category>
+      W
+    </Category >
+    <Desc>
+      "Cannot add project %s to the project catalog %s. Unable to update catalog file. Ensure that the required permissions are available."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      17
+    </Id>
+    <Category>
+      W
+    </Category >
+    <Desc>
+      "Unable to set project %s as the current project. Unable to update catalog file %s. Ensure that the required permissions are available."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      18
+    </Id>
+    <Category>
+      W
+    </Category >
+    <Desc>
+      "Unable to show available users. The LDAP_LOCAL_LOC variable is set incorrectly (%s). Set value to default (to read from local installation) or provide an exact file location."
+    </Desc>
+    <Output>U</Output>
+  </Msg>  
+  <Msg>
+    <Id>
+      19
+    </Id>
+    <Category>
+      W
+    </Category >
+    <Desc>
+      "Unable to show available users. The LDAP_LOCAL_LOC variable is set to Default. Ensure the list is available at %s. Or, set the variable to &lt;exact path&gt;."
+      </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      20
+    </Id>
+    <Category>
+      W
+    </Category >
+    <Desc>
+      "Unable to show available users. The file (%s) cannot be read, or uses incorrect syntax. Specify a valid file."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      21
+    </Id>
+    <Category>
+      E
+    </Category >
+    <Desc>
+      "Unable to modify the metadata for block %s. Failed to %s collection %s"
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      22
+    </Id>
+    <Category>
+      E
+    </Category >
+    <Desc>
+      "The configuration file for LDAP (%s) is not in the latest format."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      23
+    </Id>
+    <Category>
+      E
+    </Category >
+    <Desc>
+      "The following sections are missing from the LDAP configuration file."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      24
+    </Id>
+    <Category>
+      E
+      <Sub-Category>T</Sub-Category>
+    </Category >
+    <Desc>
+      "Unable to load the LDAP library '%s'. Ensure that the LDAP library name is correct."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      25
+    </Id>
+    <Category>
+      E
+    </Category>
+    <Desc>
+      "Unable to synchronize version in the metadata for view '%s' of block '%s'.
+      View version in the metadata '%s' is different from the supplied version '%s'"
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      26
+    </Id>
+    <Category>
+      E
+    </Category>
+    <Desc>
+      "Unable to synchronize version in the metadata for block '%s'.
+      Block version in the metadata '%s' is different from the supplied version '%s'"
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      50
+    </Id>
+    <Category>
+      E
+      <Sub-Category>T</Sub-Category>
+    </Category >
+    <Desc>
+      "%s"
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      51
+    </Id>
+    <Category>
+      W
+    </Category >
+    <Desc>
+      "%s"
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      52
+    </Id>
+    <Category>
+      I
+    </Category >
+    <Desc>
+      "%s"
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      53
+    </Id>
+    <Category>
+      Q
+    </Category >
+    <Desc>
+      "%s"
+    </Desc>
+    <Output>
+      U
+    </Output>
+  </Msg>
+  <Msg>
+    <Id>
+      54
+    </Id>
+    <Category>
+      Q
+    </Category >
+    <Desc>
+      "%s"
+    </Desc>
+    <Output>
+      U
+      <Buttons>
+        <Button Label = "&amp;Yes" ID = "IDYES"/>
+        <Button Label = "&amp;No" ID = "IDNO"/>
+        <Button Label = "&amp;Cancel" ID = "IDCANCEL"/>
+      </Buttons>
+    </Output>
+  </Msg>
+  <Msg>
+    <Id>
+      101
+    </Id>
+    <Category>
+      E
+      <Sub-Category>T</Sub-Category>
+    </Category >
+    <Desc>
+      "Invalid characters found in the check in comment '%s'. Use only ASCII and extended ASCII characters."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      102
+    </Id>
+    <Category>
+      W
+    </Category >
+    <Desc>
+      "Unable to find program %s from project cpm file. Ensure that the required program is present."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      103
+    </Id>
+    <Category>
+      W
+    </Category >
+    <Desc>
+      "Unable to add program %s to project cpm file. Ensure that the required permission is available."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      104
+    </Id>
+    <Category>
+      E
+    </Category >
+    <Desc>
+      "Unable to add the selected part to the design. Ensure that the &lt;HOME&gt; directory is set and has a valid path."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      105
+    </Id>
+    <Category>
+      E
+    </Category >
+    <Desc>
+      "Unable to add the selected part to the design. View the log file at &lt;Pulse Home\server\log\syscap&gt; for details and ensure that a valid installation is available. If the issue persists, contact your channel partner or Cadence Customer Support with the log file"
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>
+      106
+    </Id>
+    <Category>
+      E
+    </Category >
+    <Desc>
+      "Unable to add the selected part to the design because the part is corrupted. View the log file at &lt;Pulse Home\server\log\syscap&gt; for details. If the issue persists, contact your channel partner or Cadence Customer Support with the log file."
+    </Desc>
+    <Output>U</Output>
+  </Msg>
+  <CharsPerLine>80
+		<CharsPerLineForO>80</CharsPerLineForO><CharsPerLineForE>80</CharsPerLineForE>
+</CharsPerLine>
+</MsgFile>

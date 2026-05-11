@@ -1,0 +1,987 @@
+<?xml version="1.0" ?>
+<MsgFile>
+  <Msg>
+    <Id>1</Id>
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_CREATING_NEW_VERSION</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"A new version of the design could not be created because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>2</Id>
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_CREATING_NEW_VERSION_INTERNAL_ERROR</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"A new version of the design could not be created because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+    <Msg>
+    <Id>3</Id>
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_IN_COMMIT</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Design version could not be committed to the server because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>4</Id>
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_IN_COMMIT_INTERNAL_ERROR</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Design version could not be committed to the server because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+    <Msg>
+    <Id>5</Id>
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_IN_ROLLBACK</CDNUSR_DEFINE_NAME>
+    <Category>E</Category >
+    <Desc>"Unable to roll back to the selected version. Try rolling back to a previous commit version or restart the application to resolve the issue."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>6</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_RETRIEVING_DESIGN_INFORMATION</CDNUSR_DEFINE_NAME>
+    <Desc>"The design information could not be retrieved because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>7</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_RETRIEVING_DESIGN_INFORMATION_INTERNAL_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"The design information could not be retrieved because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>8</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_DESIGN_MUST_BE_SAVED_ONCE</CDNUSR_DEFINE_NAME>
+    <Desc>"The design must be saved at least once before attempting the current operation."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>9</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_VERSION_HISTORY_NOT_FOUND</CDNUSR_DEFINE_NAME>
+    <Desc>"The version history of this design could not be retrieved from the Pulse server. To load the version history, restart this application, ensure that the Pulse server is running, and then open this design. If the problem persists, contact the administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+   <Msg>
+    <Id>10</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_COMMIT_IN_PROGRESS</CDNUSR_DEFINE_NAME>
+    <Desc>"Last save/commit operation is still in progress. Retry after sometime."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>11</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_UNABLE_TO_ROLLBACK</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to roll back to the selected version. Try rolling back to a previous commit version or restart the application to resolve the issue."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>12</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_DESIGN_INFORMATION_COULDNT_BE_RETRIEVED</CDNUSR_DEFINE_NAME>
+    <Desc>"Design information could not be retrieved."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>13</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_VERSION_CONTROL_CANT_BE_OPENED</CDNUSR_DEFINE_NAME>
+    <Desc>"The version information cannot be retrieved because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>14</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_UNABLE_TO_DOWNLOAD_OBJECT</CDNUSR_DEFINE_NAME>
+    <Desc>"Design could not be downloaded from the server because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>15</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_CURRENT_OPERATION_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"The current operation cannot be completed because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>17</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_SAVE_DESIGN_BEFORE_SHARING</CDNUSR_DEFINE_NAME>
+    <Desc>"The design must be committed at least once before sharing it."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>24</Id>
+    <Category>W</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_NO_CHANGES_FOUND</CDNUSR_DEFINE_NAME>
+    <Desc>"Version could not be created as no changes found in design from previous version."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>25</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_CANT_COMMIT_AS_NO_CHANGES_FOUND</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to commit design as no changes found in design from previously committed version."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>26</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_CURRENT_DESIGN_COPY_OF_EXISTING_DESIGN</CDNUSR_DEFINE_NAME>
+    <Desc>"This design is a copy of another design already on the Pulse platform. Click Yes if you want to manage '%s' as a different design. This will also reset the version history at 1.0. Click No to continue with the current version history."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>27</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_PULSE_STARTUP_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Version information will not be saved due to an internal error. Restart the application to resolve the issue."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>28</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_PULSE_SHUTDOWN_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to stop version management service."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>29</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_PULSE_REGISTRATION_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Application could not connect to the Pulse server. Ensure Pulse server is in the running state and then restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>30</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_PULSE_DEREGISTRATION_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to stop version management service."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>31</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_PULSE_COMMIT_REBASE_FAILURE</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to commit as a newer version of the design is available. Update the design and retry the operation."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>32</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_DOWNLOADING_DESIGN</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to fetch the design from Pulse platform."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>33</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_REVERT_DESIGN</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to revert the design."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>34</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_CANNOT_ACQUIRE_LOCK</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to acquire the desired lock on the resource."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>35</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_CANNOT_ACQUIRE_LOCK</CDNUSR_DEFINE_NAME>
+    <Desc>"Can lock operation failed. User cannot lock the required resource."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>36</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_TRANSACTION_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot complete the operation because the Pulse server is in maintenance mode. Retry after some time. If the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>37</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_PERMISSION_DENIED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot commit the design because it is not locked. First lock the design then retry the operation."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>38</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_REVERT_DESIGN_NOT_LOCKED_BY_USE</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot revert the design because the design is not locked. Only locked design can be reverted."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>39</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_TRANSACTION_OPERATION_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot complete the operation because the required data is not available in Pulse. This can happen because a database of an older version might have been restored on the Pulse server. To resolve this problem, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>40</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_LOCK_FOR_PARENT_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"'%s' cannot be locked because some of its member objects are locked by another user. Wait for the objects to be unlocked and then start editing."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>41</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_OPERATION_FAILED_FORBIDDEN</CDNUSR_DEFINE_NAME>
+    <Desc>"You cannot edit this design or create versions for it in Pulse. To work with this design, ensure that the design is shared with you with write permission and you are part of the Designer group in Pulse."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>42</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_FILE_CANT_BE_DOWNLOADED</CDNUSR_DEFINE_NAME>
+    <Desc>"The selected design version cannot currently be accessed. Retry after some time and if the problem persists, contact the design owner or the user who last saved the design."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>43</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_INCORRECT_REVISION</CDNUSR_DEFINE_NAME>
+    <Desc>"The specified version number does not exist. Retry after providing the correct version number."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>44</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_INVALID_DOWNLOAD_LOCATION</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot open the design. The location set in the system variable CDS_PULSE_DESIGN_LOCATION is inaccessible. Ensure this system variable points to a folder that is accessible and can be written to. Or, remove this variable."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>45</Id>
+    <Category>W</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_COMMIT_CANCELLED</CDNUSR_DEFINE_NAME>
+    <Desc>"The commit operation has been cancelled by the user."</Desc>
+    <Output>U</Output>
+  </Msg>
+    <Msg>
+    <Id>46</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_NETLIST_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot commit because of packaging errors in the design. Fix these errors then retry the operation."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>47</Id>
+    <Category>W</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_IMPORT_CANCELLED</CDNUSR_DEFINE_NAME>
+    <Desc>"Import operation was cancelled by the user."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>48</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_DOWNLOADED_DESIGN_CORRUPT_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot proceed because the design could not be completely downloaded from Pulse. Retry after some time. If the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>50</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_LAST_SAVE_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot commit because the previous version of the design could not be created in Pulse. Edit the design, save it, and try committing the design again."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>51</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_NETLIST_IMPORT_FAILED_PERM_DENIED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot import the netlist because the design is not shared with you. To import the netlist, contact the design owner to ensure that the design is shared with you."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>52</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_TAG_NOT_COMPATIBLE_WITH_SERVER</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot commit the design because the selected tag is not supported by the current version of the Pulse server. Remove the tag and try committing the design again."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>53</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_NETLIST_IMPORT_FAILED_PERM_DENIED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot import the netlist because the board is not shared with you. To import the netlist, contact the board owner to ensure that the board is shared with you."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>54</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_COMMIT_TIMED_OUT</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit timed out."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>55</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_SEGMENT_NAME_REQ_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Name of the object could not be retrieved because of an internal error."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>56</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_SEGMENT_NAME_FAILED_FOR_NEED_UPDATE</CDNUSR_DEFINE_NAME>
+    <Desc>"Name of the object could not be retrieved because its parent object needs to be updated."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>57</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_NETLIST_IMPORT_FAILED_PERM_DENIED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot import the netlist because the board is not shared with you. To import the netlist, contact the board owner to ensure that the board is shared with you.
+	
+Do you want to see all the accessible boards?"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>58</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_NETLIST_IMPORT_FAILED_PERM_DENIED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot import the netlist because the design is not shared with you. To import the netlist, contact the design owner to ensure that the design is shared with you.
+	
+Do you want to see all the accessible designs?"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>59</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_PERMISSION_CHECK_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"User permission could not be retrieved because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>   
+  <Msg>
+    <Id>60</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_OPERATION_NOT_SUPPORTED</CDNUSR_DEFINE_NAME>
+    <Desc>"The selected operation is not supported by the current version of the Pulse server."</Desc>
+    <Output>U</Output>
+  </Msg>
+   <Msg>
+    <Id>61</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_PROPERTIES_UPDATE_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to update the design properties."</Desc>
+    <Output>U</Output>
+  </Msg> 
+  <Msg>
+    <Id>69</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_SAVE_TIMED_OUT</CDNUSR_DEFINE_NAME>
+    <Desc>"Save operation timed out."</Desc>
+    <Output>U</Output>
+  </Msg>  
+  <Msg>
+    <Id>70</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_SAVE_NETWORK_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"The design has been saved but a new version could not be created because of a network error. Retry the operation and if the problem persists, check your network connection."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>71</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_COMMIT_NETWORK_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot commit the design due to a network error. Retry the operation and if the problem persists, check your network connection."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>72</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_UPDATE_NETWORK_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot update the design due to a network error. Retry the operation and if the problem persists, check your network connection."</Desc>
+    <Output>U</Output>
+  </Msg>  
+  <Msg>
+    <Id>73</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_GET_NETWORK_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot retrieve information about the design due to a network error. Retry the operation and if the problem persists, check your network connection."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>74</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_LOCK_NETWORK_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot lock the design due to a network error. Retry the operation and if the problem persists, check your network connection."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>75</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_UNLOCK_NETWORK_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot unlock the design due to a network error. Retry the operation and if the problem persists, check your network connection."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>76</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_TRANSACTION_NETWORK_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot retrieve the status of the current operation due to a network error. Retry the operation and if the problem persists, check your network connection."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>77</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_REVERT_NETWORK_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot revert the design to its last committed state due to a network error. Retry the operation and if the problem persists, check your network connection."</Desc>
+    <Output>U</Output>
+  </Msg>  
+  <Msg>
+    <Id>80</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_SAVE_SERVER_DOWN_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"The design has been saved but a new version could not be created because the Pulse server is not accessible. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>81</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_COMMIT_SERVER_DOWN_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot commit the design as the Pulse server is not accessible. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>82</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_UPDATE_SERVER_DOWN_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot update the design as Pulse server is not accessible. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>  
+  <Msg>
+    <Id>83</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_GET_SERVER_DOWN_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot retrieve information about the design as the Pulse server is not accessible. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>84</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_LOCK_SERVER_DOWN_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot lock the design as the Pulse server is not accessible. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>85</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_UNLOCK_SERVER_DOWN_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot unlock the design as the Pulse server is not accessible. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>86</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_TRANSACTION_SERVER_DOWN_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot retrieve the status of the current operation as the Pulse server is not accessible. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>87</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>VOSERROR_ERROR_REVERT_SERVER_DOWN_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot revert the design to its last committed state as the Pulse server is not accessible. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>  
+  <Msg>
+    <Id>90</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>DESIGN_DOWNLOAD_NEW_LOC_FOR_JOIN_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"A design with the same name already exists in the selected directory. Select a different directory to continue."</Desc>
+    <Output>U</Output>
+  </Msg> 
+  <Msg>
+    <Id>91</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>DESIGN_DOWNLOAD_LOC_PERMISSION_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"You do not have permission to write to the selected directory. Select a different directory to continue."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>92</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>DESIGN_DOWNLOAD_INVALID_JOIN_PATH</CDNUSR_DEFINE_NAME>
+    <Desc>"The directory, set in the system variable 'CDS_PULSE_DESIGN_LOCATION', is inaccessible. Do you want to select a different directory to continue?"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>93</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>DESIGN_DOWNLOAD_FILE_EXISTS_IN_JOIN_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"A design with the same name already exists in the directory set in the system variable 'CDS_PULSE_DESIGN_LOCATION'. Select a different directory to continue."</Desc>
+    <Output>U</Output>
+  </Msg> 
+   <Msg>
+    <Id>94</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>LOCK_TIMED_OUT_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Lock timed out."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>95</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>SAVE_CANCELLED</CDNUSR_DEFINE_NAME>
+    <Desc>"Previous 'Save' operation was suspended as there's a new request"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>96</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>DISK_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Failure in creating temporary file. Check the disk space and permission."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>97</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>SERVER_START_FAIL_AS_SERVER_START_ALREADY_IN_PROGRESS</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot start server as server start is already in progress. Please retry after some time."</Desc>
+    <Output>U</Output>
+  </Msg> 
+  <Msg>
+    <Id>98</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>UPDATE_PENDING_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"The design is updated but its current status could not be synchronized with Pulse because the server was down. Verify that the server is running then update the design."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>99</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_SUCCEEDED_UNLOCK_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"The design was committed to Pulse but the locks could not be removed because of a server error. To ensure that other project team members can edit the design, manually release the locks you own."</Desc>
+    <Output>U</Output>
+  </Msg> 
+  <Msg>
+    <Id>100</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>API_VERSION_MISMATCH_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"The design was created or saved in a higher version of the application. To edit the design, upgrade the application to the latest version."</Desc>
+    <Output>U</Output>
+  </Msg>   
+  <Msg>
+    <Id>101</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>SAVE_FAILED_SERVER_BUSY_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"The design has been saved but a new version could not be created because the Pulse server is busy. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>102</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_FAILED_SERVER_BUSY_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot commit the design because the Pulse server is busy. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>103</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>UPDATE_FAILED_SERVER_BUSY_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot update the design because the Pulse server is busy. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>  
+  <Msg>
+    <Id>104</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>GET_FAILED_SERVER_BUSY_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot retrieve information about the design because the Pulse server is busy. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>105</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>LOCK_FAILED_SERVER_BUSY_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot lock the design because the Pulse server is busy. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>106</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>UNLOCK_FAILED_SERVER_BUSY_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot unlock the design because the Pulse server is busy. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>107</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>TRANSACTION_FAILED_SERVER_BUSY_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot retrieve the status of the current operation because the Pulse server is busy. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>108</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>REVERT_FAILED_SERVER_BUSY_ERROR</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot revert the design to its last committed state because the Pulse server is busy. Retry the operation and if the problem persists, contact the server administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>109</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>BLOCK_NETLIST_UPLOAD_NOT_SUPPORTED_ON_SERVER</CDNUSR_DEFINE_NAME>
+    <Desc>"Uploading block netlists is not supported by the current version of the Pulse server. Commit the design without selecting any block or contact the Pulse administrator to get the server upgraded to the latest release."</Desc>
+    <Output>U</Output>
+  </Msg>   
+	<Msg>
+    <Id>110</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>COMPARE_DESIGNS_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to compare selected designs versions."</Desc>
+    <Output>U</Output>
+  </Msg> 
+  	<Msg>
+    <Id>111</Id>
+    <Category>E</Category >
+	<CDNUSR_DEFINE_NAME>TCL_API_PULSE_URL_REQUIRED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot get the version details because the design is either not managed by Pulse or is currently not open."</Desc>
+    <Output>U</Output>
+  </Msg> 
+  <Msg>
+    <Id>200</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_STARTED_PROGRESS_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit initiated."</Desc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+    <Id>201</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_FINISHED_PROGRESS_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit completed."</Desc>
+    <Output>U</Output>
+  </Msg> 
+	<Msg>
+    <Id>202</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_FAILED_PROGRESS_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit failed."</Desc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+    <Id>203</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_FETCH_INFO_PROGRESS_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Fetching design information from Pulse..."</Desc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+    <Id>204</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_FETCH_NETLIST_PROGRESS_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Generating netlist."</Desc>
+    <Output>U</Output>
+  </Msg>  
+	<Msg>
+    <Id>205</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_REQUESTED_PROGRESS_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit in progress. The expected time of completion is %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+    <Id>206</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_SAVE_DUE_CKSUM_MISMATCH_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit in progress. The expected time for completion is %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+    <Id>207</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_SAVE_ON_MAIN_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit in progress. The expected time for completion is %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+    <Id>208</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_SAVE_ON_MAIN_AND_NETLIST_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit in progress. The expected time for completion is %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+    <Id>209</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_WITH_NETLIST_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit in progress. The expected time for completion is %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+    <Id>210</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_FILE_SYNC_AND_NETLIST_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit in progress. The expected time of completion is %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+    <Id>211</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>DOWNLOAD_INPROGRESS_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Download in progress. The expected time of completion is %s"</Desc>
+    <Output>U</Output>
+  </Msg>
+	<Msg>
+    <Id>212</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>DOWNLOAD_FINISHED_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Download completed."</Desc>
+    <Output>U</Output>
+  </Msg> 
+	<Msg>
+    <Id>213</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>DOWNLOAD_FAILED_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Download failed."</Desc>
+    <Output>U</Output>
+  </Msg>
+  	<Msg>
+    <Id>214</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>DOWNLOAD_STARTED_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Download initiated."</Desc>
+    <Output>U</Output>
+  </Msg>
+  	<Msg>
+    <Id>215</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>COMMIT_EXCEEDED_THRESHOLD_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Commit is taking longer than usual, wait for the operation to complete..."</Desc>
+    <Output>U</Output>
+  </Msg>
+  	<Msg>
+    <Id>216</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>DOWNLOAD_EXCEEDED_THRESHOLD_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Download is taking longer than usual, wait for the operation to complete..."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>217</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>DESIGN_INFORMATION_COULD_NOT_BE_FETCHED_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot retrieve the details because of an internal error. Retry, and if the problem persists, restart the application or contact the Pulse administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>218</Id>
+    <Category>I</Category >
+	<CDNUSR_DEFINE_NAME>DESIGN_ACCESS_FORBIDDEN_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"You do not have access to this design in Pulse. To work with this design, ensure that the design is shared with you with write permission and you are part of the Designer group in Pulse."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>219</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_ERROR_ATTACHMENT_COULD_NOT_BE_FOUND</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot find the specified attachment. Make sure the attachment name is correct, and that it is attached to the project."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>220</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_ERROR_ATTACHMENT_COULD_NOT_BE_UPLOADED_COPY_FAILED_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot upload the specified file. Ensure that you have sufficient disk space and write permission for the temp area."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>221</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_ERROR_DERIVED_DATA_UPLOAD_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot upload the derived data because of an internal error. Retry, and if the problem persists, restart the application or contact the Pulse administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>222</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_ERROR_PATH_INVALID_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"The specified file path is invalid. Check the path and ensure that the file exists in the directory."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>223</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DERIVED_DATA_DELETE_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot delete the derived data because of an internal error. Retry, and if the problem persists, contact the Pulse administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>224</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DERIVED_DATA_GET_FAILED_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot download the specified derived data because of an internal error. Retry, and if the problem persists, contact the Pulse administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>225</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DERIVED_DATA_NOT_FOUND_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"No derived data found for the specified version. Retry, and if the problem persists, contact the Pulse administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>226</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_FORCE_COMMIT_FAILED_FOR_MERGE_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot commit the design because unresolved objects could not be marked as resolved. This can be due to a temporary network problem. Retry after some time and if the problem persists, contact the administrator."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>227</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_UPDATE_BEFORE_EDIT_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"There's a new version of the design available. The design must be updated before it can be modified."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>228</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_COMMIT_ERROR_IN_DESIGN_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"The design has errors and must be resolved before committing the design."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>229</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_UPDATE_OF_DESIGN_FAILED_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Unable to update design to latest version due to an internal error. Retry to update."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>230</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_UPDATE_DESIGN_BEFORE_COMMITING_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"The design must be updated before committing it."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>231</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_CANNOT_COMMIT_AS_OPERATIONS_ARE_PENDING_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot commit due to other pending operations."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>232</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_PDF_DERIVED_DATA_DELETION_NOT_ALLOWED_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"System-generated preview files cannot be deleted."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>233</Id>
+    <Category>I</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DATA_UPLOAD_STARTED_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Data upload initiated."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>234</Id>
+    <Category>I</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DATA_UPLOAD_PROGRESS_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Uploading data... The expected time of completion is %s."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>235</Id>
+    <Category>I</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DATA_UPLOAD_EXCEEDED_THRESHOLD_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Upload still in progress... Wait for the operation to complete."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>236</Id>
+    <Category>I</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DATA_UPLOAD_FINISHED_PROGRESS_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Data upload completed."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>237</Id>
+    <Category>I</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DATA_DOWNLOAD_EXCEEDED_THRESHOLD_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Download still in progress... Wait for the operation to complete."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>238</Id>
+    <Category>I</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DATA_DOWNLOAD_FINISHED_PROGRESS_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Data download completed."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>239</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DATA_DOWNLOAD_TIMEDOUT_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Data download timed out."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>240</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_DATA_UPLOAD_TIMEDOUT_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Data upload timed out."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>241</Id>
+    <Category>I</Category >
+	  <CDNUSR_DEFINE_NAME>PDF_DERIVED_DATA_DOWNLOAD_SUCCESS</CDNUSR_DEFINE_NAME>
+    <Desc>"The preview file is successfully downloaded."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>242</Id>
+    <Category>E</Category >
+    <CDNUSR_DEFINE_NAME>PREVIEW_DOWNLOAD_FAILED</CDNUSR_DEFINE_NAME>
+    <Desc>"Cannot download the preview because of an internal error. Retry, and if the problem persists, restart the application."</Desc>
+    <Output>U</Output>
+  </Msg>
+    <Msg>
+    <Id>243</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_MAX_FILE_UPLOAD_SIZE_LIMIT_CROSSED_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"The selected file exceeds the maximum supported upload size of 1.5 GB"</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>244</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_INPUT_URL_NOT_RELATED_TO_DESIGN_CONTEXT_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"The specified URL does not match any attachment linked to the open design."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>245</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_UPDATE_FAILED_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Design update failed."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>246</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_INVALID_INPUT_DATA_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"Input data is either missing or invalid. Ensure that correct data is provided."</Desc>
+    <Output>U</Output>
+  </Msg>
+  <Msg>
+    <Id>247</Id>
+    <Category>E</Category >
+	  <CDNUSR_DEFINE_NAME>VOSERROR_EMPTY_COMMIT_COMMENT_ERROR_MSG</CDNUSR_DEFINE_NAME>
+    <Desc>"A comment is mandatory."</Desc>
+    <Output>U</Output>
+  </Msg>
+</MsgFile>

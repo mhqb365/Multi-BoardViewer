@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MsgFile>
+  <Msg>
+    <Id>100</Id>
+    <Category>E</Category>
+    <Desc>
+      "Invalid response received for check connection state.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>101</Id>
+    <Category>E</Category>
+    <Desc>
+      "Connection status indicates fail event.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>102</Id>
+    <Category>E</Category>
+    <Desc>
+      "Error in parsing server response for check connection state.
+"
+    </Desc>
+  </Msg>
+   <Msg>
+    <Id>103</Id>
+    <Category>E</Category>
+    <Desc>
+      "Send failed for server state request.
+"
+    </Desc>
+  </Msg>
+    <Msg>
+    <Id>104</Id>
+    <Category>E</Category>
+    <Desc>
+      "Pulse Server in Maintenance state.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>105</Id>
+    <Category>E</Category>
+    <Desc>
+      "Pulse Server in error state.
+"
+    </Desc>
+  </Msg>
+  <Msg>
+    <Id>106</Id>
+    <Category>E</Category>
+    <Desc>
+		"Part could not be copied because invalid response code received.
+"
+	</Desc>
+  </Msg>
+  <Msg>
+    <Id>107</Id>
+    <Category>E</Category>
+    <Desc>
+		"Unable to read part information because invalid response received.
+"
+	</Desc>
+</Msg>
+  <Msg>
+	<Id>108</Id>
+	<Category>I</Category>
+	<Desc>
+		"Downloading library ... "
+	</Desc>
+	</Msg>
+  <Msg>
+	<Id>109</Id>
+	<Category>I</Category>
+	<Desc>
+		"Downloading cells ...
+"
+	</Desc>
+  </Msg>
+  <Msg>
+    <Id>110</Id>
+    <Category>W</Category>
+    <Desc>
+		"Unable to download cell  "
+	</Desc>
+  </Msg>
+  <Msg>
+	<Id>111</Id>
+	<Category>I</Category>
+	<Desc>
+		"Cell download successfully "
+	</Desc>
+  </Msg>
+  <Msg>
+    <Id>112</Id>
+    <Category>E</Category>
+    <Desc>
+		"Cell cannot be read "
+	</Desc>
+  </Msg>
+   <Msg>
+    <Id>113</Id>
+    <Category>E</Category>
+    <Desc>
+		"Library cannot be read "
+	</Desc>
+  </Msg>
+	<Msg>
+	<Id>114</Id>
+	<Category>I</Category>
+	<Desc>
+		"Library downloaded successfully "
+	</Desc>
+  </Msg>
+	<Msg>
+		<Id>115</Id>
+		<Category>E</Category>
+		<Desc>
+			"Library data cannot be read because send request failed. Check Server!
+"
+		</Desc>
+	</Msg>
+	<Msg>
+		<Id>116</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to access server. Ensure server is in running state.
+"
+		</Desc>
+	</Msg>
+</MsgFile>

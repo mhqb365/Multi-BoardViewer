@@ -126,18 +126,17 @@ namespace MultiBoardViewer.Controls
                 {
                     ContextMenu contextMenu = new ContextMenu();
 
-                    MenuItem openBoardViewerItem = new MenuItem { Header = "Open with BoardViewer" };
-                    openBoardViewerItem.Click += (s, ev) => RequestOpenWithViewer(filePath, "BoardViewer");
+                    MenuItem openNexusBvItem = new MenuItem { Header = "Open with NexusBV" };
+                    openNexusBvItem.Click += (s, ev) => RequestOpenWithViewer(filePath, "NexusBV");
 
                     MenuItem openOpenBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
                     openOpenBoardViewItem.Click += (s, ev) => RequestOpenWithViewer(filePath, "OpenBoardView");
 
-                    MenuItem openFlexBoardViewItem = new MenuItem { Header = "Open with FlexBoardView" };
-                    openFlexBoardViewItem.Click += (s, ev) => RequestOpenWithViewer(filePath, "FlexBoardView");
 
-                    contextMenu.Items.Add(openBoardViewerItem);
+
+                    contextMenu.Items.Add(openNexusBvItem);
                     contextMenu.Items.Add(openOpenBoardViewItem);
-                    contextMenu.Items.Add(openFlexBoardViewItem);
+
 
                     fileButton.ContextMenu = contextMenu;
                 }
@@ -316,7 +315,7 @@ namespace MultiBoardViewer.Controls
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Title = "Open File",
-                Filter = "All Supported Files|*.pdf;*.fz;*.brd;*.bom;*.cad;*.bdv;*.asc;*.bv;*.cst;*.gr;*.f2b;*.faz;*.tvw|PDF Files|*.pdf|BoardViewer Files|*.fz;*.brd;*.bom;*.cad;*.bdv;*.asc;*.bv;*.cst;*.gr;*.f2b;*.faz;*.tvw|All Files|*.*",
+                Filter = "All Supported Files|*.pdf;*.fz;*.brd;*.bom;*.cad;*.bdv;*.asc;*.bv;*.cst;*.gr;*.f2b;*.faz;*.tvw|PDF Files|*.pdf|NexusBV Files|*.fz;*.brd;*.bom;*.cad;*.bdv;*.asc;*.bv;*.cst;*.gr;*.f2b;*.faz;*.tvw|All Files|*.*",
                 Multiselect = true
             };
 

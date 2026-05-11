@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<MsgFile>   
+	<Msg>
+        <Id>1</Id>
+        <Category>E</Category>
+        <Desc>
+        "The rollback feature is not supported on the %s platform. Refer to Cadence documentation for information on supported platforms."
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>2</Id>
+        <Category>E</Category>
+        <Desc>
+        "Unable to access the license server.  Ensure the license server is accessible and try again."
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>3</Id>
+        <Category>E</Category>
+        <Desc>
+        "Unable to check out the %s license. Ensure that licenses are available."
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>4</Id>
+        <Category>I</Category>
+        <Desc>
+        "Usage: rollback  -proj &quot;cpm file path&quot; [-cell | -block]"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>5</Id>
+        <Category>E</Category>
+        <Desc>
+		"Unable to load the project cpm file %s. To prevent such errors, avoid manually editing the cpm file(s)."
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>6</Id>
+        <Category>E</Category>
+        <Desc>
+        "No %s is present in Design.&#xD;&#xA;Exiting application"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>7</Id>
+        <Category>I</Category>
+        <Desc>
+        "No Cell/Block selected to rollback"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+	<Msg>
+        <Id>8</Id>
+        <Category>I</Category>
+        <Desc>
+        "Rollback of Cells/Blocks completed. Refer log for details"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>9</Id>
+        <Category>E</Category>
+        <Desc>
+		"The Rollback action cannot be completed. Schematic update file cannot be created.&#xD;&#xA;Ensure the temp folder has the required permissions."
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+    
+    <Msg>
+        <Id>201</Id>
+        <Category>E</Category>
+        <Desc>
+        "Message number %s not found in error message file registered for module %s."
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>202</Id>
+        <Category>E</Category>
+        <Desc>
+        "Number of parameters specified for message id %s of module %s do not match the required number of params."
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+    <Msg>
+        <Id>203</Id>
+        <Category>I</Category>
+        <Desc>
+        "%s"
+        </Desc>
+		<Output>U</Output>
+    </Msg>
+    
+	<CharsPerLine>80
+			<CharsPerLineForO>80</CharsPerLineForO>
+			<CharsPerLineForE>80</CharsPerLineForE>
+	</CharsPerLine>
+		
+</MsgFile>

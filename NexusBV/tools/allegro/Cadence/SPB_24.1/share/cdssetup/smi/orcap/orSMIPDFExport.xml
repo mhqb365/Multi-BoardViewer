@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+
+<MsgFile>
+
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>ePDF_EXPORT_CHECK_POSTSCRIPT_PATH</CDNUSR_DEFINE_NAME>
+
+    <Id>43001</Id>
+
+    <Category>E</Category>
+
+    <Desc>"Unable to find postscript to PDF converter tool at the specified path. Either update the path of the postscript to PDF converter tool in the Converter Path variable or add the path of the postscript to PDF converter tool in the PATH environment variable."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>ePDF_EXPORT_CHECK_CONVERTER_TOOL</CDNUSR_DEFINE_NAME>
+
+    <Id>43002</Id>
+
+    <Category>E</Category>
+
+    <Desc>"The postscript to PDF converter tool %s not found. Either specify the path of the postscript to PDF converter tool in the Converter Path variable or add the path of the postscript to PDF converter tool in the PATH environment variable."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>ePDF_EXPORT_CHECK_OUTPUT_DIRECTORY</CDNUSR_DEFINE_NAME>
+
+    <Id>43003</Id>
+
+    <Category>E</Category>
+
+    <Desc>"The output PDF file can not be written in the specified output directory. Either an output directory is not specified or it has read-only permission. Specify an output directory with write permissions."</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+   <Msg>
+
+    <CDNUSR_DEFINE_NAME>ePDF_EXPORT_GS_TOOL_ERROR</CDNUSR_DEFINE_NAME>
+
+    <Id>43004</Id>
+
+    <Category>E</Category>
+
+    <Desc>Unable to find the executable %s at the specified path. If the executable is available in your system, specify its path. If it is not available, download from &lt;a href=https://ghostscript.com/releases/gsdnld.html target=&quot;_blank&quot;&gt;https://ghostscript.com/releases/gsdnld.html&lt;/a&gt;, install, and specify the path.</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+  <Msg>
+
+    <CDNUSR_DEFINE_NAME>ePDF_EXPORT_OTHERS_TOOL_ERROR</CDNUSR_DEFINE_NAME>
+
+    <Id>43005</Id>
+
+    <Category>E</Category>
+
+    <Desc>Unable to find the executable %s at the provided path. Ensure the path points to the executable.</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+   <Msg>
+
+    <CDNUSR_DEFINE_NAME>ePDF_EXPORT_TOOL_AVAILABLE</CDNUSR_DEFINE_NAME>
+
+    <Id>43006</Id>
+
+    <Category>I</Category>
+
+    <Desc> %s is available.</Desc>
+
+    <Output>U</Output>
+
+    <ExtDesc>""</ExtDesc>
+
+  </Msg>
+  
+
+</MsgFile>

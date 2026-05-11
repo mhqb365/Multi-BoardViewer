@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<MsgFile>
+	<Msg>
+		<Id>101</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error: Unable to run MATLAB engine. Please try again."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>O</Output>
+	</Msg>
+	<Msg>
+		<Id>102</Id>
+		<Category>E</Category>
+		<Desc>
+			"PSpice Systems License is not available - it is required for using MATLAB functions."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>O</Output>
+	</Msg>
+	<Msg>
+		<Id>103</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error: Variable list is empty."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>O</Output>
+	</Msg>
+	<Msg>
+		<Id>104</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error: COM server registration failed. Please set MATLAB path again."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>O</Output>
+	</Msg>
+	<Msg>
+		<Id>105</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error: Path cannot be empty. Please enter a valid path."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>O</Output>
+	</Msg>
+	<Msg>
+		<Id>106</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error: MATLAB does not exist at this location. Please enter a valid path."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>O</Output>
+	</Msg>
+	<Msg>
+		<Id>107</Id>
+		<Category>E</Category>
+		<Desc>
+			"
+Perform the following steps.
+1. Open command prompt (cmd) in Administrator mode
+2. Go to the MATLAB bin directory which you want to switch to. (eg: R2017b/bin)
+3. Run the command: matlab -regserver
+MATLAB displays a minimized command window. Open this window and exit MATLAB.
+4. Restart PSpice and MATLAB."
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>O</Output>
+	</Msg>
+</MsgFile>
+
+
+

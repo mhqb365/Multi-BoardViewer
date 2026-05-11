@@ -1,0 +1,259 @@
+<?xml version="1.0" ?>
+<MsgFile>
+	<Msg>
+		<Id>1</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot find a valid modelId for instance: %s. The primitive in map file does not match with the primitive in chips file.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>2</Id>
+		<Category>E</Category>
+		<Desc>
+			"Cannot find a valid Physical Part for instance: %s, pathval: %s. The primitives in map file does not match with the primitive in chips file: %s or PART_NAME in instantiated part.Sync up the primitive entries in the chips file and the map file.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>3</Id>
+		<Category>W</Category>
+		<Desc>
+			"Cannot find a valid Physical Part for instance: %s, pathval: %s. The primitives in map file does not match with the primitive %s in chips file. This could be due to a PackType property on the instance. Sync up the primitive entries in the chips file and the map file. Using the logical part name: %s as the Physical Part.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>4</Id>
+		<Category>W</Category>
+		<Desc>
+			"Unable to find mapping information for %s model: %s specified on the instance: %s, pathval: %s, cell name: %s, view binding: %s. This model does not match the model names in Property Section in map file for Primitive: %s. Please ensure that the correct port mapping is present in the map file. Proceeding with model: %s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>5</Id>
+		<Category>W</Category>
+		<Desc>
+			"Cannot find a valid Default Model for instance: %s, pathval: %s.
+Add a Default Model Property in the Map file for primitive: %s. Proceeding with model: %s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>6</Id>
+		<Category>W</Category>
+		<Desc>
+			"Found a mismatch in Property for instance: %s, pathval: %s.
+The Verilog_Model Property specified in the Map File does not match the Model Name used for instantiating the part.
+Correct the Property in the Map file for primitive: %s in view: %s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>7</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to open map file for reading for instance: %s, pathval: %s.
+Path of the Map File is: %s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>8</Id>
+		<Category>W</Category>
+		<Desc>
+			"Invalid property for primitive section in map file for instance: %s, pathval: %s.
+The property name is: %s and property value is: %s.
+Path of the Map File is: %s. Line number where error occurred: %d.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>9</Id>
+		<Category>E</Category>
+		<Desc>
+			"Missing bracket() in port name section in map file for instance: %s, pathval: %s.
+The pin name is: %s and port name is: %s.
+Path of the Map File is: %s. Line number where error occurred: %d.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>10</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error in Parsing Map File for instance: %s, pathval: %s.
+Path of the Map File is: %s. Line number where error occurred: %d.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>11</Id>
+		<Category>E</Category>
+		<Desc>
+			"Error in Packaging Pin for: %s, instance: %s, pathval: %s. There is no corresponding pin in the map file for a pin: %s specified on the instance. The map file needs to be corrected.
+Path of the Map File is: %s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>12</Id>
+		<Category>W</Category>
+		<Desc>
+			"Primitive section for primitive: %s is already defined in the map file for instance: %s, pathval: %s.
+Path of the Map File is: %s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>13</Id>
+		<Category>E</Category>
+		<Desc>
+			"Unable to find mapping information for default model: %s specified on the instance: %s, pathval: %s, cell name: %s, view binding: %s. This model does not match the model names in Property Section in map file for Primitive: %s. Please ensure that the correct port mapping is present in the map file. Proceeding with model: %s.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>14</Id>
+		<Category>E</Category>
+		<Desc>
+			"The pin to port mapping is wrong for the pin: %s of the Model: %s in the map file 
+%s.
+Please ensure that the correct port mapping is present in the map file.
+
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>15</Id>
+		<Category>E</Category>
+		<Desc>
+			"Invalid Pin: %s is specified in Pin to Port mapping for the Model: %s.
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>16</Id>
+		<Category>E</Category>
+		<Desc>
+			"Reading Physical Part from Map File
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>17</Id>
+		<Category>W</Category>
+		<Desc>
+			"Reading Physical Part from Map File
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>18</Id>
+		<Category>E</Category>
+		<Desc>
+			"Read Map file for %s, Instance %s pathval %s from Hash Table %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+	<Msg>
+		<Id>19</Id>
+		<Category>I</Category>
+		<Desc>
+			"Read Map file for %s, Instance %s pathval %s from %s
+"
+		</Desc>
+		<ExtDesc>
+			""
+		</ExtDesc>
+		<Output>C</Output>
+	</Msg>
+</MsgFile>
+
