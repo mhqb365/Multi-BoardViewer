@@ -5,7 +5,7 @@
 ![Multi BoardViewer](https://img.shields.io/badge/.NET-8.0-blue) ![Platform](https://img.shields.io/badge/Platform-Windows-brightgreen) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 | ![Multi BoardViewer 1](./Photos/1.png) | ![Multi BoardViewer 2](./Photos/2.png) |
-| :---: | :---: |
+| :------------------------------------: | :------------------------------------: |
 | ![Multi BoardViewer 3](./Photos/3.png) | ![Multi BoardViewer 4](./Photos/4.png) |
 
 ## Lời cảm ơn
@@ -24,8 +24,10 @@ Dự án này sử dụng sản phẩm của họ để tạo nên trải nghi�
 - **Multi tab**: Mở nhiều file cùng lúc
 - **Multi viewer**: Xem file boardview với 2 lựa chọn viewer (NexusBV, OpenBoardView)
 - **PDF viewer**: Xem file PDF với SumatraPDF tích hợp
-- **Search files**: Tìm kiếm file trong thư mục hoặc ổ đĩa chỉ định
 - **Voltage Divider Calculator**: Tính toán điện áp qua cầu phân áp
+- **Search files**: Tìm kiếm file trong thư mục hoặc ổ đĩa chỉ định
+- **Directory tree**: Xem cây thư mục của thư mục hoặc ổ đĩa chỉ định
+- **Recent files**: Danh sách các file đã mở gần đây
 
 ## Yêu cầu hệ thống
 

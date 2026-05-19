@@ -61,34 +61,45 @@
                     </Grid>
                 </StackPanel>
 
-                <!-- Results / Recent Files -->
-                <Grid Grid.Row="1" VerticalAlignment="Top">
-                    <!-- Recent Files -->
-                    <StackPanel x:Name="RecentFilesPanel">
-                        <Grid Margin="0,0,0,10">
-                            <TextBlock Text="📋 Recent files" FontSize="16" FontWeight="SemiBold" Foreground="#323232"/>
-                            <Button x:Name="ClearRecentButton" Content="Clear" HorizontalAlignment="Right" VerticalAlignment="Center"
+                <!-- Results / Directory Tree -->
+                <Grid Grid.Row="1" Margin="0,10,0,0">
+                    <!-- Search Results -->
+                    <ScrollViewer x:Name="SearchResultsScroll" Visibility="Collapsed" VerticalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="SearchResultsPanel"/>
+                    </ScrollViewer>
+
+                    <!-- Directory Tree -->
+                    <Grid x:Name="DirectoryTreePanel" Visibility="Visible">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/> <!-- Title / Refresh button -->
+                            <RowDefinition Height="*"/>    <!-- Tree View & Placeholder -->
+                        </Grid.RowDefinitions>
+                        
+                        <Grid Grid.Row="0" Margin="0,0,0,10">
+                            <TextBlock Text="📁 Directory tree" FontSize="16" FontWeight="SemiBold" Foreground="#323232" VerticalAlignment="Center"/>
+                            <Button x:Name="RefreshTreeButton" Content="🔄 Refresh" HorizontalAlignment="Right" VerticalAlignment="Center"
                                     FontSize="11" Padding="8,2,8,2" Background="Transparent" BorderBrush="#DCDCDC" Foreground="#646464"
-                                    Click="ClearRecentButton_Click">
+                                    Click="RefreshTreeButton_Click">
                                 <Button.Style>
                                     <Style TargetType="Button">
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Foreground" Value="#FF5050"/>
-                                                <Setter Property="BorderBrush" Value="#FF5050"/>
+                                                <Setter Property="Foreground" Value="#0078D4"/>
+                                                <Setter Property="BorderBrush" Value="#0078D4"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
                                 </Button.Style>
                             </Button>
                         </Grid>
-                        <StackPanel x:Name="RecentFilesList"/>
-                    </StackPanel>
-
-                    <!-- Search Results -->
-                    <ScrollViewer x:Name="SearchResultsScroll" Visibility="Collapsed" VerticalScrollBarVisibility="Auto" MaxHeight="300" Margin="0,10,0,0">
-                        <StackPanel x:Name="SearchResultsPanel"/>
-                    </ScrollViewer>
+                        
+                        <Grid Grid.Row="1">
+                            <TreeView x:Name="FolderTreeView" BorderThickness="0" Background="Transparent"/>
+                            <TextBlock x:Name="TreePlaceholder" Text="Please select a search folder first" FontSize="13" Foreground="#969696"
+                                       FontStyle="Italic" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                                       TextWrapping="Wrap" Margin="20"/>
+                        </Grid>
+                    </Grid>
                 </Grid>
 
                 <!-- About Section -->
@@ -101,15 +112,53 @@
         </Border>
 
         <!-- RIGHT COLUMN -->
-        <Border x:Name="DropZone" Grid.Column="1" Background="#FAFAFA" Padding="20">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="📂" FontSize="64" HorizontalAlignment="Center"/>
-                <TextBlock Text="Drop file here" FontSize="18" Foreground="#646464" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-                <TextBlock Text="or" FontSize="12" Foreground="#969696" HorizontalAlignment="Center" Margin="0,10,0,10"/>
-                <Button x:Name="OpenFileButton" Content="➕ Open file" FontSize="14" Padding="20,10,20,10" 
-                        Background="#0078D4" Foreground="White" BorderThickness="0" HorizontalAlignment="Center"
-                        Click="OpenFileButton_Click"/>
-            </StackPanel>
-        </Border>
+        <Grid Grid.Column="1" Margin="20,20,20,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/> <!-- Recent files -->
+                <RowDefinition Height="Auto"/> <!-- Gap / Divider if needed -->
+                <RowDefinition Height="3*"/> <!-- DropZone / Open file -->
+            </Grid.RowDefinitions>
+
+            <!-- Recent Files Section -->
+            <Grid Grid.Row="0" Margin="0,0,0,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="0,0,0,10">
+                    <TextBlock Text="📋 Recent files" FontSize="16" FontWeight="SemiBold" Foreground="#323232"/>
+                    <Button x:Name="ClearRecentButton" Content="Clear" HorizontalAlignment="Right" VerticalAlignment="Center"
+                            FontSize="11" Padding="8,2,8,2" Background="Transparent" BorderBrush="#DCDCDC" Foreground="#646464"
+                            Click="ClearRecentButton_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="#FF5050"/>
+                                        <Setter Property="BorderBrush" Value="#FF5050"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="RecentFilesList"/>
+                </ScrollViewer>
+            </Grid>
+
+            <!-- Drop Zone Block -->
+            <Border x:Name="DropZone" Grid.Row="2" Background="#FAFAFA" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4" Padding="20"
+                    AllowDrop="True">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="📂" FontSize="48" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Drop file here" FontSize="16" Foreground="#646464" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    <TextBlock Text="or" FontSize="11" Foreground="#969696" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+                    <Button x:Name="OpenFileButton" Content="➕ Open file" FontSize="12" Padding="15,6,15,6" 
+                            Background="#0078D4" Foreground="White" BorderThickness="0" HorizontalAlignment="Center"
+                            Click="OpenFileButton_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </UserControl>

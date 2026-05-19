@@ -20,6 +20,11 @@ namespace MultiBoardViewer.Controls
         private RecentFilesService _recentFilesService;
         private DispatcherTimer _searchTimer;
         private CancellationTokenSource _searchCts;
+        private CancellationTokenSource _treeCts;
+
+        // Static cache for directory tree to avoid re-scanning on new tab
+        private static FolderNode _cachedTreeRoot;
+        private static string _cachedTreeFolder;
 
         // Event to notify parent window to open files
         public event EventHandler<string[]> FilesOpenRequested;
@@ -39,6 +44,7 @@ namespace MultiBoardViewer.Controls
 
             UpdateSearchFolderTooltip();
             RefreshRecentFiles();
+            RefreshDirectoryTree();
         }
 
         private void UpdateSearchFolderTooltip()
@@ -213,7 +219,7 @@ namespace MultiBoardViewer.Controls
             if (string.IsNullOrWhiteSpace(searchText))
             {
                 SearchResultsScroll.Visibility = Visibility.Collapsed;
-                RecentFilesPanel.Visibility = Visibility.Visible;
+                DirectoryTreePanel.Visibility = Visibility.Visible;
                 return;
             }
 
@@ -227,7 +233,7 @@ namespace MultiBoardViewer.Controls
                     TextWrapping = TextWrapping.Wrap
                 });
                 SearchResultsScroll.Visibility = Visibility.Visible;
-                RecentFilesPanel.Visibility = Visibility.Collapsed;
+                DirectoryTreePanel.Visibility = Visibility.Collapsed;
                 return;
             }
 
@@ -240,7 +246,7 @@ namespace MultiBoardViewer.Controls
                 FontStyle = FontStyles.Italic
             });
             SearchResultsScroll.Visibility = Visibility.Visible;
-            RecentFilesPanel.Visibility = Visibility.Collapsed;
+            DirectoryTreePanel.Visibility = Visibility.Collapsed;
 
             try
             {
@@ -297,6 +303,7 @@ namespace MultiBoardViewer.Controls
                     _searchService.SearchFolder = dialog.SelectedPath;
                     UpdateSearchFolderTooltip();
                     SearchBox.Text = ""; // Clear search to reset view
+                    RefreshDirectoryTree(forceRefresh: true);
                 }
             }
         }
@@ -382,6 +389,273 @@ namespace MultiBoardViewer.Controls
         {
             e.Handled = true;
         }
+
+        // --- Directory Tree Logic ---
+
+        private static readonly HashSet<string> SupportedExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            ".pdf", ".fz", ".brd", ".bom", ".cad", ".bdv", ".asc", ".bv", ".cst", ".gr", ".f2b", ".faz", ".tvw"
+        };
+
+        private void RefreshTreeButton_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshDirectoryTree(forceRefresh: true);
+        }
+
+        private async void RefreshDirectoryTree(bool forceRefresh = false)
+        {
+            _treeCts?.Cancel();
+            _treeCts = new CancellationTokenSource();
+            var token = _treeCts.Token;
+
+            FolderTreeView.Items.Clear();
+            string folder = _searchService.SearchFolder;
+
+            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder))
+            {
+                TreePlaceholder.Text = "Please select a search folder first (click 📁)";
+                TreePlaceholder.Visibility = Visibility.Visible;
+                _cachedTreeRoot = null;
+                _cachedTreeFolder = null;
+                return;
+            }
+
+            // Use cache if available and not forcing a refresh
+            if (!forceRefresh && _cachedTreeRoot != null && _cachedTreeFolder == folder)
+            {
+                TreePlaceholder.Visibility = Visibility.Collapsed;
+                PopulateTreeView(_cachedTreeRoot);
+                return;
+            }
+
+            TreePlaceholder.Text = "Scanning directory tree...";
+            TreePlaceholder.Visibility = Visibility.Visible;
+
+            try
+            {
+                var rootNode = await BuildFilteredDirectoryTreeAsync(folder, token);
+
+                if (token.IsCancellationRequested) return;
+
+                if (rootNode == null)
+                {
+                    TreePlaceholder.Text = "No PDF or boardview files found in this folder.";
+                    TreePlaceholder.Visibility = Visibility.Visible;
+                    _cachedTreeRoot = null;
+                    _cachedTreeFolder = null;
+                }
+                else
+                {
+                    TreePlaceholder.Visibility = Visibility.Collapsed;
+
+                    // Update cache
+                    _cachedTreeRoot = rootNode;
+                    _cachedTreeFolder = folder;
+
+                    PopulateTreeView(rootNode);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (!token.IsCancellationRequested)
+                {
+                    TreePlaceholder.Text = $"Error scanning folder:\n{ex.Message}";
+                    TreePlaceholder.Visibility = Visibility.Visible;
+                    _cachedTreeRoot = null;
+                    _cachedTreeFolder = null;
+                }
+            }
+        }
+
+        private async Task<FolderNode> BuildFilteredDirectoryTreeAsync(string path, CancellationToken token)
+        {
+            return await Task.Run(() =>
+            {
+                try
+                {
+                    return BuildFilteredDirectoryTreeInternal(path, token);
+                }
+                catch
+                {
+                    return null;
+                }
+            }, token);
+        }
+
+        private FolderNode BuildFilteredDirectoryTreeInternal(string path, CancellationToken token)
+        {
+            if (token.IsCancellationRequested) return null;
+
+            var node = new FolderNode
+            {
+                Name = Path.GetFileName(path),
+                FullPath = path
+            };
+
+            // Get files in this directory
+            try
+            {
+                var files = Directory.GetFiles(path);
+                foreach (var file in files)
+                {
+                    if (token.IsCancellationRequested) return null;
+
+                    string ext = Path.GetExtension(file);
+                    if (SupportedExtensions.Contains(ext))
+                    {
+                        node.Files.Add(new FileNode
+                        {
+                            Name = Path.GetFileName(file),
+                            FullPath = file
+                        });
+                    }
+                }
+            }
+            catch { }
+
+            // Get subdirectories
+            try
+            {
+                var subDirs = Directory.GetDirectories(path);
+                foreach (var subDir in subDirs)
+                {
+                    if (token.IsCancellationRequested) return null;
+
+                    string dirName = Path.GetFileName(subDir);
+                    if (string.IsNullOrEmpty(dirName)) continue;
+                    if (dirName.StartsWith("$") || 
+                        dirName.Equals("System Volume Information", StringComparison.OrdinalIgnoreCase) ||
+                        dirName.Equals("Windows", StringComparison.OrdinalIgnoreCase))
+                    {
+                        continue;
+                    }
+
+                    var childNode = BuildFilteredDirectoryTreeInternal(subDir, token);
+                    if (childNode != null)
+                    {
+                        node.SubFolders.Add(childNode);
+                    }
+                }
+            }
+            catch { }
+
+            // Return node if it contains files or subfolders with files
+            if (node.Files.Count > 0 || node.SubFolders.Count > 0)
+            {
+                return node;
+            }
+
+            return null;
+        }
+
+        private void PopulateTreeView(FolderNode rootNode)
+        {
+            FolderTreeView.Items.Clear();
+            if (rootNode == null) return;
+
+            TreeViewItem rootItem = CreateFolderTreeViewItem(rootNode);
+            rootItem.IsExpanded = true; // Expand root node by default
+            FolderTreeView.Items.Add(rootItem);
+        }
+
+        private TreeViewItem CreateFolderTreeViewItem(FolderNode folderNode)
+        {
+            var item = new TreeViewItem
+            {
+                Header = CreateHeaderPanel("📁", folderNode.Name),
+                Tag = folderNode,
+                Margin = new Thickness(0, 2, 0, 2)
+            };
+
+            foreach (var subFolder in folderNode.SubFolders)
+            {
+                item.Items.Add(CreateFolderTreeViewItem(subFolder));
+            }
+
+            foreach (var file in folderNode.Files)
+            {
+                item.Items.Add(CreateFileTreeViewItem(file));
+            }
+
+            return item;
+        }
+
+        private TreeViewItem CreateFileTreeViewItem(FileNode fileNode)
+        {
+            string icon = fileNode.FullPath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase) ? "📕" : "📘";
+            var item = new TreeViewItem
+            {
+                Header = CreateHeaderPanel(icon, fileNode.Name),
+                Tag = fileNode,
+                Margin = new Thickness(0, 1, 0, 1)
+            };
+
+            item.Selected += (s, e) =>
+            {
+                // Prevent event bubbling to parent folder nodes
+                e.Handled = true;
+            };
+
+            item.PreviewMouseLeftButtonUp += (s, e) =>
+            {
+                RequestOpenFile(fileNode.FullPath);
+                e.Handled = true;
+            };
+
+            // Context menu for boardview files
+            bool isPdf = fileNode.FullPath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase);
+            if (!isPdf)
+            {
+                ContextMenu contextMenu = new ContextMenu();
+
+                MenuItem openNexusBvItem = new MenuItem { Header = "Open with NexusBV" };
+                openNexusBvItem.Click += (s, ev) => RequestOpenWithViewer(fileNode.FullPath, "NexusBV");
+
+                MenuItem openOpenBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
+                openOpenBoardViewItem.Click += (s, ev) => RequestOpenWithViewer(fileNode.FullPath, "OpenBoardView");
+
+                contextMenu.Items.Add(openNexusBvItem);
+                contextMenu.Items.Add(openOpenBoardViewItem);
+
+                item.ContextMenu = contextMenu;
+            }
+
+            return item;
+        }
+
+        private StackPanel CreateHeaderPanel(string icon, string text)
+        {
+            var panel = new StackPanel { Orientation = Orientation.Horizontal };
+            panel.Children.Add(new TextBlock 
+            { 
+                Text = icon, 
+                FontSize = 13, 
+                Margin = new Thickness(0, 0, 6, 0),
+                VerticalAlignment = VerticalAlignment.Center 
+            });
+            panel.Children.Add(new TextBlock 
+            { 
+                Text = text, 
+                FontSize = 13, 
+                Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(30, 30, 30)),
+                VerticalAlignment = VerticalAlignment.Center 
+            });
+            return panel;
+        }
+    }
+
+    public class FolderNode
+    {
+        public string Name { get; set; }
+        public string FullPath { get; set; }
+        public List<FolderNode> SubFolders { get; set; } = new List<FolderNode>();
+        public List<FileNode> Files { get; set; } = new List<FileNode>();
+    }
+
+    public class FileNode
+    {
+        public string Name { get; set; }
+        public string FullPath { get; set; }
     }
 
     public class FileOpenWithViewerEventArgs : EventArgs
