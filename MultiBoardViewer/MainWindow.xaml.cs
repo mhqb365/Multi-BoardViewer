@@ -52,6 +52,10 @@ namespace MultiBoardViewer
         private static extern bool IsWindowVisible(IntPtr hWnd);
 
         [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool IsWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
         private static extern IntPtr GetWindow(IntPtr hWnd, uint uCmd);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
@@ -212,6 +216,7 @@ namespace MultiBoardViewer
             public int OverlayY { get; set; }
             public int OverlayWidth { get; set; }
             public int OverlayHeight { get; set; }
+            public bool IsErrorDialog { get; set; }
         }
 
         // Check if file is already open and switch to that tab
@@ -1736,6 +1741,21 @@ namespace MultiBoardViewer
                     return;
                 }
 
+                // Check if this is an error dialog
+                bool isError = IsErrorWindow(processHandle);
+                if (isError)
+                {
+                    foreach (var kvp in _tabProcesses)
+                    {
+                        if (kvp.Value.Process == process)
+                        {
+                            kvp.Value.IsErrorDialog = true;
+                            break;
+                        }
+                    }
+                    MonitorErrorProcessAsync(process, processHandle);
+                }
+
                 // FIRST: Move window off-screen to prevent flashing
                 MoveWindow(processHandle, -10000, -10000, 1, 1, false);
 
@@ -1781,6 +1801,66 @@ namespace MultiBoardViewer
             {
                 Debug.WriteLine($"Error embedding NexusBV: {ex.Message}");
             }
+        }
+
+        private bool IsErrorWindow(IntPtr hWnd)
+        {
+            if (hWnd == IntPtr.Zero) return false;
+
+            StringBuilder titleBuilder = new StringBuilder(256);
+            GetWindowText(hWnd, titleBuilder, titleBuilder.Capacity);
+            string title = titleBuilder.ToString();
+
+            if (title == "Error" || title == "Failed" || title.Contains("Failed to open") || title.Contains("Failed to load"))
+                return true;
+
+            // Check class name - standard Dialog class
+            StringBuilder classBuilder = new StringBuilder(256);
+            GetClassName(hWnd, classBuilder, classBuilder.Capacity);
+            string className = classBuilder.ToString();
+
+            // Check if any child window contains the error text
+            bool hasErrorText = false;
+            EnumChildWindows(hWnd, (childHwnd, lParam) =>
+            {
+                StringBuilder childText = new StringBuilder(256);
+                GetWindowText(childHwnd, childText, childText.Capacity);
+                string text = childText.ToString();
+                if (text.Contains("Failed to open") || text.Contains("Failed to load") || text.ToLower().Contains("error") || text.ToLower().Contains("failed"))
+                {
+                    hasErrorText = true;
+                    return false; // Stop enumeration
+                }
+                return true;
+            }, IntPtr.Zero);
+
+            if (className == "#32770" && (hasErrorText || title.ToLower().Contains("error") || title.ToLower().Contains("fail")))
+                return true;
+
+            return hasErrorText;
+        }
+
+        private async void MonitorErrorProcessAsync(Process process, IntPtr dialogHandle)
+        {
+            try
+            {
+                while (!process.HasExited)
+                {
+                    await System.Threading.Tasks.Task.Delay(100);
+
+                    // If the dialog window is no longer valid or visible
+                    if (dialogHandle == IntPtr.Zero || !IsWindow(dialogHandle) || !IsWindowVisible(dialogHandle))
+                    {
+                        // Kill the process immediately before it can create the main window
+                        if (!process.HasExited)
+                        {
+                            process.Kill();
+                        }
+                        break;
+                    }
+                }
+            }
+            catch { }
         }
 
         private void AdjustNexusBvLayout(IntPtr mainHwnd)
@@ -1962,51 +2042,55 @@ namespace MultiBoardViewer
             Button button = sender as Button;
             TabItem tabItem = button?.Tag as TabItem;
 
-            if (tabItem != null && tabItem != _addTabButton)
+            PerformCloseTab(tabItem);
+        }
+
+        private void PerformCloseTab(TabItem tabItem)
+        {
+            if (tabItem == null || tabItem == _addTabButton) return;
+
+            _isCreatingTab = true; // Prevent creating new tab during close
+
+            // Find index of closing tab
+            int closingIndex = tabControl.Items.IndexOf(tabItem);
+            int addButtonIndex = tabControl.Items.IndexOf(_addTabButton);
+
+            // Determine which tab to select after closing
+            TabItem nextTab = null;
+
+            // Count real tabs (excluding "+" button)
+            int realTabCount = tabControl.Items.Count - 1; // minus the "+" button
+
+            if (realTabCount > 1)
             {
-                _isCreatingTab = true; // Prevent creating new tab during close
-
-                // Find index of closing tab
-                int closingIndex = tabControl.Items.IndexOf(tabItem);
-                int addButtonIndex = tabControl.Items.IndexOf(_addTabButton);
-
-                // Determine which tab to select after closing
-                TabItem nextTab = null;
-
-                // Count real tabs (excluding "+" button)
-                int realTabCount = tabControl.Items.Count - 1; // minus the "+" button
-
-                if (realTabCount > 1)
+                // There are other tabs to switch to
+                if (closingIndex < addButtonIndex - 1)
                 {
-                    // There are other tabs to switch to
-                    if (closingIndex < addButtonIndex - 1)
-                    {
-                        // Select the next tab (to the right)
-                        nextTab = tabControl.Items[closingIndex + 1] as TabItem;
-                    }
-                    else if (closingIndex > 0)
-                    {
-                        // Select the previous tab (to the left)
-                        nextTab = tabControl.Items[closingIndex - 1] as TabItem;
-                    }
+                    // Select the next tab (to the right)
+                    nextTab = tabControl.Items[closingIndex + 1] as TabItem;
                 }
-
-                // Close the tab
-                CloseTabItem(tabItem);
-
-                // Select next tab or create new empty tab if no tabs left
-                if (nextTab != null && nextTab != _addTabButton)
+                else if (closingIndex > 0)
                 {
-                    tabControl.SelectedItem = nextTab;
+                    // Select the previous tab (to the left)
+                    nextTab = tabControl.Items[closingIndex - 1] as TabItem;
                 }
-                else if (tabControl.Items.Count == 1 && tabControl.Items[0] == _addTabButton)
-                {
-                    // Only "+" tab remains, create a new empty tab
-                    CreateEmptyTab();
-                }
-
-                _isCreatingTab = false;
             }
+
+            // Close the tab
+            CloseTabItem(tabItem);
+
+            // Select next tab or create new empty tab if no tabs left
+            if (nextTab != null && nextTab != _addTabButton)
+            {
+                tabControl.SelectedItem = nextTab;
+            }
+            else if (tabControl.Items.Count == 1 && tabControl.Items[0] == _addTabButton)
+            {
+                // Only "+" tab remains, create a new empty tab
+                CreateEmptyTab();
+            }
+
+            _isCreatingTab = false;
         }
 
         private void CloseTabItem(TabItem tabItem)
@@ -2131,6 +2215,65 @@ namespace MultiBoardViewer
                             Directory.Delete(processInfo.TempDirectory, true);
                         }
                         catch { }
+                    }
+
+                    if (processInfo.IsErrorDialog)
+                    {
+                        // Replace content with a beautiful error message
+                        var errorPanel = new StackPanel
+                        {
+                            VerticalAlignment = VerticalAlignment.Center,
+                            HorizontalAlignment = HorizontalAlignment.Center
+                        };
+
+                        var errorIcon = new TextBlock
+                        {
+                            Text = "❌",
+                            FontSize = 48,
+                            HorizontalAlignment = HorizontalAlignment.Center,
+                            Margin = new Thickness(0, 0, 0, 15)
+                        };
+
+                        var errorText = new TextBlock
+                        {
+                            Text = "Failed to open board file.",
+                            FontSize = 18,
+                            FontWeight = FontWeights.SemiBold,
+                            HorizontalAlignment = HorizontalAlignment.Center,
+                            Margin = new Thickness(0, 0, 0, 10),
+                            Foreground = Brushes.DarkRed
+                        };
+
+                        var errorSubText = new TextBlock
+                        {
+                            Text = "The file may be corrupted or not supported.",
+                            FontSize = 14,
+                            HorizontalAlignment = HorizontalAlignment.Center,
+                            Margin = new Thickness(0, 0, 0, 25),
+                            Foreground = Brushes.Gray
+                        };
+
+                        var closeButton = new Button
+                        {
+                            Content = "Close Tab",
+                            Padding = new Thickness(20, 8, 20, 8),
+                            HorizontalAlignment = HorizontalAlignment.Center,
+                            Background = Brushes.White,
+                            BorderBrush = Brushes.LightGray,
+                            Focusable = false
+                        };
+                        closeButton.Click += (s, e) => PerformCloseTab(tabItem);
+
+                        errorPanel.Children.Add(errorIcon);
+                        errorPanel.Children.Add(errorText);
+                        errorPanel.Children.Add(errorSubText);
+                        errorPanel.Children.Add(closeButton);
+
+                        tabItem.Content = errorPanel;
+
+                        // Remove from running processes dictionary
+                        _tabProcesses.Remove(tabItem);
+                        return;
                     }
 
                     _tabProcesses.Remove(tabItem);
