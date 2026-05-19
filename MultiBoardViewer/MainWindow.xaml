@@ -14,9 +14,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
-            <MenuItem Header="New Tab" Click="BtnNewTab_Click"/>
             <MenuItem Header="Voltage Divider Calculator" Click="VoltageDividerCalculator_Click"/>
             <MenuItem Header="Check for Updates" Click="CheckForUpdates_Click"/>
+            <MenuItem Header="About" Click="About_Click"/>
         </Menu>
         <!-- Tab Control with horizontal scrolling -->
         <TabControl x:Name="tabControl" 

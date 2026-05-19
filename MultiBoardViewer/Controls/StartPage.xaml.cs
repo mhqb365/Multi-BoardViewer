@@ -385,15 +385,15 @@ namespace MultiBoardViewer.Controls
 
         // --- Other UI Handlers ---
 
-        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        public void ToggleSidebar()
         {
-            try
+            if (LeftColumn.Width.Value == 0)
             {
-                Process.Start(new ProcessStartInfo("https://github.com/mhqb365/Multi-BoardViewer") { UseShellExecute = true });
+                LeftColumn.Width = new GridLength(1, GridUnitType.Star);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Could not open the link: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                LeftColumn.Width = new GridLength(0);
             }
         }
 

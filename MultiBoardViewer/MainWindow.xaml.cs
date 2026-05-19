@@ -362,6 +362,18 @@ namespace MultiBoardViewer
             CheckForUpdates(true);
         }
 
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://github.com/mhqb365/Multi-BoardViewer") { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Could not open the link: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void OnFilesReceivedFromAnotherInstance(string[] files)
         {
             // Bring window to front

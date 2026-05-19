@@ -9,8 +9,9 @@
              AllowDrop="True" Drop="UserControl_Drop" DragOver="UserControl_DragOver" DragLeave="UserControl_DragLeave">
     <Grid Background="#FAFAFA">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition x:Name="LeftColumn" Width="*" MinWidth="150"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*" MinWidth="150"/>
         </Grid.ColumnDefinitions>
 
         <!-- LEFT COLUMN -->
@@ -101,18 +102,19 @@
                         </Grid>
                     </Grid>
                 </Grid>
-
-                <!-- About Section -->
-                <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="0,20,0,0">
-                    <Button x:Name="AboutButton" Content="ℹ️ About" FontSize="12" Padding="15,8,15,8" 
-                            Background="#F0F0F0" BorderBrush="#B4B4B4" BorderThickness="1" 
-                            HorizontalAlignment="Left" Click="AboutButton_Click"/>
-                </StackPanel>
             </Grid>
         </Border>
 
+        <!-- Splitter -->
+        <GridSplitter Grid.Column="1"
+                      Width="5"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Background="#DCDCDC"
+                      ShowsPreview="False"/>
+
         <!-- RIGHT COLUMN -->
-        <Grid Grid.Column="1" Margin="20,20,20,20">
+        <Grid Grid.Column="2" Margin="20,20,20,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/> <!-- Recent files -->
                 <RowDefinition Height="Auto"/> <!-- Gap / Divider if needed -->
