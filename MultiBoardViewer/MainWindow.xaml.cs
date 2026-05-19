@@ -101,6 +101,31 @@ namespace MultiBoardViewer
         [DllImport("ole32.dll")]
         private static extern int RevokeDragDrop(IntPtr hwnd);
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern int GetClassName(IntPtr hWnd, StringBuilder lpClassName, int nMaxCount);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool GetWindowRect(IntPtr hwnd, out RECT lpRect);
+
+        [DllImport("user32.dll")]
+        private static extern bool ScreenToClient(IntPtr hWnd, ref POINT lpPoint);
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct POINT
+        {
+            public int X;
+            public int Y;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct RECT
+        {
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
+        }
+
         [DllImport("user32.dll")]
         private static extern bool EnumChildWindows(IntPtr hWndParent, EnumWindowsProc lpEnumFunc, IntPtr lParam);
 
@@ -1737,22 +1762,97 @@ namespace MultiBoardViewer
                 // Show the window now that it's embedded
                 ShowWindow(processHandle, SW_SHOW);
 
-
+                // Wait a tiny bit and adjust layout
+                await System.Threading.Tasks.Task.Delay(50);
+                AdjustNexusBvLayout(processHandle);
 
                 // Handle panel resize
-                panel.Resize += (s, e) =>
+                panel.Resize += async (s, e) =>
                 {
                     if (!process.HasExited && processHandle != IntPtr.Zero)
                     {
                         MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
+                        await System.Threading.Tasks.Task.Delay(20);
+                        AdjustNexusBvLayout(processHandle);
                     }
                 };
-
-
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error embedding NexusBV: {ex.Message}");
+            }
+        }
+
+        private void AdjustNexusBvLayout(IntPtr mainHwnd)
+        {
+            if (mainHwnd == IntPtr.Zero) return;
+
+            IntPtr docTabBarHwnd = IntPtr.Zero;
+            IntPtr homeWindowHwnd = IntPtr.Zero;
+            IntPtr sidebarSplitterHwnd = IntPtr.Zero;
+            IntPtr sysTabControlHwnd = IntPtr.Zero;
+
+            EnumChildWindows(mainHwnd, (hWnd, lParam) =>
+            {
+                StringBuilder className = new StringBuilder(256);
+                GetClassName(hWnd, className, className.Capacity);
+                string cls = className.ToString();
+
+                if (cls == "DocTabBar") docTabBarHwnd = hWnd;
+                else if (cls == "HomeWindow") homeWindowHwnd = hWnd;
+                else if (cls == "SidebarSplitter") sidebarSplitterHwnd = hWnd;
+                else if (cls == "SysTabControl32") sysTabControlHwnd = hWnd;
+
+                return true;
+            }, IntPtr.Zero);
+
+            if (docTabBarHwnd != IntPtr.Zero)
+            {
+                // Hide DocTabBar
+                ShowWindow(docTabBarHwnd, SW_HIDE);
+
+                // Get DocTabBar rect to find its height and Y position
+                RECT tabRect;
+                if (GetWindowRect(docTabBarHwnd, out tabRect))
+                {
+                    POINT tabTopLeft = new POINT { X = tabRect.Left, Y = tabRect.Top };
+                    ScreenToClient(mainHwnd, ref tabTopLeft);
+                    int tabBarY = tabTopLeft.Y;
+                    int tabBarHeight = tabRect.Bottom - tabRect.Top;
+
+                    // Only adjust if tab bar height is positive
+                    if (tabBarHeight > 0)
+                    {
+                        // Adjust HomeWindow, SidebarSplitter, and SysTabControl32
+                        AdjustChildWindow(mainHwnd, homeWindowHwnd, tabBarY, tabBarHeight);
+                        AdjustChildWindow(mainHwnd, sidebarSplitterHwnd, tabBarY, tabBarHeight);
+                        AdjustChildWindow(mainHwnd, sysTabControlHwnd, tabBarY, tabBarHeight);
+                    }
+                }
+            }
+        }
+
+        private void AdjustChildWindow(IntPtr parentHwnd, IntPtr childHwnd, int targetY, int heightIncrease)
+        {
+            if (childHwnd == IntPtr.Zero) return;
+
+            RECT rect;
+            if (GetWindowRect(childHwnd, out rect))
+            {
+                POINT topLeft = new POINT { X = rect.Left, Y = rect.Top };
+                ScreenToClient(parentHwnd, ref topLeft);
+
+                int currentX = topLeft.X;
+                int currentY = topLeft.Y;
+                int currentWidth = rect.Right - rect.Left;
+                int currentHeight = rect.Bottom - rect.Top;
+
+                // If it is not already adjusted (i.e. it is still below the target Y)
+                if (currentY > targetY)
+                {
+                    int newHeight = currentHeight + (currentY - targetY);
+                    MoveWindow(childHwnd, currentX, targetY, currentWidth, newHeight, true);
+                }
             }
         }
 
