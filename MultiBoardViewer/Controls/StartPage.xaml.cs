@@ -31,6 +31,10 @@ namespace MultiBoardViewer.Controls
         private static bool _expandedPathsLoaded = false;
         private const string ExpandedFoldersFileName = "expanded_folders.txt";
 
+        // Debounce timer: batch disk writes after 600ms of no expand/collapse activity
+        private static System.Threading.Timer _saveDebounceTimer;
+        private static readonly object _saveTimerLock = new object();
+
         private static void LoadExpandedFolders()
         {
             if (_expandedPathsLoaded) return;
@@ -45,9 +49,7 @@ namespace MultiBoardViewer.Controls
                     {
                         string path = line.Trim();
                         if (!string.IsNullOrEmpty(path))
-                        {
                             _cachedExpandedPaths.Add(path);
-                        }
                     }
                 }
             }
@@ -55,18 +57,41 @@ namespace MultiBoardViewer.Controls
             _expandedPathsLoaded = true;
         }
 
+        // Debounced: resets 600ms timer on each call; only saves after activity stops
+        private static void SaveExpandedFoldersDebounced()
+        {
+            lock (_saveTimerLock)
+            {
+                if (_saveDebounceTimer == null)
+                    _saveDebounceTimer = new System.Threading.Timer(_ => SaveExpandedFoldersToDisk(), null, 600, System.Threading.Timeout.Infinite);
+                else
+                    _saveDebounceTimer.Change(600, System.Threading.Timeout.Infinite);
+            }
+        }
+
+        // Immediate save on background thread (used when changing root folder)
         private static void SaveExpandedFolders()
         {
-            try
+            SaveExpandedFoldersToDisk();
+        }
+
+        private static void SaveExpandedFoldersToDisk()
+        {
+            Task.Run(() =>
             {
-                string appDir = AppDomain.CurrentDomain.BaseDirectory;
-                string filePath = Path.Combine(appDir, ExpandedFoldersFileName);
-                lock (_cachedExpandedPaths)
+                try
                 {
-                    File.WriteAllLines(filePath, _cachedExpandedPaths);
+                    string appDir = AppDomain.CurrentDomain.BaseDirectory;
+                    string filePath = Path.Combine(appDir, ExpandedFoldersFileName);
+                    string[] snapshot;
+                    lock (_cachedExpandedPaths)
+                    {
+                        snapshot = _cachedExpandedPaths.ToArray();
+                    }
+                    File.WriteAllLines(filePath, snapshot);
                 }
-            }
-            catch { }
+                catch { }
+            });
         }
 
         // Event to notify parent window to open files
@@ -603,8 +628,11 @@ namespace MultiBoardViewer.Controls
             FolderTreeView.Items.Clear();
             if (rootNode == null) return;
 
+            // Load once before building the tree (not inside each node)
+            LoadExpandedFolders();
+
             TreeViewItem rootItem = CreateFolderTreeViewItem(rootNode);
-            rootItem.IsExpanded = true; // Expand root node by default
+            rootItem.IsExpanded = true; // Always expand root
             FolderTreeView.Items.Add(rootItem);
         }
 
@@ -617,41 +645,41 @@ namespace MultiBoardViewer.Controls
                 Margin = new Thickness(0, 2, 0, 2)
             };
 
-            LoadExpandedFolders();
-            if (_cachedExpandedPaths.Contains(folderNode.FullPath))
-            {
-                item.IsExpanded = true;
-            }
+            bool hasChildren = folderNode.SubFolders.Count > 0 || folderNode.Files.Count > 0;
+            if (!hasChildren) return item;
+
+            // Add dummy placeholder so WPF renders the expand arrow without building children yet
+            item.Items.Add(new TreeViewItem());
+            bool childrenLoaded = false;
 
             item.Expanded += (s, e) =>
             {
                 e.Handled = true;
-                lock (_cachedExpandedPaths)
+                lock (_cachedExpandedPaths) { _cachedExpandedPaths.Add(folderNode.FullPath); }
+                SaveExpandedFoldersDebounced();
+
+                // Lazy load: build child UI only on first expand
+                if (!childrenLoaded)
                 {
-                    _cachedExpandedPaths.Add(folderNode.FullPath);
+                    childrenLoaded = true;
+                    item.Items.Clear();
+                    foreach (var subFolder in folderNode.SubFolders)
+                        item.Items.Add(CreateFolderTreeViewItem(subFolder));
+                    foreach (var file in folderNode.Files)
+                        item.Items.Add(CreateFileTreeViewItem(file));
                 }
-                SaveExpandedFolders();
             };
 
             item.Collapsed += (s, e) =>
             {
                 e.Handled = true;
-                lock (_cachedExpandedPaths)
-                {
-                    _cachedExpandedPaths.Remove(folderNode.FullPath);
-                }
-                SaveExpandedFolders();
+                lock (_cachedExpandedPaths) { _cachedExpandedPaths.Remove(folderNode.FullPath); }
+                SaveExpandedFoldersDebounced();
             };
 
-            foreach (var subFolder in folderNode.SubFolders)
-            {
-                item.Items.Add(CreateFolderTreeViewItem(subFolder));
-            }
-
-            foreach (var file in folderNode.Files)
-            {
-                item.Items.Add(CreateFileTreeViewItem(file));
-            }
+            // Restore previously expanded state (LoadExpandedFolders already called once)
+            if (_cachedExpandedPaths.Contains(folderNode.FullPath))
+                item.IsExpanded = true;
 
             return item;
         }
