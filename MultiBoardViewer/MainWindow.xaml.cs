@@ -2255,6 +2255,15 @@ namespace MultiBoardViewer
             }
         }
 
+        private void CloseAllTabs_Click(object sender, RoutedEventArgs e)
+        {
+            var tabsToClose = tabControl.Items.OfType<TabItem>()
+                .Where(t => t != _addTabButton)
+                .ToList();
+            foreach (var tab in tabsToClose)
+                PerformCloseTab(tab);
+        }
+
         private void CloseTab_Click(object sender, RoutedEventArgs e)
         {
             e.Handled = true; // Prevent event bubbling

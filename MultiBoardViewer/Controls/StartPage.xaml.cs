@@ -477,6 +477,44 @@ namespace MultiBoardViewer.Controls
             RefreshDirectoryTree(forceRefresh: true);
         }
 
+        private void CollapseAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in FolderTreeView.Items)
+            {
+                if (item is TreeViewItem tvi)
+                {
+                    // Collapse children of root
+                    foreach (var child in tvi.Items)
+                    {
+                        if (child is TreeViewItem childTvi)
+                        {
+                            CollapseAllItems(childTvi);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CollapseAllItems(TreeViewItem item)
+        {
+            if (item == null || !(item.Tag is FolderNode)) return;
+
+            // Recursively collapse child items first to ensure proper event propagation
+            foreach (var child in item.Items)
+            {
+                if (child is TreeViewItem childTvi)
+                {
+                    CollapseAllItems(childTvi);
+                }
+            }
+
+            // Collapse this item if it is expanded
+            if (item.IsExpanded)
+            {
+                item.IsExpanded = false;
+            }
+        }
+
         private async void RefreshDirectoryTree(bool forceRefresh = false)
         {
             _treeCts?.Cancel();

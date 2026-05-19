@@ -14,6 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
+            <MenuItem Header="Close All Tabs" Click="CloseAllTabs_Click"/>
             <MenuItem Header="Voltage Divider Calculator" Click="VoltageDividerCalculator_Click"/>
             <MenuItem Header="Check for Updates" Click="CheckForUpdates_Click"/>
             <MenuItem Header="About" Click="About_Click"/>
@@ -66,6 +67,8 @@
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{TemplateBinding Header}" 
                                                        VerticalAlignment="Center"
+                                                       MaxWidth="300"
+                                                       TextTrimming="CharacterEllipsis"
                                                        Margin="0,0,10,0"/>
                                             <Button Content="✕" 
                                                     Width="18" 

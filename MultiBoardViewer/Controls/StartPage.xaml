@@ -78,20 +78,38 @@
                         
                         <Grid Grid.Row="0" Margin="0,0,0,10">
                             <TextBlock Text="📁 Directory tree" FontSize="16" FontWeight="SemiBold" Foreground="#323232" VerticalAlignment="Center"/>
-                            <Button x:Name="RefreshTreeButton" Content="Refresh" HorizontalAlignment="Right" VerticalAlignment="Center"
-                                    FontSize="11" Padding="8,2,8,2" Background="Transparent" BorderBrush="#DCDCDC" Foreground="#646464"
-                                    Click="RefreshTreeButton_Click">
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Foreground" Value="#0078D4"/>
-                                                <Setter Property="BorderBrush" Value="#0078D4"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button x:Name="CollapseAllButton" Content="Collapse All" ToolTip="Collapse all folders"
+                                        HorizontalAlignment="Right" VerticalAlignment="Center"
+                                        FontSize="11" Padding="6,2,6,2" Margin="0,0,4,0"
+                                        Background="Transparent" BorderBrush="#DCDCDC" Foreground="#646464"
+                                        Click="CollapseAllButton_Click">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Foreground" Value="#0078D4"/>
+                                                    <Setter Property="BorderBrush" Value="#0078D4"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Button x:Name="RefreshTreeButton" Content="Refresh" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                        FontSize="11" Padding="8,2,8,2" Background="Transparent" BorderBrush="#DCDCDC" Foreground="#646464"
+                                        Click="RefreshTreeButton_Click">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Foreground" Value="#0078D4"/>
+                                                    <Setter Property="BorderBrush" Value="#0078D4"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
                         </Grid>
                         
                         <Grid Grid.Row="1">
@@ -116,9 +134,9 @@
         <!-- RIGHT COLUMN -->
         <Grid Grid.Column="2" Margin="20,20,20,20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/> <!-- Recent files -->
-                <RowDefinition Height="Auto"/> <!-- Gap / Divider if needed -->
-                <RowDefinition Height="3*"/> <!-- DropZone / Open file -->
+                <RowDefinition Height="4*"/> <!-- Recent files -->
+                <RowDefinition Height="Auto"/> <!-- Gap -->
+                <RowDefinition Height="240"/> <!-- DropZone fixed height, pushed down -->
             </Grid.RowDefinitions>
 
             <!-- Recent Files Section -->
