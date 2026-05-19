@@ -1,0 +1,14 @@
+[Keybindings]
+ZoomIn=+
+ZoomOut=-
+PanUp=W
+PanDown=S
+PanLeft=A
+PanRight=D
+RotateClockwise=R
+RotateCounterclockwise=,
+SwapBoardSides=Spacebar
+ToggleNetweb=Ctrl+Alt
+MirrorBoardHorizontally=M
+MirrorBoardVertically=H
+ClearAllSelections=Esc

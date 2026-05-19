@@ -1,3 +1,54 @@
+v0.4 - 2026.05.10
+Ru:
+- CAD: Добавлена поддержка борд в формате Mentor Neutral File
+- CAD: Некоторые GenCAD борды экспортированные TESTCAD 4.2 IMPACT и RSI-TRANSLATOR CAMCAD Professional 3.9.6b имеют неправильные
+полигональные подложки, в таких случаях теперь они заменяются на круги
+- XZZPCB: Улучшено отображение пинов, когда отрисовка подложек отключена
+- FZ/CAE: Улучшена поддержка некоторых борд из-под кастомных конвертеров
+- TVW: Улучшена поддержка битых TVW борд
+- BRD (Allegro): Улучшена поддержка двухсторонних коннекторов, а также фильтрация ненужных компонентов
+- Исправлена поддержка слоев в бордах Fabmaster
+- Добавлена опция не зеркалировать борду при смене сторон
+- Добавлена опция переворачивания борды по оси X
+- Добавлена опция позволяющая открывать борду в новой вкладке, а не в новом окне (если опция включена, удерживая Shift борда откроется в новом окне)
+- Добавлен редактор быстрых клавиш (можно сохранять в файлы .keybindings)
+- Добавлена возможность копировать имя пина и сигнала прямо из списка во вкладке Part через контекстное меню, либо через Ctrl+C (скопируется только имя сигнала)
+- Добавлена сортировка столбцов во вкладках Net, Find parts
+- В двойном режиме теперь можно менять размер окон
+- Исправлен баг при котором переключение между позиционниками во вкладке Net и Find parts сбивало зуммирование
+- Улучшена работа с несколькими мониторами
+- Улучшено детектирование NC пинов
+- Улучшения в режиме слоев
+- Добавлена поддержка Windows 7 (для корректной работы требуется обновление KB2670838 (обычно оно уже установлено): https://www.microsoft.com/en-us/download/details.aspx?id=36805, также
+на Windows 7 не будет работать dbdoctor от allegro)
+- При запуске на неподдерживаемом 3D ускорителе, бордвьювер теперь автоматически переключается в софтварный режим рендеринга
+- Другие мелкие исправления
+
+En:
+- CAD: Added support for Mentor Neutral File boardview files
+- CAD: Some GenCAD boards exported from TESTCAD 4.2 IMPACT and RSI-TRANSLATOR CAMCAD Professional 3.9.6b had incorrect polygonal underlays, in such cases, they are now replaced with circles
+- XZZPCB: Improved pin display when draw pin pads is disabled
+- FZ/CAE: Improved support for some boards from custom converters
+- TVW: Improved support for broken TVW boards
+- BRD (Allegro): Improved support for double-sided connectors and filtering of unnecessary components
+- Added an options to flip the board without mirroring
+- Added option to flip the board over X-axis
+- Fixed layer support in Fabmaster boards
+- Added an option to open a board in a new tab instead of a new window (if this option is enabled, holding Shift opens the board in a new window)
+- Added a keyboard shortcut editor (can be saved to .keybindings files)
+- Added the ability to copy pin and signal names directly from the list in the Part tab via the context menu or Ctrl+C (only the signal name will be copied)
+- Added column sorting in the Net and Find Parts tabs
+- Windows can now be resized in dual mode
+- Fixed a bug where switching between parts in the Net and Find Parts tabs disrupted zooming
+- Improved multi-monitor support
+- Improved NC pin detection
+- Improved layer mode
+- Added Windows 7 support. The following update is required to be installed (usually it's already installed):  KB2670838: https://www.microsoft.com/en-us/download/details.aspx?id=36805, also
+on Windows 7 dbdoctor from allegro tools does not work
+- Running on unsupported 3D adapter, the boardviewer will now automatically switch to software rendering 
+- Other minor fixes
+
+
 v0.3 - 2026.05.04
 - Исправлен и улучшен GenCAD парсер
 - Улучшен парсер FZ (не открывались некоторые варианты файлы этого формата)
