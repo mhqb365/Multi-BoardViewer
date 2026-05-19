@@ -185,6 +185,7 @@ namespace MultiBoardViewer
         private int _sumatraTabCounter = 1;
         private string _nexusBvPath = "";
         private string _openBoardViewPath = "";
+        private string _boardViewerPath = "";
 
         private string _sumatraPdfPath = "";
         private DispatcherTimer _resizeTimer;
@@ -319,6 +320,9 @@ namespace MultiBoardViewer
 
             // Try to find OpenBoardView.exe
             AutoDetectOpenBoardViewPath();
+
+            // Try to find BoardViewer.exe
+            AutoDetectBoardViewerPath();
 
 
 
@@ -626,7 +630,13 @@ namespace MultiBoardViewer
                         OpenOpenBoardViewInTab(newTab, e.FilePath);
                     }
                 }
-
+                else if (string.Equals(viewerType, "BoardViewer", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!TrySwitchToExistingTab(e.FilePath, "BoardViewer"))
+                    {
+                        OpenBoardViewerInTab(newTab, e.FilePath);
+                    }
+                }
                 else
                 {
                     if (!TrySwitchToExistingTab(e.FilePath, "NexusBV"))
@@ -935,8 +945,146 @@ namespace MultiBoardViewer
             }
         }
 
-        // Open FlexBoardView file in existing tab (replace content)
+        // Open BoardViewer file in existing tab (replace content)
+        private void OpenBoardViewerInTab(TabItem tab, string filePath)
+        {
+            if (string.IsNullOrEmpty(_boardViewerPath) || !File.Exists(_boardViewerPath))
+            {
+                MessageBox.Show("BoardViewer.exe not found!\n\nPlease place BoardViewer.exe in the BoardViewer folder.",
+                    "BoardViewer Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
+            try
+            {
+                // Update tab header
+                tab.Header = Path.GetFileName(filePath);
+
+                // Create a WindowsFormsHost to embed the external process
+                WindowsFormsHost host = new WindowsFormsHost();
+                host.Focusable = true;
+
+                System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
+                {
+                    Dock = System.Windows.Forms.DockStyle.Fill
+                };
+                host.Child = panel;
+                tab.Content = host;
+
+                // Start BoardViewer process with the file
+                Process process = new Process();
+                process.StartInfo.FileName = _boardViewerPath;
+                process.StartInfo.Arguments = $"\"{filePath}\"";
+                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(_boardViewerPath);
+                process.EnableRaisingEvents = true;
+                process.Exited += (s, ev) => Process_Exited(tab);
+
+                process.Start();
+
+                // Store process info
+                _tabProcesses[tab] = new ProcessInfo
+                {
+                    Process = process,
+                    Host = host,
+                    Panel = panel,
+                    TempDirectory = null,
+                    AppType = "BoardViewer",
+                    WindowHandle = IntPtr.Zero,
+                    FilePath = filePath
+                };
+
+                // Add to recent files
+                AddToRecentFiles(filePath);
+
+                // Embed the process window into the panel
+                EmbedProcess(process, panel);
+
+                ShowStatus($"Opened with BoardViewer: {Path.GetFileName(filePath)}", true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error opening file with BoardViewer: {ex.Message}",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void OpenBoardViewerWithFile(string filePath)
+        {
+            // Check if file is already open
+            if (TrySwitchToExistingTab(filePath, "BoardViewer"))
+                return;
+
+            if (string.IsNullOrEmpty(_boardViewerPath) || !File.Exists(_boardViewerPath))
+            {
+                MessageBox.Show("BoardViewer.exe not found!\n\nPlease place BoardViewer.exe in the BoardViewer folder.",
+                    "BoardViewer Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            try
+            {
+                // Create new tab
+                TabItem newTab = new TabItem
+                {
+                    Header = Path.GetFileName(filePath)
+                };
+
+                // Create a WindowsFormsHost to embed the external process
+                WindowsFormsHost host = new WindowsFormsHost();
+                host.Focusable = true;
+
+                System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
+                {
+                    Dock = System.Windows.Forms.DockStyle.Fill
+                };
+                host.Child = panel;
+                newTab.Content = host;
+
+                // Insert tab before the "+" button
+                int insertIndex = tabControl.Items.Count;
+                if (_addTabButton != null && tabControl.Items.Contains(_addTabButton))
+                {
+                    insertIndex = tabControl.Items.IndexOf(_addTabButton);
+                }
+                tabControl.Items.Insert(insertIndex, newTab);
+                tabControl.SelectedItem = newTab;
+
+                // Start BoardViewer process with the file
+                Process process = new Process();
+                process.StartInfo.FileName = _boardViewerPath;
+                process.StartInfo.Arguments = $"\"{filePath}\"";
+                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(_boardViewerPath);
+                process.EnableRaisingEvents = true;
+                process.Exited += (s, ev) => Process_Exited(newTab);
+
+                process.Start();
+
+                // Store process info
+                _tabProcesses[newTab] = new ProcessInfo
+                {
+                    Process = process,
+                    Host = host,
+                    Panel = panel,
+                    TempDirectory = null,
+                    AppType = "BoardViewer",
+                    WindowHandle = IntPtr.Zero,
+                    FilePath = filePath
+                };
+
+                // Add to recent files
+                AddToRecentFiles(filePath);
+
+                // Embed the process window into the panel
+                EmbedProcess(process, panel);
+
+                ShowStatus($"Opened with BoardViewer: {Path.GetFileName(filePath)}", true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error opening file with BoardViewer: {ex.Message}",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
         private void OpenBoardFileInTab(TabItem tab, string filePath)
         {
@@ -1279,6 +1427,49 @@ namespace MultiBoardViewer
 
             // NexusBV not found - drag & drop will show warning
             _nexusBvPath = "";
+        }
+
+        private void AutoDetectBoardViewerPath()
+        {
+            string appDir = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Check in current directory
+            string path1 = Path.Combine(appDir, "BoardViewer.exe");
+            if (File.Exists(path1))
+            {
+                _boardViewerPath = path1;
+                return;
+            }
+
+            // Check in BoardViewer subfolder
+            string path2 = Path.Combine(appDir, "BoardViewer", "BoardViewer.exe");
+            if (File.Exists(path2))
+            {
+                _boardViewerPath = path2;
+                return;
+            }
+
+            // Check in parent directory (for development)
+            string parentDir = Directory.GetParent(appDir)?.FullName;
+            if (parentDir != null)
+            {
+                string path3 = Path.Combine(parentDir, "BoardViewer", "BoardViewer.exe");
+                if (File.Exists(path3))
+                {
+                    _boardViewerPath = path3;
+                    return;
+                }
+
+                string path4 = Path.Combine(parentDir, "BoardViewer.exe");
+                if (File.Exists(path4))
+                {
+                    _boardViewerPath = path4;
+                    return;
+                }
+            }
+
+            // BoardViewer not found - drag & drop will show warning
+            _boardViewerPath = "";
         }
 
         private void AutoDetectOpenBoardViewPath()
@@ -1784,7 +1975,21 @@ namespace MultiBoardViewer
 
                 // Wait a tiny bit and adjust layout
                 await System.Threading.Tasks.Task.Delay(50);
-                AdjustNexusBvLayout(processHandle);
+
+                string appType = "";
+                foreach (var kvp in _tabProcesses)
+                {
+                    if (kvp.Value.Process == process)
+                    {
+                        appType = kvp.Value.AppType;
+                        break;
+                    }
+                }
+
+                if (string.Equals(appType, "NexusBV", StringComparison.OrdinalIgnoreCase))
+                {
+                    AdjustNexusBvLayout(processHandle);
+                }
 
                 // Handle panel resize
                 panel.Resize += async (s, e) =>
@@ -1792,14 +1997,17 @@ namespace MultiBoardViewer
                     if (!process.HasExited && processHandle != IntPtr.Zero)
                     {
                         MoveWindow(processHandle, 0, 0, panel.Width, panel.Height, true);
-                        await System.Threading.Tasks.Task.Delay(20);
-                        AdjustNexusBvLayout(processHandle);
+                        if (string.Equals(appType, "NexusBV", StringComparison.OrdinalIgnoreCase))
+                        {
+                            await System.Threading.Tasks.Task.Delay(20);
+                            AdjustNexusBvLayout(processHandle);
+                        }
                     }
                 };
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error embedding NexusBV: {ex.Message}");
+                Debug.WriteLine($"Error embedding process: {ex.Message}");
             }
         }
 

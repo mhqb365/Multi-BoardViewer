@@ -71,6 +71,16 @@ if %ERRORLEVEL% EQU 0 (
     )
     echo.
     
+    REM Copy BoardViewer folder
+    echo Dang copy BoardViewer...
+    if exist "BoardViewer" (
+        xcopy /E /I /Y "BoardViewer" "MultiBoardViewer\bin\Release\net8.0-windows\BoardViewer"
+        echo Da copy BoardViewer thanh cong!
+    ) else (
+        echo WARNING: Khong tim thay folder BoardViewer!
+    )
+    echo.
+    
     
     REM Mở thư mục output
     if exist "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" (

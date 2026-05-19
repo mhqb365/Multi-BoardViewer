@@ -8,7 +8,7 @@ namespace MultiBoardViewer
         {
             NexusBV,
             OpenBoardView,
-
+            BoardViewer,
             Cancel
         }
 
@@ -31,6 +31,13 @@ namespace MultiBoardViewer
         private void OpenBoardViewButton_Click(object sender, RoutedEventArgs e)
         {
             Result = ViewerResult.OpenBoardView;
+            DialogResult = true;
+            Close();
+        }
+
+        private void BoardViewerButton_Click(object sender, RoutedEventArgs e)
+        {
+            Result = ViewerResult.BoardViewer;
             DialogResult = true;
             Close();
         }

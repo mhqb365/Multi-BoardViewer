@@ -26,6 +26,49 @@ namespace MultiBoardViewer.Controls
         private static FolderNode _cachedTreeRoot;
         private static string _cachedTreeFolder;
 
+        // Static cache for expanded folder paths
+        private static readonly HashSet<string> _cachedExpandedPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private static bool _expandedPathsLoaded = false;
+        private const string ExpandedFoldersFileName = "expanded_folders.txt";
+
+        private static void LoadExpandedFolders()
+        {
+            if (_expandedPathsLoaded) return;
+            try
+            {
+                string appDir = AppDomain.CurrentDomain.BaseDirectory;
+                string filePath = Path.Combine(appDir, ExpandedFoldersFileName);
+                if (File.Exists(filePath))
+                {
+                    var lines = File.ReadAllLines(filePath);
+                    foreach (var line in lines)
+                    {
+                        string path = line.Trim();
+                        if (!string.IsNullOrEmpty(path))
+                        {
+                            _cachedExpandedPaths.Add(path);
+                        }
+                    }
+                }
+            }
+            catch { }
+            _expandedPathsLoaded = true;
+        }
+
+        private static void SaveExpandedFolders()
+        {
+            try
+            {
+                string appDir = AppDomain.CurrentDomain.BaseDirectory;
+                string filePath = Path.Combine(appDir, ExpandedFoldersFileName);
+                lock (_cachedExpandedPaths)
+                {
+                    File.WriteAllLines(filePath, _cachedExpandedPaths);
+                }
+            }
+            catch { }
+        }
+
         // Event to notify parent window to open files
         public event EventHandler<string[]> FilesOpenRequested;
         public event EventHandler<FileOpenWithViewerEventArgs> FileOpenWithViewerRequested;
@@ -149,9 +192,11 @@ namespace MultiBoardViewer.Controls
                     MenuItem openOpenBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
                     openOpenBoardViewItem.Click += (s, ev) => RequestOpenWithViewer(filePath, "OpenBoardView");
 
-
+                    MenuItem openBoardViewerItem = new MenuItem { Header = "Open with BoardViewer" };
+                    openBoardViewerItem.Click += (s, ev) => RequestOpenWithViewer(filePath, "BoardViewer");
 
                     contextMenu.Items.Add(openNexusBvItem);
+                    contextMenu.Items.Add(openBoardViewerItem);
                     contextMenu.Items.Add(openOpenBoardViewItem);
 
 
@@ -303,6 +348,11 @@ namespace MultiBoardViewer.Controls
                     _searchService.SearchFolder = dialog.SelectedPath;
                     UpdateSearchFolderTooltip();
                     SearchBox.Text = ""; // Clear search to reset view
+                    lock (_cachedExpandedPaths)
+                    {
+                        _cachedExpandedPaths.Clear();
+                    }
+                    SaveExpandedFolders();
                     RefreshDirectoryTree(forceRefresh: true);
                 }
             }
@@ -567,6 +617,32 @@ namespace MultiBoardViewer.Controls
                 Margin = new Thickness(0, 2, 0, 2)
             };
 
+            LoadExpandedFolders();
+            if (_cachedExpandedPaths.Contains(folderNode.FullPath))
+            {
+                item.IsExpanded = true;
+            }
+
+            item.Expanded += (s, e) =>
+            {
+                e.Handled = true;
+                lock (_cachedExpandedPaths)
+                {
+                    _cachedExpandedPaths.Add(folderNode.FullPath);
+                }
+                SaveExpandedFolders();
+            };
+
+            item.Collapsed += (s, e) =>
+            {
+                e.Handled = true;
+                lock (_cachedExpandedPaths)
+                {
+                    _cachedExpandedPaths.Remove(folderNode.FullPath);
+                }
+                SaveExpandedFolders();
+            };
+
             foreach (var subFolder in folderNode.SubFolders)
             {
                 item.Items.Add(CreateFolderTreeViewItem(subFolder));
@@ -614,7 +690,11 @@ namespace MultiBoardViewer.Controls
                 MenuItem openOpenBoardViewItem = new MenuItem { Header = "Open with OpenBoardView" };
                 openOpenBoardViewItem.Click += (s, ev) => RequestOpenWithViewer(fileNode.FullPath, "OpenBoardView");
 
+                MenuItem openBoardViewerItem = new MenuItem { Header = "Open with BoardViewer" };
+                openBoardViewerItem.Click += (s, ev) => RequestOpenWithViewer(fileNode.FullPath, "BoardViewer");
+
                 contextMenu.Items.Add(openNexusBvItem);
+                contextMenu.Items.Add(openBoardViewerItem);
                 contextMenu.Items.Add(openOpenBoardViewItem);
 
                 item.ContextMenu = contextMenu;
