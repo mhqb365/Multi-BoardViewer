@@ -1,0 +1,16 @@
+[Colors]
+Background=#050500
+BoardFill=#050500FF
+PinsPads=#2A3448FF
+ComponentBox=#444D60FF
+ComponentLabelText=#F8F9FAB3
+PinLabelText=#F8F9FAAD
+NetHighlight=#FFFF00CC
+NetwebCurrent=#FFFF00F2
+NetwebOther=#3399FFD9
+SelectedPart=#FF4040FF
+BoardOutline=#384E67FF
+GndColor=#181E29FF
+NcColor=#2A3448FF
+FirstPinColor=#804A58FF
+TestPinColor=#3E4E60FF
