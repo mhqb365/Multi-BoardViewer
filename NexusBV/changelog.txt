@@ -1,3 +1,48 @@
+v0.6.1 - 2026.06.04
+- Добавлена поддержка формата A3P/GenCAM
+- Улучшен парсер TVW
+- Улучшен парсер BV
+- Улучшен парсер GR
+- Улучшен парсер XZZPCB
+- BRD: улучшен парсер TopTest
+- CAD Улучшена поддержка GenCAD борд экспортированных RSI-TRANSLATOR CAMCAD Professional 3.9.6b, а также GenCAD борд с мусорными данными в начале
+- Улучшен режим слоев
+- Добавлен функционал трассировки сигнала через перемычки, дроссели, диоды, конденсаторы и нулевики, ШИМ, мосфеты, свитчи и т.д. (сигналы при переходе
+выделяются разным цветом). Также добавлен Trace Editor в меню Tools. Данная функция на данное время экспериментальная
+- Улучшено отображение наложенных друг на друга пинов/подложек в компоненте: на борде теперь отображается последний пин/подложка (при выборе пина во
+вкладке Parts, его имя корректно меняется) 
+- Во сплывающем окне при наведении на компонент список пинов теперь сортируется в возрастающем порядке
+- Исправлено восстановление открепленного окна PDF вьювера: если оно было развернуто, то при восстановлении главного окна теперь оно остается развернутым
+- Вкладка Net теперь больше не переключается автоматически на вкладку Part или Layers, если она была выбрана до этого, а выбранный сигнал не сбрасывается
+до выбора другого сигнала или сброса выделения
+- Добавлена опциональная автоматическая проверка обновлений при запуске бордвьювера (проверка обновлений осуществляется раз в сутки). Если доступна новая
+версия, NexusBV показывает уведомление в правом верхнем углу. Также бордвьювер теперь автоматически запускает новую версию после обновления
+- Добавлена новая горячая клавиша (по умолчанию Ctrl+Space) для переворота платы на другую сторону по горизонтальной оси
+- Оптимизация рендера
+- Другие мелкие улучшения и исправления
+
+- Added support for A3P/GenCAM file format
+- Improved TVW parser
+- Improved BV parser
+- Improved GR parser
+- Improved XZZPCB parser
+- BRD: Improved TopTest parser
+- CAD Improved GenCAD boards support exported by RSI-TRANSLATOR CAMCAD Professional 3.9.6b, as well as GenCAD boards with junk data at the beginning of the file
+- Improved layer mode
+- Added signal tracing through jumpers, inductors, diodes, capacitors, and zero-ohm resistors, PWM, mosfets, switches etc., with signals highlighted in
+different colors as the trace passes through them. Also added Trace Editor in Tools menu. This feature is experimental as of now
+- Improved display of overlapping pins/pads in components: the board now shows the last pin/pad, while selecting a pin in the Parts tab correctly updates its name
+- Component hover tooltips now show pins in ascending order
+- Fixed restoring a maximized detached PDF viewer window: if it was maximized, it now stays maximized when restoring the main window
+- The Net tab no longer automatically switches to the Part or Layers tab if it was selected before, and the selected net is no longer cleared until another
+net is selected or the selection is cleared
+- Added optional automatic update checks (can be enabled in settings) on boardviewer launch (updates are checked once per day). When a new version is
+available, NexusBV shows an update notification in the top-right corner. NexusBV now also automatically launches the new version after updating
+- Added a new hotkey (default is Ctrl+Space) for flipping the board side over the X-axis
+- Render optimization
+- Other minor improvements and fixes
+
+
 v0.5.1 - 2026.05.21 
 - Allegro BRD: Улучшена поддержка редких allegro борд
 - Allegro BRD: Исправлен неверный размер подложек в некоторых бордах

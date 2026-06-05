@@ -1,6 +1,6 @@
 Nexus BoardViewer
 
-The boardviewer is capable of the following: it supports layers, dual mode view (2 independent views that allow you to work from both sides simultaneously), full-fledged
+The boardviewer is capable of the following: it supports layers, dual mode view (2 independent views that allow you to work from both sides simultaneously), signal tracing, full-fledged
 HiDPI support, tabs, theme editor, key bindings editor, it also supports PDF (two-way navigation is possible: from the board to the PDF, and from the PDF to the board), it's
 fast, compact, portable, it has familiar and intuitive UI and many more. You have to try it yourself to discover all its possibilities:)
 
@@ -9,7 +9,7 @@ found the software useful and would like to support the development of it. See d
 @beyondtimeandspace or by e-mail 9895@protonmail.com. Your support means a lot to me.
 
 Currently supported formats:
-.ASC, .BDV, .BRD (Toptest/Landrex/Mentor Neutral File/Allegro + layers), .BV, .BVR, .CAD (GenCAD, Fabmaster CAD), .CAE, .CST, .F2B, .FAZ, .FZ, .GR, .PCB (XZZPCB + layers), .TVW (+ layers)
+.A3P, .ASC, .BDV, .BRD (Toptest/Landrex/Mentor Neutral File/Allegro + layers), .BV, .BVR, .CAD (GenCAD, Fabmaster CAD), .CAE, .CST, .F2B, .FAZ, .FZ, .GR, .PCB (XZZPCB + layers), .TVW (+ layers)
 
 
 For the time being, for Allegro board files prior to version 16 (which are quite rare), a converter (dbdoctor) is required to convert older files to a newer format (it will be offered to
@@ -22,7 +22,7 @@ Your feedback is important to me, if you found any bug or have any other suggest
 ***
 RU:
 
-Ключевые особенности бордвьювера: поддержка слоев, двойной режим (два разделенных экрана, с которыми можно работать независимо с бордой сразу с двух сторон), полноценная
+Ключевые особенности бордвьювера: поддержка слоев, двойной режим (два разделенных экрана, с которыми можно работать независимо с бордой сразу с двух сторон), трассировка сигналов, полноценная
 поддержка HiDPI, поддержка PDF (возможна двухсторонняя навигация, как из борды в PDF, так и из PDF в борду), быстрота, компактность, понятный и знакомый интерфейс, вкладки, редактор тем, редактор
 быстрых клавиш и многое другое, чтобы полностью увидеть все его возможности, нужно им попользоваться :)
 
@@ -30,7 +30,7 @@ RU:
 поддержать дальнейшее развитие проекта, доступные методы для доната находятся в файле donations.txt (для других способов свяжитесь со мной в телеграм: @beyondtimeandspace или по почте 9895@protonmail.com). 
 
 Поддерживаемые форматы на данное время:
-.ASC, .BDV, .BRD (Toptest/Landrex/Mentor Neutral File/Allegro + layers), .BV, .BVR, .CAD (GenCAD, Fabmaster CAD), .CAE, .CST, .F2B, .FAZ, .FZ, .GR, .PCB (XZZPCB + layers), .TVW (+ layers)
+.A3P, .ASC, .BDV, .BRD (Toptest/Landrex/Mentor Neutral File/Allegro + layers), .BV, .BVR, .CAD (GenCAD, Fabmaster CAD), .CAE, .CST, .F2B, .FAZ, .FZ, .GR, .PCB (XZZPCB + layers), .TVW (+ layers)
 
 На данное время для аллегро борд версии <16 (встречаются не очень часто) необходим конвертер dbdoctor (его будет предложено скачать при необходимости) для конвертации борд в более новые версии.
 Аллегро борды версии 16-23 поддерживаются нативно.
