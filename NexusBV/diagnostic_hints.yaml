@@ -1,0 +1,58 @@
+version: 1
+
+categories:
+  laptops:
+    title: Laptops
+    hints:
+      - id: no_backlight_aux
+        title: No backlight: check the panel communication used by this board
+        triggers:
+          - no backlight
+          - missing backlight
+          - backlight missing
+          - no image backlight
+          - display has image but no backlight
+          - backlight not working
+          - no lcd backlight
+          - missing bl_en
+          - no bl_en
+          - bl_en missing
+          - edp backlight
+          - нет подсветки
+          - подсветка
+        text: >
+          When listing possible checks, include panel communication only as an
+          additional thing to verify, and only for the interface used by this
+          board. If the display path is eDP or DisplayPort, mention AUX
+          communication. If it is an older LVDS-style panel, do not call it AUX
+          and do not imply EDID/DDC is always required; mention DDC/I2C/EDID only
+          if those lines are present or relevant. Also include panel power, BL_EN,
+          PWM, and the backlight driver or inverter.
+
+      - id: no_vcccore_vid_bus
+        title: Missing CPU core rail: check the VID control interface if used
+        triggers:
+          - no vcccore
+          - missing vcccore
+          - vcccore missing
+          - no +vcccore
+          - missing +vcccore
+          - +vcccore missing
+          - no vcore
+          - missing vcore
+          - vcore missing
+          - no cpu core voltage
+          - missing cpu core voltage
+          - cpu core rail missing
+          - no cpu vcore
+          - missing cpu vcore
+        text: >
+          When listing possible checks for a missing CPU core rail, include the
+          CPU voltage identification/control bus only as an additional thing to
+          verify, and only if the platform uses it. For modern Intel platforms,
+          mention SVID between the CPU and CPU core VR controller. For AMD
+          platforms, mention the SVI/SVI2/SVI3 interface instead of SVID. For
+          older CPUs or simpler regulators, do not imply SVID is required; they
+          may use parallel VID pins, fixed feedback, or another enable/control
+          scheme. Also include VR enable, controller supply, VIN/PVIN, power-good
+          sequencing, PWM/DrMOS activity, and shorts on the core rail.

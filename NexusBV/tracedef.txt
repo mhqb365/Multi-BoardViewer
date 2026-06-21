@@ -1,5 +1,6 @@
 Enabled,Marker,Type,Number of pins,Contains,Pins In,Pins Out,Package
 1,"C, PC",Capacitor,2,"","","",""
+1,CHOKE,Inductor,2,"",1,2,""
 1,"PD, D",Diode,2,"","","",""
 1,"PF, F, PFB, FB",Fuse,2,"","","",""
 1,"PJ, J",Jumper,2,"","","",""
@@ -20,5 +21,6 @@ Enabled,Marker,Type,Number of pins,Contains,Pins In,Pins Out,Package
 1,PU,Step down regulator,17,SYV786RHC,2-4,"5,15-16",QFN-16 2.5X2.5
 1,PU,Step down regulator,21,RT6585CGQW,12,"8,18",WQFN20 3X3
 1,PU,DrMOS,33,AOZ5517QI,8-11,16-26,""
+1,Q,Mosfet,5,NTMFS4C08NT1G,5,1-3,SOT669
 1,"R, PR, RC",Resistor,2,"","","",""
 1,U,Switch,15,G2898KD1U,"1-2,6-7","13-14,8-9",TDFN2X3-14
