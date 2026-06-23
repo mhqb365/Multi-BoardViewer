@@ -18,6 +18,7 @@ FirstPinColor=#824A59FF
 TestPinColor=#3E4E60FF
 CapacitorColor=#8B5A2BFF
 ResistorColor=#000000FF
+JumperColor=#000000FF
 InductorColor=#181818FF
 ICColor=#000000FF
 FuseColor=#FFFFFFFF
