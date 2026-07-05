@@ -1,3 +1,32 @@
+v0.7.4 - 2026.06.26
+
+- Исправлено отключение MCP-клиента Claude
+- PDF-вьювер теперь корректно восстанавливает состояние окна при открытии борды, если до этого окно было свернуто
+
+- Fixed Claude MCP client disconnecting
+- The PDF viewer now correctly restores its window state when opening a board if the window was minimized before
+
+
+v0.7.3 - 2026.06.25
+
+- Уменьшено количество ложных срабатываний от ESET и Windows Defender
+
+- Reduced the number of false positives from ESET and Windows Defender
+
+
+v0.7.2 - 2026.06.25
+
+- BRD: улучшен парсер TopTest
+- Исправлена причина ложных срабатываний от Windows Defender
+- Переход из PDF-вьювера к компоненту на бордвью теперь учитывает настройки "Всегда переворачивать борду по оси X" и "Всегда переворачивать борду без зеркалирования"
+- Другие мелкие исправления и улучшения
+
+- BRD: improved TopTest parser
+- Fixed the cause of false positives from Windows Defender
+- Jumping from the PDF viewer to a component on the boardview now respects the "Always flip the board over X-axis" and "Always flip the board without mirroring" settings
+- Other minor fixes and improvements
+
+
 v0.7.1 - 2026.06.23
 
 - Добавлена поддержка длинных путей
