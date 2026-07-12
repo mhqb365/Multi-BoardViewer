@@ -1,3 +1,26 @@
+v0.8 - 2026.07.12
+
+- Добавлен редактор борд (Tools -> Board editor) и возможность экспортировать бордвью в новый формат NBV
+- Добавлен редактор заметок (Tools -> Notes)
+- Улучшены парсеры: BDV, BRD (TopTest), FZ, GenCAD, TVW, XZZPCB
+- Добавлена настройка восстановления ранее открытых вкладок при запуске бордвьювера (General -> Restore open tabs on boardviewer launch)
+- Добавлена настройка масштабирования PDF колесиком мышки (General -> PDF viewer -> Zoom with mouse wheel (hold Ctrl to scroll))
+- Добавлен поиск по регулярным выражениям в PDF-вьювере
+- Добавлена функция закрепления недавних файлов на главном экране
+- Добавлен точный поиск в Find Parts, Search for Files and Content и PDF Viewer. Для поиска точных совпадений используйте кавычки
+- Другие мелкие исправления и улучшения
+
+- Added board editor (Tools -> Board editor) and the ability to export boardviews to the NBV format
+- Added notes editor (Tools -> Notes)
+- Improved BDV, BRD (TopTest), FZ, GenCAD, TVW, XZZPCB parsers
+- Added an option to restore previously opened tabs on boardviewer launch (General -> Restore open tabs on boardviewer launch)
+- Added an option to zoom PDFs with the mouse wheel (General -> PDF viewer -> Zoom with mouse wheel (hold Ctrl to scroll))
+- Added regex search to the PDF viewer
+- Added the ability to pin recent files on the Home screen
+- Added exact search in Find Parts, Search for Files and Content, and the PDF Viewer. To search for exact matches, use quotes
+- Other minor fixes and improvements
+
+
 v0.7.4 - 2026.06.26
 
 - Исправлено отключение MCP-клиента Claude
