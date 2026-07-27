@@ -4,12 +4,12 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyName>MultiBoardViewer</AssemblyName>
+    <AssemblyName>Multi BoardViewer</AssemblyName>
     <RootNamespace>MultiBoardViewer</RootNamespace>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
     <ApplicationIcon>app.ico</ApplicationIcon>
-    <Version>1.2.3</Version>
+    <Version>1.2.5</Version>
   </PropertyGroup>
 
   <ItemGroup>

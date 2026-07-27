@@ -1,3 +1,14 @@
+v0.8.1 - 2026.07.26
+
+- Добавлена функция притемнения компонентов без info
+- Улучшены парсеры: BRD (Toptest), BV, TVW
+- Другие мелкие исправления и улучшения
+
+- Added function darken components without info
+- Improved BRD (Toptest), BV, TVW parsers
+- Other minor fixed and improvements
+
+
 v0.8 - 2026.07.12
 
 - Добавлен редактор борд (Tools -> Board editor) и возможность экспортировать бордвью в новый формат NBV

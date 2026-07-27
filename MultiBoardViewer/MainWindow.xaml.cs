@@ -563,7 +563,16 @@ namespace MultiBoardViewer
         {
             try
             {
-                string exePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "VoltageDividerCalculator", "VoltageDividerCalculator.exe");
+                string toolDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "VoltageDividerCalculator");
+                string exePath = new[]
+                {
+                    "Voltage Divider Tool.exe",
+                    "Voltage Divider Calculator.exe",
+                    "VoltageDividerCalculator.exe"
+                }
+                    .Select(fileName => Path.Combine(toolDir, fileName))
+                    .FirstOrDefault(File.Exists);
+
                 if (File.Exists(exePath))
                 {
                     _voltageDividerProcess = Process.Start(exePath);

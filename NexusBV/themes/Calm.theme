@@ -1,7 +1,7 @@
 [Colors]
 ColorizeComponents=False
 Background=#060606
-BoardFill=#0B0C0DFF
+BoardFill=NA
 PinsPads=#45454EFF
 ComponentBox=#45454EFF
 ComponentLabelText=#DDDDDDB6
