@@ -5,8 +5,8 @@ echo ================================================
 echo.
 
 REM Kiểm tra xem đã build chưa
-if not exist "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" (
-    if not exist "MultiBoardViewer\bin\Debug\net8.0-windows\MultiBoardViewer.exe" (
+if not exist "MultiBoardViewer\bin\Release\net8.0-windows\Multi BoardViewer.exe" (
+    if not exist "MultiBoardViewer\bin\Debug\net8.0-windows\Multi BoardViewer.exe" (
         echo Chua build project!
         echo Vui long chay Build.bat truoc
         echo.
@@ -14,10 +14,10 @@ if not exist "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" 
         exit /b 1
     )
     echo Chay phien ban Debug...
-    start "" "MultiBoardViewer\bin\Debug\net8.0-windows\MultiBoardViewer.exe"
+    start "" "MultiBoardViewer\bin\Debug\net8.0-windows\Multi BoardViewer.exe"
 ) else (
     echo Chay phien ban Release...
-    start "" "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe"
+    start "" "MultiBoardViewer\bin\Release\net8.0-windows\Multi BoardViewer.exe"
 )
 
 echo.

@@ -28,7 +28,7 @@ if %ERRORLEVEL% EQU 0 (
     echo BUILD THANH CONG!
     echo ================================================
     echo.
-    echo File exe: MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe
+    echo File exe: MultiBoardViewer\bin\Release\net8.0-windows\Multi BoardViewer.exe
     echo.
     
     REM Copy NexusBV folder
@@ -83,7 +83,7 @@ if %ERRORLEVEL% EQU 0 (
     
     
     REM Mở thư mục output
-    if exist "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" (
+    if exist "MultiBoardViewer\bin\Release\net8.0-windows\Multi BoardViewer.exe" (
         echo Mo thu muc output...
         explorer "MultiBoardViewer\bin\Release\net8.0-windows"
     )

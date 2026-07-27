@@ -1,11 +1,3 @@
-# Chú ý
-
-Trong bản cập nhật v1.2.5 có lỗi, ứng dụng sẽ báo cập liên tục mặt dù ứng dụng đã cập nhật rồi
-
-Lý do: Chủ dự án đổi tên ứng dụng từ `MultiBoardViewer` thành `Multi BoardViewer` (có khoảng trắng ở giữa Multi và BoarViewer)
-
-Cách xử lý: Xóa `MultiBoardViewer.exe` trong thư mục ứng dụng đi, từ nay chỉ cần mở `Multi BoardViewer.exe` là được
-
 # Multi BoardViewer
 
 Ứng dụng Windows giúp xem nhiều boardview và schematic trong cùng một ứng dụng
