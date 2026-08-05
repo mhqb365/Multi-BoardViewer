@@ -11,7 +11,7 @@ namespace MultiBoardViewer.Services
     {
         private static readonly HashSet<string> SupportedExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
-            ".pdf", ".fz", ".brd", ".bom", ".cad", ".bdv", ".asc", ".bv", ".cst", ".gr", ".f2b", ".faz", ".tvw"
+            ".pdf", ".a3p", ".asc", ".bdv", ".brd", ".bv", ".bvr", ".cad", ".cae", ".cst", ".f2b", ".faz", ".fz", ".gr", ".pcb", ".tvw"
         };
 
         private string _searchFolder;

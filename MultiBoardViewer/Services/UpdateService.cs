@@ -242,14 +242,8 @@ namespace MultiBoardViewer.Services
                     sourceDir = subDirs[0];
                 }
 
-                string preferredRestartExePath = Path.Combine(currentAppDir, "Multi BoardViewer.exe");
-                string legacyExePath = Path.Combine(currentAppDir, "MultiBoardViewer.exe");
-                string restartExePath = preferredRestartExePath;
-                if (!File.Exists(Path.Combine(sourceDir, "Multi BoardViewer.exe")) &&
-                    !File.Exists(preferredRestartExePath))
-                {
-                    restartExePath = currentExePath;
-                }
+                string preferredRestartExePath = Path.Combine(currentAppDir, "MultiBoardViewer.exe");
+                string legacyExePath = Path.Combine(currentAppDir, "Multi BoardViewer.exe");
 
                 // Write batch script to temp directory
                 string batchContent = $@"@echo off
@@ -266,12 +260,14 @@ if ""%ERRORLEVEL%""==""0"" (
 echo Updating files...
 xcopy /E /I /Y ""{sourceDir}\*"" ""{currentAppDir}""
 
+set ""RESTART_EXE={currentExePath}""
 if exist ""{preferredRestartExePath}"" (
+    set ""RESTART_EXE={preferredRestartExePath}""
     if exist ""{legacyExePath}"" del ""{legacyExePath}""
 )
 
 echo Restarting Multi-BoardViewer...
-start """" ""{restartExePath}""
+start """" ""%RESTART_EXE%""
 
 echo Done. Cleaning up...
 (goto) 2>nul & del ""%~f0""

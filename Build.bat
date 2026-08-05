@@ -28,9 +28,14 @@ if %ERRORLEVEL% EQU 0 (
     echo BUILD THANH CONG!
     echo ================================================
     echo.
-    echo File exe: MultiBoardViewer\bin\Release\net8.0-windows\Multi BoardViewer.exe
+    echo File exe: MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe
     echo.
-    
+
+    REM Transitional launcher for old updaters that restart "Multi BoardViewer.exe".
+    if exist "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" (
+        copy /Y "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" "MultiBoardViewer\bin\Release\net8.0-windows\Multi BoardViewer.exe" >nul
+    )
+
     REM Copy NexusBV folder
     echo Dang copy NexusBV...
     if exist "NexusBV" (
@@ -83,7 +88,7 @@ if %ERRORLEVEL% EQU 0 (
     
     
     REM Mở thư mục output
-    if exist "MultiBoardViewer\bin\Release\net8.0-windows\Multi BoardViewer.exe" (
+    if exist "MultiBoardViewer\bin\Release\net8.0-windows\MultiBoardViewer.exe" (
         echo Mo thu muc output...
         explorer "MultiBoardViewer\bin\Release\net8.0-windows"
     )

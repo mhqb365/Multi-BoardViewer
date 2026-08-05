@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading;
@@ -20,6 +21,12 @@ namespace MultiBoardViewer
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            if (RedirectLegacyExecutable(e.Args))
+            {
+                Shutdown();
+                return;
+            }
+
             // Try to create mutex to check if another instance is running
             bool createdNew;
             try
@@ -67,6 +74,73 @@ namespace MultiBoardViewer
             // Start pipe server
             _cancellationTokenSource = new CancellationTokenSource();
             StartPipeServer();
+        }
+
+        private bool RedirectLegacyExecutable(string[] args)
+        {
+            string currentExePath = Environment.ProcessPath;
+            if (string.IsNullOrEmpty(currentExePath))
+            {
+                return false;
+            }
+
+            if (!Path.GetFileName(currentExePath).Equals("Multi BoardViewer.exe", StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            string preferredExePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MultiBoardViewer.exe");
+            if (!File.Exists(preferredExePath))
+            {
+                return false;
+            }
+
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = preferredExePath,
+                    Arguments = BuildCommandLineArguments(args),
+                    UseShellExecute = true
+                });
+                ScheduleLegacyExecutableDelete(currentExePath);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private string BuildCommandLineArguments(string[] args)
+        {
+            if (args == null || args.Length == 0)
+            {
+                return "";
+            }
+
+            string[] quotedArgs = new string[args.Length];
+            for (int i = 0; i < args.Length; i++)
+            {
+                quotedArgs[i] = "\"" + args[i].Replace("\"", "\\\"") + "\"";
+            }
+            return string.Join(" ", quotedArgs);
+        }
+
+        private void ScheduleLegacyExecutableDelete(string legacyExePath)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $"/c timeout /t 2 /nobreak >nul & del /f /q \"{legacyExePath}\"",
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    UseShellExecute = false
+                });
+            }
+            catch { }
         }
 
         private void StartPipeServer()
