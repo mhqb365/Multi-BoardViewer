@@ -366,7 +366,7 @@ namespace MultiBoardViewer
         {
             try
             {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://github.com/mhqb365/Multi-BoardViewer") { UseShellExecute = true });
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://github.com/mhqb365/MultiBoardViewer") { UseShellExecute = true });
             }
             catch (Exception ex)
             {

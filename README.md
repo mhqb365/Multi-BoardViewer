@@ -40,15 +40,15 @@ Dự án này sử dụng sản phẩm của họ để tạo nên trải nghi�
 
 ### Cách 1: Tải bản Release
 
-1. Tải file từ [Releases](https://github.com/mhqb365/Multi-BoardViewer/releases)
+1. Tải file từ [Releases](https://github.com/mhqb365/MultiBoardViewer/releases)
 2. Giải nén và chạy `MultiBoardViewer.exe`
 
 ### Cách 2: Build từ source
 
 ```powershell
 # Clone repository
-git clone https://github.com/mhqb365/Multi-BoardViewer.git
-cd Multi-BoardViewer
+git clone https://github.com/mhqb365/MultiBoardViewer.git
+cd MultiBoardViewer
 
 # Build
 .\Build.bat

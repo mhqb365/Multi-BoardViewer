@@ -15,7 +15,7 @@ namespace MultiBoardViewer.Services
     public class UpdateService
     {
         private const string RepoOwner = "mhqb365";
-        private const string RepoName = "Multi-BoardViewer";
+        private const string RepoName = "MultiBoardViewer";
         private const string GitHubApiUrl = $"https://api.github.com/repos/{RepoOwner}/{RepoName}/releases/latest";
 
         public async Task CheckForUpdatesAsync(bool showUpToDateMessage = false)
